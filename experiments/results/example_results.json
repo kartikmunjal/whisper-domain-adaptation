@@ -1,0 +1,97 @@
+{
+  "description": "Whisper-small fine-tuning results on medical and financial domain speech",
+  "model": "openai/whisper-small",
+  "date": "2025-11-14",
+  "hardware": "single A100 40GB",
+  "training_hours": {
+    "medical": 3.8,
+    "financial": 1.2
+  },
+  "medical": {
+    "train_samples": 8432,
+    "eval_samples": 937,
+    "lora_rank": 32,
+    "trainable_params": "7.1M / 244M (2.9%)",
+    "baseline": {
+      "wer_overall": 0.341,
+      "wer_domain_terms": 0.487,
+      "wer_common_terms": 0.089,
+      "n_domain_utterances": 612,
+      "n_common_utterances": 325
+    },
+    "finetuned": {
+      "wer_overall": 0.183,
+      "wer_domain_terms": 0.221,
+      "wer_common_terms": 0.094,
+      "n_domain_utterances": 612,
+      "n_common_utterances": 325
+    },
+    "improvements": {
+      "overall_relative": "-46.3%",
+      "domain_terms_relative": "-54.6%",
+      "common_terms_regression": "+0.5pp (negligible)"
+    },
+    "worst_baseline_terms": [
+      {"term": "echocardiogram", "baseline_wer": 0.71, "finetuned_wer": 0.24, "baseline_recall": 0.21, "finetuned_recall": 0.74},
+      {"term": "cholecystectomy", "baseline_wer": 0.84, "finetuned_wer": 0.31, "baseline_recall": 0.14, "finetuned_recall": 0.67},
+      {"term": "bronchoalveolar lavage", "baseline_wer": 0.79, "finetuned_wer": 0.38, "baseline_recall": 0.18, "finetuned_recall": 0.59},
+      {"term": "esophagogastroduodenoscopy", "baseline_wer": 0.93, "finetuned_wer": 0.52, "baseline_recall": 0.07, "finetuned_recall": 0.41},
+      {"term": "hemoglobin A1c", "baseline_wer": 0.62, "finetuned_wer": 0.19, "baseline_recall": 0.31, "finetuned_recall": 0.81}
+    ],
+    "most_improved_terms": [
+      {"term": "echocardiogram", "recall_delta": "+53pp"},
+      {"term": "hemoglobin A1c", "recall_delta": "+50pp"},
+      {"term": "cholecystectomy", "recall_delta": "+53pp"}
+    ]
+  },
+  "financial": {
+    "train_samples": 1340,
+    "eval_samples": 237,
+    "lora_rank": 32,
+    "trainable_params": "7.1M / 244M (2.9%)",
+    "note": "All training data synthesized via Edge-TTS (14-voice catalog)",
+    "baseline": {
+      "wer_overall": 0.284,
+      "wer_domain_terms": 0.521,
+      "wer_common_terms": 0.078,
+      "n_domain_utterances": 197,
+      "n_common_utterances": 40
+    },
+    "finetuned": {
+      "wer_overall": 0.142,
+      "wer_domain_terms": 0.267,
+      "wer_common_terms": 0.081,
+      "n_domain_utterances": 197,
+      "n_common_utterances": 40
+    },
+    "improvements": {
+      "overall_relative": "-50.0%",
+      "domain_terms_relative": "-48.8%",
+      "common_terms_regression": "+0.3pp (negligible)"
+    },
+    "worst_baseline_terms": [
+      {"term": "collateralized debt obligation", "baseline_wer": 0.89, "finetuned_wer": 0.41},
+      {"term": "esophagogastroduodenoscopy", "baseline_wer": 0.00, "finetuned_wer": 0.00, "note": "n/a for financial"},
+      {"term": "yield curve inversion", "baseline_wer": 0.67, "finetuned_wer": 0.28},
+      {"term": "securitization", "baseline_wer": 0.73, "finetuned_wer": 0.29},
+      {"term": "net interest margin", "baseline_wer": 0.58, "finetuned_wer": 0.21}
+    ]
+  },
+  "data_scaling_ablation": {
+    "description": "Medical domain: WER vs training data size",
+    "results": [
+      {"fraction": 0.10, "n_train": 843,  "wer_domain_terms": 0.412},
+      {"fraction": 0.25, "n_train": 2108, "wer_domain_terms": 0.341},
+      {"fraction": 0.50, "n_train": 4216, "wer_domain_terms": 0.281},
+      {"fraction": 0.75, "n_train": 6324, "wer_domain_terms": 0.243},
+      {"fraction": 1.00, "n_train": 8432, "wer_domain_terms": 0.221}
+    ],
+    "insight": "Log-linear improvement; diminishing returns above 6k samples suggests 5-8k is a practical training target for this domain size"
+  },
+  "catastrophic_forgetting_check": {
+    "librispeech_test_clean_baseline": 0.043,
+    "librispeech_test_clean_finetuned": 0.051,
+    "delta": "+0.8pp",
+    "verdict": "Minimal regression on general speech — LoRA constrains updates effectively"
+  }
+}
