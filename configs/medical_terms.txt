@@ -1,0 +1,86 @@
+# Medical domain vocabulary — terms Whisper-small handles poorly
+# One term per line; used by DomainWERAnalyzer and OOVAnalyzer
+# Sources: clinical terminology frequency studies + manual review of
+# eval set errors from baseline Whisper evaluation
+
+# Cardiology
+atrial fibrillation
+myocardial infarction
+echocardiogram
+cardiomyopathy
+tachycardia
+bradycardia
+ventricular fibrillation
+aortic stenosis
+pericarditis
+endocarditis
+
+# Pulmonology
+pneumothorax
+bronchoscopy
+hemoptysis
+pleurodesis
+bronchoalveolar lavage
+pulmonary embolism
+emphysema
+pneumonia
+spirometry
+
+# Gastroenterology
+cholecystectomy
+endoscopy
+colonoscopy
+esophagogastroduodenoscopy
+anastomosis
+hepatomegaly
+splenomegaly
+gastroesophageal reflux
+pancreatitis
+
+# Oncology
+metastasis
+chemotherapy
+radiation therapy
+immunotherapy
+lymphadenopathy
+hematology
+oncology
+cytotoxic
+angiogenesis
+carcinoma
+
+# Neurology
+encephalopathy
+meningitis
+electroencephalogram
+cerebrovascular
+neuropathy
+paresthesia
+dysarthria
+apraxia
+tremor
+dementia
+
+# General / Laboratory
+hemoglobin A1c
+creatinine
+electrolytes
+serum albumin
+troponin
+prothrombin time
+complete blood count
+urinalysis
+bilirubin
+erythrocyte sedimentation rate
+
+# Pharmacology
+anticoagulation
+thrombolysis
+vasopressor
+corticosteroid
+bronchodilator
+diuretic
+antihypertensive
+analgesic
+antibiotic
+immunosuppressant

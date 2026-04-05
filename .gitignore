@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb~
+
+# Data and checkpoints
+data/raw/
+data/processed/
+checkpoints/
+*.pt
+*.bin
+*.safetensors
+
+# Experiment outputs (keep example_results.json, ignore large runs)
+experiments/results/run_*/
+experiments/results/*.csv
+
+# Audio files
+*.wav
+*.mp3
+*.flac
+*.ogg
+# Except test fixtures
+!tests/fixtures/*.wav
+
+# HuggingFace cache
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Wandb
+wandb/

@@ -1,0 +1,56 @@
+# Financial domain vocabulary — earnings call and analyst report terminology
+# Tier-1: high-frequency in quarterly calls; base Whisper WER ~28-35%
+# Tier-2: more technical; base Whisper WER ~40-55%
+
+# Tier-1: Metrics and guidance language
+EBITDA
+EBITDA margin
+free cash flow
+gross margin
+revenue recognition
+non-GAAP earnings
+diluted EPS
+year-over-year growth
+sequential revenue
+operating leverage
+basis points
+forward guidance
+organic growth
+run rate
+working capital
+
+# Tier-1: Operating terms
+capital expenditures
+accounts receivable
+inventory turnover
+deferred revenue
+amortization
+depreciation
+restructuring charges
+impairment charge
+
+# Tier-2: Macro and financial engineering
+quantitative easing
+yield curve inversion
+credit default swap
+collateralized debt obligation
+securitization
+repo rate
+mark-to-market
+net interest margin
+tier-one capital ratio
+loan-to-value ratio
+debt-to-equity ratio
+price-to-earnings ratio
+
+# Tier-2: Analyst language
+comparable store sales
+same-store sales
+adjusted operating income
+pro forma revenue
+normalised earnings
+recurring revenue
+churn rate
+customer acquisition cost
+lifetime value
+net revenue retention
