@@ -41,25 +41,68 @@ but it's a meaningful step.
 
 ## The Three-Repo System
 
-This project sits in the middle of a three-repo pipeline:
+This project sits in the middle of a three-repo pipeline, with data flowing in both directions:
 
 ```
-Audio-Data-Creation  ──────────────────────────────────────────────>  data quality
-      │                                                                  │
-      │  quality filtering methodology                                   │
-      │  (SNR estimation, silence detection,                            │
-      │   duration gating, clipping check)                              │
-      v                                                                  v
-whisper-domain-adaptation  <──────────────────────────────────────  (this repo)
-      ^
-      │
-      │  14-voice TTS catalog
-      │  (financial speech synthesis)
-      │
+┌─────────────────────────────────────┐
+│        Audio-Data-Creation          │
+│  quality filter → dedup → diversity │
+└──────────────┬──────────────────────┘
+               │  filtered_manifest.parquet
+(1) forward    │  import_from_curation.py
+               ▼
+┌─────────────────────────────────────┐
+│     whisper-domain-adaptation       │  ← this repo
+│  LoRA fine-tune on domain corpus    │
+└──────────────┬──────────────────────┘
+               │  checkpoints/*/adapter
+(2) backward   │  evaluate_with_domain_model.py
+               ▼
+┌─────────────────────────────────────┐
+│        Audio-Data-Creation          │
+│  AblationEvaluator(fine_tuned_model │
+│  _path=...) for domain-accurate WER │
+└─────────────────────────────────────┘
+
 rlhf-and-reward-modelling-alt
+  │  14-voice TTS catalog
+  └──> financial speech synthesis
 ```
 
-**Audio-Data-Creation** contains the reference implementation of the quality filtering pipeline —
+**The forward direction** (`import_from_curation.py`): Audio-Data-Creation outputs a
+quality-filtered `filtered_manifest.parquet`. Because both projects use identical manifest schemas
+(`id, path, sentence, duration_sec, snr_db, silence_ratio, source`), no format conversion is
+needed. `src/whisper_adapt/data/curation_bridge.py` adds domain/general splitting and optional
+domain oversampling, then writes train/eval splits ready for `run_finetune.py`:
+
+```bash
+# After a curation run in Audio-Data-Creation:
+python scripts/import_from_curation.py \
+    --manifest ../Audio-Data-Creation/outputs/filtered_manifest.parquet \
+    --domain_vocab configs/medical_terms.txt \
+    --output_dir data/medical_curated \
+    --domain_oversample 2.0
+```
+
+**The backward direction** (`evaluate_with_domain_model.py` in Audio-Data-Creation): once a
+fine-tuned adapter exists, Audio-Data-Creation's `AblationEvaluator` can use it instead of base
+Whisper to evaluate subsequent curation runs. Base Whisper WER on medical speech is ~34% even on
+perfectly clean audio (OOV inflation) — differences between ablation splits get lost in the noise.
+The fine-tuned model's WER actually reflects data quality:
+
+```bash
+# In Audio-Data-Creation, after fine-tuning here:
+python scripts/evaluate_with_domain_model.py \
+    --manifest outputs/filtered_manifest.parquet \
+    --model_path ../whisper-domain-adaptation/checkpoints/medical/adapter \
+    --compare_base \
+    --output experiments/results/domain_eval.json
+```
+
+Each curation iteration feeds a better fine-tuned model, which gives cleaner WER signal, which
+guides better curation decisions on the next pass.
+
+**Audio-Data-Creation** also contains the reference implementation of the quality filtering pipeline —
 SNR estimation, silence ratio detection, duration bounds, clipping checks. The thresholds used
 here (`min_snr_db=15`, `max_silence_ratio=0.40`, `min_duration_sec=0.5`) are identical to what
 that project uses for Common Voice curation. I deliberately kept them in sync so that if someone
@@ -341,6 +384,28 @@ Runs two ablation studies:
 - `synthetic_mix`: varies the ratio of real-to-synthetic data (financial domain only)
 
 Each ablation run is independent — they can be parallelized if you have multiple GPUs.
+
+### `scripts/import_from_curation.py`
+
+Imports an Audio-Data-Creation `filtered_manifest.parquet` directly into this project's data
+pipeline. No format conversion needed — the manifest schema is shared. The script handles:
+
+- Optional secondary quality gates (stricter SNR or duration cap for Whisper)
+- Domain/general split using a vocabulary file (`configs/medical_terms.txt`, etc.)
+- Domain oversampling to compensate for domain utterances being a minority of the corpus
+- Eval set drawn from domain utterances only (so the eval WER reflects domain performance)
+
+```bash
+python scripts/import_from_curation.py \
+    --manifest ../Audio-Data-Creation/outputs/filtered_manifest.parquet \
+    --domain_vocab configs/medical_terms.txt \
+    --output_dir data/medical_curated \
+    --domain_oversample 2.0 \
+    --eval_fraction 0.1
+```
+
+Outputs `train_manifest.parquet`, `eval_manifest.parquet`, and `import_report.json` (same
+format as Audio-Data-Creation's `curation_report.json` for direct comparison).
 
 ---
 
