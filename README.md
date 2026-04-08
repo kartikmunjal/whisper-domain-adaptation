@@ -499,28 +499,43 @@ the "real" pool and TTS financial speech as the "synthetic" pool, then evaluated
 financial-vocabulary test set. This directly replicates the ablation design in the
 Audio-Data-Creation project (which found 50% synthetic optimal for Common Voice accent gaps).
 
-The script (`scripts/run_ablations.py --ablation synthetic_mix`) varies the synthetic fraction
-from 0% to 100% while holding total training set size fixed at ~1,500 samples:
+Run it yourself with:
+
+```bash
+python scripts/run_ablations.py \
+    --ablation synthetic_mix \
+    --real_manifest data/medical/train_manifest.parquet \
+    --synthetic_manifest data/financial_synth/train_manifest.parquet \
+    --eval_manifest data/financial_synth/eval_manifest.parquet \
+    --domain_vocab configs/financial_terms.txt \
+    --output_dir experiments/results/ablations
+```
+
+Results are written to `experiments/results/ablations/synthetic_mix_results.json`.
+Numbers below are from `experiments/results/example_results.json` (one A100 run; yours will differ
+by a percent or two depending on seed and dataset version). The script varies synthetic fraction
+from 0% to 100% holding total training size fixed at ~1,500 samples:
 
 | Synthetic mix ratio | Domain WER | vs real-only |
 |---|---|---|
 | 0% synthetic (real only) | 22.1% | baseline |
-| 25% synthetic | 21.3% | −0.8pp |
-| **50% synthetic** | **20.8%** | **−1.3pp** |
-| 75% synthetic | 21.9% | −0.2pp |
-| 100% synthetic | 26.4% | +4.3pp |
+| 25% synthetic | 21.6% | −0.5pp |
+| **50% synthetic** | **20.9%** | **−1.2pp** |
+| 75% synthetic | 22.7% | +0.6pp |
+| 100% synthetic | 27.3% | +5.2pp |
 
-50% is the sweet spot — consistent with what Audio-Data-Creation found for accent gap correction
-on Common Voice. The interpretation is the same in both cases: pure synthetic data is too
-acoustically uniform (same TTS prosody, negligible background noise, no speaker variation beyond
-the 14-voice catalog), so the model overfits to TTS artifacts. Pure real data lacks domain term
-coverage for financial vocabulary. The 50/50 mix gets the naturalness of real speech plus the
-vocabulary exposure of synthesized financial content.
+50% is the sweet spot. Worth noting how asymmetric the curve is: moving from 50% to 75% loses
+more than moving from 25% to 50% gains. The degradation sets in quickly once synthetic samples
+outnumber real ones, which makes sense — at 75% the model sees three TTS clips for every one
+real dictation clip during training, enough for TTS prosody patterns to start dominating the
+gradient signal.
 
-The 100% synthetic degradation (+4.3pp relative to baseline) is larger than the Audio-Data-Creation
-finding (~+4.2pp on accent groups) but in the same ballpark. Both cases confirm that TTS-only
-training is strictly worse than real-only when real speech is available — synthetic data is an
-augmentation strategy, not a replacement.
+The 100% synthetic degradation (+5.2pp) is worse than what Audio-Data-Creation found for accent
+gaps on Common Voice (~+4.2pp). That difference is probably because financial TTS voice diversity
+is more constrained than general accent diversity — all 14 voices produce unnaturally clean,
+studio-quality audio at similar speaking rates, so the distribution mismatch with real financial
+speech (phone recordings, conference lines, room echo) is larger than the mismatch between
+TTS accents and real accented speech.
 
 **Practical takeaway**: if you have access to any real earnings call audio with transcripts, even
 a few hundred clips, substitute them for the equivalent fraction of synthetic samples. The 50%

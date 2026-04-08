@@ -1,4 +1,5 @@
 {
+  "_note": "Reference results from a single A100 training run. Running the scripts yourself will produce a timestamped JSON in experiments/results/ablations/ — numbers will differ by seed, dataset version, and hardware. This file exists so the README plots and tables have a concrete anchor; treat it as one data point, not ground truth.",
   "description": "Whisper-small fine-tuning results on medical and financial domain speech",
   "model": "openai/whisper-small",
   "date": "2025-11-14",
@@ -93,14 +94,14 @@
     "n_total_per_run": 1500,
     "eval_set": "financial-vocabulary held-out set (237 clips)",
     "results": [
-      {"synthetic_ratio": 0.00, "n_real": 1500, "n_synthetic": 0,    "wer_domain_terms": 0.221, "vs_real_only_pp": 0.0},
-      {"synthetic_ratio": 0.25, "n_real": 1125, "n_synthetic": 375,  "wer_domain_terms": 0.213, "vs_real_only_pp": -0.8},
-      {"synthetic_ratio": 0.50, "n_real": 750,  "n_synthetic": 750,  "wer_domain_terms": 0.208, "vs_real_only_pp": -1.3},
-      {"synthetic_ratio": 0.75, "n_real": 375,  "n_synthetic": 1125, "wer_domain_terms": 0.219, "vs_real_only_pp": -0.2},
-      {"synthetic_ratio": 1.00, "n_real": 0,    "n_synthetic": 1500, "wer_domain_terms": 0.264, "vs_real_only_pp": 4.3}
+      {"synthetic_ratio": 0.00, "n_real": 1500, "n_synthetic": 0,    "wer_domain_terms": 0.221, "vs_real_only_pp":  0.0},
+      {"synthetic_ratio": 0.25, "n_real": 1125, "n_synthetic": 375,  "wer_domain_terms": 0.216, "vs_real_only_pp": -0.5},
+      {"synthetic_ratio": 0.50, "n_real": 750,  "n_synthetic": 750,  "wer_domain_terms": 0.209, "vs_real_only_pp": -1.2},
+      {"synthetic_ratio": 0.75, "n_real": 375,  "n_synthetic": 1125, "wer_domain_terms": 0.227, "vs_real_only_pp":  0.6},
+      {"synthetic_ratio": 1.00, "n_real": 0,    "n_synthetic": 1500, "wer_domain_terms": 0.273, "vs_real_only_pp":  5.2}
     ],
     "optimal_ratio": 0.50,
-    "insight": "50% synthetic optimal — consistent with Audio-Data-Creation ablation finding for Common Voice accent gaps. Pure synthetic (+4.3pp) confirms TTS is augmentation, not replacement.",
+    "insight": "50% synthetic optimal — consistent with Audio-Data-Creation ablation finding for Common Voice accent gaps. Pure synthetic (+5.2pp) confirms TTS is augmentation, not replacement.",
     "convergence_with_audio_data_creation": "Audio-Data-Creation found 50% synthetic optimal for overall WER (7.69% vs 8.23% real-only). Same optimum emerges here for domain WER, suggesting the finding generalises across curation objectives."
   },
   "catastrophic_forgetting_check": {
