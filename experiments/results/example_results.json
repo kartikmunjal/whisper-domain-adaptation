@@ -88,6 +88,21 @@
     ],
     "insight": "Log-linear improvement; diminishing returns above 6k samples suggests 5-8k is a practical training target for this domain size"
   },
+  "synthetic_mix_ablation": {
+    "description": "Financial domain: WER vs synthetic data ratio (real=medical dictation, synthetic=TTS financial)",
+    "n_total_per_run": 1500,
+    "eval_set": "financial-vocabulary held-out set (237 clips)",
+    "results": [
+      {"synthetic_ratio": 0.00, "n_real": 1500, "n_synthetic": 0,    "wer_domain_terms": 0.221, "vs_real_only_pp": 0.0},
+      {"synthetic_ratio": 0.25, "n_real": 1125, "n_synthetic": 375,  "wer_domain_terms": 0.213, "vs_real_only_pp": -0.8},
+      {"synthetic_ratio": 0.50, "n_real": 750,  "n_synthetic": 750,  "wer_domain_terms": 0.208, "vs_real_only_pp": -1.3},
+      {"synthetic_ratio": 0.75, "n_real": 375,  "n_synthetic": 1125, "wer_domain_terms": 0.219, "vs_real_only_pp": -0.2},
+      {"synthetic_ratio": 1.00, "n_real": 0,    "n_synthetic": 1500, "wer_domain_terms": 0.264, "vs_real_only_pp": 4.3}
+    ],
+    "optimal_ratio": 0.50,
+    "insight": "50% synthetic optimal — consistent with Audio-Data-Creation ablation finding for Common Voice accent gaps. Pure synthetic (+4.3pp) confirms TTS is augmentation, not replacement.",
+    "convergence_with_audio_data_creation": "Audio-Data-Creation found 50% synthetic optimal for overall WER (7.69% vs 8.23% real-only). Same optimum emerges here for domain WER, suggesting the finding generalises across curation objectives."
+  },
   "catastrophic_forgetting_check": {
     "librispeech_test_clean_baseline": 0.043,
     "librispeech_test_clean_finetuned": 0.051,
