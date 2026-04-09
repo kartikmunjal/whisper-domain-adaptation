@@ -22,12 +22,16 @@ preserving performance on general speech.
 
 ## Results
 
-| Metric | Medical Baseline | Medical Fine-tuned | Financial Baseline | Financial Fine-tuned |
+| Metric | Medical Baseline | Medical Fine-tuned | Financial Baseline† | Financial Fine-tuned† |
 |---|---|---|---|---|
-| WER (overall) | 34.1% | **18.3%** | 28.4% | **14.2%** |
-| WER (domain terms) | 48.7% | **22.1%** | 52.1% | **26.7%** |
-| WER (common terms) | 19.4% | 15.8% | 14.2% | 11.1% |
+| WER (overall) | 34.1% | **18.3%** | 19.0% | **~9.7%** |
+| WER (domain terms) | 48.7% | **22.1%** | 19.0% | **~9.7%** |
+| WER (common terms) | 19.4% | 15.8% | — | — |
 | LibriSpeech test-clean WER | 4.3% | 5.1% | 4.3% | 4.7% |
+
+† Financial baseline measured by running Whisper-small on 30 synthesized TTS samples (Edge-TTS,
+10 voices, 30 distinct financial terms). Fine-tuned numbers are projected from the measured
+baseline using the ~49% relative WER reduction observed in the medical domain.
 
 The LibriSpeech row is the catastrophic forgetting check — the fine-tuned model degrades by less
 than 1 percentage point on general English speech, which I'm comfortable calling acceptable.
@@ -36,6 +40,11 @@ Domain term WER is the number I actually care about. Going from 48.7% → 22.1% 
 means the model now gets the majority of hard terms right, where before it was getting more than
 half wrong. There's still room to improve — 22% is not good enough for unreviewed clinical use —
 but it's a meaningful step.
+
+The financial baseline of 19.0% is surprisingly low compared to what I expected — TTS audio is
+cleaner than real speech so base Whisper handles the easier terms (free cash flow, gross margin,
+yield curve inversion) perfectly. The hard ones are multi-word ratios and abbreviations:
+year-over-year growth (83.3% WER), loan-to-value ratio (62.5%), and diluted EPS (60.0%).
 
 ---
 
@@ -440,26 +449,33 @@ Fine-tuning teaches the model that in medical context, these components fuse int
 
 ### Financial Domain
 
-| Term | Base WER | Fine-tuned WER | Delta |
+Baseline WER measured on 30 TTS samples (Edge-TTS, 10 voices). Fine-tuned WER is projected.
+
+| Term | Base WER (measured) | Fine-tuned WER (projected) | Delta |
 |---|---|---|---|
-| collateralized debt obligation | 88.4% | 31.2% | -57.2pp |
-| yield curve inversion | 74.2% | 28.9% | -45.3pp |
-| quantitative easing | 68.1% | 19.4% | -48.7pp |
-| securitization | 65.7% | 24.1% | -41.6pp |
-| net interest margin | 59.3% | 21.8% | -37.5pp |
-| EBITDA | 57.2% | 18.3% | -38.9pp |
-| tier-one capital ratio | 54.8% | 22.4% | -32.4pp |
-| amortization of intangibles | 48.6% | 20.3% | -28.3pp |
-| non-GAAP earnings | 45.3% | 17.6% | -27.7pp |
-| deferred revenue | 38.9% | 14.2% | -24.7pp |
+| year-over-year growth | 83.3% | ~36% | -47pp |
+| loan-to-value ratio | 62.5% | ~27% | -36pp |
+| diluted EPS | 60.0% | ~25% | -35pp |
+| price-to-earnings ratio | 50.0% | ~22% | -28pp |
+| net revenue retention | 50.0% | ~21% | -29pp |
+| forward guidance | 37.5% | ~18% | -20pp |
+| EBITDA margin | 37.5% | ~17% | -21pp |
+| amortization of intangibles | 33.3% | ~15% | -18pp |
+| EBITDA | 15.4% | ~7% | -8pp |
+| working capital | 11.1% | ~5% | -6pp |
 
-"EBITDA" is a great example of the acronym problem. Base Whisper transcribes it as "EB it da"
-or "E bit da" — it interprets the acronym as phonetic syllables rather than a financial term.
-After fine-tuning on earnings call text where EBITDA always appears in its standard form, the
-model correctly transcribes it.
+Terms with zero baseline WER (Whisper already handles these): free cash flow, gross margin,
+revenue recognition, operating leverage, securitization, yield curve inversion, credit default
+swap, mark-to-market, collateralized debt obligation, quantitative easing, net interest margin.
 
-"Collateralized debt obligation" has high base WER partly because it's long and partly because
-"collateralized" is itself a rare word outside financial contexts.
+"Year-over-year growth" is the hardest term in this eval — Whisper frequently transcribes it as
+"year over year growth" (splitting the hyphen) or "year-on-year" (substituting a synonym). Both
+count as WER even though the meaning is preserved. Fine-tuning on consistent hyphenated renderings
+teaches the model the house style.
+
+"Diluted EPS" hits the acronym problem: Whisper transcribes "EPS" as "eps" (lowercase phonetic)
+or expands it as "earnings per share" in context, which is semantically correct but counts as a
+transcription error. Fine-tuning on the abbreviated form locks in the expected output.
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "_note": "Reference results from a single A100 training run. Running the scripts yourself will produce a timestamped JSON in experiments/results/ablations/ — numbers will differ by seed, dataset version, and hardware. This file exists so the README plots and tables have a concrete anchor; treat it as one data point, not ground truth.",
+  "_note": "Financial baseline numbers are from an actual Whisper-small evaluation run on 30 synthesized TTS samples (Edge-TTS, 10 voices, 30 domain-term utterances) — measured locally, no GPU required. Financial fine-tuned numbers are projected from the measured baseline using the same ~49% relative WER reduction observed in the medical domain. Medical numbers are from a single A100 training run; running the scripts will produce a timestamped JSON in experiments/results/ablations/ with numbers that differ by seed, dataset version, and hardware.",
   "description": "Whisper-small fine-tuning results on medical and financial domain speech",
   "model": "openai/whisper-small",
   "date": "2025-11-14",
@@ -46,36 +46,43 @@
     ]
   },
   "financial": {
-    "train_samples": 1340,
-    "eval_samples": 237,
+    "train_samples": 1310,
+    "eval_samples": 30,
     "lora_rank": 32,
     "trainable_params": "7.1M / 244M (2.9%)",
-    "note": "All training data synthesized via Edge-TTS (14-voice catalog)",
+    "note": "All training data synthesized via Edge-TTS (14-voice catalog). Baseline WER measured; fine-tuned numbers projected from measured baseline.",
     "baseline": {
-      "wer_overall": 0.284,
-      "wer_domain_terms": 0.521,
-      "wer_common_terms": 0.078,
-      "n_domain_utterances": 197,
-      "n_common_utterances": 40
+      "measured": true,
+      "eval_set": "30 TTS utterances, 10 voices, 30 distinct financial terms",
+      "wer_overall": 0.190,
+      "wer_domain_terms": 0.190,
+      "n_domain_utterances": 30,
+      "n_common_utterances": 0
     },
     "finetuned": {
-      "wer_overall": 0.142,
-      "wer_domain_terms": 0.267,
-      "wer_common_terms": 0.081,
-      "n_domain_utterances": 197,
-      "n_common_utterances": 40
+      "measured": false,
+      "note": "Projected: ~49% WER reduction applied to measured baseline (consistent with medical domain observed reduction)",
+      "wer_overall": 0.097,
+      "wer_domain_terms": 0.097,
+      "n_domain_utterances": 30,
+      "n_common_utterances": 0
     },
     "improvements": {
-      "overall_relative": "-50.0%",
-      "domain_terms_relative": "-48.8%",
-      "common_terms_regression": "+0.3pp (negligible)"
+      "overall_relative": "-48.9% (projected)",
+      "domain_terms_relative": "-48.9% (projected)",
+      "common_terms_regression": "not measured in this eval run"
     },
     "worst_baseline_terms": [
-      {"term": "collateralized debt obligation", "baseline_wer": 0.89, "finetuned_wer": 0.41},
-      {"term": "esophagogastroduodenoscopy", "baseline_wer": 0.00, "finetuned_wer": 0.00, "note": "n/a for financial"},
-      {"term": "yield curve inversion", "baseline_wer": 0.67, "finetuned_wer": 0.28},
-      {"term": "securitization", "baseline_wer": 0.73, "finetuned_wer": 0.29},
-      {"term": "net interest margin", "baseline_wer": 0.58, "finetuned_wer": 0.21}
+      {"term": "year-over-year growth", "baseline_wer": 0.833, "finetuned_wer": 0.36, "note": "finetuned projected"},
+      {"term": "loan-to-value ratio", "baseline_wer": 0.625, "finetuned_wer": 0.27, "note": "finetuned projected"},
+      {"term": "diluted EPS", "baseline_wer": 0.600, "finetuned_wer": 0.25, "note": "finetuned projected"},
+      {"term": "price-to-earnings ratio", "baseline_wer": 0.500, "finetuned_wer": 0.22, "note": "finetuned projected"},
+      {"term": "net revenue retention", "baseline_wer": 0.500, "finetuned_wer": 0.21, "note": "finetuned projected"}
+    ],
+    "zero_wer_baseline_terms": [
+      "free cash flow", "gross margin", "revenue recognition", "operating leverage",
+      "securitization", "yield curve inversion", "credit default swap",
+      "mark-to-market", "collateralized debt obligation", "quantitative easing", "net interest margin"
     ]
   },
   "data_scaling_ablation": {
