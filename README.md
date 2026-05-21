@@ -1,3 +1,5 @@
+[![CI](https://github.com/kartikmunjal/whisper-domain-adaptation/actions/workflows/ci.yml/badge.svg)](https://github.com/kartikmunjal/whisper-domain-adaptation/actions/workflows/ci.yml)
+
 # whisper-domain-adaptation
 
 **Fine-tuning Whisper on domain-specific vocabulary — medical and financial speech**
@@ -73,7 +75,7 @@ This project sits in the middle of a three-repo pipeline, with data flowing in b
 │  _path=...) for domain-accurate WER │
 └─────────────────────────────────────┘
 
-rlhf-and-reward-modelling-alt
+rlhf-reward-modeling
   │  14-voice TTS catalog
   └──> financial speech synthesis
 ```
