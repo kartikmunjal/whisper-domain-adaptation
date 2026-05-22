@@ -20,7 +20,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           # Core deps needed by the test suite (no Whisper model download required)
-          pip install librosa numpy pandas jiwer transformers peft tqdm soundfile
+          pip install librosa numpy pandas jiwer transformers peft tqdm soundfile edge-tts
           # Install the package so `from whisper_adapt.*` imports resolve
           pip install -e .
           pip install pytest

@@ -15,6 +15,15 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from whisper_adapt.models.whisper_lora import LoRAConfig
 
 
+def _transformers_available() -> bool:
+    try:
+        import transformers  # noqa: F401
+        import peft  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
 class TestLoRAConfig:
     def test_default_config(self):
         cfg = LoRAConfig()
@@ -63,10 +72,3 @@ class TestBuildWhisperLora:
         )
 
 
-def _transformers_available() -> bool:
-    try:
-        import transformers
-        import peft
-        return True
-    except ImportError:
-        return False
