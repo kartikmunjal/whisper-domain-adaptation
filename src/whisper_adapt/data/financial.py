@@ -9,10 +9,10 @@ Extension 11 pipeline — reusing that voice catalog here for consistency.
 Why synthesize instead of recording?
   - Earnings call audio is hard to obtain at scale with aligned transcripts
   - Legal grey areas around recording redistribution
-  - TTS synthesis with diverse voices + post-processing noise gives enough
-    acoustic variety to prevent the model from learning TTS artifacts
-  - Ablation on the Audio-Data-Creation pipeline showed 50% synthetic mix
-    is optimal for WER on underrepresented groups; we use the same ratio here
+  - TTS synthesis supports a controlled proof-of-method experiment
+
+TTS data does not prevent distribution overfitting. Performance must be
+evaluated with the explicit TTS-on-TTS limitation in RESEARCH_PLAN.md.
 
 Voice diversity is critical. All 14 voices from the shared catalog are used,
 spanning male/female × american/british/australian/indian, which prevents the

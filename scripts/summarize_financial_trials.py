@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""Aggregate five preregistered financial trials into a CI-backed result."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+import numpy as np
+
+SEEDS = (11, 22, 33, 44, 55)
+METRICS = ("overall", "domain_terms", "common_terms")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--results-dir", default="experiments/results/financial_research")
+    parser.add_argument("--output", default="experiments/results/financial_research/summary.json")
+    parser.add_argument("--bootstrap-resamples", type=int, default=10_000)
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    root = Path(args.results_dir)
+    reports = []
+    for seed in SEEDS:
+        path = root / f"seed_{seed}" / "finetuned_test.json"
+        if not path.exists():
+            raise FileNotFoundError(f"Missing preregistered trial: {path}")
+        report = json.loads(path.read_text())
+        if report.get("provenance", {}).get("seed") != seed:
+            raise RuntimeError(f"Seed provenance mismatch in {path}")
+        reports.append(report)
+    rng = np.random.default_rng(20260729)
+    summary = {
+        "schema_version": 1,
+        "n_trials": len(reports),
+        "seeds": list(SEEDS),
+        "tts_only_external_validity_warning": (
+            "All evaluation audio is Edge-TTS. These results are optimistic and "
+            "do not establish performance on real earnings-call audio."
+        ),
+        "metrics": {},
+    }
+    for metric in METRICS:
+        values = np.array([r["wer"][metric] for r in reports], dtype=float)
+        resampled_means = np.empty(args.bootstrap_resamples)
+        for i in range(args.bootstrap_resamples):
+            resampled_means[i] = rng.choice(values, size=len(values), replace=True).mean()
+        low, high = np.quantile(resampled_means, [0.025, 0.975])
+        deltas = np.array([
+            r["paired_difference_adapted_minus_baseline"][metric]["estimate"]
+            for r in reports
+        ])
+        delta_means = np.empty(args.bootstrap_resamples)
+        for i in range(args.bootstrap_resamples):
+            delta_means[i] = rng.choice(deltas, size=len(deltas), replace=True).mean()
+        delta_low, delta_high = np.quantile(delta_means, [0.025, 0.975])
+        summary["metrics"][metric] = {
+            "mean_wer": round(float(values.mean()), 6),
+            "trial_95_ci": [round(float(low), 6), round(float(high), 6)],
+            "trial_values": values.tolist(),
+            "mean_paired_difference_adapted_minus_baseline": round(
+                float(deltas.mean()), 6
+            ),
+            "paired_difference_trial_95_ci": [
+                round(float(delta_low), 6), round(float(delta_high), 6)
+            ],
+        }
+    output = Path(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(summary, indent=2))
+    print(json.dumps(summary, indent=2))
+
+
+if __name__ == "__main__":
+    main()

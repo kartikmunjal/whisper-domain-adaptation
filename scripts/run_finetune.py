@@ -25,6 +25,7 @@ python scripts/run_finetune.py \
 """
 
 import argparse
+import json
 import logging
 import sys
 from pathlib import Path
@@ -38,6 +39,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from whisper_adapt.data.feature_extraction import WhisperFeatureExtractor, prepare_batch
 from whisper_adapt.models.whisper_lora import LoRAConfig, build_whisper_lora
 from whisper_adapt.training.finetune import FinetuneConfig, run_finetune
+from whisper_adapt.reproducibility import collect_provenance, seed_everything
 from transformers import WhisperProcessor
 
 logging.basicConfig(
@@ -61,6 +63,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--learning_rate", type=float, default=None)
     p.add_argument("--batch_size", type=int, default=None)
     p.add_argument("--lora_r", type=int, default=None)
+    p.add_argument("--seed", type=int, required=True)
     return p.parse_args()
 
 
@@ -79,16 +82,20 @@ def load_audio_dataset(manifest_path: str, extractor: WhisperFeatureExtractor) -
     import numpy as np
 
     records = []
+    repo_root = Path(__file__).resolve().parents[1]
     for _, row in df.iterrows():
         try:
-            audio, _ = librosa.load(row["path"], sr=16_000, mono=True)
+            path = Path(row["path"])
+            if not path.is_absolute():
+                path = repo_root / path
+            audio, _ = librosa.load(path, sr=16_000, mono=True)
             processed = extractor(audio, row["sentence"])
             records.append({
                 "input_features": processed["input_features"].numpy().tolist(),
                 "labels": processed["labels"].numpy().tolist(),
             })
         except Exception as e:
-            logger.debug("Skipping %s: %s", row["path"], e)
+            raise RuntimeError(f"Feature extraction failed for {row['path']}: {e}") from e
 
     logger.info("Feature extraction complete: %d/%d samples", len(records), len(df))
     return Dataset.from_list(records)
@@ -96,6 +103,7 @@ def load_audio_dataset(manifest_path: str, extractor: WhisperFeatureExtractor) -
 
 def main() -> None:
     args = parse_args()
+    seed_everything(args.seed)
 
     with open(args.config) as f:
         cfg = yaml.safe_load(f)
@@ -160,6 +168,7 @@ def main() -> None:
         gradient_checkpointing=train_params.get("gradient_checkpointing", True),
         early_stopping_patience=train_params.get("early_stopping_patience", 5),
         push_to_hub=train_params.get("push_to_hub", False),
+        seed=args.seed,
     )
 
     logger.info("Starting fine-tuning...")
@@ -169,6 +178,17 @@ def main() -> None:
         train_dataset=train_ds,
         eval_dataset=eval_ds,
         cfg=ft_cfg,
+    )
+
+    provenance = collect_provenance(
+        repo_root=Path(__file__).resolve().parents[1],
+        arguments=vars(args),
+        input_files=[args.config, args.train_manifest, args.eval_manifest],
+        seed=args.seed,
+    )
+    output_dir = Path(ft_cfg.output_dir)
+    (output_dir / "run_provenance.json").write_text(
+        json.dumps(provenance, indent=2, default=str)
     )
 
     logger.info("Fine-tuning complete. Best model saved to %s/adapter", ft_cfg.output_dir)

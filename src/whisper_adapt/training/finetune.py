@@ -17,10 +17,9 @@ fp16=True (GPU) / bf16 (Ampere+)
     Mixed precision is safe here because LoRA adapter updates are small and
     the frozen base weights don't accumulate gradient noise.
 
-eval_strategy="steps" not "epoch"
-    Medical dictation clips average ~5 seconds; 8,000 clips × 3 epochs finishes
-    in ~2 hours on a single A100. Evaluating every 500 steps gives a good
-    learning curve without excessive overhead.
+eval_strategy="epoch"
+    The preregistered financial corpus is small. Epoch evaluation guarantees
+    checkpoint selection occurs even when the run has few optimizer steps.
 """
 
 from __future__ import annotations
@@ -70,6 +69,9 @@ class FinetuneConfig:
     early_stopping_patience: int = 5
     push_to_hub: bool = False
     report_to: list[str] = field(default_factory=lambda: ["none"])
+    seed: int = 11
+    eval_strategy: str = "epoch"
+    save_strategy: str = "epoch"
 
 
 def run_finetune(
@@ -115,10 +117,10 @@ def run_finetune(
         gradient_accumulation_steps=cfg.gradient_accumulation_steps,
         learning_rate=cfg.learning_rate,
         warmup_steps=cfg.warmup_steps,
-        eval_strategy="steps",
-        eval_steps=cfg.eval_steps,
-        save_strategy="steps",
-        save_steps=cfg.save_steps,
+        eval_strategy=cfg.eval_strategy,
+        eval_steps=cfg.eval_steps if cfg.eval_strategy == "steps" else None,
+        save_strategy=cfg.save_strategy,
+        save_steps=cfg.save_steps if cfg.save_strategy == "steps" else None,
         logging_steps=cfg.logging_steps,
         fp16=cfg.fp16 and torch.cuda.is_available(),
         bf16=cfg.bf16,
@@ -131,6 +133,8 @@ def run_finetune(
         greater_is_better=cfg.greater_is_better,
         push_to_hub=cfg.push_to_hub,
         report_to=cfg.report_to,
+        seed=cfg.seed,
+        data_seed=cfg.seed,
     )
 
     callbacks = []

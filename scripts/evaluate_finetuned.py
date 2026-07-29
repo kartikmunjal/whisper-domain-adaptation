@@ -26,9 +26,15 @@ from transformers import WhisperProcessor
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from whisper_adapt.evaluation.wer import DomainWERAnalyzer, load_domain_vocab
+from whisper_adapt.evaluation.wer import (
+    DomainWERAnalyzer,
+    bootstrap_wer_ci,
+    load_domain_vocab,
+    paired_bootstrap_difference_ci,
+)
 from whisper_adapt.evaluation.oov_analysis import OOVAnalyzer
 from whisper_adapt.models.whisper_lora import load_finetuned
+from whisper_adapt.reproducibility import collect_provenance, seed_everything
 from evaluate_baseline import transcribe_batch
 
 logging.basicConfig(
@@ -51,6 +57,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--output", default=None)
     p.add_argument("--batch_size", type=int, default=8)
     p.add_argument("--device", default=None)
+    p.add_argument("--seed", type=int, required=True)
+    p.add_argument("--bootstrap-resamples", type=int, default=10_000)
     return p.parse_args()
 
 
@@ -90,6 +98,7 @@ def print_comparison(baseline: dict, finetuned_result: dict) -> None:
 @torch.no_grad()
 def main() -> None:
     args = parse_args()
+    seed_everything(args.seed)
 
     if args.device is None:
         device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
@@ -114,14 +123,31 @@ def main() -> None:
             hyps = transcribe_batch(paths, model, processor, device)
             all_hypotheses.extend(hyps)
         except Exception as e:
-            logger.warning("Batch %d failed: %s", i, e)
-            all_hypotheses.extend([""] * len(paths))
+            raise RuntimeError(f"Inference batch {i} failed; aborting: {e}") from e
 
     references = df["sentence"].tolist()
 
     domain_vocab = load_domain_vocab(args.domain_vocab)
     analyzer = DomainWERAnalyzer(domain_vocab)
     report = analyzer.analyze(references, all_hypotheses)
+    domain_mask = [analyzer._contains_domain_term(ref) for ref in references]
+    metric_slices = {
+        "overall": (references, all_hypotheses),
+        "domain_terms": (
+            [r for r, keep in zip(references, domain_mask) if keep],
+            [h for h, keep in zip(all_hypotheses, domain_mask) if keep],
+        ),
+        "common_terms": (
+            [r for r, keep in zip(references, domain_mask) if not keep],
+            [h for h, keep in zip(all_hypotheses, domain_mask) if not keep],
+        ),
+    }
+    uncertainty = {
+        name: bootstrap_wer_ci(
+            refs, hyps, n_resamples=args.bootstrap_resamples, seed=args.seed
+        )
+        for name, (refs, hyps) in metric_slices.items()
+    }
 
     oov_analyzer = OOVAnalyzer(list(domain_vocab))
     oov_report = oov_analyzer.analyze(references, all_hypotheses)
@@ -138,6 +164,14 @@ def main() -> None:
             "n_domain_utterances": report.n_domain,
             "n_common_utterances": report.n_common,
         },
+        "uncertainty": uncertainty,
+        "n_trials": 1,
+        "predictions": [
+            {"id": str(row.get("id", i)), "reference": ref, "hypothesis": hyp}
+            for i, ((_, row), ref, hyp) in enumerate(
+                zip(df.iterrows(), references, all_hypotheses)
+            )
+        ],
         "oov": {
             "worst_terms": oov_report.worst_terms,
             "best_terms": oov_report.best_terms,
@@ -151,6 +185,23 @@ def main() -> None:
     if args.baseline_report and Path(args.baseline_report).exists():
         with open(args.baseline_report) as f:
             baseline = json.load(f)
+        baseline_predictions = baseline.get("predictions", [])
+        if [p["id"] for p in baseline_predictions] != [
+            p["id"] for p in result["predictions"]
+        ]:
+            raise RuntimeError("Baseline and fine-tuned prediction IDs are not paired")
+        base_hyps = [p["hypothesis"] for p in baseline_predictions]
+        result["paired_difference_adapted_minus_baseline"] = {
+            name: paired_bootstrap_difference_ci(
+                refs,
+                [h for h, keep in zip(base_hyps, domain_mask)
+                 if name == "overall" or keep == (name == "domain_terms")],
+                hyps,
+                n_resamples=args.bootstrap_resamples,
+                seed=args.seed,
+            )
+            for name, (refs, hyps) in metric_slices.items()
+        }
         print_comparison(baseline, result)
     else:
         logger.info("Overall WER:       %.1f%%", report.wer_overall * 100)
@@ -159,6 +210,12 @@ def main() -> None:
 
     # Save
     output_path = args.output or "experiments/results/finetuned_wer.json"
+    result["provenance"] = collect_provenance(
+        repo_root=Path(__file__).resolve().parents[1],
+        arguments=vars(args),
+        input_files=[args.eval_manifest, args.domain_vocab, Path(args.adapter_path) / "adapter_config.json"],
+        seed=args.seed,
+    )
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
         json.dump(result, f, indent=2)

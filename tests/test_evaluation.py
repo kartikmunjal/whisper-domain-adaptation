@@ -9,7 +9,11 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from whisper_adapt.evaluation.wer import DomainWERAnalyzer
+from whisper_adapt.evaluation.wer import (
+    DomainWERAnalyzer,
+    bootstrap_wer_ci,
+    paired_bootstrap_difference_ci,
+)
 from whisper_adapt.evaluation.oov_analysis import OOVAnalyzer
 
 
@@ -72,6 +76,25 @@ class TestDomainWERAnalyzer:
     def test_length_mismatch_raises(self):
         with pytest.raises(AssertionError):
             self.analyzer.analyze(["a", "b"], ["a"])
+
+    def test_domain_match_requires_token_boundaries(self):
+        analyzer = DomainWERAnalyzer({"run rate"})
+        assert analyzer._contains_domain_term("The run rate improved.")
+        assert not analyzer._contains_domain_term("The rerun rated well.")
+
+
+def test_bootstrap_is_deterministic_and_paired():
+    refs = ["alpha beta", "gamma delta", "epsilon zeta"]
+    base = ["alpha", "gamma", "epsilon"]
+    adapted = refs[:]
+    first = bootstrap_wer_ci(refs, base, n_resamples=200, seed=9)
+    second = bootstrap_wer_ci(refs, base, n_resamples=200, seed=9)
+    assert first == second
+    delta = paired_bootstrap_difference_ci(
+        refs, base, adapted, n_resamples=200, seed=9
+    )
+    assert delta["estimate"] < 0
+    assert delta["ci_high"] < 0
 
 
 class TestOOVAnalyzer:

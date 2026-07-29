@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import logging
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
@@ -55,6 +56,88 @@ class WERReport:
     per_term_wer: dict[str, float] = field(default_factory=dict)
 
 
+def normalize_text(text: str) -> str:
+    """Canonical normalization shared by matching, WER, and leakage checks."""
+    text = unicodedata.normalize("NFKC", str(text)).lower()
+    text = re.sub(r"[^\w\s]", " ", text)
+    return " ".join(text.split())
+
+
+def bootstrap_wer_ci(
+    references: list[str],
+    hypotheses: list[str],
+    *,
+    n_resamples: int = 10_000,
+    seed: int = 17,
+) -> dict[str, float | int]:
+    """Utterance-cluster bootstrap CI for corpus WER."""
+    if len(references) != len(hypotheses):
+        raise ValueError("references and hypotheses must have equal length")
+    if not references:
+        return {"estimate": float("nan"), "ci_low": float("nan"),
+                "ci_high": float("nan"), "n_resamples": n_resamples}
+    rng = np.random.default_rng(seed)
+    scores = np.empty(n_resamples, dtype=float)
+    n = len(references)
+    for i in range(n_resamples):
+        idx = rng.integers(0, n, size=n)
+        refs = [references[j] for j in idx]
+        hyps = [hypotheses[j] for j in idx]
+        scores[i] = jiwer.wer(
+            refs, hyps, reference_transform=_WER_TRANSFORM,
+            hypothesis_transform=_WER_TRANSFORM,
+        )
+    estimate = jiwer.wer(
+        references, hypotheses, reference_transform=_WER_TRANSFORM,
+        hypothesis_transform=_WER_TRANSFORM,
+    )
+    low, high = np.quantile(scores, [0.025, 0.975])
+    return {
+        "estimate": round(float(estimate), 6),
+        "ci_low": round(float(low), 6),
+        "ci_high": round(float(high), 6),
+        "n_resamples": n_resamples,
+    }
+
+
+def paired_bootstrap_difference_ci(
+    references: list[str],
+    baseline_hypotheses: list[str],
+    adapted_hypotheses: list[str],
+    *,
+    n_resamples: int = 10_000,
+    seed: int = 17,
+) -> dict[str, float | int]:
+    """CI for adapted-minus-baseline WER using identical resamples."""
+    if not (len(references) == len(baseline_hypotheses) == len(adapted_hypotheses)):
+        raise ValueError("references and both hypothesis lists must have equal length")
+    rng = np.random.default_rng(seed)
+    n = len(references)
+    deltas = np.empty(n_resamples, dtype=float)
+    for i in range(n_resamples):
+        idx = rng.integers(0, n, size=n)
+        refs = [references[j] for j in idx]
+        base = [baseline_hypotheses[j] for j in idx]
+        adapted = [adapted_hypotheses[j] for j in idx]
+        deltas[i] = jiwer.wer(
+            refs, adapted, reference_transform=_WER_TRANSFORM,
+            hypothesis_transform=_WER_TRANSFORM,
+        ) - jiwer.wer(
+            refs, base, reference_transform=_WER_TRANSFORM,
+            hypothesis_transform=_WER_TRANSFORM,
+        )
+    point = jiwer.wer(
+        references, adapted_hypotheses, reference_transform=_WER_TRANSFORM,
+        hypothesis_transform=_WER_TRANSFORM,
+    ) - jiwer.wer(
+        references, baseline_hypotheses, reference_transform=_WER_TRANSFORM,
+        hypothesis_transform=_WER_TRANSFORM,
+    )
+    low, high = np.quantile(deltas, [0.025, 0.975])
+    return {"estimate": round(float(point), 6), "ci_low": round(float(low), 6),
+            "ci_high": round(float(high), 6), "n_resamples": n_resamples}
+
+
 def compute_wer_metrics(pred, processor: WhisperProcessor) -> dict[str, float]:
     """
     Trainer-compatible compute_metrics callback.
@@ -73,7 +156,7 @@ def compute_wer_metrics(pred, processor: WhisperProcessor) -> dict[str, float]:
 
     wer = jiwer.wer(
         label_strs, pred_strs,
-        truth_transform=_WER_TRANSFORM,
+        reference_transform=_WER_TRANSFORM,
         hypothesis_transform=_WER_TRANSFORM,
     )
 
@@ -91,13 +174,13 @@ class DomainWERAnalyzer:
 
     def __init__(self, domain_vocab: set[str] | list[str]):
         # Normalise to lowercase tokens for matching
-        self._vocab = {w.lower().strip() for w in domain_vocab}
+        self._vocab = {normalize_text(w) for w in domain_vocab}
 
     def _contains_domain_term(self, text: str) -> bool:
         """True if the text contains any domain vocabulary term."""
-        text_lower = text.lower()
+        text_lower = f" {normalize_text(text)} "
         for term in self._vocab:
-            if term in text_lower:
+            if f" {term} " in text_lower:
                 return True
         return False
 
@@ -133,19 +216,19 @@ class DomainWERAnalyzer:
 
         wer_overall = jiwer.wer(
             references, hypotheses,
-            truth_transform=_WER_TRANSFORM,
+            reference_transform=_WER_TRANSFORM,
             hypothesis_transform=_WER_TRANSFORM,
         )
 
         wer_domain = jiwer.wer(
             domain_refs, domain_hyps,
-            truth_transform=_WER_TRANSFORM,
+            reference_transform=_WER_TRANSFORM,
             hypothesis_transform=_WER_TRANSFORM,
         ) if domain_refs else float("nan")
 
         wer_common = jiwer.wer(
             common_refs, common_hyps,
-            truth_transform=_WER_TRANSFORM,
+            reference_transform=_WER_TRANSFORM,
             hypothesis_transform=_WER_TRANSFORM,
         ) if common_refs else float("nan")
 
@@ -180,7 +263,7 @@ class DomainWERAnalyzer:
             if refs:
                 w = jiwer.wer(
                     refs, hyps,
-                    truth_transform=_WER_TRANSFORM,
+                    reference_transform=_WER_TRANSFORM,
                     hypothesis_transform=_WER_TRANSFORM,
                 )
                 result[term] = round(w, 4)
@@ -194,6 +277,10 @@ def load_domain_vocab(vocab_file: str | Path) -> set[str]:
     if not path.exists():
         raise FileNotFoundError(f"Domain vocab file not found: {path}")
     with open(path) as f:
-        terms = {line.strip().lower() for line in f if line.strip()}
+        terms = {
+            line.strip().lower()
+            for line in f
+            if line.strip() and not line.lstrip().startswith("#")
+        }
     logger.info("Loaded %d domain terms from %s", len(terms), path)
     return terms

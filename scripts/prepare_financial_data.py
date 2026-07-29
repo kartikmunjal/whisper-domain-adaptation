@@ -12,10 +12,9 @@ Why TTS for financial domain?
   datasets (e.g., FER dataset) have licensing constraints. TTS synthesis with
   diverse voices + quality gating is the pragmatic alternative.
 
-  The ablation on Audio-Data-Creation showed 50% synthetic mix is optimal;
-  for pure financial domain where *all* training data is synthetic, we compensate
-  by using more voice diversity (all 14 voices) and more context variety
-  (10 sentence templates per term) to prevent prosodic overfitting.
+  This legacy generator is retained for compatibility. Confirmatory experiments
+  must use prepare_financial_research_data.py, which creates voice- and
+  template-disjoint train/validation/test partitions.
 
 Usage
 -----

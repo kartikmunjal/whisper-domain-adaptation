@@ -130,7 +130,7 @@ class OOVAnalyzer:
 
         wer = jiwer.wer(
             term_refs, term_hyps,
-            truth_transform=jiwer.Compose([
+            reference_transform=jiwer.Compose([
                 jiwer.ToLowerCase(), jiwer.RemovePunctuation(),
                 jiwer.RemoveMultipleSpaces(), jiwer.Strip(),
                 jiwer.ReduceToListOfListOfWords(),
