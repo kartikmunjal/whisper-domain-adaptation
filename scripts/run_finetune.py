@@ -92,6 +92,7 @@ def load_audio_dataset(manifest_path: str, extractor: WhisperFeatureExtractor) -
             processed = extractor(audio, row["sentence"])
             records.append({
                 "input_features": processed["input_features"].numpy().tolist(),
+                "attention_mask": processed["attention_mask"].numpy().tolist(),
                 "labels": processed["labels"].numpy().tolist(),
             })
         except Exception as e:
@@ -123,6 +124,13 @@ def main() -> None:
         train_params["per_device_train_batch_size"] = args.batch_size
     if args.lora_r:
         lora_params["r"] = args.lora_r
+
+    output_path = Path(train_params.get("output_dir", "checkpoints/domain"))
+    if output_path.exists() and any(output_path.iterdir()):
+        raise RuntimeError(
+            f"Refusing non-empty output directory: {output_path}. "
+            "Archive the failed/completed run or choose a new directory."
+        )
 
     # Build model and processor
     lora_cfg = LoRAConfig(
@@ -168,6 +176,7 @@ def main() -> None:
         gradient_checkpointing=train_params.get("gradient_checkpointing", True),
         early_stopping_patience=train_params.get("early_stopping_patience", 5),
         push_to_hub=train_params.get("push_to_hub", False),
+        dataloader_num_workers=train_params.get("dataloader_num_workers", 0),
         seed=args.seed,
     )
 

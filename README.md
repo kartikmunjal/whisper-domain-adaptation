@@ -9,10 +9,12 @@ primary artifacts are recovered or rerun.
 
 ## Research status
 
-No fine-tuned financial WER is currently published. The previous value was a
-projection from a medical experiment and has been withdrawn. The replacement
-experiment is preregistered in [RESEARCH_PLAN.md](RESEARCH_PLAN.md) and requires
-five completed trials before a headline result can be reported.
+The projected financial value has been withdrawn and replaced by a directly
+measured five-seed result. The generated overall/domain/common table, trial
+confidence intervals, and paired changes are in
+[the confirmatory result](experiments/results/financial_research/summary.md).
+The protocol was locked in [RESEARCH_PLAN.md](RESEARCH_PLAN.md) before the GPU
+runs.
 
 The previous medical, rank, data-scaling, synthetic-mixture, prefix-tuning, and
 catastrophic-forgetting numbers were not accompanied by sufficient primary run

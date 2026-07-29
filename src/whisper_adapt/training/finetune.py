@@ -62,7 +62,7 @@ class FinetuneConfig:
     gradient_checkpointing: bool = True
     predict_with_generate: bool = True
     generation_max_length: int = 225
-    dataloader_num_workers: int = 4
+    dataloader_num_workers: int = 0
     load_best_model_at_end: bool = True
     metric_for_best_model: str = "wer"
     greater_is_better: bool = False

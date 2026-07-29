@@ -26,7 +26,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Optional
 
-from peft import LoraConfig, TaskType, get_peft_model, PeftModel
+from peft import LoraConfig, get_peft_model, PeftModel
 from transformers import WhisperForConditionalGeneration
 
 
@@ -73,7 +73,10 @@ def build_whisper_lora(
     model.generation_config.forced_decoder_ids = None
 
     peft_config = LoraConfig(
-        task_type=TaskType.SEQ_2_SEQ_LM,
+        # PEFT's generic seq2seq wrapper always forwards ``input_ids``.
+        # Whisper accepts ``input_features`` instead, so use the generic PEFT
+        # model and merge the adapter for generation after training.
+        task_type=None,
         r=lora_cfg.r,
         lora_alpha=lora_cfg.lora_alpha,
         lora_dropout=lora_cfg.lora_dropout,

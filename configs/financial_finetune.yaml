@@ -36,11 +36,14 @@ training:
   per_device_train_batch_size: 2
   per_device_eval_batch_size: 2
   gradient_accumulation_steps: 16
+  dataloader_num_workers: 0
   learning_rate: 5.0e-5
   warmup_steps: 5
   logging_steps: 5
   fp16: true
-  gradient_checkpointing: true
+  # Disabled: the 3070 smoke test peaks below 3 GiB and strict gradient
+  # checkpointing is incompatible with the generic Whisper PEFT wrapper.
+  gradient_checkpointing: false
   early_stopping_patience: 5
   push_to_hub: false
 

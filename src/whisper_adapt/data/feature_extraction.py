@@ -59,11 +59,13 @@ class WhisperFeatureExtractor:
           input_features  — (1, 80, 3000) log-mel spectrogram
           labels          — (seq_len,) token IDs with -100 padding mask
         """
-        features = self.processor.feature_extractor(
+        feature_batch = self.processor.feature_extractor(
             audio,
             sampling_rate=16_000,
             return_tensors="pt",
-        ).input_features  # (1, 80, 3000)
+            return_attention_mask=True,
+        )
+        features = feature_batch.input_features  # (1, 80, 3000)
 
         label_ids = self.processor.tokenizer(
             text, return_tensors="pt"
@@ -73,7 +75,11 @@ class WhisperFeatureExtractor:
         pad_id = self.processor.tokenizer.pad_token_id
         label_ids = label_ids.masked_fill(label_ids == pad_id, -100)
 
-        return {"input_features": features.squeeze(0), "labels": label_ids}
+        return {
+            "input_features": features.squeeze(0),
+            "attention_mask": feature_batch.attention_mask.squeeze(0),
+            "labels": label_ids,
+        }
 
 
 def prepare_batch(
@@ -95,6 +101,7 @@ def prepare_batch(
     ... )
     """
     input_features = []
+    attention_masks = []
     labels = []
 
     audios = batch[audio_column]
@@ -108,9 +115,14 @@ def prepare_batch(
 
         processed = extractor(arr, text)
         input_features.append(processed["input_features"])
+        attention_masks.append(processed["attention_mask"])
         labels.append(processed["labels"])
 
-    return {"input_features": input_features, "labels": labels}
+    return {
+        "input_features": input_features,
+        "attention_mask": attention_masks,
+        "labels": labels,
+    }
 
 
 @dataclass
@@ -129,9 +141,10 @@ class DataCollatorSpeechSeq2SeqWithPadding:
         self, features: list[dict[str, Union[list[int], torch.Tensor]]]
     ) -> dict[str, torch.Tensor]:
         # Separate input features and labels
-        input_features = [
-            {"input_features": f["input_features"]} for f in features
-        ]
+        input_features = [{
+            "input_features": f["input_features"],
+            "attention_mask": f["attention_mask"],
+        } for f in features]
         batch = self.processor.feature_extractor.pad(
             input_features, return_tensors="pt"
         )

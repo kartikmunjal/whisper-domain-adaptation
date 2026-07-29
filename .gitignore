@@ -19,6 +19,7 @@ build/
 # Data and checkpoints
 data/raw/
 data/processed/
+data/financial_research/
 checkpoints/
 *.pt
 *.bin
@@ -27,6 +28,7 @@ checkpoints/
 # Experiment outputs (keep example_results.json, ignore large runs)
 experiments/results/run_*/
 experiments/results/*.csv
+experiments/results/financial_research/
 
 # Audio files
 *.wav

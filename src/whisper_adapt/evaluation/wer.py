@@ -77,20 +77,14 @@ def bootstrap_wer_ci(
         return {"estimate": float("nan"), "ci_low": float("nan"),
                 "ci_high": float("nan"), "n_resamples": n_resamples}
     rng = np.random.default_rng(seed)
+    errors, ref_words = _utterance_edit_arrays(references, hypotheses)
     scores = np.empty(n_resamples, dtype=float)
     n = len(references)
     for i in range(n_resamples):
         idx = rng.integers(0, n, size=n)
-        refs = [references[j] for j in idx]
-        hyps = [hypotheses[j] for j in idx]
-        scores[i] = jiwer.wer(
-            refs, hyps, reference_transform=_WER_TRANSFORM,
-            hypothesis_transform=_WER_TRANSFORM,
-        )
-    estimate = jiwer.wer(
-        references, hypotheses, reference_transform=_WER_TRANSFORM,
-        hypothesis_transform=_WER_TRANSFORM,
-    )
+        denominator = ref_words[idx].sum()
+        scores[i] = errors[idx].sum() / denominator if denominator else np.nan
+    estimate = errors.sum() / ref_words.sum()
     low, high = np.quantile(scores, [0.025, 0.975])
     return {
         "estimate": round(float(estimate), 6),
@@ -113,29 +107,47 @@ def paired_bootstrap_difference_ci(
         raise ValueError("references and both hypothesis lists must have equal length")
     rng = np.random.default_rng(seed)
     n = len(references)
+    base_errors, ref_words = _utterance_edit_arrays(
+        references, baseline_hypotheses
+    )
+    adapted_errors, adapted_ref_words = _utterance_edit_arrays(
+        references, adapted_hypotheses
+    )
+    if not np.array_equal(ref_words, adapted_ref_words):
+        raise RuntimeError("Reference word counts differ across paired systems")
     deltas = np.empty(n_resamples, dtype=float)
     for i in range(n_resamples):
         idx = rng.integers(0, n, size=n)
-        refs = [references[j] for j in idx]
-        base = [baseline_hypotheses[j] for j in idx]
-        adapted = [adapted_hypotheses[j] for j in idx]
-        deltas[i] = jiwer.wer(
-            refs, adapted, reference_transform=_WER_TRANSFORM,
-            hypothesis_transform=_WER_TRANSFORM,
-        ) - jiwer.wer(
-            refs, base, reference_transform=_WER_TRANSFORM,
-            hypothesis_transform=_WER_TRANSFORM,
-        )
-    point = jiwer.wer(
-        references, adapted_hypotheses, reference_transform=_WER_TRANSFORM,
-        hypothesis_transform=_WER_TRANSFORM,
-    ) - jiwer.wer(
-        references, baseline_hypotheses, reference_transform=_WER_TRANSFORM,
-        hypothesis_transform=_WER_TRANSFORM,
-    )
+        denominator = ref_words[idx].sum()
+        deltas[i] = (
+            adapted_errors[idx].sum() - base_errors[idx].sum()
+        ) / denominator
+    point = (
+        adapted_errors.sum() - base_errors.sum()
+    ) / ref_words.sum()
     low, high = np.quantile(deltas, [0.025, 0.975])
     return {"estimate": round(float(point), 6), "ci_low": round(float(low), 6),
             "ci_high": round(float(high), 6), "n_resamples": n_resamples}
+
+
+def _utterance_edit_arrays(
+    references: list[str], hypotheses: list[str]
+) -> tuple[np.ndarray, np.ndarray]:
+    """Precompute edit and reference-word counts for fast cluster bootstrap."""
+    errors = np.empty(len(references), dtype=np.int64)
+    ref_words = np.empty(len(references), dtype=np.int64)
+    for i, (reference, hypothesis) in enumerate(zip(references, hypotheses)):
+        output = jiwer.process_words(
+            reference,
+            hypothesis,
+            reference_transform=_WER_TRANSFORM,
+            hypothesis_transform=_WER_TRANSFORM,
+        )
+        errors[i] = output.substitutions + output.deletions + output.insertions
+        ref_words[i] = output.hits + output.substitutions + output.deletions
+    if ref_words.sum() == 0:
+        raise ValueError("WER is undefined because references contain no words")
+    return errors, ref_words
 
 
 def compute_wer_metrics(pred, processor: WhisperProcessor) -> dict[str, float]:

@@ -101,6 +101,7 @@ def run_one_experiment(
                 p = extractor(audio, row["sentence"])
                 records.append({
                     "input_features": p["input_features"].numpy().tolist(),
+                    "attention_mask": p["attention_mask"].numpy().tolist(),
                     "labels": p["labels"].numpy().tolist(),
                 })
             except Exception:

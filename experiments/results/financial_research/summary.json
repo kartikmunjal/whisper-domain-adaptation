@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "tts_only_external_validity_warning": "All evaluation audio is Edge-TTS. These results are optimistic and do not establish performance on real earnings-call audio.",
+  "metrics": {
+    "overall": {
+      "mean_wer": 0.01176,
+      "trial_95_ci": [
+        0.01058,
+        0.0129
+      ],
+      "trial_values": [
+        0.0116,
+        0.0116,
+        0.0125,
+        0.0096,
+        0.0135
+      ],
+      "mean_paired_difference_adapted_minus_baseline": -0.010415,
+      "paired_difference_trial_95_ci": [
+        -0.011572,
+        -0.00945
+      ]
+    },
+    "domain_terms": {
+      "mean_wer": 0.01272,
+      "trial_95_ci": [
+        0.01146,
+        0.01398
+      ],
+      "trial_values": [
+        0.0125,
+        0.0125,
+        0.0136,
+        0.0104,
+        0.0146
+      ],
+      "mean_paired_difference_adapted_minus_baseline": -0.011285,
+      "paired_difference_trial_95_ci": [
+        -0.012539,
+        -0.010031
+      ]
+    },
+    "common_terms": {
+      "mean_wer": 0.0,
+      "trial_95_ci": [
+        0.0,
+        0.0
+      ],
+      "trial_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_paired_difference_adapted_minus_baseline": 0.0,
+      "paired_difference_trial_95_ci": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

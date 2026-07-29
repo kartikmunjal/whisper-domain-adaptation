@@ -75,17 +75,22 @@ def transcribe_batch(
 ) -> list[str]:
     """Transcribe a batch of audio files and return predicted strings."""
     input_features_list = []
+    attention_masks = []
     for path in audio_paths:
         audio, _ = librosa.load(path, sr=16_000, mono=True)
-        feats = processor.feature_extractor(
-            audio, sampling_rate=16_000, return_tensors="pt"
-        ).input_features
-        input_features_list.append(feats)
+        batch = processor.feature_extractor(
+            audio, sampling_rate=16_000, return_tensors="pt",
+            return_attention_mask=True,
+        )
+        input_features_list.append(batch.input_features)
+        attention_masks.append(batch.attention_mask)
 
     input_features = torch.cat(input_features_list, dim=0).to(device)
+    attention_mask = torch.cat(attention_masks, dim=0).to(device)
 
     predicted_ids = model.generate(
         input_features,
+        attention_mask=attention_mask,
         forced_decoder_ids=processor.get_decoder_prompt_ids(
             language="en", task="transcribe"
         ),
