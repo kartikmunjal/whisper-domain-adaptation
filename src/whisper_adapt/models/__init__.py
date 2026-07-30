@@ -6,6 +6,7 @@ from .audio_codec import (
     VectorQuantizer,
     codec_rate_hz,
 )
+from .codec_tts import CodecTTSConfig, CodecTokenTTS, encode_text_bytes
 
 __all__ = [
     "build_whisper_lora",
@@ -15,4 +16,7 @@ __all__ = [
     "FiniteScalarQuantizer",
     "VectorQuantizer",
     "codec_rate_hz",
+    "CodecTTSConfig",
+    "CodecTokenTTS",
+    "encode_text_bytes",
 ]
