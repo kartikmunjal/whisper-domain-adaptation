@@ -98,3 +98,12 @@ def test_chunked_reconstruction_preserves_long_shape():
     )
     assert reconstructed.shape == (1, 1, 5000)
     assert torch.isfinite(reconstructed).all()
+
+
+def test_decode_vq_indices_shape_and_validation():
+    cfg = AudioCodecConfig(hidden_dim=16, latent_dim=8, codebook_size=16)
+    model = AudioVQVAE(cfg, quantizer="vq")
+    audio = model.decode_vq_indices(torch.tensor([[0, 1, 2, 3]]))
+    assert audio.shape == (1, 1, 4 * 320)
+    with pytest.raises(ValueError, match="outside"):
+        model.decode_vq_indices(torch.tensor([16]))

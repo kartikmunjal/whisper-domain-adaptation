@@ -213,6 +213,24 @@ class AudioVQVAE(nn.Module):
         return self.decoder(quantized, target_length=target_length)
 
     @torch.inference_mode()
+    def decode_vq_indices(
+        self, indices: torch.Tensor, target_length: int | None = None
+    ) -> torch.Tensor:
+        """Decode discrete VQ indices produced by a text-to-codec model."""
+        if self.quantizer_name != "vq":
+            raise RuntimeError("decode_vq_indices is only defined for VQ checkpoints")
+        if indices.dim() == 1:
+            indices = indices.unsqueeze(0)
+        if indices.numel() == 0:
+            raise ValueError("At least one VQ index is required")
+        if indices.min() < 0 or indices.max() >= self.cfg.codebook_size:
+            raise ValueError("VQ index is outside the codec codebook")
+        if target_length is None:
+            target_length = indices.shape[1] * prod(self.cfg.strides)
+        quantized = self.quantizer.embedding(indices)
+        return self.decode(quantized, target_length=target_length)
+
+    @torch.inference_mode()
     def reconstruct(self, audio: torch.Tensor) -> torch.Tensor:
         """Inference-only encode → quantize → decode waveform reconstruction."""
         was_training = self.training
