@@ -36,6 +36,7 @@ def main() -> None:
     parser.add_argument("--bootstrap-resamples", type=int, default=10_000)
     parser.add_argument("--chunk-length-seconds", type=float, default=30.0)
     parser.add_argument("--stride-seconds", type=float, default=5.0)
+    parser.add_argument("--batch-size", type=int, default=2)
     args = parser.parse_args()
     seed_everything(args.seed)
     device = 0 if torch.cuda.is_available() else -1
@@ -74,7 +75,7 @@ def main() -> None:
         })
     outputs = recognizer(
         audio_inputs,
-        batch_size=1,
+        batch_size=args.batch_size,
         generate_kwargs={"language": "en", "task": "transcribe"},
     )
     hypotheses = [item["text"] for item in outputs]
