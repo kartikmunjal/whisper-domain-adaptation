@@ -28,3 +28,5 @@ foreach ($seed in @(11, 22, 33, 44, 55)) {
       --output $result
   }
 }
+
+Invoke-CheckedPython scripts/summarize_codec_tts.py
