@@ -12,9 +12,10 @@ function Invoke-CheckedPython {
 $seeds = @(11, 22, 33, 44, 55)
 $baseline = "experiments/results/medical_research/baseline_en.json"
 if (-not (Test-Path $baseline)) {
-  Invoke-CheckedPython scripts/evaluate_baseline.py `
-    --eval_manifest data/med_dictate_eval/eval_en_manifest.parquet `
-    --domain_vocab configs/medical_terms.txt `
+  Invoke-CheckedPython scripts/evaluate_longform.py `
+    --eval-manifest data/med_dictate_eval/eval_en_manifest.parquet `
+    --domain-vocab configs/medical_terms.txt `
+    --seed 20260729 `
     --output $baseline
 }
 
@@ -30,12 +31,11 @@ foreach ($seed in $seeds) {
       --seed $seed
   }
   if (-not (Test-Path $result)) {
-    Invoke-CheckedPython scripts/evaluate_finetuned.py `
-      --adapter_path "$checkpoint/adapter" `
-      --base_model openai/whisper-small `
-      --eval_manifest data/med_dictate_eval/eval_en_manifest.parquet `
-      --domain_vocab configs/medical_terms.txt `
-      --baseline_report $baseline `
+    Invoke-CheckedPython scripts/evaluate_longform.py `
+      --adapter-path "$checkpoint/adapter" `
+      --base-model openai/whisper-small `
+      --eval-manifest data/med_dictate_eval/eval_en_manifest.parquet `
+      --domain-vocab configs/medical_terms.txt `
       --seed $seed `
       --output $result
   }
