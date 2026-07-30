@@ -51,3 +51,5 @@ foreach ($condition in $conditions) {
     }
   }
 }
+
+Invoke-CheckedPython scripts/summarize_codec_wer.py
