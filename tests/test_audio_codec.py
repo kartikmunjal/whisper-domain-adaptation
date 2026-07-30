@@ -87,3 +87,14 @@ def test_inference_reconstruction_and_matched_rates(tmp_path):
         )
         restored = AudioVQVAE.from_checkpoint(checkpoint)
         assert restored.reconstruct(audio).shape == reconstruction.shape
+
+
+def test_chunked_reconstruction_preserves_long_shape():
+    cfg = AudioCodecConfig(hidden_dim=16, latent_dim=8, codebook_size=16)
+    model = AudioVQVAE(cfg, quantizer="vq")
+    audio = torch.randn(1, 5000)
+    reconstructed = model.reconstruct_chunked(
+        audio, chunk_samples=2048, overlap_samples=320
+    )
+    assert reconstructed.shape == (1, 1, 5000)
+    assert torch.isfinite(reconstructed).all()

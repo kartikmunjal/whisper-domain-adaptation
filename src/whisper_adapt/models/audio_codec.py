@@ -224,6 +224,50 @@ class AudioVQVAE(nn.Module):
             self.train()
         return reconstruction
 
+    @torch.inference_mode()
+    def reconstruct_chunked(
+        self,
+        audio: torch.Tensor,
+        chunk_samples: int = 160_000,
+        overlap_samples: int = 16_000,
+    ) -> torch.Tensor:
+        """Reconstruct arbitrarily long audio with deterministic overlap-add."""
+        if overlap_samples >= chunk_samples:
+            raise ValueError("overlap_samples must be smaller than chunk_samples")
+        if audio.dim() == 1:
+            audio = audio.unsqueeze(0)
+        total = audio.shape[-1]
+        if total <= chunk_samples:
+            return self.reconstruct(audio)
+        step = chunk_samples - overlap_samples
+        output = torch.zeros(
+            (audio.shape[0], 1, total), device=audio.device, dtype=audio.dtype
+        )
+        weights = torch.zeros_like(output)
+        for start in range(0, total, step):
+            end = min(start + chunk_samples, total)
+            chunk = audio[..., start:end]
+            reconstructed = self.reconstruct(chunk)
+            window = torch.ones(
+                reconstructed.shape[-1],
+                device=audio.device,
+                dtype=audio.dtype,
+            )
+            fade = min(overlap_samples, reconstructed.shape[-1] // 2)
+            if start > 0 and fade:
+                window[:fade] = torch.linspace(
+                    0, 1, fade, device=audio.device, dtype=audio.dtype
+                )
+            if end < total and fade:
+                window[-fade:] = torch.linspace(
+                    1, 0, fade, device=audio.device, dtype=audio.dtype
+                )
+            output[..., start:end] += reconstructed * window
+            weights[..., start:end] += window
+            if end == total:
+                break
+        return output / weights.clamp_min(1e-8)
+
     def forward(self, audio: torch.Tensor) -> Dict[str, torch.Tensor]:
         target_length = audio.shape[-1]
         latents = self.encode(audio)
