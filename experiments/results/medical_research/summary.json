@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "title": "Real med-dictate medical adaptation result",
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "baseline": {
+    "overall": 0.2493,
+    "domain_terms": 0.2862,
+    "common_terms": 0.2007,
+    "n_domain_utterances": 11,
+    "n_common_utterances": 13
+  },
+  "caveat": "Adapter train/validation audio is Edge-TTS; confirmatory evaluation is real Corti med-dictate English audio.",
+  "metrics": {
+    "overall": {
+      "mean_wer": 0.29802,
+      "trial_values": [
+        0.298,
+        0.3013,
+        0.3161,
+        0.2904,
+        0.2843
+      ],
+      "trial_bootstrap_95_ci": [
+        0.28891999999999995,
+        0.30734000000000006
+      ],
+      "mean_paired_delta": 0.0487138,
+      "paired_delta_trial_values": [
+        0.048692,
+        0.052004,
+        0.066799,
+        0.041073,
+        0.035001
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        0.0398586,
+        0.058694800000000005
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 0.048692,
+          "ci_low": -0.001747,
+          "ci_high": 0.106252,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.052004,
+          "ci_low": -0.00036,
+          "ci_high": 0.11044,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.066799,
+          "ci_low": 0.010127,
+          "ci_high": 0.132026,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.041073,
+          "ci_low": 0.004609,
+          "ci_high": 0.085988,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.035001,
+          "ci_low": -0.010566,
+          "ci_high": 0.083467,
+          "n_resamples": 10000
+        }
+      ]
+    },
+    "domain_terms": {
+      "mean_wer": 0.33747999999999995,
+      "trial_values": [
+        0.3277,
+        0.3671,
+        0.3465,
+        0.3254,
+        0.3207
+      ],
+      "trial_bootstrap_95_ci": [
+        0.32398,
+        0.3537
+      ],
+      "mean_paired_delta": 0.0513298,
+      "paired_delta_trial_values": [
+        0.041545,
+        0.080955,
+        0.060377,
+        0.039216,
+        0.034556
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        0.0378178,
+        0.0684916
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 0.041545,
+          "ci_low": -0.018322,
+          "ci_high": 0.11356,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.080955,
+          "ci_low": -0.001161,
+          "ci_high": 0.179451,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.060377,
+          "ci_low": -0.031854,
+          "ci_high": 0.16299,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.039216,
+          "ci_low": -0.017682,
+          "ci_high": 0.112809,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.034556,
+          "ci_low": -0.030699,
+          "ci_high": 0.11075,
+          "n_resamples": 10000
+        }
+      ]
+    },
+    "common_terms": {
+      "mean_wer": 0.24596,
+      "trial_values": [
+        0.2588,
+        0.2145,
+        0.276,
+        0.2442,
+        0.2363
+      ],
+      "trial_bootstrap_95_ci": [
+        0.22772,
+        0.26461999999999997
+      ],
+      "mean_paired_delta": 0.04526380000000001,
+      "paired_delta_trial_values": [
+        0.058116,
+        0.013825,
+        0.075269,
+        0.043523,
+        0.035586
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        0.027035399999999998,
+        0.0629802
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 0.058116,
+          "ci_low": -0.02059,
+          "ci_high": 0.154324,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.013825,
+          "ci_low": -0.038137,
+          "ci_high": 0.04875,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.075269,
+          "ci_low": 0.021671,
+          "ci_high": 0.138836,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.043523,
+          "ci_low": 0.005644,
+          "ci_high": 0.086436,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.035586,
+          "ci_low": -0.02331,
+          "ci_high": 0.085815,
+          "n_resamples": 10000
+        }
+      ]
+    }
+  }
+}
