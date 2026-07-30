@@ -20,6 +20,19 @@ The previous medical, rank, data-scaling, synthetic-mixture, prefix-tuning, and
 catastrophic-forgetting numbers were not accompanied by sufficient primary run
 artifacts. They are not treated as verified results in this repository.
 
+## Locked follow-on studies
+
+Three follow-on studies are preregistered but do not yet have publishable
+results:
+
+- [real earnings-call evaluation](REAL_FINANCIAL_AUDIO_PLAN.md);
+- [codec rate-distortion and ASR robustness](CODEC_RESEARCH_PLAN.md); and
+- [text-to-codec-token TTS](TTS_RESEARCH_PLAN.md).
+
+Their evaluation sets remain isolated until their training and selection
+procedures are fixed. Results will be generated from committed scripts and
+primary artifacts; this README will not carry projected values.
+
 ## Confirmatory financial experiment
 
 The experiment uses:
