@@ -75,6 +75,9 @@ def main() -> None:
         raise RuntimeError(f"Expected 40 evaluation rows, found {len(rows)}")
     frame = pd.DataFrame(rows)
     frame.to_parquet(output / "eval_manifest.parquet", index=False)
+    frame[frame.language == "en"].reset_index(drop=True).to_parquet(
+        output / "eval_en_manifest.parquet", index=False
+    )
     report = {
         "schema_version": 1,
         "source_dataset": DATASET_ID,
