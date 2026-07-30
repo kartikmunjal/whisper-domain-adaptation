@@ -4,23 +4,31 @@
 from __future__ import annotations
 
 import argparse
+import json
+import random
 from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import librosa
+import numpy as np
+import pandas as pd
 import torch
 from torch.utils.data import DataLoader, Dataset
 
 from whisper_adapt.models.audio_codec import AudioCodecConfig, AudioVQVAE
 
 
-class WavFolderDataset(Dataset):
-    def __init__(self, audio_dir: Path, sample_rate: int, clip_seconds: float):
-        self.paths = sorted(audio_dir.glob("*.wav"))
+class ManifestAudioDataset(Dataset):
+    def __init__(self, manifest: Path, sample_rate: int, clip_seconds: float):
+        frame = pd.read_parquet(manifest)
+        self.paths = [Path(path) for path in frame["path"].tolist()]
         if not self.paths:
-            raise FileNotFoundError(f"No .wav files found in {audio_dir}")
+            raise FileNotFoundError(f"No audio rows found in {manifest}")
+        missing = [str(path) for path in self.paths if not path.exists()]
+        if missing:
+            raise FileNotFoundError(f"Missing manifest audio, first path: {missing[0]}")
         self.sample_rate = sample_rate
         self.num_samples = int(sample_rate * clip_seconds)
 
@@ -37,6 +45,14 @@ class WavFolderDataset(Dataset):
 
 
 def train(args: argparse.Namespace) -> None:
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
+    torch.use_deterministic_algorithms(True, warn_only=False)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
     device = torch.device(args.device)
     cfg = AudioCodecConfig(
         sample_rate=args.sample_rate,
@@ -44,10 +60,22 @@ def train(args: argparse.Namespace) -> None:
         latent_dim=args.latent_dim,
         codebook_size=args.codebook_size,
         commitment_cost=args.commitment_cost,
+        fsq_levels=tuple(args.fsq_levels),
+        strides=tuple(args.strides),
     )
     model = AudioVQVAE(cfg, quantizer=args.quantizer).to(device)
-    dataset = WavFolderDataset(Path(args.audio_dir), args.sample_rate, args.clip_seconds)
-    loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True, drop_last=False)
+    dataset = ManifestAudioDataset(
+        Path(args.train_manifest), args.sample_rate, args.clip_seconds
+    )
+    generator = torch.Generator().manual_seed(args.seed)
+    loader = DataLoader(
+        dataset,
+        batch_size=args.batch_size,
+        shuffle=True,
+        drop_last=False,
+        generator=generator,
+        num_workers=0,
+    )
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
 
     for epoch in range(1, args.epochs + 1):
@@ -72,12 +100,25 @@ def train(args: argparse.Namespace) -> None:
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     torch.save({"config": cfg.__dict__, "quantizer": args.quantizer, "state_dict": model.state_dict()}, output_dir / "codec.pt")
+    (output_dir / "run.json").write_text(json.dumps({
+        "seed": args.seed,
+        "quantizer": args.quantizer,
+        "nominal_bits_per_frame": model.nominal_bits_per_frame,
+        "frame_rate_hz": cfg.frame_rate_hz,
+        "nominal_bitrate_bps": model.nominal_bitrate_bps,
+        "n_train_clips": len(dataset),
+        "epochs": args.epochs,
+        "config": cfg.__dict__,
+    }, indent=2))
     print(f"Saved codec checkpoint to {output_dir / 'codec.pt'}")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train a compact audio VQ-VAE or FSQ codec")
-    parser.add_argument("--audio_dir", default="data/financial_synth_eval")
+    parser.add_argument(
+        "--train_manifest",
+        default="data/financial_research/train_manifest.parquet",
+    )
     parser.add_argument("--output_dir", default="checkpoints/audio_codec")
     parser.add_argument("--quantizer", choices=["vq", "fsq"], default="vq")
     parser.add_argument("--sample_rate", type=int, default=16_000)
@@ -86,9 +127,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--latent_dim", type=int, default=64)
     parser.add_argument("--codebook_size", type=int, default=256)
     parser.add_argument("--commitment_cost", type=float, default=0.25)
+    parser.add_argument("--fsq_levels", type=int, nargs="+", default=[4, 4, 4, 4])
+    parser.add_argument("--strides", type=int, nargs="+", default=[4, 4, 4, 5])
     parser.add_argument("--batch_size", type=int, default=8)
     parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--learning_rate", type=float, default=3e-4)
+    parser.add_argument("--seed", type=int, default=11)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
 

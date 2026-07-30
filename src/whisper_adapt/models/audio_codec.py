@@ -8,6 +8,8 @@ loss, straight-through estimator, and decoder.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import prod
+from pathlib import Path
 from typing import Dict, Tuple
 
 import torch
@@ -24,6 +26,15 @@ class AudioCodecConfig:
     codebook_size: int = 256
     commitment_cost: float = 0.25
     fsq_levels: Tuple[int, ...] = (8, 8, 8, 8)
+    strides: Tuple[int, ...] = (4, 4, 4, 5)
+
+    @property
+    def hop_length(self) -> int:
+        return prod(self.strides)
+
+    @property
+    def frame_rate_hz(self) -> float:
+        return self.sample_rate / self.hop_length
 
 
 class WaveformEncoder(nn.Module):
@@ -31,15 +42,23 @@ class WaveformEncoder(nn.Module):
 
     def __init__(self, cfg: AudioCodecConfig):
         super().__init__()
-        self.net = nn.Sequential(
+        layers: list[nn.Module] = [
             nn.Conv1d(cfg.channels, cfg.hidden_dim, kernel_size=7, padding=3),
             nn.GELU(),
-            nn.Conv1d(cfg.hidden_dim, cfg.hidden_dim, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.Conv1d(cfg.hidden_dim, cfg.hidden_dim, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.Conv1d(cfg.hidden_dim, cfg.latent_dim, kernel_size=3, padding=1),
-        )
+        ]
+        for stride in cfg.strides:
+            layers.extend([
+                nn.Conv1d(
+                    cfg.hidden_dim,
+                    cfg.hidden_dim,
+                    kernel_size=2 * stride,
+                    stride=stride,
+                    padding=stride // 2,
+                ),
+                nn.GELU(),
+            ])
+        layers.append(nn.Conv1d(cfg.hidden_dim, cfg.latent_dim, kernel_size=3, padding=1))
+        self.net = nn.Sequential(*layers)
 
     def forward(self, audio: torch.Tensor) -> torch.Tensor:
         if audio.dim() == 2:
@@ -52,16 +71,26 @@ class WaveformDecoder(nn.Module):
 
     def __init__(self, cfg: AudioCodecConfig):
         super().__init__()
-        self.net = nn.Sequential(
+        layers: list[nn.Module] = [
             nn.Conv1d(cfg.latent_dim, cfg.hidden_dim, kernel_size=3, padding=1),
             nn.GELU(),
-            nn.ConvTranspose1d(cfg.hidden_dim, cfg.hidden_dim, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
-            nn.ConvTranspose1d(cfg.hidden_dim, cfg.hidden_dim, kernel_size=4, stride=2, padding=1),
-            nn.GELU(),
+        ]
+        for stride in reversed(cfg.strides):
+            layers.extend([
+                nn.ConvTranspose1d(
+                    cfg.hidden_dim,
+                    cfg.hidden_dim,
+                    kernel_size=2 * stride,
+                    stride=stride,
+                    padding=stride // 2,
+                ),
+                nn.GELU(),
+            ])
+        layers.extend([
             nn.Conv1d(cfg.hidden_dim, cfg.channels, kernel_size=7, padding=3),
             nn.Tanh(),
-        )
+        ])
+        self.net = nn.Sequential(*layers)
 
     def forward(self, latents: torch.Tensor, target_length: int | None = None) -> torch.Tensor:
         audio = self.net(latents.transpose(1, 2))
@@ -150,22 +179,55 @@ class AudioVQVAE(nn.Module):
         self.encoder = WaveformEncoder(self.cfg)
         self.decoder = WaveformDecoder(self.cfg)
         if quantizer == "vq":
+            self.quantizer_in = nn.Identity()
+            self.quantizer_out = nn.Identity()
             self.quantizer = VectorQuantizer(
                 self.cfg.codebook_size,
                 self.cfg.latent_dim,
                 self.cfg.commitment_cost,
             )
         elif quantizer == "fsq":
+            fsq_dim = len(self.cfg.fsq_levels)
+            self.quantizer_in = nn.Linear(self.cfg.latent_dim, fsq_dim)
+            self.quantizer_out = nn.Linear(fsq_dim, self.cfg.latent_dim)
             self.quantizer = FiniteScalarQuantizer(self.cfg.fsq_levels)
         else:
             raise ValueError("quantizer must be 'vq' or 'fsq'")
         self.quantizer_name = quantizer
 
+    def encode(self, audio: torch.Tensor) -> torch.Tensor:
+        """Encode waveform into continuous frame-level latents."""
+        return self.encoder(audio)
+
+    def quantize(self, latents: torch.Tensor) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """Quantize continuous latents and return decoder-space latents plus codes."""
+        bottleneck = self.quantizer_in(latents)
+        quantized, info = self.quantizer(bottleneck)
+        return self.quantizer_out(quantized), info
+
+    def decode(
+        self, quantized: torch.Tensor, target_length: int | None = None
+    ) -> torch.Tensor:
+        """Decode quantized latents into waveform."""
+        return self.decoder(quantized, target_length=target_length)
+
+    @torch.inference_mode()
+    def reconstruct(self, audio: torch.Tensor) -> torch.Tensor:
+        """Inference-only encode → quantize → decode waveform reconstruction."""
+        was_training = self.training
+        self.eval()
+        target_length = audio.shape[-1]
+        quantized, _ = self.quantize(self.encode(audio))
+        reconstruction = self.decode(quantized, target_length=target_length)
+        if was_training:
+            self.train()
+        return reconstruction
+
     def forward(self, audio: torch.Tensor) -> Dict[str, torch.Tensor]:
         target_length = audio.shape[-1]
-        latents = self.encoder(audio)
-        quantized, q_info = self.quantizer(latents)
-        recon = self.decoder(quantized, target_length=target_length)
+        latents = self.encode(audio)
+        quantized, q_info = self.quantize(latents)
+        recon = self.decode(quantized, target_length=target_length)
         if audio.dim() == 2:
             audio = audio.unsqueeze(1)
         reconstruction_loss = F.l1_loss(recon, audio)
@@ -179,7 +241,32 @@ class AudioVQVAE(nn.Module):
             **q_info,
         }
 
+    @property
+    def nominal_bits_per_frame(self) -> float:
+        if self.quantizer_name == "vq":
+            return float(self.cfg.codebook_size.bit_length() - 1)
+        return float(sum(torch.log2(torch.tensor(self.cfg.fsq_levels)).tolist()))
 
-def codec_rate_hz(sample_rate: int, num_strides: int = 2) -> float:
-    """Frame rate after the default stride-2 convolution stack."""
-    return sample_rate / (2 ** num_strides)
+    @property
+    def nominal_bitrate_bps(self) -> float:
+        return self.cfg.frame_rate_hz * self.nominal_bits_per_frame
+
+    @classmethod
+    def from_checkpoint(
+        cls, checkpoint: str | Path, map_location: str | torch.device = "cpu"
+    ) -> "AudioVQVAE":
+        payload = torch.load(checkpoint, map_location=map_location, weights_only=False)
+        config = dict(payload["config"])
+        for key in ("fsq_levels", "strides"):
+            if key in config:
+                config[key] = tuple(config[key])
+        model = cls(AudioCodecConfig(**config), quantizer=payload["quantizer"])
+        model.load_state_dict(payload["state_dict"])
+        return model
+
+
+def codec_rate_hz(
+    sample_rate: int, strides: Tuple[int, ...] = (4, 4, 4, 5)
+) -> float:
+    """Frame rate after the configured convolutional downsampling stack."""
+    return sample_rate / prod(strides)

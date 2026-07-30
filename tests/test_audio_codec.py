@@ -32,6 +32,7 @@ def test_fsq_codec_reconstructs_input_shape():
 
     assert out["reconstruction"].shape == audio.shape
     assert out["quantizer_loss"].item() == 0.0
+    assert out["indices"].shape[-1] == 4
 
 
 def test_vector_quantizer_outputs_codebook_indices():
@@ -58,4 +59,31 @@ def test_fsq_requires_divisible_latent_dim():
 
 
 def test_codec_rate_hz_matches_two_stride_encoder():
-    assert codec_rate_hz(16_000) == 4_000
+    assert codec_rate_hz(16_000) == 50
+
+
+def test_inference_reconstruction_and_matched_rates(tmp_path):
+    audio = torch.randn(1, 16_123)
+    for quantizer, kwargs in (
+        ("vq", {"codebook_size": 256}),
+        ("fsq", {"fsq_levels": (4, 4, 4, 4)}),
+    ):
+        cfg = AudioCodecConfig(hidden_dim=16, latent_dim=8, **kwargs)
+        model = AudioVQVAE(cfg, quantizer=quantizer)
+        reconstruction = model.reconstruct(audio)
+        assert reconstruction.shape == (1, 1, audio.shape[-1])
+        assert not reconstruction.requires_grad
+        assert model.nominal_bits_per_frame == 8
+        assert model.nominal_bitrate_bps == 400
+
+        checkpoint = tmp_path / f"{quantizer}.pt"
+        torch.save(
+            {
+                "config": cfg.__dict__,
+                "quantizer": quantizer,
+                "state_dict": model.state_dict(),
+            },
+            checkpoint,
+        )
+        restored = AudioVQVAE.from_checkpoint(checkpoint)
+        assert restored.reconstruct(audio).shape == reconstruction.shape
