@@ -162,6 +162,14 @@ def main():
         "seed": args.seed,
         "n_trials_planned": 5,
         "best_validation_nll": best_loss,
+        "n_train_clips": len(train),
+        "n_validation_clips": len(validation),
+        "trainable_parameters": sum(
+            parameter.numel() for parameter in model.parameters()
+            if parameter.requires_grad
+        ),
+        "optimizer_steps_per_epoch": len(train_loader),
+        "planned_optimizer_steps": len(train_loader) * args.epochs,
         "history": history,
         "train_manifest_sha256": sha256_file(data / "train.parquet"),
         "validation_manifest_sha256": sha256_file(data / "validation.parquet"),

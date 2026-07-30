@@ -44,6 +44,20 @@ def bootstrap_mean_ci(values: list[float], n: int = 10_000) -> list[float]:
     return np.quantile(means, [0.025, 0.975]).tolist()
 
 
+def optional_metric(values: list[float]) -> dict:
+    if not values:
+        return {
+            "mean": None,
+            "clip_bootstrap_95_ci": None,
+            "n_valid": 0,
+        }
+    return {
+        "mean": float(np.mean(values)),
+        "clip_bootstrap_95_ci": bootstrap_mean_ci(values),
+        "n_valid": len(values),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--tts-checkpoint", required=True)
@@ -89,12 +103,18 @@ def main() -> None:
             if len(eos):
                 generated = generated[: int(eos[0])]
             generated = generated[generated.lt(tts.config.codebook_size)]
-            if not len(generated):
-                raise RuntimeError(f"Model generated no codec tokens for {row['id']}")
-            waveform = codec.decode_vq_indices(generated)[0, 0].cpu().numpy()
             reference, _ = librosa.load(
                 root / row["path"], sr=codec.cfg.sample_rate, mono=True
             )
+            empty_token_failure = not len(generated)
+            if empty_token_failure:
+                # Keep failed examples in the paired ASR evaluation. Silence
+                # yields an empty hypothesis rather than dropping the sentence.
+                waveform = np.zeros(len(reference), dtype=np.float32)
+                signal_score = None
+            else:
+                waveform = codec.decode_vq_indices(generated)[0, 0].cpu().numpy()
+                signal_score = si_sdr(reference, waveform)
             wav_path = wav_dir / f"{row['id']}.wav"
             sf.write(wav_path, waveform, codec.cfg.sample_rate, subtype="PCM_16")
             rows.append({
@@ -106,8 +126,10 @@ def main() -> None:
                 "absolute_sequence_length_error": abs(
                     len(generated) - int(target_lengths[str(row["id"])])
                 ),
-                "si_sdr_db": si_sdr(reference, waveform),
+                "si_sdr_db": signal_score,
                 "terminated_with_eos": bool(len(eos)),
+                "empty_token_failure": empty_token_failure,
+                "generation_failure": empty_token_failure or not bool(len(eos)),
             })
     generated_manifest = output / "generated_manifest.parquet"
     pd.DataFrame(rows).to_parquet(generated_manifest, index=False)
@@ -124,6 +146,15 @@ def main() -> None:
         "max_new_tokens": args.max_new_tokens,
         "batch_size": args.batch_size,
         "eos_rate": sum(row["terminated_with_eos"] for row in rows) / len(rows),
+        "nontermination_rate": (
+            sum(not row["terminated_with_eos"] for row in rows) / len(rows)
+        ),
+        "empty_token_failure_rate": (
+            sum(row["empty_token_failure"] for row in rows) / len(rows)
+        ),
+        "generation_failure_rate": (
+            sum(row["generation_failure"] for row in rows) / len(rows)
+        ),
         "sequence_length_error": {
             "mean_absolute_tokens": float(np.mean([
                 row["absolute_sequence_length_error"] for row in rows
@@ -132,12 +163,9 @@ def main() -> None:
                 row["absolute_sequence_length_error"] for row in rows
             ]),
         },
-        "si_sdr_db": {
-            "mean": float(np.mean([row["si_sdr_db"] for row in rows])),
-            "clip_bootstrap_95_ci": bootstrap_mean_ci([
-                row["si_sdr_db"] for row in rows
-            ]),
-        },
+        "si_sdr_db_conditional_on_decodable_output": optional_metric([
+            row["si_sdr_db"] for row in rows if row["si_sdr_db"] is not None
+        ]),
         "provenance": collect_provenance(
             repo_root=root,
             arguments=vars(args),

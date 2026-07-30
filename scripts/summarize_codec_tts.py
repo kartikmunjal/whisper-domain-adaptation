@@ -73,6 +73,8 @@ def main() -> None:
             "best_validation_token_accuracy": float(
                 best_epoch["validation_token_accuracy"]
             ),
+            "trainable_parameters": int(training["trainable_parameters"]),
+            "planned_optimizer_steps": int(training["planned_optimizer_steps"]),
         })
 
     summary = {
@@ -138,15 +140,31 @@ def main() -> None:
         "validation_token_accuracy": [
             trial["best_validation_token_accuracy"] for trial in trials
         ],
+        "trainable_parameters": [
+            trial["trainable_parameters"] for trial in trials
+        ],
+        "planned_optimizer_steps": [
+            trial["planned_optimizer_steps"] for trial in trials
+        ],
         "eos_rate": [trial["generation"]["eos_rate"] for trial in trials],
+        "generation_failure_rate": [
+            trial["generation"]["generation_failure_rate"] for trial in trials
+        ],
+        "empty_token_failure_rate": [
+            trial["generation"]["empty_token_failure_rate"] for trial in trials
+        ],
         "absolute_sequence_length_error_tokens": [
             trial["generation"]["sequence_length_error"]["mean_absolute_tokens"]
             for trial in trials
         ],
-        "si_sdr_db": [
-            trial["generation"]["si_sdr_db"]["mean"] for trial in trials
+        "si_sdr_db_conditional_on_decodable_output": [
+            trial["generation"]["si_sdr_db_conditional_on_decodable_output"]["mean"]
+            for trial in trials
         ],
     }
+    for name, values in scalar_sources.items():
+        if any(value is None for value in values):
+            scalar_sources[name] = [value for value in values if value is not None]
     summary["diagnostics"] = {
         name: {
             "mean": float(np.mean(values)),
@@ -155,7 +173,7 @@ def main() -> None:
                 values, rng, args.bootstrap_resamples
             ),
         }
-        for name, values in scalar_sources.items()
+        for name, values in scalar_sources.items() if values
     }
     output = root / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
