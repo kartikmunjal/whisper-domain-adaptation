@@ -47,3 +47,19 @@ No codec is called better unless the improvement is supported at matched rate
 and explained mechanically through frame rate, token utilization, distortion,
 or ASR error categories. A signal metric and WER may disagree; both are
 reported without selecting the favorable one.
+
+## Amendment 1 — English evaluation subset
+
+Documented 2026-07-30 after the signal grid and part of the ASR grid had been
+observed. The original text incorrectly said that the confirmatory evaluation
+used all 40 multilingual `corti/med-dictate` recordings. The committed medical
+and codec launchers had fixed `eval_en_manifest.parquet` before any of these
+evaluations, so the actual confirmatory set is the 24 recordings in the
+dataset's English configuration.
+
+This restriction is based only on source language metadata: the medical
+vocabulary, synthetic adapter training data, and Whisper evaluation are
+English. It was not selected using codec distortion or ASR output. The German
+and French recordings remain materialized in `eval_manifest.parquet` but are
+outside this English-domain estimand. All generated reports must state
+`n_clips=24`; no result may be described as covering all 40 recordings.
