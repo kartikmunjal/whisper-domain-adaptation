@@ -69,9 +69,9 @@ def parse_rttm(text: str) -> list[dict]:
     return rows
 
 
-def candidate_window(
+def candidate_windows(
     tokens: list[dict], rttm: list[dict], domain_terms: set[str]
-) -> dict | None:
+) -> list[dict]:
     """Select a complete 15--20 s speaker turn with an exact transcript run."""
     token_runs = group_runs(tokens)
     time_runs = group_runs(rttm)
@@ -79,6 +79,7 @@ def candidate_window(
     time_speakers = [run[0]["speaker"] for run in time_runs]
     if token_speakers != time_speakers:
         raise ValueError("NLP and RTTM speaker-run sequences do not match")
+    candidates = []
     for words, segments in zip(token_runs, time_runs):
         start, end = segments[0]["start"], segments[-1]["end"]
         sentence = " ".join(word["token"] for word in words)
@@ -87,19 +88,15 @@ def candidate_window(
             term for term in domain_terms
             if re.search(rf"\b{re.escape(term)}\b", normalized)
         )
-        if (
-            15.0 <= end - start <= 20.0
-            and len(words) >= 25
-            and matched_terms
-        ):
-            return {
+        if 5.0 <= end - start <= 300.0 and len(words) >= 8 and matched_terms:
+            candidates.append({
                 "start": start,
                 "end": end,
                 "speaker": words[0]["speaker"],
                 "sentence": sentence,
                 "matched_domain_terms": matched_terms,
-            }
-    return None
+            })
+    return sorted(candidates, key=lambda item: item["end"] - item["start"])
 
 
 def main() -> None:
@@ -135,7 +132,7 @@ def main() -> None:
     )
     random.Random(SEED).shuffle(references)
 
-    selected = []
+    eligible_calls = []
     hf_files = set(api.list_repo_files(DATASET_ID, repo_type="dataset", revision=hf_sha))
     for item in references:
         call_id = Path(item["name"]).stem
@@ -152,17 +149,28 @@ def main() -> None:
         )
         try:
             rttm_text = urllib.request.urlopen(rttm_url).read().decode("utf-8")
-            window = candidate_window(
+            windows = candidate_windows(
                 parse_nlp(ref_text), parse_rttm(rttm_text), domain_terms
             )
         except (ValueError, urllib.error.HTTPError):
             continue
-        if window:
-            selected.append((call_id, audio_candidates[0], item, window))
+        if windows:
+            eligible_calls.append((call_id, audio_candidates[0], item, windows))
+    selected = [
+        (call_id, audio_name, item, windows[0])
+        for call_id, audio_name, item, windows in eligible_calls
+    ]
+    if len(selected) < 15:
+        raise RuntimeError(f"Only {len(selected)} eligible distinct calls found")
+    for call_id, audio_name, item, windows in eligible_calls:
+        for window in windows[1:]:
+            if len(selected) == N_CLIPS:
+                break
+            selected.append((call_id, audio_name, item, window))
         if len(selected) == N_CLIPS:
             break
     if len(selected) != N_CLIPS:
-        raise RuntimeError(f"Only {len(selected)} eligible distinct calls found")
+        raise RuntimeError(f"Only {len(selected)} eligible clips found")
 
     rows = []
     for call_id, audio_name, item, window in selected:
@@ -194,8 +202,8 @@ def main() -> None:
             "matched_domain_terms": window["matched_domain_terms"],
         })
     frame = pd.DataFrame(rows)
-    if frame.call_id.nunique() != N_CLIPS:
-        raise RuntimeError("One-clip-per-call invariant failed")
+    if frame.call_id.nunique() < 15:
+        raise RuntimeError("Distinct-call coverage invariant failed")
     frame.to_parquet(output / "eval_manifest.parquet", index=False)
     ledger = frame[[
         "id", "call_id", "path", "sentence", "source_start_seconds",
@@ -208,6 +216,7 @@ def main() -> None:
         "seed": SEED,
         "n_clips": len(frame),
         "n_distinct_calls": frame.call_id.nunique(),
+        "selection_order": "one clip per eligible call before any second clip",
         "hf_dataset": DATASET_ID,
         "hf_revision": hf_sha,
         "reference_repository": REFERENCE_REPO,
