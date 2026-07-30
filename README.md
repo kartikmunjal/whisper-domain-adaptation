@@ -3,31 +3,41 @@
 # Whisper Domain Adaptation
 
 Reproducible evaluation of Whisper-small LoRA adaptation for specialized
-vocabulary. The current confirmatory study targets financial speech generated
-with Edge-TTS. Medical experiments remain exploratory until their original
-primary artifacts are recovered or rerun.
+vocabulary, plus preregistered neural-codec and text-to-codec-token studies.
 
 ## Research status
 
-The projected financial value has been withdrawn and replaced by a directly
-measured five-seed result. The generated overall/domain/common table, trial
-confidence intervals, and paired changes are in
-[the confirmatory result](experiments/results/financial_research/summary.md).
-The protocol was locked in [RESEARCH_PLAN.md](RESEARCH_PLAN.md) before the GPU
-runs.
+The projected financial value has been withdrawn. It is replaced by two direct
+five-seed measurements:
+
+- the leakage-controlled but optimistic
+  [Edge-TTS result](experiments/results/financial_research/summary.md); and
+- the external-validity
+  [real Earnings-21 result](experiments/results/earnings21/summary.md).
+
+The real-audio study finds that the synthetic-trained adapters regress overall
+relative to frozen Whisper-small; the paired trial interval excludes zero.
+Domain change is inconclusive, while the common-control slice exposes a stable
+regression. Figures, intervals, and per-seed predictions live in the generated
+artifacts rather than being hand-entered here.
 
 The previous medical, rank, data-scaling, synthetic-mixture, prefix-tuning, and
 catastrophic-forgetting numbers were not accompanied by sufficient primary run
-artifacts. They are not treated as verified results in this repository.
+artifacts. They are not treated as verified results. A replacement medical
+study uses synthetic train/validation data and evaluation-only Corti
+`med-dictate` real audio under a five-seed runner.
 
 ## Locked follow-on studies
 
-Three follow-on studies are preregistered but do not yet have publishable
-results:
+Three follow-on studies are preregistered:
 
-- [real earnings-call evaluation](REAL_FINANCIAL_AUDIO_PLAN.md);
-- [codec rate-distortion and ASR robustness](CODEC_RESEARCH_PLAN.md); and
-- [text-to-codec-token TTS](TTS_RESEARCH_PLAN.md).
+- [real earnings-call evaluation](REAL_FINANCIAL_AUDIO_PLAN.md) — five-seed
+  results complete; manual listening ledger pending;
+- [codec rate-distortion and ASR robustness](CODEC_RESEARCH_PLAN.md) — matched
+  VQ/FSQ training grid complete, reconstruction and ASR evaluation in progress;
+- [text-to-codec-token TTS](TTS_RESEARCH_PLAN.md) — model, token preparation,
+  training, and waveform synthesis paths implemented; confirmatory runs in
+  progress.
 
 Their evaluation sets remain isolated until their training and selection
 procedures are fixed. Results will be generated from committed scripts and
@@ -47,10 +57,11 @@ The experiment uses:
 - 10,000 paired utterance-bootstrap resamples; and
 - complete run provenance, manifest hashes, predictions, and adapters.
 
-All evaluation audio is synthetic. **TTS-on-TTS evaluation is optimistic and
-does not establish performance on real earnings-call audio.** A real-audio
-result will only be added from a licensed, manually verified, speaker-disjoint
-evaluation set.
+The confirmatory table in this section uses synthetic evaluation.
+**TTS-on-TTS evaluation is optimistic.** The separate Earnings-21 anchor uses
+licensed real audio and official transcript/RTTM metadata. Its generated
+manual-listening ledger remains explicitly pending, so the repository does not
+overstate that validation step.
 
 ## Reproduce on an NVIDIA GPU
 
@@ -127,12 +138,18 @@ RESEARCH_PLAN.md            Locked confirmatory protocol
 DATA_CARD.md                Data provenance and limitations
 ```
 
-## Experimental codec work
+## Codec and generative TTS work
 
-An uncommitted VQ-VAE/FSQ prototype may be present in some working copies. It is
-not part of the ASR study and is intentionally excluded from the primary
-research narrative pending its own protocol, bitrate accounting, perceptual
-metrics, validation set, and baselines.
+The repository includes matched-rate VQ-VAE and FSQ codecs at the preregistered
+rate grid, inference-only encode/quantize/decode and chunked reconstruction,
+empirical bitrate and SI-SDR evaluation with clip bootstrap intervals, and
+restart-safe GPU launchers.
+
+It also includes a small autoregressive Transformer mapping UTF-8 text tokens
+to VQ codec tokens. The held-out path is
+text → predicted tokens → codec decoder → waveform, followed by round-trip
+Whisper WER and comparison with the corresponding Edge-TTS clips. No TTS claim
+is made until the five-seed generated artifacts are complete.
 
 ## License
 
