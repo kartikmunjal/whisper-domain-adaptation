@@ -14,6 +14,7 @@ foreach ($seed in @(11, 22, 33, 44, 55)) {
   if (-not (Test-Path "$generation/generation_report.json")) {
     Invoke-CheckedPython scripts/synthesize_codec_tts.py `
       --tts-checkpoint "checkpoints/codec_tts/seed_$seed/model.pt" `
+      --seed $seed `
       --output-dir $generation
   }
   $result = "$generation/round_trip_wer.json"

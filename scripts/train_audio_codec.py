@@ -18,6 +18,7 @@ import torch
 from torch.utils.data import DataLoader, Dataset
 
 from whisper_adapt.models.audio_codec import AudioCodecConfig, AudioVQVAE
+from whisper_adapt.reproducibility import collect_provenance, sha256_file
 
 
 class ManifestAudioDataset(Dataset):
@@ -48,6 +49,7 @@ class ManifestAudioDataset(Dataset):
 
 
 def train(args: argparse.Namespace) -> None:
+    root = Path(__file__).resolve().parents[1]
     random.seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
@@ -112,8 +114,10 @@ def train(args: argparse.Namespace) -> None:
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    torch.save({"config": cfg.__dict__, "quantizer": args.quantizer, "state_dict": model.state_dict()}, output_dir / "codec.pt")
+    checkpoint = output_dir / "codec.pt"
+    torch.save({"config": cfg.__dict__, "quantizer": args.quantizer, "state_dict": model.state_dict()}, checkpoint)
     (output_dir / "run.json").write_text(json.dumps({
+        "schema_version": 1,
         "seed": args.seed,
         "quantizer": args.quantizer,
         "nominal_bits_per_frame": model.nominal_bits_per_frame,
@@ -122,8 +126,15 @@ def train(args: argparse.Namespace) -> None:
         "n_train_clips": len(dataset),
         "epochs": args.epochs,
         "config": cfg.__dict__,
-    }, indent=2))
-    print(f"Saved codec checkpoint to {output_dir / 'codec.pt'}")
+        "checkpoint_sha256": sha256_file(checkpoint),
+        "provenance": collect_provenance(
+            repo_root=root,
+            arguments=vars(args),
+            input_files=[args.train_manifest],
+            seed=args.seed,
+        ),
+    }, indent=2), encoding="utf-8")
+    print(f"Saved codec checkpoint to {checkpoint}")
 
 
 def parse_args() -> argparse.Namespace:

@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from whisper_adapt.models.audio_codec import AudioVQVAE
 from whisper_adapt.models.codec_tts import CodecTokenTTS, encode_text_bytes
-from whisper_adapt.reproducibility import sha256_file
+from whisper_adapt.reproducibility import collect_provenance, sha256_file
 
 
 def si_sdr(reference: np.ndarray, estimate: np.ndarray) -> float:
@@ -47,6 +47,7 @@ def bootstrap_mean_ci(values: list[float], n: int = 10_000) -> list[float]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--tts-checkpoint", required=True)
+    parser.add_argument("--seed", type=int, required=True)
     parser.add_argument(
         "--codec-checkpoint",
         default="checkpoints/codec_rate_grid/vq_400bps/seed_11/codec.pt",
@@ -137,6 +138,17 @@ def main() -> None:
                 row["si_sdr_db"] for row in rows
             ]),
         },
+        "provenance": collect_provenance(
+            repo_root=root,
+            arguments=vars(args),
+            input_files=[
+                root / args.tts_checkpoint,
+                root / args.codec_checkpoint,
+                root / args.manifest,
+                root / "data/codec_tts_tokens/test.parquet",
+            ],
+            seed=args.seed,
+        ),
     }
     (output / "generation_report.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))

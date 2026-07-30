@@ -17,7 +17,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from whisper_adapt.models.audio_codec import AudioVQVAE
-from whisper_adapt.reproducibility import sha256_file
+from whisper_adapt.reproducibility import collect_provenance, sha256_file
 
 
 def parse_args() -> argparse.Namespace:
@@ -113,6 +113,12 @@ def main() -> None:
             "clip_bootstrap_95_ci": bootstrap_mean(values, args.bootstrap_resamples),
             "clip_values": values.tolist(),
         },
+        "provenance": collect_provenance(
+            repo_root=root,
+            arguments=vars(args),
+            input_files=[checkpoint, root / args.eval_manifest],
+            seed=20260729,
+        ),
     }
     (output / "report.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))

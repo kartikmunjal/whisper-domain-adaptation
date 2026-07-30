@@ -19,7 +19,7 @@ from torch.utils.data import DataLoader, Dataset
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from whisper_adapt.models.codec_tts import CodecTTSConfig, CodecTokenTTS
-from whisper_adapt.reproducibility import sha256_file
+from whisper_adapt.reproducibility import collect_provenance, sha256_file
 
 
 class TokenDataset(Dataset):
@@ -166,7 +166,18 @@ def main():
         "train_manifest_sha256": sha256_file(data / "train.parquet"),
         "validation_manifest_sha256": sha256_file(data / "validation.parquet"),
         "config": cfg.__dict__,
-    }, indent=2))
+        "model_sha256": sha256_file(output / "model.pt"),
+        "provenance": collect_provenance(
+            repo_root=root,
+            arguments=vars(args),
+            input_files=[
+                data / "dataset_report.json",
+                data / "train.parquet",
+                data / "validation.parquet",
+            ],
+            seed=args.seed,
+        ),
+    }, indent=2), encoding="utf-8")
 
 
 if __name__ == "__main__":
