@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "seed": 33,
+  "n_trials_planned": 5,
+  "best_validation_nll": 1.9949913599885212,
+  "n_train_clips": 294,
+  "n_validation_clips": 98,
+  "trainable_parameters": 7899138,
+  "optimizer_steps_per_epoch": 37,
+  "planned_optimizer_steps": 1850,
+  "history": [
+    {
+      "epoch": 1,
+      "train_nll": 3.056271417945061,
+      "validation_nll": 2.280840661159819,
+      "validation_token_accuracy": 0.3798184504960946
+    },
+    {
+      "epoch": 2,
+      "train_nll": 2.012775047007199,
+      "validation_nll": 2.065825286021282,
+      "validation_token_accuracy": 0.39375131940046443
+    },
+    {
+      "epoch": 3,
+      "train_nll": 1.8463197812554588,
+      "validation_nll": 2.029867312121497,
+      "validation_token_accuracy": 0.39117584969389907
+    },
+    {
+      "epoch": 4,
+      "train_nll": 1.7652743264305881,
+      "validation_nll": 1.9949913599885212,
+      "validation_token_accuracy": 0.4029976778551826
+    },
+    {
+      "epoch": 5,
+      "train_nll": 1.7015667811097828,
+      "validation_nll": 2.0296357444552195,
+      "validation_token_accuracy": 0.3905425374709732
+    },
+    {
+      "epoch": 6,
+      "train_nll": 1.6391231643042008,
+      "validation_nll": 2.023697226042986,
+      "validation_token_accuracy": 0.4016043909647456
+    },
+    {
+      "epoch": 7,
+      "train_nll": 1.5778836488905477,
+      "validation_nll": 2.0381848229570734,
+      "validation_token_accuracy": 0.39256913658433606
+    },
+    {
+      "epoch": 8,
+      "train_nll": 1.5158707359561407,
+      "validation_nll": 2.0795849861916493,
+      "validation_token_accuracy": 0.3867848849482795
+    },
+    {
+      "epoch": 9,
+      "train_nll": 1.45498463450436,
+      "validation_nll": 2.134535539082291,
+      "validation_token_accuracy": 0.38340721975934133
+    },
+    {
+      "epoch": 10,
+      "train_nll": 1.3751190709429324,
+      "validation_nll": 2.176333919023446,
+      "validation_token_accuracy": 0.37977622968123287
+    },
+    {
+      "epoch": 11,
+      "train_nll": 1.2887064326216808,
+      "validation_nll": 2.2614745681437354,
+      "validation_token_accuracy": 0.3701076630778974
+    },
+    {
+      "epoch": 12,
+      "train_nll": 1.1997854075228707,
+      "validation_nll": 2.344948922709521,
+      "validation_token_accuracy": 0.3793962423474773
+    },
+    {
+      "epoch": 13,
+      "train_nll": 1.1084026707738321,
+      "validation_nll": 2.4251653064472505,
+      "validation_token_accuracy": 0.3677432974456407
+    },
+    {
+      "epoch": 14,
+      "train_nll": 1.0193306707913803,
+      "validation_nll": 2.5400823244042905,
+      "validation_token_accuracy": 0.3423685877137429
+    },
+    {
+      "epoch": 15,
+      "train_nll": 0.9212655453084253,
+      "validation_nll": 2.6446535264688227,
+      "validation_token_accuracy": 0.3605235381042854
+    },
+    {
+      "epoch": 16,
+      "train_nll": 0.8364726556160732,
+      "validation_nll": 2.736888684656692,
+      "validation_token_accuracy": 0.35300823305889806
+    },
+    {
+      "epoch": 17,
+      "train_nll": 0.7551326235791422,
+      "validation_nll": 2.875527579798989,
+      "validation_token_accuracy": 0.3515305045387376
+    },
+    {
+      "epoch": 18,
+      "train_nll": 0.6752405005793897,
+      "validation_nll": 3.0178164107854393,
+      "validation_token_accuracy": 0.34642178594046863
+    },
+    {
+      "epoch": 19,
+      "train_nll": 0.6031508838438145,
+      "validation_nll": 3.2172448733045704,
+      "validation_token_accuracy": 0.3434663289001478
+    },
+    {
+      "epoch": 20,
+      "train_nll": 0.5356954836830483,
+      "validation_nll": 3.305742752368324,
+      "validation_token_accuracy": 0.3482372809795229
+    },
+    {
+      "epoch": 21,
+      "train_nll": 0.48494332849429095,
+      "validation_nll": 3.426719508655267,
+      "validation_token_accuracy": 0.33371332066708886
+    },
+    {
+      "epoch": 22,
+      "train_nll": 0.4308402466472432,
+      "validation_nll": 3.562004085812157,
+      "validation_token_accuracy": 0.3388220392653578
+    },
+    {
+      "epoch": 23,
+      "train_nll": 0.3959457836946617,
+      "validation_nll": 3.71623039865685,
+      "validation_token_accuracy": 0.3386109351910492
+    },
+    {
+      "epoch": 24,
+      "train_nll": 0.3542447717799482,
+      "validation_nll": 3.779743656982267,
+      "validation_token_accuracy": 0.3305889803673211
+    },
+    {
+      "epoch": 25,
+      "train_nll": 0.32045355221377475,
+      "validation_nll": 3.9034339922501715,
+      "validation_token_accuracy": 0.3340933080008444
+    },
+    {
+      "epoch": 26,
+      "train_nll": 0.2937169043956692,
+      "validation_nll": 4.000918756267152,
+      "validation_token_accuracy": 0.3321933713320667
+    },
+    {
+      "epoch": 27,
+      "train_nll": 0.2683418988270768,
+      "validation_nll": 4.11648801159753,
+      "validation_token_accuracy": 0.3395397931180072
+    },
+    {
+      "epoch": 28,
+      "train_nll": 0.2487616939063013,
+      "validation_nll": 4.1946464501530505,
+      "validation_token_accuracy": 0.3490394764618957
+    },
+    {
+      "epoch": 29,
+      "train_nll": 0.23589988230344883,
+      "validation_nll": 4.260955868528341,
+      "validation_token_accuracy": 0.3306312011821828
+    },
+    {
+      "epoch": 30,
+      "train_nll": 0.2143155696458542,
+      "validation_nll": 4.424971282424266,
+      "validation_token_accuracy": 0.344352966012244
+    },
+    {
+      "epoch": 31,
+      "train_nll": 0.20056518224538147,
+      "validation_nll": 4.426737109251306,
+      "validation_token_accuracy": 0.33502216592780243
+    },
+    {
+      "epoch": 32,
+      "train_nll": 0.19435266947079735,
+      "validation_nll": 4.529299596263458,
+      "validation_token_accuracy": 0.3381887270424319
+    },
+    {
+      "epoch": 33,
+      "train_nll": 0.18450539254678136,
+      "validation_nll": 4.630921139434241,
+      "validation_token_accuracy": 0.34127084652733797
+    },
+    {
+      "epoch": 34,
+      "train_nll": 0.17082815589936123,
+      "validation_nll": 4.6297107544331855,
+      "validation_token_accuracy": 0.33709098585602704
+    },
+    {
+      "epoch": 35,
+      "train_nll": 0.15700504591871092,
+      "validation_nll": 4.681309816256992,
+      "validation_token_accuracy": 0.3321933713320667
+    },
+    {
+      "epoch": 36,
+      "train_nll": 0.15402173609663533,
+      "validation_nll": 4.757972559768841,
+      "validation_token_accuracy": 0.3416086130462318
+    },
+    {
+      "epoch": 37,
+      "train_nll": 0.14420778175258347,
+      "validation_nll": 4.84534908243944,
+      "validation_token_accuracy": 0.339413130673422
+    },
+    {
+      "epoch": 38,
+      "train_nll": 0.13623221412950803,
+      "validation_nll": 4.91682948893023,
+      "validation_token_accuracy": 0.3395397931180072
+    },
+    {
+      "epoch": 39,
+      "train_nll": 0.13358688070391658,
+      "validation_nll": 4.875412745573412,
+      "validation_token_accuracy": 0.3416508338610935
+    },
+    {
+      "epoch": 40,
+      "train_nll": 0.12594906047890472,
+      "validation_nll": 4.970186270483692,
+      "validation_token_accuracy": 0.33257335866582227
+    },
+    {
+      "epoch": 41,
+      "train_nll": 0.12445977629566102,
+      "validation_nll": 5.0655803259249,
+      "validation_token_accuracy": 0.33839983111674055
+    },
+    {
+      "epoch": 42,
+      "train_nll": 0.11689580276413888,
+      "validation_nll": 5.101166061391703,
+      "validation_token_accuracy": 0.34127084652733797
+    },
+    {
+      "epoch": 43,
+      "train_nll": 0.11240141230814923,
+      "validation_nll": 5.156396680223507,
+      "validation_token_accuracy": 0.3361199071142073
+    },
+    {
+      "epoch": 44,
+      "train_nll": 0.1092498462039247,
+      "validation_nll": 5.138128178930494,
+      "validation_token_accuracy": 0.3345577369643234
+    },
+    {
+      "epoch": 45,
+      "train_nll": 0.10422934089646728,
+      "validation_nll": 5.2082903600478945,
+      "validation_token_accuracy": 0.33291112518471605
+    },
+    {
+      "epoch": 46,
+      "train_nll": 0.10348740201747732,
+      "validation_nll": 5.3086192618449175,
+      "validation_token_accuracy": 0.34376187460417984
+    },
+    {
+      "epoch": 47,
+      "train_nll": 0.09939009450481895,
+      "validation_nll": 5.3162724339310214,
+      "validation_token_accuracy": 0.3353177116318345
+    },
+    {
+      "epoch": 48,
+      "train_nll": 0.09932557335374144,
+      "validation_nll": 5.2520007677261455,
+      "validation_token_accuracy": 0.339413130673422
+    },
+    {
+      "epoch": 49,
+      "train_nll": 0.09127765863892111,
+      "validation_nll": 5.31062946122282,
+      "validation_token_accuracy": 0.34401519949335024
+    },
+    {
+      "epoch": 50,
+      "train_nll": 0.08749596069507332,
+      "validation_nll": 5.380851005053303,
+      "validation_token_accuracy": 0.34608401942157485
+    }
+  ],
+  "train_manifest_sha256": "76a79581441929ffa9e3caed5b26887231cd388307d96394a7881387e3cdb3ab",
+  "validation_manifest_sha256": "aa050406357125998a3ef85c3baed33425424fe482dc8abc943565f7526e3caf",
+  "config": {
+    "codebook_size": 256,
+    "text_vocab_size": 258,
+    "d_model": 256,
+    "nhead": 8,
+    "encoder_layers": 4,
+    "decoder_layers": 4,
+    "dim_feedforward": 1024,
+    "dropout": 0.1,
+    "max_text_tokens": 256,
+    "max_audio_tokens": 1024
+  },
+  "model_sha256": "55bb3a61e8f717332a2b2e0a88001a69764432fda45611843d90d0f5b56a09b3",
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-30T13:13:36.053734+00:00",
+    "git_commit": "ffa39b98bca2965376cff14a56c185b6f464573a",
+    "git_dirty": false,
+    "arguments": {
+      "data_dir": "data/codec_tts_tokens",
+      "output_dir": "checkpoints/codec_tts/seed_33",
+      "seed": 33,
+      "epochs": 50,
+      "batch_size": 8,
+      "learning_rate": 0.0003,
+      "device": "cuda"
+    },
+    "seed": 33,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens\\dataset_report.json": "ec45ee2566288679d9a33fc69be1975ee91dd0d5019bf0682e497f1d852a5ab1",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens\\train.parquet": "76a79581441929ffa9e3caed5b26887231cd388307d96394a7881387e3cdb3ab",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens\\validation.parquet": "aa050406357125998a3ef85c3baed33425424fe482dc8abc943565f7526e3caf"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}
