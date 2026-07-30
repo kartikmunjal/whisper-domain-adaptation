@@ -5,7 +5,7 @@ frame_rate_hz: 50
 seeds: [11, 22, 33, 44, 55]
 training:
   train_manifest: data/financial_research/train_manifest.parquet
-  clip_seconds: 4.0
+  clip_seconds: 2.0
   hidden_dim: 128
   latent_dim: 64
   batch_size: 8

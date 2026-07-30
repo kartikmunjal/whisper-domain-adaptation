@@ -27,6 +27,7 @@ class AudioCodecConfig:
     commitment_cost: float = 0.25
     fsq_levels: Tuple[int, ...] = (8, 8, 8, 8)
     strides: Tuple[int, ...] = (4, 4, 4, 5)
+    spectral_loss_weight: float = 1.0
 
     @property
     def hop_length(self) -> int:
@@ -230,7 +231,9 @@ class AudioVQVAE(nn.Module):
         recon = self.decode(quantized, target_length=target_length)
         if audio.dim() == 2:
             audio = audio.unsqueeze(1)
-        reconstruction_loss = F.l1_loss(recon, audio)
+        waveform_loss = F.l1_loss(recon, audio)
+        spectral_loss = multi_resolution_stft_loss(recon, audio)
+        reconstruction_loss = waveform_loss + self.cfg.spectral_loss_weight * spectral_loss
         total_loss = reconstruction_loss + q_info["quantizer_loss"]
         return {
             "reconstruction": recon,
@@ -238,6 +241,8 @@ class AudioVQVAE(nn.Module):
             "quantized": quantized,
             "loss": total_loss,
             "reconstruction_loss": reconstruction_loss,
+            "waveform_loss": waveform_loss,
+            "spectral_loss": spectral_loss,
             **q_info,
         }
 
@@ -270,3 +275,41 @@ def codec_rate_hz(
 ) -> float:
     """Frame rate after the configured convolutional downsampling stack."""
     return sample_rate / prod(strides)
+
+
+def multi_resolution_stft_loss(
+    reconstruction: torch.Tensor,
+    reference: torch.Tensor,
+    fft_sizes: Tuple[int, ...] = (256, 512, 1024),
+) -> torch.Tensor:
+    """Log-magnitude STFT loss that prevents low-energy silence solutions."""
+    if reference.dim() == 2:
+        reference = reference.unsqueeze(1)
+    reconstruction = reconstruction.reshape(-1, reconstruction.shape[-1])
+    reference = reference.reshape(-1, reference.shape[-1])
+    losses = []
+    for fft_size in fft_sizes:
+        hop = fft_size // 4
+        window = torch.hann_window(
+            fft_size, device=reference.device, dtype=reference.dtype
+        )
+        estimated = torch.stft(
+            reconstruction,
+            n_fft=fft_size,
+            hop_length=hop,
+            window=window,
+            center=False,
+            return_complex=True,
+        ).abs()
+        target = torch.stft(
+            reference,
+            n_fft=fft_size,
+            hop_length=hop,
+            window=window,
+            center=False,
+            return_complex=True,
+        ).abs()
+        losses.append(
+            F.l1_loss(torch.log1p(estimated), torch.log1p(target))
+        )
+    return torch.stack(losses).mean()

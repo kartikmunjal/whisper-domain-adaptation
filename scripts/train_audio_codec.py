@@ -37,10 +37,13 @@ class ManifestAudioDataset(Dataset):
 
     def __getitem__(self, idx: int) -> torch.Tensor:
         audio, _ = librosa.load(self.paths[idx], sr=self.sample_rate, mono=True)
+        audio, _ = librosa.effects.trim(audio, top_db=35)
         if len(audio) < self.num_samples:
             audio = librosa.util.fix_length(audio, size=self.num_samples)
         else:
-            audio = audio[: self.num_samples]
+            max_start = len(audio) - self.num_samples
+            start = random.randint(0, max_start) if max_start else 0
+            audio = audio[start : start + self.num_samples]
         return torch.tensor(audio, dtype=torch.float32)
 
 
@@ -79,7 +82,13 @@ def train(args: argparse.Namespace) -> None:
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
 
     for epoch in range(1, args.epochs + 1):
-        totals = {"loss": 0.0, "reconstruction_loss": 0.0, "quantizer_loss": 0.0}
+        totals = {
+            "loss": 0.0,
+            "waveform_loss": 0.0,
+            "spectral_loss": 0.0,
+            "quantizer_loss": 0.0,
+        }
+        perplexities = []
         for audio in loader:
             audio = audio.to(device)
             out = model(audio)
@@ -88,13 +97,17 @@ def train(args: argparse.Namespace) -> None:
             optimizer.step()
             for key in totals:
                 totals[key] += float(out[key].detach().cpu())
+            if "perplexity" in out:
+                perplexities.append(float(out["perplexity"].detach().cpu()))
 
         denom = max(len(loader), 1)
         print(
             f"epoch={epoch} "
             f"loss={totals['loss'] / denom:.4f} "
-            f"recon={totals['reconstruction_loss'] / denom:.4f} "
-            f"quant={totals['quantizer_loss'] / denom:.4f}"
+            f"wave={totals['waveform_loss'] / denom:.4f} "
+            f"stft={totals['spectral_loss'] / denom:.4f} "
+            f"quant={totals['quantizer_loss'] / denom:.4f} "
+            f"perplexity={np.mean(perplexities) if perplexities else float('nan'):.2f}"
         )
 
     output_dir = Path(args.output_dir)
