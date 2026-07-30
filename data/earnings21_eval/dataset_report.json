@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/prepare_earnings21_eval.py",
+  "seed": 20260729,
+  "n_clips": 20,
+  "n_distinct_calls": 20,
+  "selection_order": "10 domain and 10 common; distinct calls before second clips",
+  "hf_dataset": "Revai/earnings21",
+  "hf_revision": "33b26fbc8bb1e1ab1815d89867c65f13ffdb7422",
+  "reference_repository": "revdotcom/speech-datasets",
+  "reference_revision": "c05ab6fd8b4b627d123c922a22a39e993dd37635",
+  "license": "CC BY-SA 4.0",
+  "selection_uses_model_outputs": false,
+  "manual_verification_status": "pending",
+  "domain_selection": {
+    "vocabulary": "configs/financial_terms.txt",
+    "vocabulary_sha256": "27678f147dbbf03e76e27cdc8a94afb03436b6f51320d92c7747dd0a5b0cc3ba",
+    "domain_clips": 10,
+    "common_clips": 10,
+    "balanced_split_fixed_before_inference": true
+  }
+}

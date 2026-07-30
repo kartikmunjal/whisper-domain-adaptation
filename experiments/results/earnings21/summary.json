@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "title": "Real Earnings-21 financial adaptation result",
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "baseline": {
+    "overall": 0.1055,
+    "domain_terms": 0.1018,
+    "common_terms": 0.1543,
+    "n_domain_utterances": 10,
+    "n_common_utterances": 10
+  },
+  "caveat": "Small 20-clip external-validity anchor; manual listening verification remains pending. Adapter training audio is Edge-TTS, so synthetic-to-real transfer is the estimand.",
+  "metrics": {
+    "overall": {
+      "mean_wer": 0.1147,
+      "trial_values": [
+        0.1191,
+        0.1168,
+        0.1183,
+        0.1021,
+        0.1172
+      ],
+      "trial_bootstrap_95_ci": [
+        0.10835999999999998,
+        0.11840149999999999
+      ],
+      "mean_paired_delta": 0.009193600000000001,
+      "paired_delta_trial_values": [
+        0.013564,
+        0.011304,
+        0.012811,
+        -0.003391,
+        0.01168
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        0.0027884000000000003,
+        0.012961400000000001
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 0.013564,
+          "ci_low": -0.022638,
+          "ci_high": 0.051396,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.011304,
+          "ci_low": -0.025369,
+          "ci_high": 0.048989,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.012811,
+          "ci_low": -0.023366,
+          "ci_high": 0.050572,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": -0.003391,
+          "ci_low": -0.024578,
+          "ci_high": 0.024008,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.01168,
+          "ci_low": -0.024528,
+          "ci_high": 0.050986,
+          "n_resamples": 10000
+        }
+      ]
+    },
+    "domain_terms": {
+      "mean_wer": 0.10642,
+      "trial_values": [
+        0.1111,
+        0.1087,
+        0.1103,
+        0.0929,
+        0.1091
+      ],
+      "trial_bootstrap_95_ci": [
+        0.09954,
+        0.11045999999999997
+      ],
+      "mean_paired_delta": 0.0046229999999999995,
+      "paired_delta_trial_values": [
+        0.009327,
+        0.006894,
+        0.008516,
+        -0.008921,
+        0.007299
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        -0.0021896000000000007,
+        0.008597
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 0.009327,
+          "ci_low": -0.028716,
+          "ci_high": 0.047833,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.006894,
+          "ci_low": -0.031094,
+          "ci_high": 0.044915,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.008516,
+          "ci_low": -0.029091,
+          "ci_high": 0.046169,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": -0.008921,
+          "ci_low": -0.031083,
+          "ci_high": 0.009058,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.007299,
+          "ci_low": -0.0313,
+          "ci_high": 0.045399,
+          "n_resamples": 10000
+        }
+      ]
+    },
+    "common_terms": {
+      "mean_wer": 0.2234,
+      "trial_values": [
+        0.2234,
+        0.2234,
+        0.2234,
+        0.2234,
+        0.2234
+      ],
+      "trial_bootstrap_95_ci": [
+        0.2234,
+        0.2234
+      ],
+      "mean_paired_delta": 0.069149,
+      "paired_delta_trial_values": [
+        0.069149,
+        0.069149,
+        0.069149,
+        0.069149,
+        0.069149
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        0.069149,
+        0.069149
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 0.069149,
+          "ci_low": -0.005025,
+          "ci_high": 0.176796,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.069149,
+          "ci_low": -0.004832,
+          "ci_high": 0.180791,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.069149,
+          "ci_low": -0.005102,
+          "ci_high": 0.177083,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.069149,
+          "ci_low": -0.004609,
+          "ci_high": 0.176796,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 0.069149,
+          "ci_low": -0.004976,
+          "ci_high": 0.176136,
+          "n_resamples": 10000
+        }
+      ]
+    }
+  }
+}
