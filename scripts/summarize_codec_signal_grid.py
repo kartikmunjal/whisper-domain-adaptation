@@ -5,9 +5,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
+import sys
 from pathlib import Path
 
 import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from whisper_adapt.models.audio_codec import AudioVQVAE
 
 SEEDS = (11, 22, 33, 44, 55)
 
@@ -23,19 +28,55 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--results-dir", default="experiments/results/codec_medical")
     parser.add_argument(
+        "--checkpoint-dir", default="checkpoints/codec_rate_grid"
+    )
+    parser.add_argument(
         "--output", default="experiments/results/codec_medical/signal_summary.json"
     )
     parser.add_argument("--bootstrap-resamples", type=int, default=10_000)
     args = parser.parse_args()
     root = Path(args.results_dir)
+    checkpoint_root = Path(args.checkpoint_dir)
     rng = np.random.default_rng(20260729)
     cells = []
     for rate in (300, 400, 500):
         for quantizer in ("vq", "fsq"):
             reports = []
+            training_runs = []
             for seed in SEEDS:
                 path = root / f"{quantizer}_{rate}bps" / f"seed_{seed}" / "report.json"
                 reports.append(json.loads(path.read_text()))
+                run_path = (
+                    checkpoint_root
+                    / f"{quantizer}_{rate}bps"
+                    / f"seed_{seed}"
+                    / "run.json"
+                )
+                training_runs.append(json.loads(run_path.read_text()))
+            batch_sizes = {
+                run["provenance"]["arguments"]["batch_size"] for run in training_runs
+            }
+            epochs = {run["epochs"] for run in training_runs}
+            train_counts = {run["n_train_clips"] for run in training_runs}
+            if len(batch_sizes) != 1 or len(epochs) != 1 or len(train_counts) != 1:
+                raise RuntimeError(
+                    f"Training-budget mismatch within {quantizer}_{rate}bps"
+                )
+            checkpoint = (
+                checkpoint_root
+                / f"{quantizer}_{rate}bps"
+                / f"seed_{SEEDS[0]}"
+                / "codec.pt"
+            )
+            model = AudioVQVAE.from_checkpoint(checkpoint, map_location="cpu")
+            trainable_parameters = sum(
+                parameter.numel() for parameter in model.parameters()
+                if parameter.requires_grad
+            )
+            batch_size = next(iter(batch_sizes))
+            n_epochs = next(iter(epochs))
+            n_train = next(iter(train_counts))
+            optimizer_steps = math.ceil(n_train / batch_size) * n_epochs
             values = np.array([report["si_sdr_db"]["mean"] for report in reports])
             median = float(np.median(values))
             selected_index = min(
@@ -48,6 +89,13 @@ def main() -> None:
                 "nominal_bitrate_bps": rate,
                 "n_trials": len(SEEDS),
                 "seeds": list(SEEDS),
+                "trainable_parameters": trainable_parameters,
+                "optimizer_steps_per_trial": optimizer_steps,
+                "training_budget": {
+                    "n_train_clips": n_train,
+                    "batch_size": batch_size,
+                    "epochs": n_epochs,
+                },
                 "si_sdr_db": {
                     "mean": float(values.mean()),
                     "trial_values": values.tolist(),

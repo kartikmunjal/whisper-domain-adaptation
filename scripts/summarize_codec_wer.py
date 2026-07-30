@@ -187,8 +187,8 @@ def main() -> None:
     lines = [
         "# Medical WER after codec reconstruction",
         "",
-        "| Codec | Nominal rate | Representative measured rate | SI-SDR, five-seed mean (95% trial CI) | Split | Base ΔWER (95% clip CI) | Adapted mean ΔWER (95% trial CI) | N_trials |",
-        "|---|---:|---:|---:|---|---:|---:|---:|",
+        "| Codec | Nominal rate | Representative measured rate | Parameters | Steps/trial | SI-SDR, five-seed mean (95% trial CI) | Split | Base ΔWER (95% clip CI) | Adapted mean ΔWER (95% trial CI) | N_trials |",
+        "|---|---:|---:|---:|---:|---:|---|---:|---:|---:|",
     ]
     for cell in cells:
         signal_ci = cell["si_sdr_db"]["trial_bootstrap_95_ci"]
@@ -200,6 +200,8 @@ def main() -> None:
                 f"| {cell['quantizer'].upper()} | "
                 f"{cell['nominal_bitrate_bps']:.0f} bps | "
                 f"{cell['wer_representative_empirical_bitrate_bps']:.2f} bps | "
+                f"{cell['trainable_parameters']:,} | "
+                f"{cell['optimizer_steps_per_trial']:,} | "
                 f"{cell['si_sdr_db']['mean']:.2f} dB "
                 f"({signal_ci[0]:.2f}–{signal_ci[1]:.2f}) | "
                 f"{labels[metric]} | "
