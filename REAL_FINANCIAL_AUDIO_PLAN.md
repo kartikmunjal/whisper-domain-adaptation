@@ -34,3 +34,15 @@ financial LoRA adapters perform on real earnings-call speech?
 The selection manifest is hashed before inference. Evaluation exits if an
 audio or normalized-reference hash overlaps any financial train or validation
 manifest.
+
+## Implementation correction log
+
+On 2026-07-29, the first pipeline execution revealed that all 20 deterministically
+selected complete speaker turns fell into the common-term slice, making the
+preregistered financial-domain split undefined. Those preliminary outputs are
+quarantined and are not confirmatory results. Before inspecting any adapter
+comparison, selection was corrected to require at least one term from the
+already-committed `configs/financial_terms.txt`. This rule uses official
+reference text only, is applied identically across calls, and never uses an ASR
+hypothesis or WER. The vocabulary hash and matched terms are recorded in the
+generated manifest.

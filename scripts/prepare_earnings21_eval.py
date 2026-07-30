@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import random
+import re
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -68,7 +69,9 @@ def parse_rttm(text: str) -> list[dict]:
     return rows
 
 
-def candidate_window(tokens: list[dict], rttm: list[dict]) -> dict | None:
+def candidate_window(
+    tokens: list[dict], rttm: list[dict], domain_terms: set[str]
+) -> dict | None:
     """Select a complete 15--20 s speaker turn with an exact transcript run."""
     token_runs = group_runs(tokens)
     time_runs = group_runs(rttm)
@@ -78,12 +81,23 @@ def candidate_window(tokens: list[dict], rttm: list[dict]) -> dict | None:
         raise ValueError("NLP and RTTM speaker-run sequences do not match")
     for words, segments in zip(token_runs, time_runs):
         start, end = segments[0]["start"], segments[-1]["end"]
-        if 15.0 <= end - start <= 20.0 and len(words) >= 25:
+        sentence = " ".join(word["token"] for word in words)
+        normalized = " ".join(re.findall(r"[a-z0-9]+", sentence.lower()))
+        matched_terms = sorted(
+            term for term in domain_terms
+            if re.search(rf"\b{re.escape(term)}\b", normalized)
+        )
+        if (
+            15.0 <= end - start <= 20.0
+            and len(words) >= 25
+            and matched_terms
+        ):
             return {
                 "start": start,
                 "end": end,
                 "speaker": words[0]["speaker"],
-                "sentence": " ".join(word["token"] for word in words),
+                "sentence": sentence,
+                "matched_domain_terms": matched_terms,
             }
     return None
 
@@ -93,11 +107,18 @@ def main() -> None:
     parser.add_argument("--output-dir", default="data/earnings21_eval")
     parser.add_argument("--hf-revision", default="main")
     parser.add_argument("--reference-revision", default=None)
+    parser.add_argument("--domain-vocab", default="configs/financial_terms.txt")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     output = root / args.output_dir
     wav_dir = output / "wav"
     wav_dir.mkdir(parents=True, exist_ok=True)
+    domain_vocab_path = root / args.domain_vocab
+    domain_terms = {
+        " ".join(re.findall(r"[a-z0-9]+", line.lower()))
+        for line in domain_vocab_path.read_text().splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    }
 
     api = HfApi()
     hf_sha = api.dataset_info(DATASET_ID, revision=args.hf_revision).sha
@@ -131,7 +152,9 @@ def main() -> None:
         )
         try:
             rttm_text = urllib.request.urlopen(rttm_url).read().decode("utf-8")
-            window = candidate_window(parse_nlp(ref_text), parse_rttm(rttm_text))
+            window = candidate_window(
+                parse_nlp(ref_text), parse_rttm(rttm_text), domain_terms
+            )
         except (ValueError, urllib.error.HTTPError):
             continue
         if window:
@@ -168,6 +191,7 @@ def main() -> None:
             "hf_revision": hf_sha,
             "reference_revision": ref_revision,
             "manual_verification": "pending",
+            "matched_domain_terms": window["matched_domain_terms"],
         })
     frame = pd.DataFrame(rows)
     if frame.call_id.nunique() != N_CLIPS:
@@ -191,6 +215,11 @@ def main() -> None:
         "license": "CC BY-SA 4.0",
         "selection_uses_model_outputs": False,
         "manual_verification_status": "pending",
+        "domain_selection": {
+            "vocabulary": args.domain_vocab,
+            "vocabulary_sha256": hashlib.sha256(domain_vocab_path.read_bytes()).hexdigest(),
+            "all_clips_require_at_least_one_locked_domain_term": True,
+        },
     }
     (output / "dataset_report.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))
