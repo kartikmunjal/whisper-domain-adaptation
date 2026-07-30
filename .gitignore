@@ -20,6 +20,10 @@ build/
 data/raw/
 data/processed/
 data/financial_research/
+data/medical_research/
+data/med_dictate_eval/
+data/codec_tts_tokens/
+data/earnings21_eval_invalid_*/
 checkpoints/
 *.pt
 *.bin
@@ -29,6 +33,11 @@ checkpoints/
 experiments/results/run_*/
 experiments/results/*.csv
 experiments/results/financial_research/
+experiments/results/medical_research/
+experiments/results/codec_medical/
+experiments/results/codec_tts/
+experiments/results/*_invalid_*/
+experiments/results/financial_research_remote_backup/
 
 # Audio files
 *.wav
