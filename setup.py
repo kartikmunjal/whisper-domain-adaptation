@@ -18,6 +18,7 @@ setup(
         "soundfile>=0.12.1",
         "numpy>=1.24.0",
         "pandas>=2.0.0",
+        "matplotlib>=3.7.0",
         "tqdm>=4.65.0",
         "edge-tts>=6.1.0,<8",
         "pyyaml>=6.0,<7",
