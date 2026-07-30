@@ -39,7 +39,7 @@ def main() -> None:
             )
         print({
             "quantizer": quantizer,
-            "loss": float(output["loss"]),
+            "loss": float(output["loss"].detach()),
             "gradient_tensors": gradients,
             "frame_rate_hz": cfg.frame_rate_hz,
             "nominal_bitrate_bps": model.nominal_bitrate_bps,

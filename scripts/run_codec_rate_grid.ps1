@@ -1,4 +1,6 @@
 $ErrorActionPreference = "Stop"
+$repoRoot = Split-Path -Parent $PSScriptRoot
+Set-Location $repoRoot
 
 function Invoke-CheckedPython {
   & .\.venv\Scripts\python.exe @args
