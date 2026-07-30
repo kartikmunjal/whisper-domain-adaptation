@@ -9,6 +9,8 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+import librosa
+import numpy as np
 import soundfile as sf
 import torch
 
@@ -17,6 +19,29 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from whisper_adapt.models.audio_codec import AudioVQVAE
 from whisper_adapt.models.codec_tts import CodecTokenTTS, encode_text_bytes
 from whisper_adapt.reproducibility import sha256_file
+
+
+def si_sdr(reference: np.ndarray, estimate: np.ndarray) -> float:
+    length = min(len(reference), len(estimate))
+    reference = reference[:length].astype(np.float64)
+    estimate = estimate[:length].astype(np.float64)
+    reference -= reference.mean()
+    estimate -= estimate.mean()
+    scale = np.dot(estimate, reference) / (np.dot(reference, reference) + 1e-12)
+    target = scale * reference
+    noise = estimate - target
+    return float(10 * np.log10(
+        (np.dot(target, target) + 1e-12) / (np.dot(noise, noise) + 1e-12)
+    ))
+
+
+def bootstrap_mean_ci(values: list[float], n: int = 10_000) -> list[float]:
+    array = np.asarray(values, dtype=float)
+    rng = np.random.default_rng(20260729)
+    means = np.array([
+        rng.choice(array, len(array), replace=True).mean() for _ in range(n)
+    ])
+    return np.quantile(means, [0.025, 0.975]).tolist()
 
 
 def main() -> None:
@@ -29,6 +54,7 @@ def main() -> None:
     parser.add_argument("--manifest", default="data/financial_research/test_manifest.parquet")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--max-new-tokens", type=int, default=800)
+    parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
@@ -39,30 +65,49 @@ def main() -> None:
     wav_dir = output / "wav"
     wav_dir.mkdir(parents=True, exist_ok=True)
     frame = pd.read_parquet(root / args.manifest)
+    targets = pd.read_parquet(root / "data/codec_tts_tokens/test.parquet")
+    target_lengths = dict(zip(targets.id.astype(str), targets.n_codec_tokens))
     rows = []
-    for row in frame.to_dict("records"):
-        text_ids = torch.tensor(
-            [encode_text_bytes(row["sentence"], tts.config.max_text_tokens)],
-            dtype=torch.long,
-            device=device,
+    records = frame.to_dict("records")
+    for start in range(0, len(records), args.batch_size):
+        batch = records[start:start + args.batch_size]
+        encoded = [
+            encode_text_bytes(row["sentence"], tts.config.max_text_tokens)
+            for row in batch
+        ]
+        text_ids = torch.zeros(
+            len(batch), max(map(len, encoded)), dtype=torch.long, device=device
         )
-        generated = tts.generate(text_ids, max_new_tokens=args.max_new_tokens)[0]
-        eos = generated.eq(tts.config.audio_eos_id).nonzero()
-        if len(eos):
-            generated = generated[: int(eos[0])]
-        generated = generated[generated.lt(tts.config.codebook_size)]
-        if not len(generated):
-            raise RuntimeError(f"Model generated no codec tokens for {row['id']}")
-        waveform = codec.decode_vq_indices(generated)[0, 0].cpu().numpy()
-        wav_path = wav_dir / f"{row['id']}.wav"
-        sf.write(wav_path, waveform, codec.cfg.sample_rate, subtype="PCM_16")
-        rows.append({
-            **row,
-            "edge_tts_path": row["path"],
-            "path": str(wav_path.relative_to(root)),
-            "n_generated_codec_tokens": len(generated),
-            "terminated_with_eos": bool(len(eos)),
-        })
+        for index, ids in enumerate(encoded):
+            text_ids[index, :len(ids)] = torch.tensor(ids, device=device)
+        generated_batch = tts.generate(
+            text_ids, max_new_tokens=args.max_new_tokens
+        )
+        for row, generated in zip(batch, generated_batch):
+            eos = generated.eq(tts.config.audio_eos_id).nonzero()
+            if len(eos):
+                generated = generated[: int(eos[0])]
+            generated = generated[generated.lt(tts.config.codebook_size)]
+            if not len(generated):
+                raise RuntimeError(f"Model generated no codec tokens for {row['id']}")
+            waveform = codec.decode_vq_indices(generated)[0, 0].cpu().numpy()
+            reference, _ = librosa.load(
+                root / row["path"], sr=codec.cfg.sample_rate, mono=True
+            )
+            wav_path = wav_dir / f"{row['id']}.wav"
+            sf.write(wav_path, waveform, codec.cfg.sample_rate, subtype="PCM_16")
+            rows.append({
+                **row,
+                "edge_tts_path": row["path"],
+                "path": str(wav_path.relative_to(root)),
+                "n_generated_codec_tokens": len(generated),
+                "n_reference_codec_tokens": int(target_lengths[str(row["id"])]),
+                "absolute_sequence_length_error": abs(
+                    len(generated) - int(target_lengths[str(row["id"])])
+                ),
+                "si_sdr_db": si_sdr(reference, waveform),
+                "terminated_with_eos": bool(len(eos)),
+            })
     generated_manifest = output / "generated_manifest.parquet"
     pd.DataFrame(rows).to_parquet(generated_manifest, index=False)
     report = {
@@ -76,7 +121,22 @@ def main() -> None:
         "n_samples": len(rows),
         "decoding": "greedy",
         "max_new_tokens": args.max_new_tokens,
+        "batch_size": args.batch_size,
         "eos_rate": sum(row["terminated_with_eos"] for row in rows) / len(rows),
+        "sequence_length_error": {
+            "mean_absolute_tokens": float(np.mean([
+                row["absolute_sequence_length_error"] for row in rows
+            ])),
+            "clip_bootstrap_95_ci": bootstrap_mean_ci([
+                row["absolute_sequence_length_error"] for row in rows
+            ]),
+        },
+        "si_sdr_db": {
+            "mean": float(np.mean([row["si_sdr_db"] for row in rows])),
+            "clip_bootstrap_95_ci": bootstrap_mean_ci([
+                row["si_sdr_db"] for row in rows
+            ]),
+        },
     }
     (output / "generation_report.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))
