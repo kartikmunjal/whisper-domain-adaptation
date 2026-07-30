@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "checkpoint": "checkpoints\\codec_rate_grid\\fsq_500bps\\seed_11\\codec.pt",
+  "checkpoint_sha256": "687f000a6585492f60907a57e102719050452fa4a3171ed0c3b654e797f32a62",
+  "quantizer": "fsq",
+  "n_clips": 24,
+  "nominal_bitrate_bps": 500.0,
+  "empirical_bitrate_bps": 0.0,
+  "si_sdr_db": {
+    "mean": -57.47182851316986,
+    "clip_bootstrap_95_ci": [
+      -61.0880104776825,
+      -54.08756982145159
+    ],
+    "clip_values": [
+      -57.78725528743634,
+      -66.80228801402599,
+      -53.26431363799464,
+      -52.512553003629264,
+      -50.007977605648094,
+      -55.63023270494929,
+      -44.529102376882875,
+      -48.761397430198066,
+      -46.83091935953057,
+      -80.3502874071084,
+      -66.74081181657992,
+      -49.71850611565433,
+      -67.52752144561087,
+      -55.201301898135036,
+      -62.94749120984755,
+      -56.87146383313311,
+      -57.929843866110645,
+      -62.1714611358198,
+      -56.42486610071279,
+      -48.9426854684549,
+      -72.41573415811628,
+      -48.24042166408478,
+      -63.20679476783285,
+      -54.5086540085801
+    ]
+  },
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-30T04:04:12.267090+00:00",
+    "git_commit": "843636e987875162ab71e3d950b83b6c905bb114",
+    "git_dirty": false,
+    "arguments": {
+      "checkpoint": "checkpoints/codec_rate_grid/fsq_500bps/seed_11/codec.pt",
+      "eval_manifest": "data/med_dictate_eval/eval_en_manifest.parquet",
+      "output_dir": "experiments/results/codec_medical/fsq_500bps/seed_11",
+      "bootstrap_resamples": 10000,
+      "device": "cuda"
+    },
+    "seed": 20260729,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_rate_grid\\fsq_500bps\\seed_11\\codec.pt": "687f000a6585492f60907a57e102719050452fa4a3171ed0c3b654e797f32a62",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\med_dictate_eval\\eval_en_manifest.parquet": "629d2e4c9c084191b5275567992efb24c8475ae2eaf795a3eac0133742a96e79"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

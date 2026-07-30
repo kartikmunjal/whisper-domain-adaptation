@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "seed": 55,
+  "quantizer": "vq",
+  "nominal_bits_per_frame": 6.0,
+  "frame_rate_hz": 50.0,
+  "nominal_bitrate_bps": 300.0,
+  "n_train_clips": 294,
+  "epochs": 30,
+  "config": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "hidden_dim": 128,
+    "latent_dim": 64,
+    "codebook_size": 64,
+    "commitment_cost": 0.25,
+    "fsq_levels": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "strides": [
+      4,
+      4,
+      4,
+      5
+    ],
+    "spectral_loss_weight": 1.0
+  },
+  "checkpoint_sha256": "0733ce41c15d6aa427e6c1d4fe4927e6906f9df93a7c19a286bf0f783f619f29",
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-30T03:32:44.455349+00:00",
+    "git_commit": "9b3855d9f1bacb002f2016f757fd240ae6efcb0f",
+    "git_dirty": false,
+    "arguments": {
+      "train_manifest": "data/financial_research/train_manifest.parquet",
+      "output_dir": "checkpoints/codec_rate_grid/vq_300bps/seed_55",
+      "quantizer": "vq",
+      "sample_rate": 16000,
+      "clip_seconds": 2.0,
+      "hidden_dim": 128,
+      "latent_dim": 64,
+      "codebook_size": 64,
+      "commitment_cost": 0.25,
+      "fsq_levels": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "strides": [
+        4,
+        4,
+        4,
+        5
+      ],
+      "batch_size": 8,
+      "epochs": 30,
+      "learning_rate": 0.0003,
+      "seed": 55,
+      "device": "cuda"
+    },
+    "seed": 55,
+    "inputs": {
+      "data\\financial_research\\train_manifest.parquet": "415eedab115230e11a3441d222646ca350c30a4225685849d1e9c9cd3fed9755"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}
