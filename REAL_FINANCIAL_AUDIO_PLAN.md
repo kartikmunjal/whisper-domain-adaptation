@@ -41,8 +41,8 @@ On 2026-07-29, the first pipeline execution revealed that all 20 deterministical
 selected complete speaker turns fell into the common-term slice, making the
 preregistered financial-domain split undefined. Those preliminary outputs are
 quarantined and are not confirmatory results. Before inspecting any adapter
-comparison, selection was corrected to require at least one term from the
-already-committed `configs/financial_terms.txt`. This rule uses official
-reference text only, is applied identically across calls, and never uses an ASR
-hypothesis or WER. The vocabulary hash and matched terms are recorded in the
-generated manifest.
+comparison, selection was corrected to a fixed 10-domain/10-common balance,
+where domain membership requires at least one term from the already-committed
+`configs/financial_terms.txt`. This rule uses official reference text only, is
+applied identically across calls, and never uses an ASR hypothesis or WER. The
+vocabulary hash and matched terms are recorded in the generated manifest.

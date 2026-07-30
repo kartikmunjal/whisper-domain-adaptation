@@ -88,7 +88,7 @@ def candidate_windows(
             term for term in domain_terms
             if re.search(rf"\b{re.escape(term)}\b", normalized)
         )
-        if 5.0 <= end - start <= 300.0 and len(words) >= 8 and matched_terms:
+        if 5.0 <= end - start <= 300.0 and len(words) >= 8:
             candidates.append({
                 "start": start,
                 "end": end,
@@ -156,19 +156,25 @@ def main() -> None:
             continue
         if windows:
             eligible_calls.append((call_id, audio_candidates[0], item, windows))
-    selected = [
-        (call_id, audio_name, item, windows[0])
-        for call_id, audio_name, item, windows in eligible_calls
-    ]
-    if len(selected) < 15:
-        raise RuntimeError(f"Only {len(selected)} eligible distinct calls found")
+    domain_entries = []
+    common_entries = []
     for call_id, audio_name, item, windows in eligible_calls:
-        for window in windows[1:]:
-            if len(selected) == N_CLIPS:
-                break
-            selected.append((call_id, audio_name, item, window))
-        if len(selected) == N_CLIPS:
-            break
+        domain = [window for window in windows if window["matched_domain_terms"]]
+        common = [window for window in windows if not window["matched_domain_terms"]]
+        if domain:
+            domain_entries.append((call_id, audio_name, item, domain[0]))
+        if common:
+            common_entries.append((call_id, audio_name, item, common[0]))
+    selected = domain_entries[:10]
+    used_calls = {entry[0] for entry in selected}
+    common_unused = [entry for entry in common_entries if entry[0] not in used_calls]
+    selected.extend(common_unused[:10])
+    if len(selected) < N_CLIPS:
+        selected.extend(
+            entry for entry in common_entries
+            if entry[0] in used_calls and entry not in selected
+        )
+        selected = selected[:N_CLIPS]
     if len(selected) != N_CLIPS:
         raise RuntimeError(f"Only {len(selected)} eligible clips found")
 
@@ -204,6 +210,9 @@ def main() -> None:
     frame = pd.DataFrame(rows)
     if frame.call_id.nunique() < 15:
         raise RuntimeError("Distinct-call coverage invariant failed")
+    domain_count = int(frame.matched_domain_terms.map(bool).sum())
+    if domain_count != 10:
+        raise RuntimeError(f"Expected 10 domain and 10 common clips, got {domain_count}")
     frame.to_parquet(output / "eval_manifest.parquet", index=False)
     ledger = frame[[
         "id", "call_id", "path", "sentence", "source_start_seconds",
@@ -216,7 +225,7 @@ def main() -> None:
         "seed": SEED,
         "n_clips": len(frame),
         "n_distinct_calls": frame.call_id.nunique(),
-        "selection_order": "one clip per eligible call before any second clip",
+        "selection_order": "10 domain and 10 common; distinct calls before second clips",
         "hf_dataset": DATASET_ID,
         "hf_revision": hf_sha,
         "reference_repository": REFERENCE_REPO,
@@ -227,7 +236,9 @@ def main() -> None:
         "domain_selection": {
             "vocabulary": args.domain_vocab,
             "vocabulary_sha256": hashlib.sha256(domain_vocab_path.read_bytes()).hexdigest(),
-            "all_clips_require_at_least_one_locked_domain_term": True,
+            "domain_clips": domain_count,
+            "common_clips": N_CLIPS - domain_count,
+            "balanced_split_fixed_before_inference": True,
         },
     }
     (output / "dataset_report.json").write_text(json.dumps(report, indent=2))
