@@ -51,9 +51,16 @@ def bootstrap_mean(values: np.ndarray, n: int) -> list[float]:
 
 
 def empirical_entropy(indices: torch.Tensor) -> float:
+    """Return entropy per codec frame for VQ scalars or FSQ code vectors.
+
+    VQ emits ``[batch, frames]`` scalar indices, while FSQ emits
+    ``[batch, frames, dimensions]`` vectors.  Flattening a two-dimensional
+    VQ tensor into one row would incorrectly count an entire utterance as a
+    single symbol and therefore report zero bitrate.
+    """
     array = indices.detach().cpu().numpy()
-    if array.ndim == 1:
-        _, counts = np.unique(array, return_counts=True)
+    if array.ndim <= 2:
+        _, counts = np.unique(array.reshape(-1), return_counts=True)
     else:
         flattened = array.reshape(-1, array.shape[-1])
         _, counts = np.unique(flattened, axis=0, return_counts=True)
