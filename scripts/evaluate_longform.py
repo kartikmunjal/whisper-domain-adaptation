@@ -8,6 +8,7 @@ import json
 import sys
 from pathlib import Path
 
+import librosa
 import pandas as pd
 import torch
 from transformers import WhisperForConditionalGeneration, WhisperProcessor, pipeline
@@ -61,11 +62,18 @@ def main() -> None:
     frame = pd.read_parquet(args.eval_manifest)
     audio_root = Path(args.audio_root) if args.audio_root else root
     paths = [
-        str(path if (path := Path(value)).is_absolute() else audio_root / path)
+        path if (path := Path(value)).is_absolute() else audio_root / path
         for value in frame.path
     ]
+    audio_inputs = []
+    for path in paths:
+        samples, _ = librosa.load(path, sr=processor.feature_extractor.sampling_rate, mono=True)
+        audio_inputs.append({
+            "raw": samples,
+            "sampling_rate": processor.feature_extractor.sampling_rate,
+        })
     outputs = recognizer(
-        paths,
+        audio_inputs,
         batch_size=1,
         generate_kwargs={"language": "en", "task": "transcribe"},
     )
