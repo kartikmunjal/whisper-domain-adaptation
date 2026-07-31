@@ -161,14 +161,23 @@ text → predicted tokens → codec decoder → waveform, followed by round-trip
 Whisper WER and comparison with the corresponding Edge-TTS clips. No TTS claim
 is inferred from teacher-forced validation alone.
 
-The completed [five-seed TTS report](experiments/results/codec_tts/summary.md)
-finds mean codec-TTS round-trip WER of 1020.62% (95% trial-bootstrap CI
-701.83–1353.10%) versus 1.18% for paired Edge-TTS. Mean generation-failure rate
-is 27.76% (8.37–61.43%), and SI-SDR conditional on decodable output is
--42.99 dB (-44.07 to -42.02). WER can exceed 100% because uncontrolled
-insertions outnumber reference words. The implementation closes the
-text-to-token-to-waveform loop, but this small autoregressive model is
-decisively noncompetitive under the locked experiment.
+The duplicate-safe [five-seed before report](experiments/results/codec_tts_unique_before/summary.md)
+finds mean codec-TTS round-trip WER of 1021.68% (95% trial-bootstrap CI
+743.45–1326.60%) versus 1.18% for paired Edge-TTS. WER can exceed 100% because
+insertions outnumber reference words. A monitoring audit found four repeated
+source IDs in 98 rows; stable row-indexed filenames now prevent silent waveform
+overwrites, and both conditions were regenerated with that fix.
+
+The preregistered [duration-control correction](experiments/results/codec_tts_corrective/comparison.md)
+reduced mean absolute codec-token length error from 217.71 to 69.79 tokens
+(paired change -147.91, 95% trial-bootstrap CI -278.70 to -48.38), but did not
+improve the primary outcome: overall WER changed to 1151.24%, a paired
++129.56-point change with a wide CI (-432.97 to +546.02). Domain WER was also
+not improved, and common-term WER worsened. The repetition penalty remains
+implemented but was disabled after its locked tiny-set diagnostic increased
+token error from 30.08% to 43.55%. Thus the correction controls duration, not
+intelligibility; this small autoregressive model remains decisively
+noncompetitive.
 
 ## License
 

@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "diagnostic": "free-running tiny-set memorization; not a generalization result",
+  "n_examples": 16,
+  "steps": 1000,
+  "corrective": true,
+  "mean_token_error_rate": 0.30280373305413544,
+  "exact_match_rate": 0.4375,
+  "eos_rate": 1.0,
+  "history": [
+    {
+      "step": 1,
+      "token_nll": 6.2530293464660645,
+      "duration_loss": 4.563621520996094,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 100,
+      "token_nll": 0.009191753342747688,
+      "duration_loss": 0.0011536937672644854,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 200,
+      "token_nll": 0.006477441638708115,
+      "duration_loss": 0.0007116864435374737,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 300,
+      "token_nll": 0.0066613974049687386,
+      "duration_loss": 0.0005592661909759045,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 400,
+      "token_nll": 0.008271433413028717,
+      "duration_loss": 0.00021558586740866303,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 500,
+      "token_nll": 0.009651167318224907,
+      "duration_loss": 0.0004885348025709391,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 600,
+      "token_nll": 0.006837795488536358,
+      "duration_loss": 0.0002499712281860411,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 700,
+      "token_nll": 0.0057019395753741264,
+      "duration_loss": 0.0006670575821772218,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 800,
+      "token_nll": 0.0064971791580319405,
+      "duration_loss": 0.0004521707887761295,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 900,
+      "token_nll": 0.005752759054303169,
+      "duration_loss": 0.0012234138557687402,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "step": 1000,
+      "token_nll": 0.006361210253089666,
+      "duration_loss": 0.00018680421635508537,
+      "scheduled_sampling_probability": 0.0
+    }
+  ],
+  "examples": [
+    {
+      "id": "ed6f468391502bf5",
+      "reference_length": 167,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "ce0c5c61954b0768",
+      "reference_length": 170,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7058823529411765,
+      "exact_match": false
+    },
+    {
+      "id": "1d2e09aa96066bfc",
+      "reference_length": 177,
+      "generated_length": 177,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "6589fecdaf3f3def",
+      "reference_length": 178,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7471910112359551,
+      "exact_match": false
+    },
+    {
+      "id": "c5397a4a29d99412",
+      "reference_length": 179,
+      "generated_length": 179,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "ba6036035420031d",
+      "reference_length": 181,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "2755d66d3e5cda33",
+      "reference_length": 183,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.6120218579234973,
+      "exact_match": false
+    },
+    {
+      "id": "f8fe24361de28f4f",
+      "reference_length": 183,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.5191256830601093,
+      "exact_match": false
+    },
+    {
+      "id": "3f94aa3c0573faac",
+      "reference_length": 184,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.4945652173913043,
+      "exact_match": false
+    },
+    {
+      "id": "6cdb31d9a6def811",
+      "reference_length": 184,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.4782608695652174,
+      "exact_match": false
+    },
+    {
+      "id": "ab98f695b1cc4a61",
+      "reference_length": 185,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7135135135135136,
+      "exact_match": false
+    },
+    {
+      "id": "68bbdc68fc9fd7e8",
+      "reference_length": 188,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.5425531914893617,
+      "exact_match": false
+    },
+    {
+      "id": "b03297f3f1226f9c",
+      "reference_length": 189,
+      "generated_length": 189,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.031746031746031744,
+      "exact_match": false
+    },
+    {
+      "id": "cea4b5049f671508",
+      "reference_length": 190,
+      "generated_length": 190,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "2dcad2badd09957d",
+      "reference_length": 191,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "7b25ef964aa6af7c",
+      "reference_length": 191,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    }
+  ],
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-31T16:40:56.923699+00:00",
+    "git_commit": "74bbc69757c95b95eb969b60de0a6b441b03f1ea",
+    "git_dirty": false,
+    "arguments": {
+      "data_dir": "data/codec_tts_tokens",
+      "output": "experiments/results/codec_tts_corrective/overfit_duration_only.json",
+      "n_examples": 16,
+      "steps": 1000,
+      "learning_rate": 0.001,
+      "seed": 20260731,
+      "device": "cuda",
+      "corrective": true,
+      "duration_loss_weight": 0.1,
+      "scheduled_sampling_max": 0.0,
+      "length_cap_multiplier": 1.25,
+      "repetition_penalty": 0.0
+    },
+    "seed": 20260731,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens\\train.parquet": "76a79581441929ffa9e3caed5b26887231cd388307d96394a7881387e3cdb3ab"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

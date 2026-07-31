@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "tts_checkpoint": "checkpoints/codec_tts_corrective/seed_22/model.pt",
+  "tts_sha256": "6f622ceb5f3592fe751ab42d59a45c90b4f005af478fe333cc88fae18157b945",
+  "codec_checkpoint": "checkpoints/codec_rate_grid/vq_400bps/seed_11/codec.pt",
+  "codec_sha256": "46784649078201fc8926efa1afceeaf131544c33195f69512160cbd4acd8f64b",
+  "source_manifest": "data/financial_research/test_manifest.parquet",
+  "source_manifest_sha256": "e9e256c6a8bdbb16e2bdadacd004461220b2f7558fdd82d2f753c052cd939a69",
+  "n_samples": 98,
+  "decoding": "greedy_duration_capped",
+  "max_new_tokens": 800,
+  "use_duration_control": true,
+  "length_cap_multiplier": 1.25,
+  "repetition_penalty": 0.0,
+  "batch_size": 4,
+  "waveform_filename_scheme": "zero_padded_row_index_then_source_id",
+  "eos_rate": 1.0,
+  "nontermination_rate": 0.0,
+  "empty_token_failure_rate": 0.0,
+  "generation_failure_rate": 0.0,
+  "sequence_length_error": {
+    "mean_absolute_tokens": 49.40816326530612,
+    "clip_bootstrap_95_ci": [
+      44.173469387755105,
+      54.55102040816327
+    ]
+  },
+  "si_sdr_db_conditional_on_decodable_output": {
+    "mean": -42.21383527501117,
+    "clip_bootstrap_95_ci": [
+      -44.17440212432575,
+      -40.3398147055262
+    ],
+    "n_valid": 98
+  },
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-31T18:35:52.304918+00:00",
+    "git_commit": "74d86ee915a50ff3e782fd3b6eaa72345363c888",
+    "git_dirty": false,
+    "arguments": {
+      "tts_checkpoint": "checkpoints/codec_tts_corrective/seed_22/model.pt",
+      "seed": 22,
+      "codec_checkpoint": "checkpoints/codec_rate_grid/vq_400bps/seed_11/codec.pt",
+      "manifest": "data/financial_research/test_manifest.parquet",
+      "output_dir": "experiments/results/codec_tts_corrective/seed_22",
+      "max_new_tokens": 800,
+      "use_duration_control": true,
+      "length_cap_multiplier": 1.25,
+      "repetition_penalty": 0.0,
+      "batch_size": 4,
+      "device": "cuda"
+    },
+    "seed": 22,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_corrective\\seed_22\\model.pt": "6f622ceb5f3592fe751ab42d59a45c90b4f005af478fe333cc88fae18157b945",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_rate_grid\\vq_400bps\\seed_11\\codec.pt": "46784649078201fc8926efa1afceeaf131544c33195f69512160cbd4acd8f64b",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\financial_research\\test_manifest.parquet": "e9e256c6a8bdbb16e2bdadacd004461220b2f7558fdd82d2f753c052cd939a69",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens\\test.parquet": "6649d3c099fe707a5f826cf5ddffb9da5978a18cf9b09c46361227bb137f5395"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

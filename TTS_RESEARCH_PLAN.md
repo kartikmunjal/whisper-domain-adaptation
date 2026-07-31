@@ -92,3 +92,14 @@ The repetition-penalty implementation and failed result are retained, but the
 confirmatory five-seed corrective comparison fixes the penalty at 0.0. All
 other Amendment 1 settings and outcomes remain unchanged. No further setting
 may be chosen from validation or test WER.
+
+## Final result
+
+All five paired trials completed under the duplicate-safe evaluator. Duration
+control reduced mean absolute sequence-length error from 217.71 to 69.79
+tokens (paired change -147.91; 95% trial-bootstrap CI -278.70 to -48.38), but
+overall round-trip WER changed from 1021.68% to 1151.24% (paired +129.56
+percentage points; -432.97 to +546.02). Domain WER changed from 1057.93% to
+1111.81%, and common WER worsened from 588.00% to 1623.00%. The corrective
+study therefore supports a duration-control claim only, not improved speech
+intelligibility or TTS quality.

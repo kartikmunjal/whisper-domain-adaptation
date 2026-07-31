@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "metrics": {
+    "overall": {
+      "before_mean_wer": 10.216800000000001,
+      "after_mean_wer": 11.51244,
+      "paired_after_minus_before_trial_values": [
+        0.5833999999999993,
+        -9.137,
+        4.866999999999999,
+        2.8812999999999995,
+        7.283499999999999
+      ],
+      "paired_mean_delta": 1.2956399999999992,
+      "paired_trial_bootstrap_95_ci": [
+        -4.329680000000001,
+        5.460179999999999
+      ]
+    },
+    "domain_terms": {
+      "before_mean_wer": 10.57932,
+      "after_mean_wer": 11.118079999999999,
+      "paired_after_minus_before_trial_values": [
+        0.6321999999999992,
+        -10.912199999999999,
+        5.583100000000001,
+        1.3124000000000002,
+        6.078299999999999
+      ],
+      "paired_mean_delta": 0.5387600000000001,
+      "paired_trial_bootstrap_95_ci": [
+        -5.304259999999999,
+        4.92704
+      ]
+    },
+    "common_terms": {
+      "before_mean_wer": 5.88,
+      "after_mean_wer": 16.229999999999997,
+      "paired_after_minus_before_trial_values": [
+        0.0,
+        12.100000000000001,
+        -3.6999999999999993,
+        21.65,
+        21.7
+      ],
+      "paired_mean_delta": 10.35,
+      "paired_trial_bootstrap_95_ci": [
+        0.9400000000000006,
+        19.759999999999998
+      ]
+    }
+  },
+  "diagnostics": {
+    "absolute_sequence_length_error_tokens": {
+      "before_mean": 217.7061224489796,
+      "after_mean": 69.79183673469387,
+      "paired_mean_delta": -147.9142857142857,
+      "paired_trial_bootstrap_95_ci": [
+        -278.69591836734696,
+        -48.38163265306123
+      ]
+    },
+    "eos_rate": {
+      "before_mean": 1.0,
+      "after_mean": 1.0,
+      "paired_mean_delta": 0.0,
+      "paired_trial_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "generation_failure_rate": {
+      "before_mean": 0.0,
+      "after_mean": 0.0,
+      "paired_mean_delta": 0.0,
+      "paired_trial_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "si_sdr_db_conditional_on_decodable_output": {
+      "before_mean": -42.98688527583628,
+      "after_mean": -42.71110457733722,
+      "paired_mean_delta": 0.2757806984990637,
+      "paired_trial_bootstrap_95_ci": [
+        -0.4359703662356125,
+        0.9875317632337399
+      ]
+    }
+  }
+}

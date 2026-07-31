@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "diagnostic": "free-running tiny-set memorization; not a generalization result",
+  "n_examples": 16,
+  "steps": 1000,
+  "corrective": true,
+  "mean_token_error_rate": 0.4354513170352537,
+  "exact_match_rate": 0.0,
+  "eos_rate": 1.0,
+  "history": [
+    {
+      "step": 1,
+      "token_nll": 6.253342151641846,
+      "duration_loss": 4.563621520996094,
+      "scheduled_sampling_probability": 0.0005
+    },
+    {
+      "step": 100,
+      "token_nll": 0.011901605874300003,
+      "duration_loss": 0.0008181289886124432,
+      "scheduled_sampling_probability": 0.05
+    },
+    {
+      "step": 200,
+      "token_nll": 0.015314214862883091,
+      "duration_loss": 0.0006819031550548971,
+      "scheduled_sampling_probability": 0.1
+    },
+    {
+      "step": 300,
+      "token_nll": 0.007648726459592581,
+      "duration_loss": 0.0006143668433651328,
+      "scheduled_sampling_probability": 0.15
+    },
+    {
+      "step": 400,
+      "token_nll": 0.012265270575881004,
+      "duration_loss": 0.00043818127596750855,
+      "scheduled_sampling_probability": 0.2
+    },
+    {
+      "step": 500,
+      "token_nll": 0.012832540087401867,
+      "duration_loss": 0.0012167892418801785,
+      "scheduled_sampling_probability": 0.25
+    },
+    {
+      "step": 600,
+      "token_nll": 0.016225865110754967,
+      "duration_loss": 0.00044948727008886635,
+      "scheduled_sampling_probability": 0.25
+    },
+    {
+      "step": 700,
+      "token_nll": 0.007009986322373152,
+      "duration_loss": 0.001103460555896163,
+      "scheduled_sampling_probability": 0.25
+    },
+    {
+      "step": 800,
+      "token_nll": 0.009526092559099197,
+      "duration_loss": 0.00042618357110768557,
+      "scheduled_sampling_probability": 0.25
+    },
+    {
+      "step": 900,
+      "token_nll": 0.018769854679703712,
+      "duration_loss": 0.0003463788307271898,
+      "scheduled_sampling_probability": 0.25
+    },
+    {
+      "step": 1000,
+      "token_nll": 0.012522868812084198,
+      "duration_loss": 0.0005039657116867602,
+      "scheduled_sampling_probability": 0.25
+    }
+  ],
+  "examples": [
+    {
+      "id": "ed6f468391502bf5",
+      "reference_length": 167,
+      "generated_length": 177,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7724550898203593,
+      "exact_match": false
+    },
+    {
+      "id": "ce0c5c61954b0768",
+      "reference_length": 170,
+      "generated_length": 177,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7764705882352941,
+      "exact_match": false
+    },
+    {
+      "id": "1d2e09aa96066bfc",
+      "reference_length": 177,
+      "generated_length": 166,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.062146892655367235,
+      "exact_match": false
+    },
+    {
+      "id": "6589fecdaf3f3def",
+      "reference_length": 178,
+      "generated_length": 177,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7415730337078652,
+      "exact_match": false
+    },
+    {
+      "id": "c5397a4a29d99412",
+      "reference_length": 179,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.1005586592178771,
+      "exact_match": false
+    },
+    {
+      "id": "ba6036035420031d",
+      "reference_length": 181,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.6740331491712708,
+      "exact_match": false
+    },
+    {
+      "id": "2755d66d3e5cda33",
+      "reference_length": 183,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7759562841530054,
+      "exact_match": false
+    },
+    {
+      "id": "f8fe24361de28f4f",
+      "reference_length": 183,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.15846994535519127,
+      "exact_match": false
+    },
+    {
+      "id": "3f94aa3c0573faac",
+      "reference_length": 184,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7228260869565217,
+      "exact_match": false
+    },
+    {
+      "id": "6cdb31d9a6def811",
+      "reference_length": 184,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.6304347826086957,
+      "exact_match": false
+    },
+    {
+      "id": "ab98f695b1cc4a61",
+      "reference_length": 185,
+      "generated_length": 177,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.14054054054054055,
+      "exact_match": false
+    },
+    {
+      "id": "68bbdc68fc9fd7e8",
+      "reference_length": 188,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7180851063829787,
+      "exact_match": false
+    },
+    {
+      "id": "b03297f3f1226f9c",
+      "reference_length": 189,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.15873015873015872,
+      "exact_match": false
+    },
+    {
+      "id": "cea4b5049f671508",
+      "reference_length": 190,
+      "generated_length": 190,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.1736842105263158,
+      "exact_match": false
+    },
+    {
+      "id": "2dcad2badd09957d",
+      "reference_length": 191,
+      "generated_length": 177,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.07329842931937172,
+      "exact_match": false
+    },
+    {
+      "id": "7b25ef964aa6af7c",
+      "reference_length": 191,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.2879581151832461,
+      "exact_match": false
+    }
+  ],
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-31T16:38:19.369595+00:00",
+    "git_commit": "74bbc69757c95b95eb969b60de0a6b441b03f1ea",
+    "git_dirty": false,
+    "arguments": {
+      "data_dir": "data/codec_tts_tokens",
+      "output": "experiments/results/codec_tts_corrective/overfit_post.json",
+      "n_examples": 16,
+      "steps": 1000,
+      "learning_rate": 0.001,
+      "seed": 20260731,
+      "device": "cuda",
+      "corrective": true,
+      "duration_loss_weight": 0.1,
+      "scheduled_sampling_max": 0.25,
+      "length_cap_multiplier": 1.25,
+      "repetition_penalty": 0.5
+    },
+    "seed": 20260731,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens\\train.parquet": "76a79581441929ffa9e3caed5b26887231cd388307d96394a7881387e3cdb3ab"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

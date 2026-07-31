@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "diagnostic": "free-running tiny-set memorization; not a generalization result",
+  "n_examples": 16,
+  "steps": 1000,
+  "mean_token_error_rate": 0.30081960607000846,
+  "exact_match_rate": 0.5,
+  "eos_rate": 1.0,
+  "history": [
+    {
+      "step": 1,
+      "teacher_forced_nll": 6.262373924255371
+    },
+    {
+      "step": 100,
+      "teacher_forced_nll": 0.007989194244146347
+    },
+    {
+      "step": 200,
+      "teacher_forced_nll": 0.007330373395234346
+    },
+    {
+      "step": 300,
+      "teacher_forced_nll": 0.005956662818789482
+    },
+    {
+      "step": 400,
+      "teacher_forced_nll": 0.008162027224898338
+    },
+    {
+      "step": 500,
+      "teacher_forced_nll": 0.008538917638361454
+    },
+    {
+      "step": 600,
+      "teacher_forced_nll": 0.006053490564227104
+    },
+    {
+      "step": 700,
+      "teacher_forced_nll": 0.006806916557252407
+    },
+    {
+      "step": 800,
+      "teacher_forced_nll": 0.008975745178759098
+    },
+    {
+      "step": 900,
+      "teacher_forced_nll": 0.008087381720542908
+    },
+    {
+      "step": 1000,
+      "teacher_forced_nll": 0.007377111352980137
+    }
+  ],
+  "examples": [
+    {
+      "id": "ed6f468391502bf5",
+      "reference_length": 167,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "ce0c5c61954b0768",
+      "reference_length": 170,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7058823529411765,
+      "exact_match": false
+    },
+    {
+      "id": "1d2e09aa96066bfc",
+      "reference_length": 177,
+      "generated_length": 177,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "6589fecdaf3f3def",
+      "reference_length": 178,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7471910112359551,
+      "exact_match": false
+    },
+    {
+      "id": "c5397a4a29d99412",
+      "reference_length": 179,
+      "generated_length": 179,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "ba6036035420031d",
+      "reference_length": 181,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "2755d66d3e5cda33",
+      "reference_length": 183,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.6120218579234973,
+      "exact_match": false
+    },
+    {
+      "id": "f8fe24361de28f4f",
+      "reference_length": 183,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.5191256830601093,
+      "exact_match": false
+    },
+    {
+      "id": "3f94aa3c0573faac",
+      "reference_length": 184,
+      "generated_length": 181,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.4945652173913043,
+      "exact_match": false
+    },
+    {
+      "id": "6cdb31d9a6def811",
+      "reference_length": 184,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.4782608695652174,
+      "exact_match": false
+    },
+    {
+      "id": "ab98f695b1cc4a61",
+      "reference_length": 185,
+      "generated_length": 167,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.7135135135135136,
+      "exact_match": false
+    },
+    {
+      "id": "68bbdc68fc9fd7e8",
+      "reference_length": 188,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.5425531914893617,
+      "exact_match": false
+    },
+    {
+      "id": "b03297f3f1226f9c",
+      "reference_length": 189,
+      "generated_length": 189,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "cea4b5049f671508",
+      "reference_length": 190,
+      "generated_length": 190,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "2dcad2badd09957d",
+      "reference_length": 191,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    },
+    {
+      "id": "7b25ef964aa6af7c",
+      "reference_length": 191,
+      "generated_length": 191,
+      "terminated_with_eos": true,
+      "token_error_rate": 0.0,
+      "exact_match": true
+    }
+  ],
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-31T16:26:20.743968+00:00",
+    "git_commit": "5601a1e125c243cfd2e53acbcd8e0b7bd6aaec0e",
+    "git_dirty": false,
+    "arguments": {
+      "data_dir": "data/codec_tts_tokens",
+      "output": "experiments/results/codec_tts_corrective/pre_fix_overfit.json",
+      "n_examples": 16,
+      "steps": 1000,
+      "learning_rate": 0.001,
+      "seed": 20260731,
+      "device": "cuda"
+    },
+    "seed": 20260731,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens\\train.parquet": "76a79581441929ffa9e3caed5b26887231cd388307d96394a7881387e3cdb3ab"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

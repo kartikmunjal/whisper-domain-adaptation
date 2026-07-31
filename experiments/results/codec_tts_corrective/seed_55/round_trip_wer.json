@@ -1,0 +1,574 @@
+{
+  "schema_version": 1,
+  "model": "openai/whisper-small",
+  "adapter_path": "checkpoints/financial_research/seed_55/adapter",
+  "eval_manifest": "experiments/results/codec_tts_corrective/seed_55/generated_manifest.parquet",
+  "n_samples": 98,
+  "n_trials": 1,
+  "long_form": {
+    "chunk_length_seconds": 30.0,
+    "stride_seconds": 5.0,
+    "no_30_second_truncation": true
+  },
+  "wer": {
+    "overall": 15.1138,
+    "domain_terms": 14.4796,
+    "common_terms": 22.7,
+    "n_domain_utterances": 90,
+    "n_common_utterances": 8
+  },
+  "uncertainty": {
+    "overall": {
+      "estimate": 15.11379,
+      "ci_low": 11.83203,
+      "ci_high": 18.502476,
+      "n_resamples": 10000
+    },
+    "domain_terms": {
+      "estimate": 14.479624,
+      "ci_low": 11.336109,
+      "ci_high": 17.972899,
+      "n_resamples": 10000
+    },
+    "common_terms": {
+      "estimate": 22.7,
+      "ci_low": 6.425,
+      "ci_high": 38.975,
+      "n_resamples": 10000
+    }
+  },
+  "predictions": [
+    {
+      "id": "f76696b8a6635445",
+      "reference": "Excluding restructuring charges, accounts receivable expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "30f86aa263ba95e1",
+      "reference": "Excluding restructuring charges, adjusted operating income expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "585ca579dd733ddf",
+      "reference": "Excluding restructuring charges, amortization expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "ed668c12714393f5",
+      "reference": "Excluding restructuring charges, basis points expanded by 120 basis points.",
+      "hypothesis": " Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum."
+    },
+    {
+      "id": "4ed7fef5fc7dc4bd",
+      "reference": "Excluding restructuring charges, capital expenditures expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "24382901422a5a38",
+      "reference": "Excluding restructuring charges, churn rate expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "58d22277e48f1eb0",
+      "reference": "Excluding restructuring charges, collateralized debt obligation expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "ecb1ce6ff79d379e",
+      "reference": "Excluding restructuring charges, comparable store sales expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "4b7730f9f84dda53",
+      "reference": "Excluding restructuring charges, credit default swap expanded by 120 basis points.",
+      "hypothesis": " Fa-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-"
+    },
+    {
+      "id": "b6fea247f76a2231",
+      "reference": "Excluding restructuring charges, customer acquisition cost expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "faf0ce399b9f23c2",
+      "reference": "Excluding restructuring charges, debt-to-equity ratio expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "77175b5964aeabb0",
+      "reference": "Excluding restructuring charges, deferred revenue expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "1950fa4036eb3a32",
+      "reference": "Excluding restructuring charges, depreciation expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "db3aaf86bfc9f51f",
+      "reference": "Excluding restructuring charges, diluted eps expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "378d80f1d3aa9be3",
+      "reference": "Excluding restructuring charges, ebitda expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "1183c49229513002",
+      "reference": "Excluding restructuring charges, ebitda margin expanded by 120 basis points.",
+      "hypothesis": " Foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+    },
+    {
+      "id": "0a789a037da716c4",
+      "reference": "Excluding restructuring charges, forward guidance expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "12171ae939937f91",
+      "reference": "Excluding restructuring charges, free cash flow expanded by 120 basis points.",
+      "hypothesis": " Thank you."
+    },
+    {
+      "id": "6d9d49792f3f35dd",
+      "reference": "Excluding restructuring charges, gross margin expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "b020b86c35638b7d",
+      "reference": "Excluding restructuring charges, impairment charge expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "99e77c34c7c1aef3",
+      "reference": "Excluding restructuring charges, inventory turnover expanded by 120 basis points.",
+      "hypothesis": " Foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+    },
+    {
+      "id": "53bc185e36304b2a",
+      "reference": "Excluding restructuring charges, lifetime value expanded by 120 basis points.",
+      "hypothesis": " five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five, five,"
+    },
+    {
+      "id": "ffea4f1c97ca55a5",
+      "reference": "Excluding restructuring charges, loan-to-value ratio expanded by 120 basis points.",
+      "hypothesis": " Foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+    },
+    {
+      "id": "044dde99fe7aa232",
+      "reference": "Excluding restructuring charges, mark-to-market expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "6b89baf4b6907a33",
+      "reference": "Excluding restructuring charges, net interest margin expanded by 120 basis points.",
+      "hypothesis": " Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim. Vim."
+    },
+    {
+      "id": "f7054416df44ad39",
+      "reference": "Excluding restructuring charges, net revenue retention expanded by 120 basis points.",
+      "hypothesis": " Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa... Fa..."
+    },
+    {
+      "id": "cb68dff5f9a4fc41",
+      "reference": "Excluding restructuring charges, non-gaap earnings expanded by 120 basis points.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "d300a7b17646ae08",
+      "reference": "Excluding restructuring charges, normalised earnings expanded by 120 basis points.",
+      "hypothesis": " Foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+    },
+    {
+      "id": "1f3a918d65899c96",
+      "reference": "Excluding restructuring charges, operating leverage expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "72e83cb818ae8ad6",
+      "reference": "Excluding restructuring charges, organic growth expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "6102253df655d17a",
+      "reference": "Excluding restructuring charges, price-to-earnings ratio expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "4a66395d1904be22",
+      "reference": "Excluding restructuring charges, pro forma revenue expanded by 120 basis points.",
+      "hypothesis": " F-M-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-"
+    },
+    {
+      "id": "5a697892d0575936",
+      "reference": "Excluding restructuring charges, quantitative easing expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "482c0eb53f3ec4da",
+      "reference": "Excluding restructuring charges, recurring revenue expanded by 120 basis points.",
+      "hypothesis": " F-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-"
+    },
+    {
+      "id": "701a9bb51261dbf8",
+      "reference": "Excluding restructuring charges, repo rate expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "76e1a7131acad2d0",
+      "reference": "Excluding restructuring charges, restructuring charges expanded by 120 basis points.",
+      "hypothesis": " Thank you."
+    },
+    {
+      "id": "dd22e05730184969",
+      "reference": "Excluding restructuring charges, revenue recognition expanded by 120 basis points.",
+      "hypothesis": " Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum."
+    },
+    {
+      "id": "e664f8717b3eeeea",
+      "reference": "Excluding restructuring charges, run rate expanded by 120 basis points.",
+      "hypothesis": " F-M-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-"
+    },
+    {
+      "id": "3837ddfc0206ec0b",
+      "reference": "Excluding restructuring charges, same-store sales expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "66747d5b50594216",
+      "reference": "Excluding restructuring charges, securitization expanded by 120 basis points.",
+      "hypothesis": " F-F-F-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-N-"
+    },
+    {
+      "id": "e3563052a59b9475",
+      "reference": "Excluding restructuring charges, sequential revenue expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "05017b5beed2dab8",
+      "reference": "Excluding restructuring charges, tier-one capital ratio expanded by 120 basis points.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "466f0317e3cb5af8",
+      "reference": "Excluding restructuring charges, working capital expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "a6b5626458c2e4d5",
+      "reference": "Excluding restructuring charges, year-over-year growth expanded by 120 basis points.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "b88cfb85fb257191",
+      "reference": "Excluding restructuring charges, yield curve inversion expanded by 120 basis points.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "bf5880f1a1a6c66a",
+      "reference": "We remain focused on driving accounts receivable improvement throughout fiscal year.",
+      "hypothesis": " THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM"
+    },
+    {
+      "id": "3195cee03cdd536f",
+      "reference": "We remain focused on driving adjusted operating income improvement throughout fiscal year.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "1df4eb089dd8deb2",
+      "reference": "We remain focused on driving amortization improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "9c8c567e2d3ce60b",
+      "reference": "We remain focused on driving basis points improvement throughout fiscal year.",
+      "hypothesis": " THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK THUNK"
+    },
+    {
+      "id": "00d402460c7b952d",
+      "reference": "We remain focused on driving capital expenditures improvement throughout fiscal year.",
+      "hypothesis": " THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM"
+    },
+    {
+      "id": "3a0ae311b357e771",
+      "reference": "We remain focused on driving churn rate improvement throughout fiscal year.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "0df21553df028873",
+      "reference": "We remain focused on driving collateralized debt obligation improvement throughout fiscal year.",
+      "hypothesis": " F-F-F-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-M-"
+    },
+    {
+      "id": "d5654757756235f7",
+      "reference": "We remain focused on driving comparable store sales improvement throughout fiscal year.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "33c0cefc49d5db60",
+      "reference": "We remain focused on driving credit default swap improvement throughout fiscal year.",
+      "hypothesis": " THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM"
+    },
+    {
+      "id": "e8658bfe66f78b63",
+      "reference": "We remain focused on driving customer acquisition cost improvement throughout fiscal year.",
+      "hypothesis": " f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-"
+    },
+    {
+      "id": "ba63e913cfae07db",
+      "reference": "We remain focused on driving debt-to-equity ratio improvement throughout fiscal year.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "c998b26b00d27933",
+      "reference": "We remain focused on driving deferred revenue improvement throughout fiscal year.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "6b2eaaa6c762b1b0",
+      "reference": "We remain focused on driving depreciation improvement throughout fiscal year.",
+      "hypothesis": " THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM"
+    },
+    {
+      "id": "75080b7701c41567",
+      "reference": "We remain focused on driving diluted eps improvement throughout fiscal year.",
+      "hypothesis": " Thank you."
+    },
+    {
+      "id": "77d621ec400210e2",
+      "reference": "We remain focused on driving ebitda improvement throughout fiscal year.",
+      "hypothesis": " Thank you."
+    },
+    {
+      "id": "947c5f3b61c42a72",
+      "reference": "We remain focused on driving ebitda margin improvement throughout fiscal year.",
+      "hypothesis": " Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much. Thank you very much"
+    },
+    {
+      "id": "2487b7af4c0d5b5e",
+      "reference": "We remain focused on driving forward guidance improvement throughout fiscal year.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "e90525a72bc59948",
+      "reference": "We remain focused on driving free cash flow improvement throughout fiscal year.",
+      "hypothesis": "............................................................................................................................................................................................................................................................................................................."
+    },
+    {
+      "id": "b04559cc280931e2",
+      "reference": "We remain focused on driving gross margin improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "12735b799c5649b7",
+      "reference": "We remain focused on driving impairment charge improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "6835c5ab076fe2d6",
+      "reference": "We remain focused on driving inventory turnover improvement throughout fiscal year.",
+      "hypothesis": " Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum."
+    },
+    {
+      "id": "8f21f0fd88fdee7c",
+      "reference": "We remain focused on driving lifetime value improvement throughout fiscal year.",
+      "hypothesis": " F-M-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-"
+    },
+    {
+      "id": "77c01d853635d690",
+      "reference": "We remain focused on driving loan-to-value ratio improvement throughout fiscal year.",
+      "hypothesis": " F-M-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-"
+    },
+    {
+      "id": "0ca9976a939211e1",
+      "reference": "We remain focused on driving mark-to-market improvement throughout fiscal year.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "ad5d7e4beadc235a",
+      "reference": "We remain focused on driving net interest margin improvement throughout fiscal year.",
+      "hypothesis": " F-M-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-"
+    },
+    {
+      "id": "f62ecb82b6c079d7",
+      "reference": "We remain focused on driving net revenue retention improvement throughout fiscal year.",
+      "hypothesis": " Femmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+    },
+    {
+      "id": "1ca8d93ac65a3fe7",
+      "reference": "We remain focused on driving non-gaap earnings improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "19b444402dc0e295",
+      "reference": "We remain focused on driving normalised earnings improvement throughout fiscal year.",
+      "hypothesis": " Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum."
+    },
+    {
+      "id": "bb16f4e8d040ebe4",
+      "reference": "We remain focused on driving operating leverage improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "41a3a1dfbae17ea7",
+      "reference": "We remain focused on driving organic growth improvement throughout fiscal year.",
+      "hypothesis": "..............................................................................................................................................................................................................................................................................................................."
+    },
+    {
+      "id": "df409c6638dd7ae1",
+      "reference": "We remain focused on driving price-to-earnings ratio improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "dbbc14e6ae6c807a",
+      "reference": "We remain focused on driving pro forma revenue improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "c1e3fe041e1a3c4a",
+      "reference": "We remain focused on driving quantitative easing improvement throughout fiscal year.",
+      "hypothesis": " F-M-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-E-R-"
+    },
+    {
+      "id": "cf8208539c6489cc",
+      "reference": "We remain focused on driving recurring revenue improvement throughout fiscal year.",
+      "hypothesis": " THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP. THUMBS UP"
+    },
+    {
+      "id": "eb62a2e57f707b1d",
+      "reference": "We remain focused on driving repo rate improvement throughout fiscal year.",
+      "hypothesis": " THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM THM"
+    },
+    {
+      "id": "180ab0424ac9e714",
+      "reference": "We remain focused on driving restructuring charges improvement throughout fiscal year.",
+      "hypothesis": " f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-f-"
+    },
+    {
+      "id": "f2a860ed0c9966e0",
+      "reference": "We remain focused on driving revenue recognition improvement throughout fiscal year.",
+      "hypothesis": " Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum. Thum."
+    },
+    {
+      "id": "88cfd4f27aadf984",
+      "reference": "We remain focused on driving run rate improvement throughout fiscal year.",
+      "hypothesis": " Foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+    },
+    {
+      "id": "49a8468ec1fd3ddb",
+      "reference": "We remain focused on driving same-store sales improvement throughout fiscal year.",
+      "hypothesis": " Okay."
+    },
+    {
+      "id": "70448f56cdb7b116",
+      "reference": "We remain focused on driving securitization improvement throughout fiscal year.",
+      "hypothesis": " Femmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+    },
+    {
+      "id": "d9ff018f63d8a1a3",
+      "reference": "We remain focused on driving sequential revenue improvement throughout fiscal year.",
+      "hypothesis": " Fa-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-"
+    },
+    {
+      "id": "21c5fe944689d851",
+      "reference": "We remain focused on driving tier-one capital ratio improvement throughout fiscal year.",
+      "hypothesis": " Thank you........................................................................................................................................................................................................................................................................................................................"
+    },
+    {
+      "id": "01b8635d4bd8a93a",
+      "reference": "We remain focused on driving working capital improvement throughout fiscal year.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "1c31e7b88c0a9bd0",
+      "reference": "We remain focused on driving year-over-year growth improvement throughout fiscal year.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "0ed3004c7f3b6bf0",
+      "reference": "We remain focused on driving yield curve inversion improvement throughout fiscal year.",
+      "hypothesis": " Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa. Fa."
+    },
+    {
+      "id": "ad95adf6c82c1310",
+      "reference": "We appreciate the dedication of our employees around the world.",
+      "hypothesis": " Fa-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-"
+    },
+    {
+      "id": "010489c8978af66d",
+      "reference": "We appreciate the dedication of our employees around the world.",
+      "hypothesis": " Fa-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-"
+    },
+    {
+      "id": "ad95adf6c82c1310",
+      "reference": "We appreciate the dedication of our employees around the world.",
+      "hypothesis": " Fa-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-"
+    },
+    {
+      "id": "010489c8978af66d",
+      "reference": "We appreciate the dedication of our employees around the world.",
+      "hypothesis": " Fa-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-a-"
+    },
+    {
+      "id": "4645c3e5c816be24",
+      "reference": "The board reviewed the operating plan during its recent meeting.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "52d1c98870cc4935",
+      "reference": "The board reviewed the operating plan during its recent meeting.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "4645c3e5c816be24",
+      "reference": "The board reviewed the operating plan during its recent meeting.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    },
+    {
+      "id": "52d1c98870cc4935",
+      "reference": "The board reviewed the operating plan during its recent meeting.",
+      "hypothesis": " F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F"
+    }
+  ],
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-07-31T19:21:11.645983+00:00",
+    "git_commit": "74d86ee915a50ff3e782fd3b6eaa72345363c888",
+    "git_dirty": false,
+    "arguments": {
+      "eval_manifest": "experiments/results/codec_tts_corrective/seed_55/generated_manifest.parquet",
+      "domain_vocab": "configs/financial_terms.txt",
+      "output": "experiments/results/codec_tts_corrective/seed_55/round_trip_wer.json",
+      "base_model": "openai/whisper-small",
+      "adapter_path": "checkpoints/financial_research/seed_55/adapter",
+      "audio_root": null,
+      "seed": 55,
+      "bootstrap_resamples": 10000,
+      "chunk_length_seconds": 30.0,
+      "stride_seconds": 5.0,
+      "batch_size": 2
+    },
+    "seed": 55,
+    "inputs": {
+      "experiments\\results\\codec_tts_corrective\\seed_55\\generated_manifest.parquet": "072c356f42882d46a284fc233049b933735d5387593eca999d7d8b7e2fd0cdf7",
+      "configs\\financial_terms.txt": "27678f147dbbf03e76e27cdc8a94afb03436b6f51320d92c7747dd0a5b0cc3ba"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}
