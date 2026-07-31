@@ -71,7 +71,7 @@ def main() -> None:
     parser.add_argument("--max-new-tokens", type=int, default=800)
     parser.add_argument("--use-duration-control", action="store_true")
     parser.add_argument("--length-cap-multiplier", type=float, default=1.25)
-    parser.add_argument("--repetition-penalty", type=float, default=0.5)
+    parser.add_argument("--repetition-penalty", type=float, default=0.0)
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = parser.parse_args()
@@ -105,7 +105,8 @@ def main() -> None:
             length_cap_multiplier=args.length_cap_multiplier,
             repetition_penalty=args.repetition_penalty,
         )
-        for row, generated in zip(batch, generated_batch):
+        for offset, (row, generated) in enumerate(zip(batch, generated_batch)):
+            row_index = start + offset
             eos = generated.eq(tts.config.audio_eos_id).nonzero()
             if len(eos):
                 generated = generated[: int(eos[0])]
@@ -122,7 +123,10 @@ def main() -> None:
             else:
                 waveform = codec.decode_vq_indices(generated)[0, 0].cpu().numpy()
                 signal_score = si_sdr(reference, waveform)
-            wav_path = wav_dir / f"{row['id']}.wav"
+            # IDs are source-level identifiers and are not guaranteed unique.
+            # A stable row index prevents silent waveform overwrites while the
+            # original ID remains available for paired evaluation.
+            wav_path = wav_dir / f"{row_index:04d}_{row['id']}.wav"
             sf.write(wav_path, waveform, codec.cfg.sample_rate, subtype="PCM_16")
             rows.append({
                 **row,
@@ -155,6 +159,7 @@ def main() -> None:
         "length_cap_multiplier": args.length_cap_multiplier,
         "repetition_penalty": args.repetition_penalty,
         "batch_size": args.batch_size,
+        "waveform_filename_scheme": "zero_padded_row_index_then_source_id",
         "eos_rate": sum(row["terminated_with_eos"] for row in rows) / len(rows),
         "nontermination_rate": (
             sum(not row["terminated_with_eos"] for row in rows) / len(rows)
