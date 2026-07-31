@@ -1,8 +1,9 @@
 """Small neural audio codec components: VQ-VAE and FSQ.
 
 This is intentionally compact rather than production-grade SoundStream. The
-goal is to make the codec mechanics explicit: encoder, quantizer, commitment
-loss, straight-through estimator, and decoder.
+goal is to make the codec mechanics explicit while retaining the safeguards
+needed for a meaningful comparison: EMA VQ updates, dead-code replacement,
+FSQ range normalization, and auditable usage statistics.
 """
 
 from __future__ import annotations
@@ -25,7 +26,11 @@ class AudioCodecConfig:
     latent_dim: int = 64
     codebook_size: int = 256
     commitment_cost: float = 0.25
+    vq_ema_decay: float = 0.99
+    vq_ema_epsilon: float = 1e-5
+    vq_dead_code_batches: int = 100
     fsq_levels: Tuple[int, ...] = (8, 8, 8, 8)
+    fsq_input_scale: float = 1.0
     strides: Tuple[int, ...] = (4, 4, 4, 5)
     spectral_loss_weight: float = 1.0
 
@@ -103,15 +108,78 @@ class WaveformDecoder(nn.Module):
 
 
 class VectorQuantizer(nn.Module):
-    """VQ-VAE codebook with straight-through gradients."""
+    """VQ codebook updated by EMA, with deterministic dead-code accounting."""
 
-    def __init__(self, codebook_size: int, latent_dim: int, commitment_cost: float = 0.25):
+    def __init__(
+        self,
+        codebook_size: int,
+        latent_dim: int,
+        commitment_cost: float = 0.25,
+        ema_decay: float = 0.99,
+        ema_epsilon: float = 1e-5,
+        dead_code_batches: int = 100,
+    ):
         super().__init__()
+        if not 0.0 <= ema_decay < 1.0:
+            raise ValueError("ema_decay must be in [0, 1)")
+        if dead_code_batches < 1:
+            raise ValueError("dead_code_batches must be positive")
         self.codebook_size = codebook_size
         self.latent_dim = latent_dim
         self.commitment_cost = commitment_cost
+        self.ema_decay = ema_decay
+        self.ema_epsilon = ema_epsilon
+        self.dead_code_batches = dead_code_batches
         self.embedding = nn.Embedding(codebook_size, latent_dim)
         nn.init.uniform_(self.embedding.weight, -1.0 / codebook_size, 1.0 / codebook_size)
+        self.embedding.weight.requires_grad_(False)
+        self.register_buffer("ema_cluster_size", torch.ones(codebook_size))
+        self.register_buffer("ema_embedding_sum", self.embedding.weight.detach().clone())
+        self.register_buffer(
+            "batches_since_use",
+            torch.full((codebook_size,), dead_code_batches, dtype=torch.long),
+        )
+        self.register_buffer("total_resets", torch.zeros((), dtype=torch.long))
+
+    @torch.no_grad()
+    def _ema_update(
+        self, flat: torch.Tensor, indices: torch.Tensor, one_hot: torch.Tensor
+    ) -> int:
+        counts = one_hot.sum(dim=0)
+        embedding_sum = one_hot.t() @ flat
+        self.ema_cluster_size.mul_(self.ema_decay).add_(
+            counts, alpha=1.0 - self.ema_decay
+        )
+        self.ema_embedding_sum.mul_(self.ema_decay).add_(
+            embedding_sum, alpha=1.0 - self.ema_decay
+        )
+        self.batches_since_use.add_(1)
+        self.batches_since_use[counts.gt(0)] = 0
+
+        dead = self.batches_since_use.ge(self.dead_code_batches)
+        n_dead = int(dead.sum())
+        if n_dead and flat.shape[0]:
+            # torch RNG is seeded by the training entrypoint, making replacement
+            # reproducible while drawing actual encoder outputs.
+            samples = flat[
+                torch.randint(flat.shape[0], (n_dead,), device=flat.device)
+            ]
+            self.embedding.weight.data[dead] = samples
+            self.ema_embedding_sum[dead] = samples
+            self.ema_cluster_size[dead] = 1.0
+            self.batches_since_use[dead] = 0
+            self.total_resets.add_(n_dead)
+
+        normalizer = self.ema_cluster_size.sum()
+        smoothed = (
+            (self.ema_cluster_size + self.ema_epsilon)
+            / (normalizer + self.codebook_size * self.ema_epsilon)
+            * normalizer
+        ).clamp_min(self.ema_epsilon)
+        self.embedding.weight.data.copy_(
+            self.ema_embedding_sum / smoothed.unsqueeze(1)
+        )
+        return n_dead
 
     def forward(self, latents: torch.Tensor) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
         flat = latents.reshape(-1, self.latent_dim)
@@ -123,20 +191,26 @@ class VectorQuantizer(nn.Module):
         indices = distances.argmin(dim=1)
         quantized = self.embedding(indices).view_as(latents)
 
-        codebook_loss = F.mse_loss(quantized, latents.detach())
         commitment_loss = F.mse_loss(latents, quantized.detach())
-        loss = codebook_loss + self.commitment_cost * commitment_loss
+        loss = self.commitment_cost * commitment_loss
 
         quantized_st = latents + (quantized - latents).detach()
         one_hot = F.one_hot(indices, self.codebook_size).float()
+        resets = self._ema_update(flat.detach(), indices, one_hot) if self.training else 0
         avg_probs = one_hot.mean(dim=0)
         perplexity = torch.exp(-(avg_probs * (avg_probs + 1e-10).log()).sum())
+        usage_histogram = one_hot.sum(dim=0)
 
         return quantized_st, {
             "quantizer_loss": loss,
-            "codebook_loss": codebook_loss,
+            "codebook_loss": torch.zeros_like(commitment_loss),
             "commitment_loss": commitment_loss,
             "perplexity": perplexity,
+            "usage_histogram": usage_histogram,
+            "dead_code_fraction": usage_histogram.eq(0).float().mean(),
+            "dead_codes_reset": torch.tensor(
+                resets, device=latents.device, dtype=torch.long
+            ),
             "indices": indices.view(latents.shape[:2]),
         }
 
@@ -164,11 +238,59 @@ class FiniteScalarQuantizer(nn.Module):
         rounded = torch.round(scaled)
         quantized = rounded / ((levels - 1) / 2).clamp_min(1)
         quantized_st = latents + (quantized - latents).detach()
+        indices = (rounded + (levels - 1) / 2).long()
+        flat_indices = indices.reshape(-1, indices.shape[-1])
+        unique_vectors = torch.unique(flat_indices, dim=0).shape[0]
 
         return quantized_st, {
             "quantizer_loss": torch.zeros((), device=latents.device, dtype=latents.dtype),
-            "indices": (rounded + (levels - 1) / 2).long(),
+            "indices": indices,
+            "pre_quantization_min": latents.detach().amin(),
+            "pre_quantization_max": latents.detach().amax(),
+            "pre_quantization_rms": latents.detach().square().mean().sqrt(),
+            "bounded_saturation_fraction": bounded.detach().abs().gt(0.95).float().mean(),
+            "unique_code_vectors": torch.tensor(
+                unique_vectors, device=latents.device, dtype=torch.long
+            ),
         }
+
+
+class FSQRangeNormalizer(nn.Module):
+    """Normalize each projected FSQ dimension using running encoder statistics."""
+
+    def __init__(
+        self,
+        dimensions: int,
+        target_std: float = 1.0,
+        epsilon: float = 1e-8,
+        momentum: float = 0.1,
+    ):
+        super().__init__()
+        if target_std <= 0:
+            raise ValueError("target_std must be positive")
+        self.target_std = target_std
+        self.epsilon = epsilon
+        self.momentum = momentum
+        self.register_buffer("running_mean", torch.zeros(dimensions))
+        self.register_buffer("running_variance", torch.ones(dimensions))
+        self.register_buffer("batches_tracked", torch.zeros((), dtype=torch.long))
+
+    def forward(self, values: torch.Tensor) -> torch.Tensor:
+        if self.training:
+            reduce_dimensions = tuple(range(values.dim() - 1))
+            mean = values.mean(dim=reduce_dimensions)
+            variance = values.var(dim=reduce_dimensions, unbiased=False)
+            with torch.no_grad():
+                self.running_mean.lerp_(mean.detach(), self.momentum)
+                self.running_variance.lerp_(variance.detach(), self.momentum)
+                self.batches_tracked.add_(1)
+        else:
+            mean = self.running_mean
+            variance = self.running_variance
+        return (
+            (values - mean) / variance.clamp_min(self.epsilon).sqrt()
+            * self.target_std
+        )
 
 
 class AudioVQVAE(nn.Module):
@@ -186,11 +308,18 @@ class AudioVQVAE(nn.Module):
                 self.cfg.codebook_size,
                 self.cfg.latent_dim,
                 self.cfg.commitment_cost,
+                self.cfg.vq_ema_decay,
+                self.cfg.vq_ema_epsilon,
+                self.cfg.vq_dead_code_batches,
             )
+            self.fsq_normalizer = nn.Identity()
         elif quantizer == "fsq":
             fsq_dim = len(self.cfg.fsq_levels)
             self.quantizer_in = nn.Linear(self.cfg.latent_dim, fsq_dim)
             self.quantizer_out = nn.Linear(fsq_dim, self.cfg.latent_dim)
+            self.fsq_normalizer = FSQRangeNormalizer(
+                fsq_dim, self.cfg.fsq_input_scale
+            )
             self.quantizer = FiniteScalarQuantizer(self.cfg.fsq_levels)
         else:
             raise ValueError("quantizer must be 'vq' or 'fsq'")
@@ -203,6 +332,7 @@ class AudioVQVAE(nn.Module):
     def quantize(self, latents: torch.Tensor) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
         """Quantize continuous latents and return decoder-space latents plus codes."""
         bottleneck = self.quantizer_in(latents)
+        bottleneck = self.fsq_normalizer(bottleneck)
         quantized, info = self.quantizer(bottleneck)
         return self.quantizer_out(quantized), info
 
@@ -328,7 +458,23 @@ class AudioVQVAE(nn.Module):
             if key in config:
                 config[key] = tuple(config[key])
         model = cls(AudioCodecConfig(**config), quantizer=payload["quantizer"])
-        model.load_state_dict(payload["state_dict"])
+        incompatible = model.load_state_dict(payload["state_dict"], strict=False)
+        allowed_missing = {
+            "quantizer.ema_cluster_size",
+            "quantizer.ema_embedding_sum",
+            "quantizer.batches_since_use",
+            "quantizer.total_resets",
+            "fsq_normalizer.running_mean",
+            "fsq_normalizer.running_variance",
+            "fsq_normalizer.batches_tracked",
+        }
+        unexpected_missing = set(incompatible.missing_keys) - allowed_missing
+        if unexpected_missing or incompatible.unexpected_keys:
+            raise RuntimeError(
+                "Checkpoint is incompatible: "
+                f"missing={sorted(unexpected_missing)}, "
+                f"unexpected={sorted(incompatible.unexpected_keys)}"
+            )
         return model
 
 

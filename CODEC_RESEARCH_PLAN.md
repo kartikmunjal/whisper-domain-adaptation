@@ -63,3 +63,28 @@ English. It was not selected using codec distortion or ASR output. The German
 and French recordings remain materialized in `eval_manifest.parquet` but are
 outside this English-domain estimand. All generated reports must state
 `n_clips=24`; no result may be described as covering all 40 recordings.
+
+## Amendment 2 — Corrective code-utilization study
+
+Locked 2026-07-30 after the original grid was complete and disclosed codebook
+collapse. This is a labeled corrective study, not a replacement for the
+original result. Original checkpoints, predictions, summaries, and plots
+remain immutable and are the "before" condition.
+
+The corrective implementation adds:
+
+- per-epoch code histograms, dead-code fraction, empirical entropy, and reset
+  counts;
+- EMA VQ codebook updates with decay 0.99 and epsilon 1e-5;
+- replacement of codes unused for 100 batches using seeded samples from real
+  encoder outputs; and
+- per-frame RMS normalization to 1.0 before the fixed FSQ grid, with
+  pre-quantization range and saturation telemetry.
+
+The matched-rate grid, seeds, training data, epoch budget, 24-clip English
+medical evaluation set, Whisper models, WER splits, SI-SDR, and 10,000-resample
+uncertainty procedure are unchanged. The corrective report must show before
+and after side by side. A fix is not called successful merely because code
+entropy increases; reconstruction SI-SDR and ASR ΔWER must also improve. Any
+post-lock implementation correction is documented here before its GPU outcome
+is observed.

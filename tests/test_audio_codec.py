@@ -6,6 +6,7 @@ from whisper_adapt.models.audio_codec import (
     AudioCodecConfig,
     AudioVQVAE,
     FiniteScalarQuantizer,
+    FSQRangeNormalizer,
     VectorQuantizer,
     codec_rate_hz,
 )
@@ -44,6 +45,40 @@ def test_vector_quantizer_outputs_codebook_indices():
     assert quantized.shape == latents.shape
     assert info["indices"].shape == (2, 5)
     assert info["perplexity"].item() > 0
+    assert info["usage_histogram"].sum().item() == 10
+
+
+def test_vq_ema_updates_without_embedding_gradients_and_resets_dead_codes():
+    quantizer = VectorQuantizer(
+        codebook_size=8, latent_dim=4, ema_decay=0.9, dead_code_batches=1
+    )
+    before = quantizer.embedding.weight.detach().clone()
+    _, info = quantizer(torch.randn(2, 5, 4))
+
+    assert quantizer.embedding.weight.grad is None
+    assert not torch.equal(before, quantizer.embedding.weight)
+    assert info["dead_codes_reset"].item() > 0
+    assert quantizer.total_resets.item() == info["dead_codes_reset"].item()
+
+
+def test_fsq_range_normalization_and_grid_indices():
+    normalizer = FSQRangeNormalizer(dimensions=4, target_std=1.25)
+    values = normalizer(
+        torch.randn(30, 7, 4) * torch.tensor([0.001, 0.01, 0.1, 1.0])
+        + torch.tensor([2.0, -3.0, 4.0, -5.0])
+    )
+    dimension_mean = values.mean(dim=(0, 1))
+    dimension_std = values.std(dim=(0, 1), unbiased=False)
+    assert torch.allclose(dimension_mean, torch.zeros_like(dimension_mean), atol=2e-2)
+    assert torch.allclose(
+        dimension_std, torch.full_like(dimension_std, 1.25), atol=2e-2
+    )
+
+    quantizer = FiniteScalarQuantizer(levels=(4, 4, 4, 4))
+    _, info = quantizer(values)
+    assert info["indices"].min() >= 0
+    assert info["indices"].max() < 4
+    assert info["unique_code_vectors"].item() > 1
 
 
 def test_fsq_requires_divisible_latent_dim():
@@ -87,6 +122,32 @@ def test_inference_reconstruction_and_matched_rates(tmp_path):
         )
         restored = AudioVQVAE.from_checkpoint(checkpoint)
         assert restored.reconstruct(audio).shape == reconstruction.shape
+
+
+def test_legacy_vq_checkpoint_loads_without_ema_buffers(tmp_path):
+    cfg = AudioCodecConfig(hidden_dim=16, latent_dim=8, codebook_size=16)
+    model = AudioVQVAE(cfg, quantizer="vq")
+    state = {
+        key: value
+        for key, value in model.state_dict().items()
+        if not key.startswith("quantizer.ema_")
+        and key not in {
+            "quantizer.batches_since_use",
+            "quantizer.total_resets",
+        }
+    }
+    legacy_config = {
+        key: value
+        for key, value in cfg.__dict__.items()
+        if not key.startswith("vq_") and key != "fsq_input_scale"
+    }
+    checkpoint = tmp_path / "legacy.pt"
+    torch.save(
+        {"config": legacy_config, "quantizer": "vq", "state_dict": state},
+        checkpoint,
+    )
+    restored = AudioVQVAE.from_checkpoint(checkpoint)
+    assert restored.quantizer.ema_cluster_size.shape == (16,)
 
 
 def test_chunked_reconstruction_preserves_long_shape():

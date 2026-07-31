@@ -48,6 +48,41 @@ class ManifestAudioDataset(Dataset):
         return torch.tensor(audio, dtype=torch.float32)
 
 
+def code_histogram(
+    indices: torch.Tensor, quantizer: str, codebook_size: int, fsq_levels: tuple[int, ...]
+) -> torch.Tensor:
+    """Count actual discrete symbols, using joint mixed-radix FSQ indices."""
+    indices = indices.detach().cpu().long()
+    if quantizer == "vq":
+        symbols = indices.reshape(-1)
+        size = codebook_size
+    else:
+        flat = indices.reshape(-1, indices.shape[-1])
+        levels = torch.tensor(fsq_levels, dtype=torch.long)
+        multipliers = torch.cumprod(
+            torch.cat([torch.ones(1, dtype=torch.long), levels[:-1]]), dim=0
+        )
+        symbols = (flat * multipliers).sum(dim=1)
+        size = int(np.prod(fsq_levels))
+    return torch.bincount(symbols, minlength=size)
+
+
+def usage_report(histogram: torch.Tensor) -> dict:
+    total = int(histogram.sum())
+    probabilities = histogram.double() / max(total, 1)
+    nonzero = probabilities.gt(0)
+    entropy = float(
+        -(probabilities[nonzero] * probabilities[nonzero].log2()).sum()
+    )
+    return {
+        "n_codes": int(histogram.numel()),
+        "n_used_codes": int(histogram.gt(0).sum()),
+        "dead_code_fraction": float(histogram.eq(0).double().mean()),
+        "entropy_bits_per_frame": entropy,
+        "usage_histogram": histogram.tolist(),
+    }
+
+
 def train(args: argparse.Namespace) -> None:
     root = Path(__file__).resolve().parents[1]
     random.seed(args.seed)
@@ -65,7 +100,11 @@ def train(args: argparse.Namespace) -> None:
         latent_dim=args.latent_dim,
         codebook_size=args.codebook_size,
         commitment_cost=args.commitment_cost,
+        vq_ema_decay=args.vq_ema_decay,
+        vq_ema_epsilon=args.vq_ema_epsilon,
+        vq_dead_code_batches=args.vq_dead_code_batches,
         fsq_levels=tuple(args.fsq_levels),
+        fsq_input_scale=args.fsq_input_scale,
         strides=tuple(args.strides),
     )
     model = AudioVQVAE(cfg, quantizer=args.quantizer).to(device)
@@ -83,6 +122,7 @@ def train(args: argparse.Namespace) -> None:
     )
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
 
+    diagnostics = []
     for epoch in range(1, args.epochs + 1):
         totals = {
             "loss": 0.0,
@@ -91,6 +131,9 @@ def train(args: argparse.Namespace) -> None:
             "quantizer_loss": 0.0,
         }
         perplexities = []
+        epoch_histogram = None
+        dead_resets = 0
+        fsq_ranges = []
         for audio in loader:
             audio = audio.to(device)
             out = model(audio)
@@ -101,15 +144,50 @@ def train(args: argparse.Namespace) -> None:
                 totals[key] += float(out[key].detach().cpu())
             if "perplexity" in out:
                 perplexities.append(float(out["perplexity"].detach().cpu()))
+            batch_histogram = code_histogram(
+                out["indices"], args.quantizer, args.codebook_size, tuple(args.fsq_levels)
+            )
+            epoch_histogram = (
+                batch_histogram
+                if epoch_histogram is None
+                else epoch_histogram + batch_histogram
+            )
+            dead_resets += int(
+                out.get("dead_codes_reset", torch.tensor(0)).detach().cpu()
+            )
+            if args.quantizer == "fsq":
+                fsq_ranges.append({
+                    "minimum": float(out["pre_quantization_min"].detach().cpu()),
+                    "maximum": float(out["pre_quantization_max"].detach().cpu()),
+                    "rms": float(out["pre_quantization_rms"].detach().cpu()),
+                    "saturation_fraction": float(
+                        out["bounded_saturation_fraction"].detach().cpu()
+                    ),
+                })
 
         denom = max(len(loader), 1)
+        epoch_diagnostics = {
+            "epoch": epoch,
+            **usage_report(epoch_histogram),
+            "dead_codes_reset": dead_resets,
+        }
+        if fsq_ranges:
+            epoch_diagnostics["pre_quantization_range"] = {
+                key: float(np.mean([row[key] for row in fsq_ranges]))
+                for key in fsq_ranges[0]
+            }
+        diagnostics.append(epoch_diagnostics)
         print(
             f"epoch={epoch} "
             f"loss={totals['loss'] / denom:.4f} "
             f"wave={totals['waveform_loss'] / denom:.4f} "
             f"stft={totals['spectral_loss'] / denom:.4f} "
             f"quant={totals['quantizer_loss'] / denom:.4f} "
-            f"perplexity={np.mean(perplexities) if perplexities else float('nan'):.2f}"
+            f"perplexity={np.mean(perplexities) if perplexities else float('nan'):.2f} "
+            f"used={epoch_diagnostics['n_used_codes']}/{epoch_diagnostics['n_codes']} "
+            f"dead={epoch_diagnostics['dead_code_fraction']:.3f} "
+            f"entropy={epoch_diagnostics['entropy_bits_per_frame']:.3f} "
+            f"resets={dead_resets}"
         )
 
     output_dir = Path(args.output_dir)
@@ -125,6 +203,7 @@ def train(args: argparse.Namespace) -> None:
         "nominal_bitrate_bps": model.nominal_bitrate_bps,
         "n_train_clips": len(dataset),
         "epochs": args.epochs,
+        "training_diagnostics": diagnostics,
         "config": cfg.__dict__,
         "checkpoint_sha256": sha256_file(checkpoint),
         "provenance": collect_provenance(
@@ -151,7 +230,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--latent_dim", type=int, default=64)
     parser.add_argument("--codebook_size", type=int, default=256)
     parser.add_argument("--commitment_cost", type=float, default=0.25)
+    parser.add_argument("--vq_ema_decay", type=float, default=0.99)
+    parser.add_argument("--vq_ema_epsilon", type=float, default=1e-5)
+    parser.add_argument("--vq_dead_code_batches", type=int, default=100)
     parser.add_argument("--fsq_levels", type=int, nargs="+", default=[4, 4, 4, 4])
+    parser.add_argument("--fsq_input_scale", type=float, default=1.0)
     parser.add_argument("--strides", type=int, nargs="+", default=[4, 4, 4, 5])
     parser.add_argument("--batch_size", type=int, default=8)
     parser.add_argument("--epochs", type=int, default=3)
