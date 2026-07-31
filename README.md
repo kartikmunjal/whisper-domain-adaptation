@@ -23,25 +23,27 @@ artifacts rather than being hand-entered here.
 
 The previous medical, rank, data-scaling, synthetic-mixture, prefix-tuning, and
 catastrophic-forgetting numbers were not accompanied by sufficient primary run
-artifacts. They are not treated as verified results. A replacement medical
-study uses synthetic train/validation data and evaluation-only Corti
-`med-dictate` real audio under a five-seed runner.
+artifacts and are not treated as verified. The completed replacement medical
+study uses synthetic train/validation data and 24 evaluation-only English Corti
+`med-dictate` recordings. Frozen Whisper-small obtains 24.93% WER; five medical
+adapters average 29.80% (95% trial-bootstrap CI 28.89–30.73%), a regression of
+4.87 points (3.99–5.87). This negative result is retained rather than selected
+away.
 
 ## Locked follow-on studies
 
-Three follow-on studies are preregistered:
+Three follow-on studies are preregistered and complete:
 
 - [real earnings-call evaluation](REAL_FINANCIAL_AUDIO_PLAN.md) — five-seed
   results complete; manual listening ledger pending;
 - [codec rate-distortion and ASR robustness](CODEC_RESEARCH_PLAN.md) — matched
-  VQ/FSQ training grid complete, reconstruction and ASR evaluation in progress;
-- [text-to-codec-token TTS](TTS_RESEARCH_PLAN.md) — model, token preparation,
-  training, and waveform synthesis paths implemented; confirmatory runs in
-  progress.
+  VQ/FSQ grid, reconstruction, signal metrics, and ASR evaluation complete;
+- [text-to-codec-token TTS](TTS_RESEARCH_PLAN.md) — five training and
+  end-to-end evaluation trials complete.
 
-Their evaluation sets remain isolated until their training and selection
-procedures are fixed. Results will be generated from committed scripts and
-primary artifacts; this README will not carry projected values.
+Their evaluation sets were isolated until training and selection procedures
+were fixed. The linked generated artifacts contain the complete per-seed
+predictions and uncertainty calculations; no value below is projected.
 
 ## Confirmatory financial experiment
 
@@ -145,11 +147,28 @@ rate grid, inference-only encode/quantize/decode and chunked reconstruction,
 empirical bitrate and SI-SDR evaluation with clip bootstrap intervals, and
 restart-safe GPU launchers.
 
+The completed [codec report](experiments/results/codec_medical/wer_summary.md)
+shows severe task degradation at every tested operating point. Adapted-Whisper
+ΔWER ranges from +71.50 to +169.04 percentage points for representative VQ
+conditions and from +106.55 to +119.40 points for FSQ. Empirical entropy also
+reveals codebook collapse: the nominal 300–500 bps settings realize only
+3.3–13.0 bps for FSQ and 47.1–62.3 bps for VQ. Conditional SI-SDR is negative
+throughout. These are measured failure modes, not competitive codec claims.
+
 It also includes a small autoregressive Transformer mapping UTF-8 text tokens
 to VQ codec tokens. The held-out path is
 text → predicted tokens → codec decoder → waveform, followed by round-trip
 Whisper WER and comparison with the corresponding Edge-TTS clips. No TTS claim
-is made until the five-seed generated artifacts are complete.
+is inferred from teacher-forced validation alone.
+
+The completed [five-seed TTS report](experiments/results/codec_tts/summary.md)
+finds mean codec-TTS round-trip WER of 1020.62% (95% trial-bootstrap CI
+701.83–1353.10%) versus 1.18% for paired Edge-TTS. Mean generation-failure rate
+is 27.76% (8.37–61.43%), and SI-SDR conditional on decodable output is
+-42.99 dB (-44.07 to -42.02). WER can exceed 100% because uncontrolled
+insertions outnumber reference words. The implementation closes the
+text-to-token-to-waveform loop, but this small autoregressive model is
+decisively noncompetitive under the locked experiment.
 
 ## License
 
