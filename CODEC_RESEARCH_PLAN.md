@@ -101,3 +101,19 @@ mixed: it supports a code-utilization and signal-fidelity improvement, but not
 a general ASR-robustness or competitive-codec claim. Realized bitrate changed
 substantially, so the before/after comparison is not a controlled
 matched-bitrate codec ranking.
+
+## Amendment 3 — Phase-insensitive metric and lower-rate extension
+
+Locked 2026-07-31 before the additional metric or lower-rate outcomes were
+observed. Every existing and new reconstruction adds 80-bin log-mel absolute
+distance using a 25 ms window, 10 ms hop, 20–7600 Hz range, and per-clip mean
+in decibels. This phase-insensitive metric is reported with clip and five-seed
+bootstrap intervals alongside SI-SDR and WER; disagreement is retained rather
+than resolved by selecting a favorable metric.
+
+The corrective grid is extended downward to 200 bps (four nominal bits per
+frame: VQ size 16; FSQ levels [4,4]) and 250 bps (five nominal bits per frame:
+VQ size 32; FSQ levels [4,4,2]). Seeds, architecture, 30-epoch budget, training
+data, 24-clip English medical evaluation, representative selection rule, ASR
+models, and 10,000-resample uncertainty remain fixed. These cells extend a
+rate-distortion curve; they are not selected using their WER.

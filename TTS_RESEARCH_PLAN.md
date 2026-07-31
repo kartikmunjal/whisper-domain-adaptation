@@ -103,3 +103,22 @@ percentage points; -432.97 to +546.02). Domain WER changed from 1057.93% to
 1111.81%, and common WER worsened from 588.00% to 1623.00%. The corrective
 study therefore supports a duration-control claim only, not improved speech
 intelligibility or TTS quality.
+
+## Amendment 3 — Content-conditioning root-cause gate
+
+Locked 2026-07-31 before inspecting conditioning or attention diagnostics.
+Using the same held-out token test partition and all five corrective
+checkpoints, the diagnostic compares each example with a deterministic
+different-text permutation. It reports true-minus-shuffled teacher-forced
+NLL, normalized edit distance between true-text and shuffled-text free-running
+sequences, token error in ten normalized reference-position bins, and each
+decoder layer's cross-attention centroid monotonicity.
+
+Conditioning is classified as broken if the five-seed mean shuffled-minus-true
+NLL advantage is at most 0.05 nats/token or if generated-sequence sensitivity
+is at most 5%. Attention plots are descriptive and cannot override those
+numeric gates. If either gate fails, only a targeted conditioning/masking fix
+is permitted. If both pass while free-running errors grow with position, the
+next model is a duration-aware non-autoregressive predictor with output length
+fixed before token prediction. Any replacement retains the same data, frozen
+codec, five seeds, Edge-TTS comparator, WER splits, and uncertainty protocol.

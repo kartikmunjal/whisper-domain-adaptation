@@ -29,6 +29,24 @@ financial LoRA adapters perform on real earnings-call speech?
 - The 20-clip set is a small external-validity anchor, not a benchmark-quality
   estimate of the full Earnings-21 corpus.
 
+## Amendment 1 — Synthetic-to-real regression diagnosis
+
+Locked 2026-07-31 before computing acoustic or error-transition outcomes.
+Compare the full fixed synthetic training manifest with the 20-clip
+Earnings-21 anchor using duration, RMS, heuristic SNR, silence fraction,
+spectral centroid, spectral tilt, voiced fraction, and voiced pitch range.
+Report corpus medians, 10,000-resample 95% CIs for mean differences, and
+Cliff's delta; these descriptors do not validate perceptual quality.
+
+On the preregistered common-control slice, align reference, frozen-model, and
+each of five adapter hypotheses with word-level dynamic programming. Report
+introduced, resolved, and retained substitutions, insertions, and deletions;
+top confusion pairs; and errors grouped into function, numeric, financial, and
+other word classes. No clip or category is selected after inspecting errors.
+An augmented-training ablation is launched only if the acoustic comparison
+shows a large clean-speech mismatch (absolute Cliff's delta at least 0.474 for
+SNR or silence fraction); its recipe must be locked before training.
+
 ## Leakage guard
 
 The selection manifest is hashed before inference. Evaluation exits if an
