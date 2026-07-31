@@ -57,6 +57,11 @@ def main() -> None:
     parser.add_argument("--learning-rate", type=float, default=1e-3)
     parser.add_argument("--seed", type=int, default=20260731)
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--corrective", action="store_true")
+    parser.add_argument("--duration-loss-weight", type=float, default=0.1)
+    parser.add_argument("--scheduled-sampling-max", type=float, default=0.25)
+    parser.add_argument("--length-cap-multiplier", type=float, default=1.25)
+    parser.add_argument("--repetition-penalty", type=float, default=0.5)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     random.seed(args.seed)
@@ -75,19 +80,55 @@ def main() -> None:
     history = []
     for step in range(1, args.steps + 1):
         model.train()
-        logits = model(text, decoder)
-        loss = F.cross_entropy(logits.flatten(0, 1), labels.flatten(), ignore_index=-100)
+        teacher_logits = model(text, decoder)
+        sampling_probability = 0.0
+        sampled_decoder = decoder
+        if args.corrective:
+            sampling_probability = args.scheduled_sampling_max * min(
+                1.0, step / max(args.steps * 0.5, 1.0)
+            )
+            sampled_decoder = decoder.clone()
+            predicted_previous = teacher_logits[:, :-1].detach().argmax(dim=-1)
+            valid_previous = labels[:, :-1].ne(-100)
+            replace = (
+                torch.rand(valid_previous.shape, device=device) < sampling_probability
+            ) & valid_previous
+            sampled_decoder[:, 1:] = torch.where(
+                replace, predicted_previous, sampled_decoder[:, 1:]
+            )
+        logits = model(text, sampled_decoder)
+        token_loss = F.cross_entropy(
+            logits.flatten(0, 1), labels.flatten(), ignore_index=-100
+        )
+        target_lengths = labels.ne(-100).sum(dim=1).sub(1).clamp_min(0)
+        duration_loss = F.smooth_l1_loss(
+            model.predict_log_lengths(text), torch.log1p(target_lengths.float())
+        )
+        loss = token_loss
+        if args.corrective:
+            loss = loss + args.duration_loss_weight * duration_loss
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
         if step == 1 or step % 100 == 0 or step == args.steps:
-            history.append({"step": step, "teacher_forced_nll": float(loss.detach())})
+            history.append({
+                "step": step,
+                "token_nll": float(token_loss.detach()),
+                "duration_loss": float(duration_loss.detach()),
+                "scheduled_sampling_probability": sampling_probability,
+            })
             print(history[-1])
 
     model.eval()
     maximum = max(len(row["codec_token_ids"]) for row in rows) + 100
-    generated = model.generate(text, max_new_tokens=maximum)
+    generated = model.generate(
+        text,
+        max_new_tokens=maximum,
+        use_duration_control=args.corrective,
+        length_cap_multiplier=args.length_cap_multiplier,
+        repetition_penalty=args.repetition_penalty if args.corrective else 0.0,
+    )
     diagnostics = []
     for row, sequence in zip(rows, generated):
         eos = sequence.eq(cfg.audio_eos_id).nonzero()
@@ -110,6 +151,7 @@ def main() -> None:
         "diagnostic": "free-running tiny-set memorization; not a generalization result",
         "n_examples": len(rows),
         "steps": args.steps,
+        "corrective": args.corrective,
         "mean_token_error_rate": float(np.mean([x["token_error_rate"] for x in diagnostics])),
         "exact_match_rate": float(np.mean([x["exact_match"] for x in diagnostics])),
         "eos_rate": float(np.mean([x["terminated_with_eos"] for x in diagnostics])),

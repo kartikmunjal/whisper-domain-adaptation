@@ -61,6 +61,8 @@ def evaluate(model, loader, device):
     loss_sum = 0.0
     token_count = 0
     correct = 0
+    duration_absolute_error = 0.0
+    duration_count = 0
     with torch.inference_mode():
         for text, decoder, labels in loader:
             text, decoder, labels = text.to(device), decoder.to(device), labels.to(device)
@@ -74,7 +76,17 @@ def evaluate(model, loader, device):
             mask = labels.ne(-100)
             token_count += int(mask.sum())
             correct += int((logits.argmax(-1).eq(labels) & mask).sum())
-    return loss_sum / token_count, correct / token_count
+            target_lengths = mask.sum(dim=1).sub(1).clamp_min(0)
+            predicted_lengths = torch.expm1(model.predict_log_lengths(text)).clamp_min(0)
+            duration_absolute_error += float(
+                (predicted_lengths - target_lengths).abs().sum().cpu()
+            )
+            duration_count += len(text)
+    return (
+        loss_sum / token_count,
+        correct / token_count,
+        duration_absolute_error / duration_count,
+    )
 
 
 def parse_args():
@@ -85,6 +97,9 @@ def parse_args():
     parser.add_argument("--epochs", type=int, default=50)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--learning-rate", type=float, default=3e-4)
+    parser.add_argument("--duration-loss-weight", type=float, default=0.1)
+    parser.add_argument("--scheduled-sampling-max", type=float, default=0.25)
+    parser.add_argument("--scheduled-sampling-warmup-fraction", type=float, default=0.5)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
 
@@ -124,27 +139,57 @@ def main():
         model.train()
         total = 0.0
         count = 0
+        duration_total = 0.0
+        scheduled_sampling_probability = args.scheduled_sampling_max * min(
+            1.0,
+            epoch / max(args.epochs * args.scheduled_sampling_warmup_fraction, 1.0),
+        )
         for text, decoder, labels in train_loader:
             text, decoder, labels = text.to(device), decoder.to(device), labels.to(device)
-            logits = model(text, decoder)
-            loss = F.cross_entropy(
+            teacher_logits = model(text, decoder)
+            sampled_decoder = decoder
+            if scheduled_sampling_probability > 0 and decoder.shape[1] > 1:
+                sampled_decoder = decoder.clone()
+                predicted_previous = teacher_logits[:, :-1].detach().argmax(dim=-1)
+                valid_previous = labels[:, :-1].ne(-100)
+                replace = (
+                    torch.rand(valid_previous.shape, device=device)
+                    < scheduled_sampling_probability
+                ) & valid_previous
+                sampled_decoder[:, 1:] = torch.where(
+                    replace, predicted_previous, sampled_decoder[:, 1:]
+                )
+            logits = model(text, sampled_decoder)
+            token_loss = F.cross_entropy(
                 logits.reshape(-1, logits.shape[-1]),
                 labels.reshape(-1),
                 ignore_index=-100,
             )
+            target_lengths = labels.ne(-100).sum(dim=1).sub(1).clamp_min(0)
+            duration_loss = F.smooth_l1_loss(
+                model.predict_log_lengths(text),
+                torch.log1p(target_lengths.float()),
+            )
+            loss = token_loss + args.duration_loss_weight * duration_loss
             optimizer.zero_grad(set_to_none=True)
             loss.backward()
             clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
             tokens = int(labels.ne(-100).sum())
-            total += float(loss.detach()) * tokens
+            total += float(token_loss.detach()) * tokens
+            duration_total += float(duration_loss.detach()) * len(text)
             count += tokens
-        val_loss, val_accuracy = evaluate(model, validation_loader, device)
+        val_loss, val_accuracy, val_duration_mae = evaluate(
+            model, validation_loader, device
+        )
         record = {
             "epoch": epoch,
             "train_nll": total / count,
             "validation_nll": val_loss,
             "validation_token_accuracy": val_accuracy,
+            "train_duration_loss": duration_total / len(train),
+            "validation_duration_mae_tokens": val_duration_mae,
+            "scheduled_sampling_probability": scheduled_sampling_probability,
         }
         history.append(record)
         print(record)
@@ -170,6 +215,9 @@ def main():
         ),
         "optimizer_steps_per_epoch": len(train_loader),
         "planned_optimizer_steps": len(train_loader) * args.epochs,
+        "duration_loss_weight": args.duration_loss_weight,
+        "scheduled_sampling_max": args.scheduled_sampling_max,
+        "scheduled_sampling_warmup_fraction": args.scheduled_sampling_warmup_fraction,
         "history": history,
         "train_manifest_sha256": sha256_file(data / "train.parquet"),
         "validation_manifest_sha256": sha256_file(data / "validation.parquet"),

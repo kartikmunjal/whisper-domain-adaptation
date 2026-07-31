@@ -43,3 +43,50 @@ def test_generation_respects_limit():
     model = tiny_model()
     generated = model.generate(torch.tensor([[66, 67]]), max_new_tokens=3)
     assert generated.shape[1] <= 3
+
+
+def test_duration_prediction_is_finite_and_batched():
+    model = tiny_model()
+    predicted = model.predict_log_lengths(torch.tensor([[66, 67, 0], [68, 0, 0]]))
+    assert predicted.shape == (2,)
+    assert torch.isfinite(predicted).all()
+
+
+def test_duration_control_forces_eos_at_predicted_cap():
+    model = tiny_model()
+    with torch.no_grad():
+        for parameter in model.duration_head.parameters():
+            parameter.zero_()
+        model.duration_head[-1].bias.fill_(torch.log1p(torch.tensor(4.0)))
+        model.output.weight.zero_()
+        model.output.bias.zero_()
+        model.output.bias[1] = 10.0
+    generated = model.generate(
+        torch.tensor([[66, 67]]),
+        max_new_tokens=20,
+        use_duration_control=True,
+        length_cap_multiplier=1.25,
+    )
+    assert generated.shape == (1, 5)
+    assert generated[0, -1].item() == model.config.audio_eos_id
+
+
+def test_generate_rejects_invalid_decoding_controls():
+    model = tiny_model()
+    text = torch.tensor([[66]])
+    with pytest.raises(ValueError, match="length_cap_multiplier"):
+        model.generate(text, length_cap_multiplier=0)
+    with pytest.raises(ValueError, match="repetition_penalty"):
+        model.generate(text, repetition_penalty=-0.1)
+
+
+def test_legacy_checkpoint_without_duration_head_loads(tmp_path):
+    model = tiny_model()
+    path = tmp_path / "legacy.pt"
+    state = {
+        key: value for key, value in model.state_dict().items()
+        if not key.startswith("duration_head.")
+    }
+    torch.save({"config": model.config.__dict__, "state_dict": state}, path)
+    restored = CodecTokenTTS.from_checkpoint(path)
+    assert restored(torch.tensor([[66]]), torch.tensor([[17]])).shape[-1] == 18

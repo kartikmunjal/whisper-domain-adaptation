@@ -69,6 +69,9 @@ def main() -> None:
     parser.add_argument("--manifest", default="data/financial_research/test_manifest.parquet")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--max-new-tokens", type=int, default=800)
+    parser.add_argument("--use-duration-control", action="store_true")
+    parser.add_argument("--length-cap-multiplier", type=float, default=1.25)
+    parser.add_argument("--repetition-penalty", type=float, default=0.5)
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = parser.parse_args()
@@ -96,7 +99,11 @@ def main() -> None:
         for index, ids in enumerate(encoded):
             text_ids[index, :len(ids)] = torch.tensor(ids, device=device)
         generated_batch = tts.generate(
-            text_ids, max_new_tokens=args.max_new_tokens
+            text_ids,
+            max_new_tokens=args.max_new_tokens,
+            use_duration_control=args.use_duration_control,
+            length_cap_multiplier=args.length_cap_multiplier,
+            repetition_penalty=args.repetition_penalty,
         )
         for row, generated in zip(batch, generated_batch):
             eos = generated.eq(tts.config.audio_eos_id).nonzero()
@@ -142,8 +149,11 @@ def main() -> None:
         "source_manifest": args.manifest,
         "source_manifest_sha256": sha256_file(root / args.manifest),
         "n_samples": len(rows),
-        "decoding": "greedy",
+        "decoding": "greedy_duration_capped" if args.use_duration_control else "greedy",
         "max_new_tokens": args.max_new_tokens,
+        "use_duration_control": args.use_duration_control,
+        "length_cap_multiplier": args.length_cap_multiplier,
+        "repetition_penalty": args.repetition_penalty,
         "batch_size": args.batch_size,
         "eos_rate": sum(row["terminated_with_eos"] for row in rows) / len(rows),
         "nontermination_rate": (

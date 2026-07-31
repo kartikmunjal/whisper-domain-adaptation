@@ -68,17 +68,33 @@ class CodecTokenTTS(nn.Module):
         self.encoder = nn.TransformerEncoder(encoder_layer, cfg.encoder_layers)
         self.decoder = nn.TransformerDecoder(decoder_layer, cfg.decoder_layers)
         self.output = nn.Linear(cfg.d_model, cfg.audio_vocab_size)
+        self.duration_head = nn.Sequential(
+            nn.Linear(cfg.d_model, cfg.d_model // 2),
+            nn.GELU(),
+            nn.Linear(cfg.d_model // 2, 1),
+        )
+
+    def encode_text(self, text_ids: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        text_positions = torch.arange(text_ids.shape[1], device=text_ids.device)
+        memory = self.text_embedding(text_ids) + self.text_position(text_positions)
+        text_padding = text_ids.eq(0)
+        memory = self.encoder(memory, src_key_padding_mask=text_padding)
+        return memory, text_padding
+
+    def predict_log_lengths(self, text_ids: torch.Tensor) -> torch.Tensor:
+        """Predict log1p codec-token length from masked text representations."""
+        memory, text_padding = self.encode_text(text_ids)
+        keep = (~text_padding).unsqueeze(-1)
+        pooled = (memory * keep).sum(dim=1) / keep.sum(dim=1).clamp_min(1)
+        return self.duration_head(pooled).squeeze(-1)
 
     def forward(
         self,
         text_ids: torch.Tensor,
         decoder_ids: torch.Tensor,
     ) -> torch.Tensor:
-        text_positions = torch.arange(text_ids.shape[1], device=text_ids.device)
         audio_positions = torch.arange(decoder_ids.shape[1], device=decoder_ids.device)
-        memory = self.text_embedding(text_ids) + self.text_position(text_positions)
-        text_padding = text_ids.eq(0)
-        memory = self.encoder(memory, src_key_padding_mask=text_padding)
+        memory, text_padding = self.encode_text(text_ids)
         target = self.audio_embedding(decoder_ids) + self.audio_position(audio_positions)
         causal = nn.Transformer.generate_square_subsequent_mask(
             decoder_ids.shape[1], device=decoder_ids.device
@@ -96,8 +112,25 @@ class CodecTokenTTS(nn.Module):
         self,
         text_ids: torch.Tensor,
         max_new_tokens: int = 600,
+        use_duration_control: bool = False,
+        length_cap_multiplier: float = 1.25,
+        repetition_penalty: float = 0.0,
     ) -> torch.Tensor:
         self.eval()
+        if length_cap_multiplier <= 0:
+            raise ValueError("length_cap_multiplier must be positive")
+        if repetition_penalty < 0:
+            raise ValueError("repetition_penalty must be non-negative")
+        hard_limit = min(max_new_tokens, self.config.max_audio_tokens)
+        if use_duration_control:
+            predicted_lengths = torch.expm1(self.predict_log_lengths(text_ids)).round()
+            length_caps = (predicted_lengths * length_cap_multiplier).ceil().long()
+            length_caps = length_caps.clamp(min=1, max=hard_limit)
+        else:
+            length_caps = torch.full(
+                (text_ids.shape[0],), hard_limit, device=text_ids.device,
+                dtype=torch.long,
+            )
         generated = torch.full(
             (text_ids.shape[0], 1),
             self.config.audio_bos_id,
@@ -105,8 +138,27 @@ class CodecTokenTTS(nn.Module):
             device=text_ids.device,
         )
         finished = torch.zeros(text_ids.shape[0], dtype=torch.bool, device=text_ids.device)
-        for _ in range(min(max_new_tokens, self.config.max_audio_tokens)):
-            next_token = self(text_ids, generated)[:, -1].argmax(dim=-1)
+        for step in range(hard_limit):
+            logits = self(text_ids, generated)[:, -1]
+            if repetition_penalty:
+                counts = torch.zeros_like(logits)
+                prior = generated[:, 1:]
+                if prior.numel():
+                    counts.scatter_add_(
+                        1, prior, torch.ones_like(prior, dtype=logits.dtype)
+                    )
+                counts[:, self.config.audio_eos_id :] = 0
+                logits = logits - repetition_penalty * counts
+            if finished.any():
+                logits = logits.clone()
+                logits[finished] = -torch.inf
+                logits[finished, self.config.audio_eos_id] = 0
+            force_eos = torch.full_like(logits[:, 0], step + 1).ge(length_caps)
+            if force_eos.any():
+                logits = logits.clone()
+                logits[force_eos] = -torch.inf
+                logits[force_eos, self.config.audio_eos_id] = 0
+            next_token = logits.argmax(dim=-1)
             generated = torch.cat([generated, next_token[:, None]], dim=1)
             finished |= next_token.eq(self.config.audio_eos_id)
             if finished.all():
@@ -126,5 +178,15 @@ class CodecTokenTTS(nn.Module):
     ) -> "CodecTokenTTS":
         payload = torch.load(path, map_location=map_location, weights_only=False)
         model = cls(CodecTTSConfig(**payload["config"]))
-        model.load_state_dict(payload["state_dict"])
+        incompatible = model.load_state_dict(payload["state_dict"], strict=False)
+        allowed_missing = {
+            "duration_head.0.weight", "duration_head.0.bias",
+            "duration_head.2.weight", "duration_head.2.bias",
+        }
+        unexpected_missing = set(incompatible.missing_keys) - allowed_missing
+        if unexpected_missing or incompatible.unexpected_keys:
+            raise RuntimeError(
+                f"Incompatible TTS checkpoint: missing={sorted(unexpected_missing)}, "
+                f"unexpected={sorted(incompatible.unexpected_keys)}"
+            )
         return model
