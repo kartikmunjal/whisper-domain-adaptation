@@ -18,7 +18,7 @@ foreach ($seed in @(11, 22, 33, 44, 55)) {
       --output-dir $generation `
       --use-duration-control `
       --length-cap-multiplier 1.25 `
-      --repetition-penalty 0.5
+      --repetition-penalty 0.0
   }
   $result = "$generation/round_trip_wer.json"
   if (-not (Test-Path $result)) {

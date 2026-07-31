@@ -74,3 +74,21 @@ splits, generation-failure accounting, and 10,000-resample uncertainty
 protocol are retained. The before/after report must include duration error,
 EOS/failure rate, conditional SI-SDR, and round-trip WER. Improvements are not
 claimed from the tiny-set diagnostic or teacher-forced metrics alone.
+
+## Amendment 2 — Diagnostic-gated repetition ablation
+
+Locked 2026-07-31 after the Amendment 1 tiny-set diagnostics and before any
+corrective validation/test outcome or five-seed corrective training run.
+
+On the fixed 16-example diagnostic, the full corrective recipe increased
+free-running token error from 30.08% to 43.55% and reduced exact match from
+50% to 0%. The prespecified component checks attributed this failure to the
+frequency repetition penalty: duration control plus scheduled sampling with
+the penalty disabled produced 28.49% token error and 50% exact match, while
+duration control alone produced 30.28% and 43.75%. EOS rate was 100% in every
+condition. These are diagnostic selection results, not held-out evidence.
+
+The repetition-penalty implementation and failed result are retained, but the
+confirmatory five-seed corrective comparison fixes the penalty at 0.0. All
+other Amendment 1 settings and outcomes remain unchanged. No further setting
+may be chosen from validation or test WER.
