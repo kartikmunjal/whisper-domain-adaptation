@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "n_trials_per_cell": 5,
+  "delta_definition": "after minus before",
+  "cells": [
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "before_empirical_bitrate_bps": 12.56400648581537,
+      "after_empirical_bitrate_bps": 56.09676556740486,
+      "paired_bitrate_delta_ci": [
+        20.87305468023772,
+        66.58963229495092
+      ],
+      "before_si_sdr_db": -57.24140685371557,
+      "after_si_sdr_db": -29.053631615730502,
+      "paired_si_sdr_delta": 28.187775237985072,
+      "paired_si_sdr_delta_ci": [
+        25.976489342151115,
+        31.035385869604568
+      ],
+      "before_adapted_delta_wer": 1.1940378,
+      "after_adapted_delta_wer": 0.7612894,
+      "paired_adapted_delta_wer_change": -0.43274840000000003,
+      "paired_adapted_delta_wer_change_ci": [
+        -0.7875677999999999,
+        -0.07792900000000003
+      ]
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "before_empirical_bitrate_bps": 50.171437599318324,
+      "after_empirical_bitrate_bps": 101.5466144609956,
+      "paired_bitrate_delta_ci": [
+        29.840678597183334,
+        75.0731496161284
+      ],
+      "before_si_sdr_db": -31.523278719129927,
+      "after_si_sdr_db": -22.756186780727766,
+      "paired_si_sdr_delta": 8.76709193840216,
+      "paired_si_sdr_delta_ci": [
+        4.385460622146551,
+        13.027677628423536
+      ],
+      "before_adapted_delta_wer": 1.6903832,
+      "after_adapted_delta_wer": 1.4553166000000002,
+      "paired_adapted_delta_wer_change": -0.23506660000000004,
+      "paired_adapted_delta_wer_change_ci": [
+        -0.4166942000000001,
+        -0.010201599999999988
+      ]
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "before_empirical_bitrate_bps": 12.983875933641604,
+      "after_empirical_bitrate_bps": 99.14536422232497,
+      "paired_bitrate_delta_ci": [
+        68.6342588971523,
+        101.12106132611135
+      ],
+      "before_si_sdr_db": -55.541105555747194,
+      "after_si_sdr_db": -21.503464504233285,
+      "paired_si_sdr_delta": 34.03764105151392,
+      "paired_si_sdr_delta_ci": [
+        33.1994110366623,
+        35.025640310541704
+      ],
+      "before_adapted_delta_wer": 1.0654742000000001,
+      "after_adapted_delta_wer": 0.8242683999999999,
+      "paired_adapted_delta_wer_change": -0.24120580000000005,
+      "paired_adapted_delta_wer_change_ci": [
+        -0.5878772000000001,
+        0.03217419999999995
+      ]
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "before_empirical_bitrate_bps": 47.080014600827695,
+      "after_empirical_bitrate_bps": 174.96721965977727,
+      "paired_bitrate_delta_ci": [
+        86.52324298844172,
+        169.25116712945743
+      ],
+      "before_si_sdr_db": -40.903465550572584,
+      "after_si_sdr_db": -17.880210717147055,
+      "paired_si_sdr_delta": 23.023254833425533,
+      "paired_si_sdr_delta_ci": [
+        12.882896442576609,
+        31.141374759132237
+      ],
+      "before_adapted_delta_wer": 0.722248,
+      "after_adapted_delta_wer": 0.8243568,
+      "paired_adapted_delta_wer_change": 0.10210879999999997,
+      "paired_adapted_delta_wer_change_ci": [
+        0.04105099999999999,
+        0.1550846
+      ]
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "before_empirical_bitrate_bps": 3.3183136728524283,
+      "after_empirical_bitrate_bps": 66.84402245841727,
+      "paired_bitrate_delta_ci": [
+        30.528267236265386,
+        86.46494777614629
+      ],
+      "before_si_sdr_db": -57.49367745016567,
+      "after_si_sdr_db": -28.43819609871091,
+      "paired_si_sdr_delta": 29.055481351454763,
+      "paired_si_sdr_delta_ci": [
+        13.0930290930818,
+        38.09587039381056
+      ],
+      "before_adapted_delta_wer": 1.1854256,
+      "after_adapted_delta_wer": 1.0567738,
+      "paired_adapted_delta_wer_change": -0.12865179999999998,
+      "paired_adapted_delta_wer_change_ci": [
+        -0.34638379999999996,
+        0.11836119999999999
+      ]
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "before_empirical_bitrate_bps": 62.33599044598522,
+      "after_empirical_bitrate_bps": 200.33347485840721,
+      "paired_bitrate_delta_ci": [
+        119.20153594709934,
+        158.52036764167372
+      ],
+      "before_si_sdr_db": -28.390157544174258,
+      "after_si_sdr_db": -15.731332755849175,
+      "paired_si_sdr_delta": 12.65882478832508,
+      "paired_si_sdr_delta_ci": [
+        8.757366320310094,
+        17.708699032429525
+      ],
+      "before_adapted_delta_wer": 0.7149828,
+      "after_adapted_delta_wer": 0.9502928,
+      "paired_adapted_delta_wer_change": 0.23531000000000005,
+      "paired_adapted_delta_wer_change_ci": [
+        0.1240372,
+        0.3419896
+      ]
+    }
+  ]
+}

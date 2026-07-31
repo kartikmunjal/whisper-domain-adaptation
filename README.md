@@ -155,6 +155,17 @@ reveals codebook collapse: the nominal 300–500 bps settings realize only
 3.3–13.0 bps for FSQ and 47.1–62.3 bps for VQ. Conditional SI-SDR is negative
 throughout. These are measured failure modes, not competitive codec claims.
 
+The completed [code-utilization correction](experiments/results/codec_medical_corrective/comparison.md)
+adds EMA/dead-code handling for VQ and running per-frame normalization for
+FSQ. Across all six five-seed cells, empirical bitrate and SI-SDR improved;
+for example, FSQ-300 moved from 12.56 to 56.10 empirical bps and from -57.24
+to -29.05 dB. Downstream ASR was mixed: adapted-Whisper ΔWER improved by
+23.51–43.27 points at VQ-300/FSQ-300, was inconclusive at FSQ-400/500, and
+worsened by 10.21 and 23.53 points at VQ-400/500. Because realized bitrates
+also changed substantially, this is evidence that collapse was mitigated, not
+a matched-bitrate claim that the corrected codecs are competitive. All six
+conditions still have negative SI-SDR and large positive ΔWER.
+
 It also includes a small autoregressive Transformer mapping UTF-8 text tokens
 to VQ codec tokens. The held-out path is
 text → predicted tokens → codec decoder → waveform, followed by round-trip

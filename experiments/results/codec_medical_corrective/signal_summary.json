@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "n_trials_per_cell": 5,
+  "cells": [
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -22.756186780727766,
+        "trial_values": [
+          -22.265945891158776,
+          -18.63300867596997,
+          -28.62066293393669,
+          -23.01830489095534,
+          -21.243011511618075
+        ],
+        "trial_bootstrap_95_ci": [
+          -25.87418924091738,
+          -20.19901037735883
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 101.5466144609956,
+        "trial_values": [
+          102.42053849866221,
+          95.37094868633056,
+          85.10313639503141,
+          112.02981237141303,
+          112.80863635354083
+        ],
+        "trial_bootstrap_95_ci": [
+          92.54203404856756,
+          110.41948718971398
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166852,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -29.053631615730502,
+        "trial_values": [
+          -34.19208384075283,
+          -26.11906000845181,
+          -26.73406095219217,
+          -31.29963513177081,
+          -26.92331814548488
+        ],
+        "trial_bootstrap_95_ci": [
+          -31.998989332496222,
+          -26.52591201335457
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 56.09676556740486,
+        "trial_values": [
+          54.110501709631876,
+          62.98395503873058,
+          38.68211790243613,
+          41.17359808392263,
+          83.5336551023031
+        ],
+        "trial_bootstrap_95_ci": [
+          42.76438673646988,
+          70.9517036859125
+        ]
+      },
+      "wer_representative_seed": 55,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -17.880210717147055,
+        "trial_values": [
+          -17.939717407480373,
+          -15.476335388748666,
+          -21.86445611463998,
+          -16.170040200374824,
+          -17.950504474491417
+        ],
+        "trial_bootstrap_95_ci": [
+          -19.942782603757237,
+          -16.10991016822245
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 174.96721965977727,
+        "trial_values": [
+          147.01806979240467,
+          200.32329413202473,
+          185.4157804901882,
+          168.1309072362791,
+          173.94804664798957
+        ],
+        "trial_bootstrap_95_ci": [
+          158.92017942073625,
+          189.77319513841067
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166981,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -21.503464504233285,
+        "trial_values": [
+          -22.573836400942742,
+          -20.38542574739637,
+          -22.23744832221485,
+          -19.026134487289053,
+          -23.294477563323422
+        ],
+        "trial_bootstrap_95_ci": [
+          -22.794815250149433,
+          -20.007533122041256
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 99.14536422232497,
+        "trial_values": [
+          109.81309227327706,
+          116.97529949741632,
+          90.65692308674005,
+          92.96800928329237,
+          85.31349697089908
+        ],
+        "trial_bootstrap_95_ci": [
+          88.98176987971412,
+          110.27918277045322
+        ]
+      },
+      "wer_representative_seed": 33,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -15.731332755849175,
+        "trial_values": [
+          -16.033121739299933,
+          -14.354081117187183,
+          -16.998503378914048,
+          -16.642093807229106,
+          -14.628863736615608
+        ],
+        "trial_bootstrap_95_ci": [
+          -16.66286322231725,
+          -14.799802289381102
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 200.33347485840721,
+        "trial_values": [
+          163.22215473984662,
+          150.99365022096674,
+          227.28215413092832,
+          221.2983769419821,
+          238.8710382583124
+        ],
+        "trial_bootstrap_95_ci": [
+          168.69705190673503,
+          230.72095234409272
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1167110,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -28.43819609871091,
+        "trial_values": [
+          -21.83217190109795,
+          -22.23392495827385,
+          -19.36687652422137,
+          -19.736452388742652,
+          -59.02155472121874
+        ],
+        "trial_bootstrap_95_ci": [
+          -43.80700830213455,
+          -20.007765945405197
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 66.84402245841727,
+        "trial_values": [
+          77.81880151807069,
+          89.54467609260982,
+          78.19759235703812,
+          88.15202578636202,
+          0.5070165380057752
+        ],
+        "trial_bootstrap_95_ci": [
+          33.498375383690004,
+          86.92097111645242
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+    }
+  ],
+  "selection_uses_wer": false
+}

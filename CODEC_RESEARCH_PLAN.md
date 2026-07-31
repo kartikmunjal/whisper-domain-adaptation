@@ -88,3 +88,16 @@ and after side by side. A fix is not called successful merely because code
 entropy increases; reconstruction SI-SDR and ASR ΔWER must also improve. Any
 post-lock implementation correction is documented here before its GPU outcome
 is observed.
+
+## Final corrective result
+
+All 30 corrective training runs, 30 reconstruction evaluations, and 42 ASR
+evaluations completed with clean provenance. Empirical bitrate and SI-SDR
+improved in every cell, indicating that EMA/dead-code handling and FSQ
+normalization mitigated utilization collapse. Adapted-Whisper overall ΔWER
+improved at VQ-300 and FSQ-300, was inconclusive at FSQ-400 and FSQ-500, and
+significantly worsened at VQ-400 and VQ-500. The corrective study is therefore
+mixed: it supports a code-utilization and signal-fidelity improvement, but not
+a general ASR-robustness or competitive-codec claim. Realized bitrate changed
+substantially, so the before/after comparison is not a controlled
+matched-bitrate codec ranking.
