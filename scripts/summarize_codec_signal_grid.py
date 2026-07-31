@@ -34,12 +34,13 @@ def main() -> None:
         "--output", default="experiments/results/codec_medical/signal_summary.json"
     )
     parser.add_argument("--bootstrap-resamples", type=int, default=10_000)
+    parser.add_argument("--rates", type=int, nargs="+", default=[300, 400, 500])
     args = parser.parse_args()
     root = Path(args.results_dir)
     checkpoint_root = Path(args.checkpoint_dir)
     rng = np.random.default_rng(20260729)
     cells = []
-    for rate in (300, 400, 500):
+    for rate in args.rates:
         for quantizer in ("vq", "fsq"):
             reports = []
             training_runs = []
@@ -84,7 +85,7 @@ def main() -> None:
                 key=lambda index: (abs(values[index] - median), SEEDS[index]),
             )
             empirical = np.array([report["empirical_bitrate_bps"] for report in reports])
-            cells.append({
+            cell = {
                 "quantizer": quantizer,
                 "nominal_bitrate_bps": rate,
                 "n_trials": len(SEEDS),
@@ -115,7 +116,18 @@ def main() -> None:
                     "closest mean SI-SDR to the five-seed cell median; selected "
                     "before and without ASR WER"
                 ),
-            })
+            }
+            if all("log_mel_l1_db" in report for report in reports):
+                mel = np.array([report["log_mel_l1_db"]["mean"] for report in reports])
+                cell["log_mel_l1_db"] = {
+                    "mean": float(mel.mean()),
+                    "trial_values": mel.tolist(),
+                    "trial_bootstrap_95_ci": bootstrap_mean(
+                        mel, rng, args.bootstrap_resamples
+                    ),
+                    "lower_is_better": True,
+                }
+            cells.append(cell)
     summary = {
         "schema_version": 1,
         "n_trials_per_cell": 5,

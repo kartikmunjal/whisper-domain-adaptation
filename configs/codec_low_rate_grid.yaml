@@ -1,0 +1,21 @@
+schema_version: 1
+sample_rate: 16000
+frame_rate_hz: 50
+seeds: [11, 22, 33, 44, 55]
+training:
+  train_manifest: data/financial_research/train_manifest.parquet
+  clip_seconds: 2.0
+  hidden_dim: 128
+  latent_dim: 64
+  batch_size: 8
+  epochs: 30
+  learning_rate: 0.0003
+rates:
+  - label: 200bps
+    nominal_bits_per_frame: 4
+    vq_codebook_size: 16
+    fsq_levels: [4, 4]
+  - label: 250bps
+    nominal_bits_per_frame: 5
+    vq_codebook_size: 32
+    fsq_levels: [4, 4, 2]

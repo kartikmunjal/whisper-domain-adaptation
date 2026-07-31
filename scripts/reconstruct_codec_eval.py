@@ -42,6 +42,31 @@ def si_sdr(reference: np.ndarray, estimate: np.ndarray) -> float:
                                (np.dot(noise, noise) + 1e-12)))
 
 
+def log_mel_l1_db(
+    reference: np.ndarray, estimate: np.ndarray, sample_rate: int
+) -> float:
+    """Phase-insensitive mean absolute log-mel distance in decibels."""
+    length = min(len(reference), len(estimate))
+    if length < 400:
+        raise ValueError("log-mel distance requires at least 400 aligned samples")
+    kwargs = {
+        "sr": sample_rate,
+        "n_fft": 400,
+        "hop_length": 160,
+        "win_length": 400,
+        "n_mels": 80,
+        "fmin": 20,
+        "fmax": min(7600, sample_rate / 2),
+        "power": 2.0,
+        "center": False,
+    }
+    reference_mel = librosa.feature.melspectrogram(y=reference[:length], **kwargs)
+    estimate_mel = librosa.feature.melspectrogram(y=estimate[:length], **kwargs)
+    reference_db = 10.0 * np.log10(np.maximum(reference_mel, 1e-10))
+    estimate_db = 10.0 * np.log10(np.maximum(estimate_mel, 1e-10))
+    return float(np.mean(np.abs(reference_db - estimate_db)))
+
+
 def bootstrap_mean(values: np.ndarray, n: int) -> list[float]:
     rng = np.random.default_rng(20260729)
     means = np.empty(n)
@@ -101,11 +126,15 @@ def main() -> None:
             "codec_sha256": sha256_file(checkpoint),
             "reconstructed_sha256": sha256_file(wav_path),
             "si_sdr_db": si_sdr(reference, reconstruction),
+            "log_mel_l1_db": log_mel_l1_db(
+                reference, reconstruction, model.cfg.sample_rate
+            ),
             "empirical_bits_per_frame": float(np.mean(entropy_bits)),
         })
     result = pd.DataFrame(rows)
     result.to_parquet(output / "reconstructed_manifest.parquet", index=False)
     values = result.si_sdr_db.to_numpy()
+    mel_values = result.log_mel_l1_db.to_numpy()
     empirical_bps = result.empirical_bits_per_frame.mean() * model.cfg.frame_rate_hz
     report = {
         "schema_version": 1,
@@ -119,6 +148,21 @@ def main() -> None:
             "mean": float(values.mean()),
             "clip_bootstrap_95_ci": bootstrap_mean(values, args.bootstrap_resamples),
             "clip_values": values.tolist(),
+        },
+        "log_mel_l1_db": {
+            "mean": float(mel_values.mean()),
+            "clip_bootstrap_95_ci": bootstrap_mean(
+                mel_values, args.bootstrap_resamples
+            ),
+            "clip_values": mel_values.tolist(),
+            "lower_is_better": True,
+            "configuration": {
+                "n_mels": 80,
+                "window_samples": 400,
+                "hop_samples": 160,
+                "fmin_hz": 20,
+                "fmax_hz": min(7600, model.cfg.sample_rate / 2),
+            },
         },
         "provenance": collect_provenance(
             repo_root=root,
