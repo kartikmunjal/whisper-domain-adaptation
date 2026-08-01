@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from functools import lru_cache
 from pathlib import Path
 import re
 
@@ -43,18 +44,24 @@ def encode_text_bytes(text: str, max_length: int = 256) -> list[int]:
     return [byte + 1 for byte in text.encode("utf-8")[:max_length]]
 
 
+@lru_cache(maxsize=1)
+def _cmudict_resources() -> tuple[dict[str, list[list[str]]], tuple[str, ...]]:
+    """Load CMUdict once per process instead of once per utterance."""
+    import cmudict
+
+    return cmudict.dict(), tuple(sorted(set(cmudict.symbols())))
+
+
 def phoneme_vocabulary() -> list[str]:
     """Stable CMUdict phone vocabulary plus explicit OOV grapheme fallback."""
-    import cmudict
-    phones = sorted(set(cmudict.symbols()))
+    _, phones = _cmudict_resources()
     return ["<wb>", "<unk>"] + phones + [f"G_{c}" for c in "abcdefghijklmnopqrstuvwxyz0123456789"]
 
 
 def encode_text_phonemes(text: str, max_length: int = 256) -> tuple[list[int], int]:
     """Encode first CMUdict pronunciations; spell OOV words with marked graphemes."""
-    import cmudict
     vocab = phoneme_vocabulary(); ids = {token: i + 1 for i, token in enumerate(vocab)}
-    dictionary = cmudict.dict(); output: list[int] = []; oov = 0
+    dictionary, _ = _cmudict_resources(); output: list[int] = []; oov = 0
     for word in re.findall(r"[a-z]+(?:'[a-z]+)?|\d+(?:\.\d+)?", text.lower()):
         if output: output.append(ids["<wb>"])
         pronunciations = dictionary.get(word)
