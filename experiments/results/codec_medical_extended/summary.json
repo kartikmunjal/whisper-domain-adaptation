@@ -1,0 +1,2926 @@
+{
+  "schema_version": 1,
+  "range_bps": [
+    200,
+    500
+  ],
+  "n_trials_per_cell": 5,
+  "signal_cells": [
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 200,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166723,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -33.602155021918236,
+        "trial_values": [
+          -29.796117638265468,
+          -41.67433667272056,
+          -32.1628502851759,
+          -35.22461751154554,
+          -29.152853001883685
+        ],
+        "trial_bootstrap_95_ci": [
+          -37.880096106318184,
+          -30.01215831309484
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 44.202263090656224,
+        "trial_values": [
+          43.90156558973569,
+          31.89444142937134,
+          41.11622584646941,
+          35.02095501541411,
+          69.07812757229058
+        ],
+        "trial_bootstrap_95_ci": [
+          34.921168978652766,
+          56.67431271575106
+        ]
+      },
+      "wer_representative_seed": 33,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 15.363833451271057,
+        "trial_values": [
+          11.331756432851156,
+          16.49689582983653,
+          15.944648543993631,
+          18.1377995411555,
+          14.908066908518473
+        ],
+        "trial_bootstrap_95_ci": [
+          13.176913277308145,
+          17.15325731436412
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 250,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166852,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -38.30954140289189,
+        "trial_values": [
+          -33.31837519636115,
+          -40.53717025413385,
+          -34.95226048093458,
+          -40.26033901889352,
+          -42.47956206413633
+        ],
+        "trial_bootstrap_95_ci": [
+          -41.25876073108678,
+          -35.14907003728907
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 33.328907153658875,
+        "trial_values": [
+          41.498405973466085,
+          33.99335639140876,
+          10.506040080961847,
+          28.122360605135444,
+          52.52437271732225
+        ],
+        "trial_bootstrap_95_ci": [
+          20.227777364297417,
+          45.438776946113656
+        ]
+      },
+      "wer_representative_seed": 44,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 16.155504743258156,
+        "trial_values": [
+          13.63872210184733,
+          17.28465147813161,
+          15.102183977762857,
+          15.720758438110352,
+          19.03120772043864
+        ],
+        "trial_bootstrap_95_ci": [
+          14.640514119466143,
+          17.707028007507326
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166852,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -29.053631615730502,
+        "trial_values": [
+          -34.19208384075283,
+          -26.11906000845181,
+          -26.73406095219217,
+          -31.29963513177081,
+          -26.92331814548488
+        ],
+        "trial_bootstrap_95_ci": [
+          -32.12198952124429,
+          -26.52591201335457
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 56.09676556740486,
+        "trial_values": [
+          54.110501709631876,
+          62.98395503873058,
+          38.68211790243613,
+          41.17359808392263,
+          83.5336551023031
+        ],
+        "trial_bootstrap_95_ci": [
+          42.76438673646987,
+          70.4534076496152
+        ]
+      },
+      "wer_representative_seed": 55,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 14.150368849436441,
+        "trial_values": [
+          12.317793170611063,
+          12.56740653514862,
+          15.268956343332926,
+          15.895782033602396,
+          14.701906164487204
+        ],
+        "trial_bootstrap_95_ci": [
+          12.894461115201315,
+          15.40627658367157
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166981,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -21.503464504233285,
+        "trial_values": [
+          -22.573836400942742,
+          -20.38542574739637,
+          -22.23744832221485,
+          -19.026134487289053,
+          -23.294477563323422
+        ],
+        "trial_bootstrap_95_ci": [
+          -22.794815250149433,
+          -20.007533122041256
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 99.14536422232497,
+        "trial_values": [
+          109.81309227327706,
+          116.97529949741632,
+          90.65692308674005,
+          92.96800928329237,
+          85.31349697089908
+        ],
+        "trial_bootstrap_95_ci": [
+          88.98176987971412,
+          110.27918277045322
+        ]
+      },
+      "wer_representative_seed": 33,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 11.848305614789329,
+        "trial_values": [
+          13.292151967684427,
+          10.994846304257711,
+          12.140686710675558,
+          11.503868063290914,
+          11.309975028038025
+        ],
+        "trial_bootstrap_95_ci": [
+          11.222702145576479,
+          12.60239778359731
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1167110,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -28.43819609871091,
+        "trial_values": [
+          -21.83217190109795,
+          -22.23392495827385,
+          -19.36687652422137,
+          -19.736452388742652,
+          -59.02155472121874
+        ],
+        "trial_bootstrap_95_ci": [
+          -43.80700830213455,
+          -20.007765945405197
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 66.84402245841727,
+        "trial_values": [
+          77.81880151807069,
+          89.54467609260982,
+          78.19759235703812,
+          88.15202578636202,
+          0.5070165380057752
+        ],
+        "trial_bootstrap_95_ci": [
+          33.49837538369001,
+          86.92097111645244
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 13.945677137374878,
+        "trial_values": [
+          11.494100530942282,
+          11.027366995811462,
+          13.000556230545044,
+          13.624800523122152,
+          20.58156140645345
+        ],
+        "trial_bootstrap_95_ci": [
+          11.608698256810507,
+          17.372717054684955
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 200,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -25.54051947721434,
+        "trial_values": [
+          -24.81715521619797,
+          -22.393159794665014,
+          -27.782082779665874,
+          -29.069596475023314,
+          -23.640603120519526
+        ],
+        "trial_bootstrap_95_ci": [
+          -27.72629506505107,
+          -23.37693620931341
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 54.79419102289891,
+        "trial_values": [
+          59.61988793974072,
+          43.33647471345996,
+          73.39538216790973,
+          47.30111775314289,
+          50.31809254024125
+        ],
+        "trial_bootstrap_95_ci": [
+          46.318655494689395,
+          65.13008563100831
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 13.568122831980386,
+        "trial_values": [
+          13.577579061190287,
+          13.63326875368754,
+          14.285126805305481,
+          13.72487493356069,
+          12.619764606157938
+        ],
+        "trial_bootstrap_95_ci": [
+          13.032349562644958,
+          14.013245646158854
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 250,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -23.01247932487285,
+        "trial_values": [
+          -20.931576328313152,
+          -24.111699133430914,
+          -23.452983216338566,
+          -24.23538073908918,
+          -22.33075720719243
+        ],
+        "trial_bootstrap_95_ci": [
+          -24.029428592275753,
+          -21.847437065112562
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 76.19812469593361,
+        "trial_values": [
+          82.71924907958635,
+          66.34531875123913,
+          92.8293641388205,
+          73.1488786359446,
+          65.94781287407758
+        ],
+        "trial_bootstrap_95_ci": [
+          67.54702837731561,
+          85.5105320494574
+        ]
+      },
+      "wer_representative_seed": 33,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 12.976126702626544,
+        "trial_values": [
+          11.845913648605347,
+          12.390151619911194,
+          13.579435149828592,
+          13.67408537864685,
+          13.391047716140747
+        ],
+        "trial_bootstrap_95_ci": [
+          12.301465543111165,
+          13.579617754618326
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -22.756186780727766,
+        "trial_values": [
+          -22.265945891158776,
+          -18.63300867596997,
+          -28.62066293393669,
+          -23.01830489095534,
+          -21.243011511618075
+        ],
+        "trial_bootstrap_95_ci": [
+          -25.87418924091738,
+          -20.19901037735883
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 101.5466144609956,
+        "trial_values": [
+          102.42053849866221,
+          95.37094868633056,
+          85.10313639503141,
+          112.02981237141303,
+          112.80863635354083
+        ],
+        "trial_bootstrap_95_ci": [
+          92.54203404856756,
+          110.41948718971398
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 12.954225309689841,
+        "trial_values": [
+          13.142972747484842,
+          12.232540130615234,
+          13.851327856381735,
+          11.755051930745443,
+          13.789233883221945
+        ],
+        "trial_bootstrap_95_ci": [
+          12.22363137404124,
+          13.68481924533844
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -17.880210717147055,
+        "trial_values": [
+          -17.939717407480373,
+          -15.476335388748666,
+          -21.86445611463998,
+          -16.170040200374824,
+          -17.950504474491417
+        ],
+        "trial_bootstrap_95_ci": [
+          -19.942782603757234,
+          -16.10991016822245
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 174.96721965977727,
+        "trial_values": [
+          147.01806979240467,
+          200.32329413202473,
+          185.4157804901882,
+          168.1309072362791,
+          173.94804664798957
+        ],
+        "trial_bootstrap_95_ci": [
+          158.92017942073628,
+          189.77319513841067
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 11.733512274424234,
+        "trial_values": [
+          11.210861484209696,
+          12.929936011632284,
+          12.55055820941925,
+          11.394776622454325,
+          10.581429044405619
+        ],
+        "trial_bootstrap_95_ci": [
+          10.99587153593699,
+          12.47115301291148
+        ],
+        "lower_is_better": true
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -15.731332755849175,
+        "trial_values": [
+          -16.033121739299933,
+          -14.354081117187183,
+          -16.998503378914048,
+          -16.642093807229106,
+          -14.628863736615608
+        ],
+        "trial_bootstrap_95_ci": [
+          -16.66286322231725,
+          -14.799802289381102
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 200.33347485840721,
+        "trial_values": [
+          163.22215473984662,
+          150.99365022096674,
+          227.28215413092832,
+          221.2983769419821,
+          238.8710382583124
+        ],
+        "trial_bootstrap_95_ci": [
+          168.69705190673503,
+          230.72095234409272
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 12.512781556447345,
+        "trial_values": [
+          11.627188364664713,
+          11.21809951464335,
+          11.440450429916382,
+          15.079372803370157,
+          13.19879666964213
+        ],
+        "trial_bootstrap_95_ci": [
+          11.388857650756835,
+          13.95102712313334
+        ],
+        "lower_is_better": true
+      }
+    }
+  ],
+  "wer_cells": [
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 200,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166723,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -33.602155021918236,
+        "trial_values": [
+          -29.796117638265468,
+          -41.67433667272056,
+          -32.1628502851759,
+          -35.22461751154554,
+          -29.152853001883685
+        ],
+        "trial_bootstrap_95_ci": [
+          -37.880096106318184,
+          -30.01215831309484
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 44.202263090656224,
+        "trial_values": [
+          43.90156558973569,
+          31.89444142937134,
+          41.11622584646941,
+          35.02095501541411,
+          69.07812757229058
+        ],
+        "trial_bootstrap_95_ci": [
+          34.921168978652766,
+          56.67431271575106
+        ]
+      },
+      "wer_representative_seed": 33,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 15.363833451271057,
+        "trial_values": [
+          11.331756432851156,
+          16.49689582983653,
+          15.944648543993631,
+          18.1377995411555,
+          14.908066908518473
+        ],
+        "trial_bootstrap_95_ci": [
+          13.176913277308145,
+          17.15325731436412
+        ],
+        "lower_is_better": true
+      },
+      "condition": "fsq_200bps",
+      "wer_representative_empirical_bitrate_bps": 41.11622584646941,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.4263,
+            "ci_low": 1.311582,
+            "ci_high": 1.550557,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.735895,
+              0.98918,
+              1.158551,
+              0.955614,
+              0.889919
+            ],
+            "mean_delta_wer": 0.9458318,
+            "trial_bootstrap_95_ci": [
+              0.8237826,
+              1.0642372
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.735895,
+                "ci_low": 0.654881,
+                "ci_high": 0.829278,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.98918,
+                "ci_low": 0.835577,
+                "ci_high": 1.135913,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.158551,
+                "ci_low": 0.979842,
+                "ci_high": 1.372031,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.955614,
+                "ci_low": 0.831944,
+                "ci_high": 1.089232,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.889919,
+                "ci_low": 0.791271,
+                "ci_high": 1.005515,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.411376,
+            "ci_low": 1.228155,
+            "ci_high": 1.618161,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.689963,
+              1.012813,
+              1.117065,
+              0.956513,
+              0.876529
+            ],
+            "mean_delta_wer": 0.9305766,
+            "trial_bootstrap_95_ci": [
+              0.8019026,
+              1.0481074
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.689963,
+                "ci_low": 0.620939,
+                "ci_high": 0.775557,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.012813,
+                "ci_low": 0.754061,
+                "ci_high": 1.241116,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.117065,
+                "ci_low": 0.921114,
+                "ci_high": 1.351756,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.956513,
+                "ci_low": 0.778352,
+                "ci_high": 1.148595,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.876529,
+                "ci_low": 0.736493,
+                "ci_high": 1.056082,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.445981,
+            "ci_low": 1.331124,
+            "ci_high": 1.559448,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.796467,
+              0.958013,
+              1.213262,
+              0.954429,
+              0.907578
+            ],
+            "mean_delta_wer": 0.9659498000000001,
+            "trial_bootstrap_95_ci": [
+              0.8596518000000002,
+              1.1010754
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.796467,
+                "ci_low": 0.63484,
+                "ci_high": 0.967201,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.958013,
+                "ci_low": 0.827791,
+                "ci_high": 1.120585,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.213262,
+                "ci_low": 0.89543,
+                "ci_high": 1.592972,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.954429,
+                "ci_low": 0.803954,
+                "ci_high": 1.131031,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.907578,
+                "ci_low": 0.784598,
+                "ci_high": 1.06752,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 250,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166852,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -38.30954140289189,
+        "trial_values": [
+          -33.31837519636115,
+          -40.53717025413385,
+          -34.95226048093458,
+          -40.26033901889352,
+          -42.47956206413633
+        ],
+        "trial_bootstrap_95_ci": [
+          -41.25876073108678,
+          -35.14907003728907
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 33.328907153658875,
+        "trial_values": [
+          41.498405973466085,
+          33.99335639140876,
+          10.506040080961847,
+          28.122360605135444,
+          52.52437271732225
+        ],
+        "trial_bootstrap_95_ci": [
+          20.227777364297417,
+          45.438776946113656
+        ]
+      },
+      "wer_representative_seed": 44,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 16.155504743258156,
+        "trial_values": [
+          13.63872210184733,
+          17.28465147813161,
+          15.102183977762857,
+          15.720758438110352,
+          19.03120772043864
+        ],
+        "trial_bootstrap_95_ci": [
+          14.640514119466143,
+          17.707028007507326
+        ],
+        "lower_is_better": true
+      },
+      "condition": "fsq_250bps",
+      "wer_representative_empirical_bitrate_bps": 28.122360605135444,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.17147,
+            "ci_low": 0.925593,
+            "ci_high": 1.429192,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.701998,
+              0.708402,
+              0.729933,
+              0.731699,
+              0.71569
+            ],
+            "mean_delta_wer": 0.7175444,
+            "trial_bootstrap_95_ci": [
+              0.707298,
+              0.7277908
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.701998,
+                "ci_low": 0.636191,
+                "ci_high": 0.766484,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.708402,
+                "ci_low": 0.631092,
+                "ci_high": 0.782332,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.729933,
+                "ci_low": 0.651556,
+                "ci_high": 0.828394,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.731699,
+                "ci_low": 0.673564,
+                "ci_high": 0.801478,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.71569,
+                "ci_low": 0.672944,
+                "ci_high": 0.761172,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.394098,
+            "ci_low": 0.99627,
+            "ci_high": 1.770785,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.672297,
+              0.632887,
+              0.653465,
+              0.677732,
+              0.679286
+            ],
+            "mean_delta_wer": 0.6631334,
+            "trial_bootstrap_95_ci": [
+              0.6459716,
+              0.6772665999999999
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.672297,
+                "ci_low": 0.617612,
+                "ci_high": 0.73794,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.632887,
+                "ci_low": 0.516099,
+                "ci_high": 0.72667,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.653465,
+                "ci_low": 0.579024,
+                "ci_high": 0.728743,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.677732,
+                "ci_low": 0.612271,
+                "ci_high": 0.747015,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.679286,
+                "ci_low": 0.626079,
+                "ci_high": 0.738754,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.87788,
+            "ci_low": 0.780878,
+            "ci_high": 0.991528,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.741167,
+              0.807988,
+              0.830773,
+              0.802867,
+              0.763697
+            ],
+            "mean_delta_wer": 0.7892984000000001,
+            "trial_bootstrap_95_ci": [
+              0.7590372000000001,
+              0.8160778000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.741167,
+                "ci_low": 0.610082,
+                "ci_high": 0.832258,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.807988,
+                "ci_low": 0.74779,
+                "ci_high": 0.880823,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.830773,
+                "ci_low": 0.698496,
+                "ci_high": 0.994183,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.802867,
+                "ci_low": 0.718894,
+                "ci_high": 0.90537,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.763697,
+                "ci_low": 0.710493,
+                "ci_high": 0.817164,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166852,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -29.053631615730502,
+        "trial_values": [
+          -34.19208384075283,
+          -26.11906000845181,
+          -26.73406095219217,
+          -31.29963513177081,
+          -26.92331814548488
+        ],
+        "trial_bootstrap_95_ci": [
+          -31.998989332496222,
+          -26.52591201335457
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 56.09676556740486,
+        "trial_values": [
+          54.110501709631876,
+          62.98395503873058,
+          38.68211790243613,
+          41.17359808392263,
+          83.5336551023031
+        ],
+        "trial_bootstrap_95_ci": [
+          42.76438673646988,
+          70.9517036859125
+        ]
+      },
+      "wer_representative_seed": 55,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "condition": "fsq_300bps",
+      "wer_representative_empirical_bitrate_bps": 83.5336551023031,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.45854,
+            "ci_low": 1.226813,
+            "ci_high": 1.705659,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.701998,
+              0.834493,
+              0.777851,
+              0.738655,
+              0.75345
+            ],
+            "mean_delta_wer": 0.7612894,
+            "trial_bootstrap_95_ci": [
+              0.7245,
+              0.8020758000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.701998,
+                "ci_low": 0.636191,
+                "ci_high": 0.766484,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.834493,
+                "ci_low": 0.699706,
+                "ci_high": 1.001188,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.777851,
+                "ci_low": 0.676415,
+                "ci_high": 0.910289,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.738655,
+                "ci_low": 0.686991,
+                "ci_high": 0.805478,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.75345,
+                "ci_low": 0.688692,
+                "ci_high": 0.829201,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.475636,
+            "ci_low": 1.173095,
+            "ci_high": 1.78456,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.672297,
+              0.746263,
+              0.717336,
+              0.681227,
+              0.74568
+            ],
+            "mean_delta_wer": 0.7125606,
+            "trial_bootstrap_95_ci": [
+              0.6848768,
+              0.7402444
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.672297,
+                "ci_low": 0.617612,
+                "ci_high": 0.73794,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.746263,
+                "ci_low": 0.569739,
+                "ci_high": 0.944857,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.717336,
+                "ci_low": 0.60735,
+                "ci_high": 0.8314,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.681227,
+                "ci_low": 0.626008,
+                "ci_high": 0.744182,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.74568,
+                "ci_low": 0.645261,
+                "ci_high": 0.879312,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.435996,
+            "ci_low": 1.107016,
+            "ci_high": 1.849859,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.741167,
+              0.950845,
+              0.857655,
+              0.814388,
+              0.763697
+            ],
+            "mean_delta_wer": 0.8255504,
+            "trial_bootstrap_95_ci": [
+              0.7648232,
+              0.8947774000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.741167,
+                "ci_low": 0.610082,
+                "ci_high": 0.832258,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.950845,
+                "ci_low": 0.775752,
+                "ci_high": 1.228129,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.857655,
+                "ci_low": 0.695352,
+                "ci_high": 1.113131,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.814388,
+                "ci_low": 0.740075,
+                "ci_high": 0.922151,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.763697,
+                "ci_low": 0.710493,
+                "ci_high": 0.817164,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166981,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -21.503464504233285,
+        "trial_values": [
+          -22.573836400942742,
+          -20.38542574739637,
+          -22.23744832221485,
+          -19.026134487289053,
+          -23.294477563323422
+        ],
+        "trial_bootstrap_95_ci": [
+          -22.794815250149433,
+          -20.007533122041256
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 99.14536422232497,
+        "trial_values": [
+          109.81309227327706,
+          116.97529949741632,
+          90.65692308674005,
+          92.96800928329237,
+          85.31349697089908
+        ],
+        "trial_bootstrap_95_ci": [
+          88.98176987971412,
+          110.27918277045322
+        ]
+      },
+      "wer_representative_seed": 33,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "condition": "fsq_400bps",
+      "wer_representative_empirical_bitrate_bps": 90.65692308674005,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.526444,
+            "ci_low": 1.14388,
+            "ci_high": 1.923189,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.744617,
+              0.860439,
+              0.793088,
+              0.871812,
+              0.851386
+            ],
+            "mean_delta_wer": 0.8242683999999999,
+            "trial_bootstrap_95_ci": [
+              0.779693335,
+              0.8631775999999999
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.744617,
+                "ci_low": 0.689211,
+                "ci_high": 0.810648,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.860439,
+                "ci_low": 0.740962,
+                "ci_high": 0.97225,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.793088,
+                "ci_low": 0.698792,
+                "ci_high": 0.906455,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.871812,
+                "ci_low": 0.782018,
+                "ci_high": 0.971769,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.851386,
+                "ci_low": 0.77118,
+                "ci_high": 0.946582,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.435644,
+            "ci_low": 0.854386,
+            "ci_high": 1.994821,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.672103,
+              0.796156,
+              0.709571,
+              0.879635,
+              0.836148
+            ],
+            "mean_delta_wer": 0.7787226,
+            "trial_bootstrap_95_ci": [
+              0.7119007999999999,
+              0.8455444
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.672103,
+                "ci_low": 0.617344,
+                "ci_high": 0.737853,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.796156,
+                "ci_low": 0.607861,
+                "ci_high": 0.945179,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.709571,
+                "ci_low": 0.60263,
+                "ci_high": 0.812404,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.879635,
+                "ci_low": 0.730121,
+                "ci_high": 1.035078,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.836148,
+                "ci_low": 0.732401,
+                "ci_high": 0.96412,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.646185,
+            "ci_low": 1.174317,
+            "ci_high": 2.184536,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.840246,
+              0.945212,
+              0.903226,
+              0.861495,
+              0.87148
+            ],
+            "mean_delta_wer": 0.8843318,
+            "trial_bootstrap_95_ci": [
+              0.8549924000000001,
+              0.9158216000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.840246,
+                "ci_low": 0.77196,
+                "ci_high": 0.912168,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.945212,
+                "ci_low": 0.813953,
+                "ci_high": 1.113904,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.903226,
+                "ci_low": 0.755855,
+                "ci_high": 1.092998,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.861495,
+                "ci_low": 0.784826,
+                "ci_high": 0.952854,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.87148,
+                "ci_low": 0.763908,
+                "ci_high": 1.026935,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1167110,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -28.43819609871091,
+        "trial_values": [
+          -21.83217190109795,
+          -22.23392495827385,
+          -19.36687652422137,
+          -19.736452388742652,
+          -59.02155472121874
+        ],
+        "trial_bootstrap_95_ci": [
+          -43.80700830213455,
+          -20.007765945405197
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 66.84402245841727,
+        "trial_values": [
+          77.81880151807069,
+          89.54467609260982,
+          78.19759235703812,
+          88.15202578636202,
+          0.5070165380057752
+        ],
+        "trial_bootstrap_95_ci": [
+          33.498375383690004,
+          86.92097111645242
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "condition": "fsq_500bps",
+      "wer_representative_empirical_bitrate_bps": 77.81880151807069,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.937728,
+            "ci_low": 0.794949,
+            "ci_high": 1.093344,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.785801,
+              1.032682,
+              1.22513,
+              1.25737,
+              0.982886
+            ],
+            "mean_delta_wer": 1.0567738,
+            "trial_bootstrap_95_ci": [
+              0.9040520000000001,
+              1.1995364
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.785801,
+                "ci_low": 0.698372,
+                "ci_high": 0.875753,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.032682,
+                "ci_low": 0.830742,
+                "ci_high": 1.26817,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.22513,
+                "ci_low": 1.043979,
+                "ci_high": 1.40398,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.25737,
+                "ci_low": 0.99691,
+                "ci_high": 1.553683,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.982886,
+                "ci_low": 0.829511,
+                "ci_high": 1.17362,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.024461,
+            "ci_low": 0.787779,
+            "ci_high": 1.275842,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.762376,
+              1.076102,
+              1.241312,
+              1.254125,
+              1.017861
+            ],
+            "mean_delta_wer": 1.0703552,
+            "trial_bootstrap_95_ci": [
+              0.9092602000000001,
+              1.2133952
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.762376,
+                "ci_low": 0.675218,
+                "ci_high": 0.864984,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.076102,
+                "ci_low": 0.758283,
+                "ci_high": 1.480916,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.241312,
+                "ci_low": 0.980972,
+                "ci_high": 1.497985,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.254125,
+                "ci_low": 0.874857,
+                "ci_high": 1.707127,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.017861,
+                "ci_low": 0.778733,
+                "ci_high": 1.342745,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.823349,
+            "ci_low": 0.740502,
+            "ci_high": 0.916527,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.816692,
+              0.975422,
+              1.203789,
+              1.261649,
+              0.936764
+            ],
+            "mean_delta_wer": 1.0388632000000002,
+            "trial_bootstrap_95_ci": [
+              0.8964668,
+              1.1850999999999998
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.816692,
+                "ci_low": 0.653313,
+                "ci_high": 0.967827,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.975422,
+                "ci_low": 0.819635,
+                "ci_high": 1.149475,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.203789,
+                "ci_low": 0.965343,
+                "ci_high": 1.456598,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.261649,
+                "ci_low": 0.965794,
+                "ci_high": 1.574042,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.936764,
+                "ci_low": 0.787024,
+                "ci_high": 1.108342,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 200,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -25.54051947721434,
+        "trial_values": [
+          -24.81715521619797,
+          -22.393159794665014,
+          -27.782082779665874,
+          -29.069596475023314,
+          -23.640603120519526
+        ],
+        "trial_bootstrap_95_ci": [
+          -27.72629506505107,
+          -23.37693620931341
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 54.79419102289891,
+        "trial_values": [
+          59.61988793974072,
+          43.33647471345996,
+          73.39538216790973,
+          47.30111775314289,
+          50.31809254024125
+        ],
+        "trial_bootstrap_95_ci": [
+          46.318655494689395,
+          65.13008563100831
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 13.568122831980386,
+        "trial_values": [
+          13.577579061190287,
+          13.63326875368754,
+          14.285126805305481,
+          13.72487493356069,
+          12.619764606157938
+        ],
+        "trial_bootstrap_95_ci": [
+          13.032349562644958,
+          14.013245646158854
+        ],
+        "lower_is_better": true
+      },
+      "condition": "vq_200bps",
+      "wer_representative_empirical_bitrate_bps": 59.61988793974072,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.75069,
+            "ci_low": 0.707314,
+            "ci_high": 0.796038,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.701998,
+              0.698686,
+              0.683891,
+              0.709617,
+              0.71569
+            ],
+            "mean_delta_wer": 0.7019764000000001,
+            "trial_bootstrap_95_ci": [
+              0.6926576000000001,
+              0.7110746
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.701998,
+                "ci_low": 0.636191,
+                "ci_high": 0.766484,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.698686,
+                "ci_low": 0.625527,
+                "ci_high": 0.7632,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.683891,
+                "ci_low": 0.629124,
+                "ci_high": 0.737803,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.709617,
+                "ci_low": 0.662551,
+                "ci_high": 0.759296,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.71569,
+                "ci_low": 0.672944,
+                "ci_high": 0.761172,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.713842,
+            "ci_low": 0.661969,
+            "ci_high": 0.766446,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.672297,
+              0.632887,
+              0.653465,
+              0.674626,
+              0.679286
+            ],
+            "mean_delta_wer": 0.6625122,
+            "trial_bootstrap_95_ci": [
+              0.6453504000000001,
+              0.6760241999999999
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.672297,
+                "ci_low": 0.617612,
+                "ci_high": 0.73794,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.632887,
+                "ci_low": 0.516099,
+                "ci_high": 0.72667,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.653465,
+                "ci_low": 0.579024,
+                "ci_high": 0.728743,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.674626,
+                "ci_low": 0.610472,
+                "ci_high": 0.743383,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.679286,
+                "ci_low": 0.626079,
+                "ci_high": 0.738754,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.799283,
+            "ci_low": 0.731413,
+            "ci_high": 0.86056,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.741167,
+              0.785458,
+              0.724014,
+              0.75576,
+              0.763697
+            ],
+            "mean_delta_wer": 0.7540192,
+            "trial_bootstrap_95_ci": [
+              0.7367123999999999,
+              0.7722476
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.741167,
+                "ci_low": 0.610082,
+                "ci_high": 0.832258,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.785458,
+                "ci_low": 0.74391,
+                "ci_high": 0.825688,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.724014,
+                "ci_low": 0.660871,
+                "ci_high": 0.788591,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.75576,
+                "ci_low": 0.702494,
+                "ci_high": 0.811531,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.763697,
+                "ci_low": 0.710493,
+                "ci_high": 0.817164,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 250,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -23.01247932487285,
+        "trial_values": [
+          -20.931576328313152,
+          -24.111699133430914,
+          -23.452983216338566,
+          -24.23538073908918,
+          -22.33075720719243
+        ],
+        "trial_bootstrap_95_ci": [
+          -24.029428592275753,
+          -21.847437065112562
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 76.19812469593361,
+        "trial_values": [
+          82.71924907958635,
+          66.34531875123913,
+          92.8293641388205,
+          73.1488786359446,
+          65.94781287407758
+        ],
+        "trial_bootstrap_95_ci": [
+          67.54702837731561,
+          85.5105320494574
+        ]
+      },
+      "wer_representative_seed": 33,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 12.976126702626544,
+        "trial_values": [
+          11.845913648605347,
+          12.390151619911194,
+          13.579435149828592,
+          13.67408537864685,
+          13.391047716140747
+        ],
+        "trial_bootstrap_95_ci": [
+          12.301465543111165,
+          13.579617754618326
+        ],
+        "lower_is_better": true
+      },
+      "condition": "vq_250bps",
+      "wer_representative_empirical_bitrate_bps": 92.8293641388205,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.017555,
+            "ci_low": 0.868556,
+            "ci_high": 1.167631,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.701998,
+              0.740422,
+              0.732251,
+              0.762615,
+              0.726068
+            ],
+            "mean_delta_wer": 0.7326708000000001,
+            "trial_bootstrap_95_ci": [
+              0.7144968,
+              0.7492992
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.701998,
+                "ci_low": 0.636191,
+                "ci_high": 0.766484,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.740422,
+                "ci_low": 0.663499,
+                "ci_high": 0.806942,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.732251,
+                "ci_low": 0.676838,
+                "ci_high": 0.799523,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.762615,
+                "ci_low": 0.677485,
+                "ci_high": 0.883755,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.726068,
+                "ci_low": 0.680714,
+                "ci_high": 0.776661,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.071442,
+            "ci_low": 0.824249,
+            "ci_high": 1.288863,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.672297,
+              0.68608,
+              0.684333,
+              0.767812,
+              0.684916
+            ],
+            "mean_delta_wer": 0.6990876,
+            "trial_bootstrap_95_ci": [
+              0.6775773999999999,
+              0.7345370000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.672297,
+                "ci_low": 0.617612,
+                "ci_high": 0.73794,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.68608,
+                "ci_low": 0.554138,
+                "ci_high": 0.787145,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.684333,
+                "ci_low": 0.627586,
+                "ci_high": 0.764932,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.767812,
+                "ci_low": 0.63111,
+                "ci_high": 0.970547,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.684916,
+                "ci_low": 0.629325,
+                "ci_high": 0.750546,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.946493,
+            "ci_low": 0.823751,
+            "ci_high": 1.083397,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.741167,
+              0.812084,
+              0.795443,
+              0.75576,
+              0.780338
+            ],
+            "mean_delta_wer": 0.7769584,
+            "trial_bootstrap_95_ci": [
+              0.7548383999999999,
+              0.7990784000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.741167,
+                "ci_low": 0.610082,
+                "ci_high": 0.832258,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.812084,
+                "ci_low": 0.766924,
+                "ci_high": 0.85633,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.795443,
+                "ci_low": 0.711086,
+                "ci_high": 0.884336,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.75576,
+                "ci_low": 0.702494,
+                "ci_high": 0.811531,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.780338,
+                "ci_low": 0.725999,
+                "ci_high": 0.831065,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 300,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -22.756186780727766,
+        "trial_values": [
+          -22.265945891158776,
+          -18.63300867596997,
+          -28.62066293393669,
+          -23.01830489095534,
+          -21.243011511618075
+        ],
+        "trial_bootstrap_95_ci": [
+          -25.87418924091738,
+          -20.19901037735883
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 101.5466144609956,
+        "trial_values": [
+          102.42053849866221,
+          95.37094868633056,
+          85.10313639503141,
+          112.02981237141303,
+          112.80863635354083
+        ],
+        "trial_bootstrap_95_ci": [
+          92.54203404856756,
+          110.41948718971398
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "condition": "vq_300bps",
+      "wer_representative_empirical_bitrate_bps": 102.42053849866221,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.755769,
+            "ci_low": 0.711266,
+            "ci_high": 0.804324,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.758088,
+              1.594789,
+              1.738214,
+              1.77211,
+              1.413382
+            ],
+            "mean_delta_wer": 1.4553166000000002,
+            "trial_bootstrap_95_ci": [
+              1.0919512,
+              1.7230874
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.758088,
+                "ci_low": 0.668,
+                "ci_high": 0.860527,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.594789,
+                "ci_low": 1.362392,
+                "ci_high": 1.806508,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.738214,
+                "ci_low": 1.549959,
+                "ci_high": 1.92292,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.77211,
+                "ci_low": 1.507754,
+                "ci_high": 2.043711,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.413382,
+                "ci_low": 1.272899,
+                "ci_high": 1.556171,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.723549,
+            "ci_low": 0.666286,
+            "ci_high": 0.788557,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.736556,
+              1.609785,
+              1.796738,
+              1.876723,
+              1.435449
+            ],
+            "mean_delta_wer": 1.4910502,
+            "trial_bootstrap_95_ci": [
+              1.088371,
+              1.7884681999999998
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.736556,
+                "ci_low": 0.634889,
+                "ci_high": 0.879584,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.609785,
+                "ci_low": 1.275556,
+                "ci_high": 1.891878,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.796738,
+                "ci_low": 1.535272,
+                "ci_high": 2.045735,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.876723,
+                "ci_low": 1.495333,
+                "ci_high": 2.270952,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.435449,
+                "ci_low": 1.222911,
+                "ci_high": 1.632811,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.798259,
+            "ci_low": 0.730663,
+            "ci_high": 0.859112,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.786482,
+              1.575013,
+              1.661034,
+              1.634153,
+              1.384281
+            ],
+            "mean_delta_wer": 1.4081926,
+            "trial_bootstrap_95_ci": [
+              1.0809522,
+              1.6330774
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.786482,
+                "ci_low": 0.63443,
+                "ci_high": 0.931939,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.575013,
+                "ci_low": 1.294796,
+                "ci_high": 1.910174,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.661034,
+                "ci_low": 1.386315,
+                "ci_high": 1.931709,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.634153,
+                "ci_low": 1.290389,
+                "ci_high": 1.948062,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.384281,
+                "ci_low": 1.190264,
+                "ci_high": 1.588123,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 400,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -17.880210717147055,
+        "trial_values": [
+          -17.939717407480373,
+          -15.476335388748666,
+          -21.86445611463998,
+          -16.170040200374824,
+          -17.950504474491417
+        ],
+        "trial_bootstrap_95_ci": [
+          -19.942782603757237,
+          -16.10991016822245
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 174.96721965977727,
+        "trial_values": [
+          147.01806979240467,
+          200.32329413202473,
+          185.4157804901882,
+          168.1309072362791,
+          173.94804664798957
+        ],
+        "trial_bootstrap_95_ci": [
+          158.92017942073625,
+          189.77319513841067
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "condition": "vq_400bps",
+      "wer_representative_empirical_bitrate_bps": 147.01806979240467,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.861323,
+            "ci_low": 0.758263,
+            "ci_high": 1.031579,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.703875,
+              0.858342,
+              0.881528,
+              0.812962,
+              0.865077
+            ],
+            "mean_delta_wer": 0.8243568,
+            "trial_bootstrap_95_ci": [
+              0.761223,
+              0.8703103999999999
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.703875,
+                "ci_low": 0.637966,
+                "ci_high": 0.769101,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.858342,
+                "ci_low": 0.70002,
+                "ci_high": 1.048154,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.881528,
+                "ci_low": 0.725856,
+                "ci_high": 1.086392,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.812962,
+                "ci_low": 0.710967,
+                "ci_high": 0.955188,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.865077,
+                "ci_low": 0.737327,
+                "ci_high": 1.031366,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.862163,
+            "ci_low": 0.700162,
+            "ci_high": 1.182884,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.675597,
+              0.913609,
+              0.991652,
+              0.838866,
+              0.941953
+            ],
+            "mean_delta_wer": 0.8723354000000001,
+            "trial_bootstrap_95_ci": [
+              0.7708018000000001,
+              0.9561638
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.675597,
+                "ci_low": 0.619535,
+                "ci_high": 0.742999,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.913609,
+                "ci_low": 0.637608,
+                "ci_high": 1.254638,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.991652,
+                "ci_low": 0.730872,
+                "ci_high": 1.361502,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.838866,
+                "ci_low": 0.670343,
+                "ci_high": 1.114246,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.941953,
+                "ci_low": 0.724663,
+                "ci_high": 1.232846,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.860215,
+            "ci_low": 0.791352,
+            "ci_high": 0.938115,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.741167,
+              0.785458,
+              0.736303,
+              0.778802,
+              0.763697
+            ],
+            "mean_delta_wer": 0.7610854,
+            "trial_bootstrap_95_ci": [
+              0.7437274,
+              0.7784433999999999
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.741167,
+                "ci_low": 0.610082,
+                "ci_high": 0.832258,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.785458,
+                "ci_low": 0.74391,
+                "ci_high": 0.825688,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.736303,
+                "ci_low": 0.675537,
+                "ci_high": 0.797932,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.778802,
+                "ci_low": 0.730938,
+                "ci_high": 0.831797,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.763697,
+                "ci_low": 0.710493,
+                "ci_high": 0.817164,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 500,
+      "n_trials": 5,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55
+      ],
+      "trainable_parameters": 1166401,
+      "optimizer_steps_per_trial": 1110,
+      "training_budget": {
+        "n_train_clips": 294,
+        "batch_size": 8,
+        "epochs": 30
+      },
+      "si_sdr_db": {
+        "mean": -15.731332755849175,
+        "trial_values": [
+          -16.033121739299933,
+          -14.354081117187183,
+          -16.998503378914048,
+          -16.642093807229106,
+          -14.628863736615608
+        ],
+        "trial_bootstrap_95_ci": [
+          -16.66286322231725,
+          -14.799802289381102
+        ]
+      },
+      "empirical_bitrate_bps": {
+        "mean": 200.33347485840721,
+        "trial_values": [
+          163.22215473984662,
+          150.99365022096674,
+          227.28215413092832,
+          221.2983769419821,
+          238.8710382583124
+        ],
+        "trial_bootstrap_95_ci": [
+          168.69705190673503,
+          230.72095234409272
+        ]
+      },
+      "wer_representative_seed": 11,
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "condition": "vq_500bps",
+      "wer_representative_empirical_bitrate_bps": 163.22215473984662,
+      "delta_wer": {
+        "overall": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.044938,
+            "ci_low": 0.879286,
+            "ci_high": 1.271513,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.739097,
+              1.099039,
+              0.945457,
+              0.939826,
+              1.028045
+            ],
+            "mean_delta_wer": 0.9502928,
+            "trial_bootstrap_95_ci": [
+              0.8381586000000001,
+              1.0422438
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.739097,
+                "ci_low": 0.663074,
+                "ci_high": 0.822096,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.099039,
+                "ci_low": 0.922745,
+                "ci_high": 1.301048,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.945457,
+                "ci_low": 0.81789,
+                "ci_high": 1.104136,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.939826,
+                "ci_low": 0.811513,
+                "ci_high": 1.097868,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.028045,
+                "ci_low": 0.867538,
+                "ci_high": 1.237489,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 0.947777,
+            "ci_low": 0.764226,
+            "ci_high": 1.222844,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.723161,
+              1.046981,
+              0.930111,
+              0.890313,
+              1.00796
+            ],
+            "mean_delta_wer": 0.9197051999999999,
+            "trial_bootstrap_95_ci": [
+              0.8135512,
+              1.0079985999999999
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.723161,
+                "ci_low": 0.63796,
+                "ci_high": 0.843106,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.046981,
+                "ci_low": 0.789312,
+                "ci_high": 1.355964,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.930111,
+                "ci_low": 0.764449,
+                "ci_high": 1.153359,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.890313,
+                "ci_low": 0.716228,
+                "ci_high": 1.116198,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.00796,
+                "ci_low": 0.787963,
+                "ci_high": 1.341981,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_whisper": {
+            "n_trials": 1,
+            "estimate": 1.173067,
+            "ci_low": 0.917258,
+            "ci_high": 1.547223,
+            "n_resamples": 10000
+          },
+          "adapted_whisper": {
+            "n_trials": 5,
+            "trial_values": [
+              0.760113,
+              1.167691,
+              0.965694,
+              1.00512,
+              1.054531
+            ],
+            "mean_delta_wer": 0.9906298,
+            "trial_bootstrap_95_ci": [
+              0.8601128000000001,
+              1.0947774000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.760113,
+                "ci_low": 0.624688,
+                "ci_high": 0.866108,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.167691,
+                "ci_low": 0.958786,
+                "ci_high": 1.408603,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.965694,
+                "ci_low": 0.789171,
+                "ci_high": 1.203393,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.00512,
+                "ci_low": 0.852594,
+                "ci_high": 1.228317,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.054531,
+                "ci_low": 0.857493,
+                "ci_high": 1.324292,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "sources": [
+    "experiments/results/codec_medical_low_rate",
+    "experiments/results/codec_medical_corrective"
+  ]
+}

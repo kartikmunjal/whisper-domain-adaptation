@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "shuffled_minus_true_nll_mean_ci95": [
+    0.025519498232915792,
+    0.014490383439215382,
+    0.03709319605769896
+  ],
+  "generated_sequence_sensitivity_mean_ci95": [
+    0.1460818254429237,
+    0.12865308530243685,
+    0.1698298614496451
+  ],
+  "conditioning_broken_by_locked_gate": true,
+  "position_error_counts": [
+    12495,
+    13333,
+    13952,
+    12706,
+    14371,
+    14750,
+    14214,
+    13439,
+    7847,
+    772
+  ],
+  "position_event_counts": [
+    17953,
+    16874,
+    16476,
+    16444,
+    16200,
+    16198,
+    16035,
+    15950,
+    16046,
+    15970
+  ],
+  "position_error_rates": [
+    0.6959839581128502,
+    0.790150527438663,
+    0.8468074775430929,
+    0.7726830454877159,
+    0.8870987654320988,
+    0.9106062476848994,
+    0.8864359214218896,
+    0.8425705329153605,
+    0.489031534338776,
+    0.04834063869755792
+  ],
+  "attention_centroid_r_mean_ci95": [
+    0.15977722419083132,
+    0.07895399199682081,
+    0.2391379955736155
+  ],
+  "attention_entropy_mean_ci95": [
+    0.9634713393009802,
+    0.9598512056448844,
+    0.966782777741691
+  ],
+  "input_reports": [
+    "experiments\\results\\codec_tts_text_only\\conditioning\\seed_11.json",
+    "experiments\\results\\codec_tts_text_only\\conditioning\\seed_22.json",
+    "experiments\\results\\codec_tts_text_only\\conditioning\\seed_33.json",
+    "experiments\\results\\codec_tts_text_only\\conditioning\\seed_44.json",
+    "experiments\\results\\codec_tts_text_only\\conditioning\\seed_55.json"
+  ]
+}

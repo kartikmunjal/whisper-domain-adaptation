@@ -1,0 +1,4483 @@
+{
+  "schema_version": 1,
+  "acoustic_comparison": {
+    "metrics": {
+      "duration_seconds": {
+        "synthetic_mean": 4.722367346938776,
+        "synthetic_median": 4.667999999999999,
+        "real_mean": 49.19355,
+        "real_median": 7.774,
+        "real_minus_synthetic_mean_95_ci": [
+          12.901327882653062,
+          84.57149714285713
+        ],
+        "cliffs_delta_real_vs_synthetic": 0.9329931972789116,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "rms_dbfs": {
+        "synthetic_mean": -20.808515263252517,
+        "synthetic_median": -20.884902000427246,
+        "real_mean": -23.405539131164552,
+        "real_median": -21.70819854736328,
+        "real_minus_synthetic_mean_95_ci": [
+          -5.184938354086716,
+          -0.24756281383994663
+        ],
+        "cliffs_delta_real_vs_synthetic": -0.14489795918367346,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "heuristic_snr_db": {
+        "synthetic_mean": 26.070803240042967,
+        "synthetic_median": 26.01001262664795,
+        "real_mean": 28.969962978363036,
+        "real_median": 30.88313102722168,
+        "real_minus_synthetic_mean_95_ci": [
+          -0.8726284190424453,
+          5.796777567636399
+        ],
+        "cliffs_delta_real_vs_synthetic": 0.44829931972789117,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "silence_fraction": {
+        "synthetic_mean": 0.2450536911094291,
+        "synthetic_median": 0.24778761061946902,
+        "real_mean": 0.1491592204457553,
+        "real_median": 0.12686050683404254,
+        "real_minus_synthetic_mean_95_ci": [
+          -0.14039465973361176,
+          -0.050665926239996315
+        ],
+        "cliffs_delta_real_vs_synthetic": -0.5098639455782313,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "spectral_centroid_hz": {
+        "synthetic_mean": 1576.1286171542822,
+        "synthetic_median": 1547.68152912195,
+        "real_mean": 1175.846802349232,
+        "real_median": 1154.6595440125193,
+        "real_minus_synthetic_mean_95_ci": [
+          -505.8769749375428,
+          -302.781203195311
+        ],
+        "cliffs_delta_real_vs_synthetic": -0.7768707482993197,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "spectral_tilt_db_per_octave": {
+        "synthetic_mean": -7.131304477517815,
+        "synthetic_median": -7.21937140317195,
+        "real_mean": -8.299762104459031,
+        "real_median": -8.298338813319734,
+        "real_minus_synthetic_mean_95_ci": [
+          -2.0405322530438217,
+          -0.2282513228020248
+        ],
+        "cliffs_delta_real_vs_synthetic": -0.45408163265306123,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "voiced_fraction": {
+        "synthetic_mean": 0.5911438223172901,
+        "synthetic_median": 0.6031397745181234,
+        "real_mean": 0.554872492384644,
+        "real_median": 0.5774506195558826,
+        "real_minus_synthetic_mean_95_ci": [
+          -0.09657547926420254,
+          0.025640843091626987
+        ],
+        "cliffs_delta_real_vs_synthetic": -0.19387755102040816,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "pitch_median_hz": {
+        "synthetic_mean": 159.83903171698705,
+        "synthetic_median": 157.52703789317525,
+        "real_mean": 146.6062639250182,
+        "real_median": 140.1470352290932,
+        "real_minus_synthetic_mean_95_ci": [
+          -30.80296369601904,
+          4.106280207348189
+        ],
+        "cliffs_delta_real_vs_synthetic": -0.13877551020408163,
+        "n_synthetic": 294,
+        "n_real": 20
+      },
+      "pitch_range_hz": {
+        "synthetic_mean": 117.9190376770757,
+        "synthetic_median": 122.60418636772619,
+        "real_mean": 121.30185991544434,
+        "real_median": 94.64739157453553,
+        "real_minus_synthetic_mean_95_ci": [
+          -29.262689851269627,
+          39.61191961853781
+        ],
+        "cliffs_delta_real_vs_synthetic": -0.10408163265306122,
+        "n_synthetic": 294,
+        "n_real": 20
+      }
+    },
+    "clip_features": {
+      "synthetic": [
+        {
+          "id": "dd90fbe074e312f0",
+          "duration_seconds": 4.608,
+          "rms_dbfs": -20.968935012817383,
+          "heuristic_snr_db": 22.932636260986328,
+          "silence_fraction": 0.23311546840958605,
+          "spectral_centroid_hz": 1603.3894238183314,
+          "spectral_tilt_db_per_octave": -6.778586544036802,
+          "voiced_fraction": 0.6464208242950108,
+          "pitch_median_hz": 153.2638700001992,
+          "pitch_range_hz": 117.43681677286182
+        },
+        {
+          "id": "b4575c4b1d087230",
+          "duration_seconds": 5.184,
+          "rms_dbfs": -20.595064163208008,
+          "heuristic_snr_db": 26.21194076538086,
+          "silence_fraction": 0.21705426356589147,
+          "spectral_centroid_hz": 1319.4455429619752,
+          "spectral_tilt_db_per_octave": -8.287653830928754,
+          "voiced_fraction": 0.5337186897880539,
+          "pitch_median_hz": 114.4865635674993,
+          "pitch_range_hz": 69.76790427517285
+        },
+        {
+          "id": "330aa9e853d15a95",
+          "duration_seconds": 4.2,
+          "rms_dbfs": -20.813949584960938,
+          "heuristic_snr_db": 26.430919647216797,
+          "silence_fraction": 0.3062200956937799,
+          "spectral_centroid_hz": 1553.5796913204333,
+          "spectral_tilt_db_per_octave": -7.675001439693545,
+          "voiced_fraction": 0.6128266033254157,
+          "pitch_median_hz": 176.05395534970825,
+          "pitch_range_hz": 122.78891023447514
+        },
+        {
+          "id": "59c771ef37cac09f",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -21.97625732421875,
+          "heuristic_snr_db": 32.34791564941406,
+          "silence_fraction": 0.25287356321839083,
+          "spectral_centroid_hz": 1693.2000832464669,
+          "spectral_tilt_db_per_octave": -6.037919715486806,
+          "voiced_fraction": 0.6292906178489702,
+          "pitch_median_hz": 190.3311404729313,
+          "pitch_range_hz": 111.98114529289231
+        },
+        {
+          "id": "2c845c6034c8ddfa",
+          "duration_seconds": 4.728,
+          "rms_dbfs": -22.38738250732422,
+          "heuristic_snr_db": 25.640989303588867,
+          "silence_fraction": 0.24203821656050956,
+          "spectral_centroid_hz": 1312.251846642529,
+          "spectral_tilt_db_per_octave": -7.538834953173369,
+          "voiced_fraction": 0.4693446088794926,
+          "pitch_median_hz": 128.5068226458765,
+          "pitch_range_hz": 128.78006402330476
+        },
+        {
+          "id": "423a2fd54bc41196",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -22.744407653808594,
+          "heuristic_snr_db": 30.05118179321289,
+          "silence_fraction": 0.27403846153846156,
+          "spectral_centroid_hz": 1332.0520329686562,
+          "spectral_tilt_db_per_octave": -7.771750457035857,
+          "voiced_fraction": 0.4880382775119617,
+          "pitch_median_hz": 118.52392351256819,
+          "pitch_range_hz": 82.21418223265053
+        },
+        {
+          "id": "a52cb2eec336f187",
+          "duration_seconds": 5.424,
+          "rms_dbfs": -19.516164779663086,
+          "heuristic_snr_db": 25.852210998535156,
+          "silence_fraction": 0.13703703703703704,
+          "spectral_centroid_hz": 1969.8917058977488,
+          "spectral_tilt_db_per_octave": -7.4116288673933886,
+          "voiced_fraction": 0.6942909760589319,
+          "pitch_median_hz": 190.3311404729313,
+          "pitch_range_hz": 120.53230906565418
+        },
+        {
+          "id": "2669dac6eb6525f4",
+          "duration_seconds": 5.184,
+          "rms_dbfs": -20.221145629882812,
+          "heuristic_snr_db": 23.82675552368164,
+          "silence_fraction": 0.21124031007751937,
+          "spectral_centroid_hz": 1641.5049881923194,
+          "spectral_tilt_db_per_octave": -8.562467362334296,
+          "voiced_fraction": 0.6705202312138728,
+          "pitch_median_hz": 178.6139741695516,
+          "pitch_range_hz": 162.52241947104352
+        },
+        {
+          "id": "c1c774b43538ef72",
+          "duration_seconds": 4.68,
+          "rms_dbfs": -20.54690933227539,
+          "heuristic_snr_db": 27.863544464111328,
+          "silence_fraction": 0.26180257510729615,
+          "spectral_centroid_hz": 1515.8431493394985,
+          "spectral_tilt_db_per_octave": -6.996240168837004,
+          "voiced_fraction": 0.6247334754797441,
+          "pitch_median_hz": 153.70651218352927,
+          "pitch_range_hz": 127.67707174932337
+        },
+        {
+          "id": "30abe48879adf340",
+          "duration_seconds": 5.112,
+          "rms_dbfs": -21.303131103515625,
+          "heuristic_snr_db": 26.26698112487793,
+          "silence_fraction": 0.2318271119842829,
+          "spectral_centroid_hz": 1537.5139739933293,
+          "spectral_tilt_db_per_octave": -7.583620047894539,
+          "voiced_fraction": 0.521484375,
+          "pitch_median_hz": 111.2273533387383,
+          "pitch_range_hz": 79.53999859891051
+        },
+        {
+          "id": "d92cf16a4bb998b8",
+          "duration_seconds": 4.608,
+          "rms_dbfs": -21.087608337402344,
+          "heuristic_snr_db": 28.94794464111328,
+          "silence_fraction": 0.28540305010893247,
+          "spectral_centroid_hz": 1488.0433336651654,
+          "spectral_tilt_db_per_octave": -7.006219238225555,
+          "voiced_fraction": 0.6268980477223427,
+          "pitch_median_hz": 172.52972650401387,
+          "pitch_range_hz": 102.60027879383779
+        },
+        {
+          "id": "f661d8f84786b05e",
+          "duration_seconds": 4.512,
+          "rms_dbfs": -21.7604923248291,
+          "heuristic_snr_db": 32.6070556640625,
+          "silence_fraction": 0.2583518930957684,
+          "spectral_centroid_hz": 1474.236524435577,
+          "spectral_tilt_db_per_octave": -6.742432427652416,
+          "voiced_fraction": 0.6747787610619469,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 118.83960349527828
+        },
+        {
+          "id": "b22ecfd62cc1ce95",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -22.01593017578125,
+          "heuristic_snr_db": 21.284164428710938,
+          "silence_fraction": 0.2597701149425287,
+          "spectral_centroid_hz": 1269.4897489108735,
+          "spectral_tilt_db_per_octave": -7.157973561746914,
+          "voiced_fraction": 0.5423340961098398,
+          "pitch_median_hz": 130.0,
+          "pitch_range_hz": 118.60803666385782
+        },
+        {
+          "id": "f38d3f71d89d29ce",
+          "duration_seconds": 4.704,
+          "rms_dbfs": -22.65549087524414,
+          "heuristic_snr_db": 27.424474716186523,
+          "silence_fraction": 0.25,
+          "spectral_centroid_hz": 1362.3383771428862,
+          "spectral_tilt_db_per_octave": -8.252795327854471,
+          "voiced_fraction": 0.46709129511677283,
+          "pitch_median_hz": 124.12940850835416,
+          "pitch_range_hz": 56.53623449539445
+        },
+        {
+          "id": "a1bd638a289c9411",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -19.07828140258789,
+          "heuristic_snr_db": 26.292255401611328,
+          "silence_fraction": 0.18509615384615385,
+          "spectral_centroid_hz": 1758.2597518751315,
+          "spectral_tilt_db_per_octave": -8.885149425795658,
+          "voiced_fraction": 0.6913875598086124,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 112.37069973563214
+        },
+        {
+          "id": "588876377bf5ca7f",
+          "duration_seconds": 4.92,
+          "rms_dbfs": -20.274139404296875,
+          "heuristic_snr_db": 28.70446014404297,
+          "silence_fraction": 0.2163265306122449,
+          "spectral_centroid_hz": 1451.8600841695995,
+          "spectral_tilt_db_per_octave": -7.903546988220349,
+          "voiced_fraction": 0.6693711967545639,
+          "pitch_median_hz": 183.84776310850236,
+          "pitch_range_hz": 146.72052998626722
+        },
+        {
+          "id": "f4a9c5db70c4def4",
+          "duration_seconds": 4.44,
+          "rms_dbfs": -19.918746948242188,
+          "heuristic_snr_db": 23.75644302368164,
+          "silence_fraction": 0.26018099547511314,
+          "spectral_centroid_hz": 1490.0743847218002,
+          "spectral_tilt_db_per_octave": -7.267564088045509,
+          "voiced_fraction": 0.6022471910112359,
+          "pitch_median_hz": 152.82122781686914,
+          "pitch_range_hz": 124.47582853757808
+        },
+        {
+          "id": "80e8b82581696ff2",
+          "duration_seconds": 4.68,
+          "rms_dbfs": -20.693946838378906,
+          "heuristic_snr_db": 30.29413414001465,
+          "silence_fraction": 0.2446351931330472,
+          "spectral_centroid_hz": 1481.7215061272698,
+          "spectral_tilt_db_per_octave": -8.081106796611175,
+          "voiced_fraction": 0.5501066098081023,
+          "pitch_median_hz": 114.4865635674993,
+          "pitch_range_hz": 86.27337860143008
+        },
+        {
+          "id": "6fd1767bc8ccf91d",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -21.342031478881836,
+          "heuristic_snr_db": 26.780778884887695,
+          "silence_fraction": 0.2932692307692308,
+          "spectral_centroid_hz": 1491.9913379290153,
+          "spectral_tilt_db_per_octave": -7.906005180251499,
+          "voiced_fraction": 0.6052631578947368,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 84.78769065193535
+        },
+        {
+          "id": "edb2361cc5598e51",
+          "duration_seconds": 4.56,
+          "rms_dbfs": -21.448486328125,
+          "heuristic_snr_db": 30.64983367919922,
+          "silence_fraction": 0.24669603524229075,
+          "spectral_centroid_hz": 1562.8155131077597,
+          "spectral_tilt_db_per_octave": -6.713547297686296,
+          "voiced_fraction": 0.6433260393873085,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 143.29010924546614
+        },
+        {
+          "id": "5b4992a25c650e7b",
+          "duration_seconds": 4.536,
+          "rms_dbfs": -21.754436492919922,
+          "heuristic_snr_db": 21.941633224487305,
+          "silence_fraction": 0.24778761061946902,
+          "spectral_centroid_hz": 1187.7623874941255,
+          "spectral_tilt_db_per_octave": -7.428303975814154,
+          "voiced_fraction": 0.40748898678414097,
+          "pitch_median_hz": 144.24403136881983,
+          "pitch_range_hz": 106.60172304754667
+        },
+        {
+          "id": "7023ee85d69c2e6f",
+          "duration_seconds": 4.584,
+          "rms_dbfs": -22.25543975830078,
+          "heuristic_snr_db": 28.126298904418945,
+          "silence_fraction": 0.25219298245614036,
+          "spectral_centroid_hz": 1285.6307229015913,
+          "spectral_tilt_db_per_octave": -8.551330915087561,
+          "voiced_fraction": 0.48148148148148145,
+          "pitch_median_hz": 125.57172276022992,
+          "pitch_range_hz": 64.13795634355225
+        },
+        {
+          "id": "5fa2bbd0acc90316",
+          "duration_seconds": 4.872,
+          "rms_dbfs": -18.66407012939453,
+          "heuristic_snr_db": 24.31453514099121,
+          "silence_fraction": 0.15051546391752577,
+          "spectral_centroid_hz": 1777.4448539505745,
+          "spectral_tilt_db_per_octave": -7.809700770284715,
+          "voiced_fraction": 0.7295081967213115,
+          "pitch_median_hz": 197.04315364635175,
+          "pitch_range_hz": 128.24376022670003
+        },
+        {
+          "id": "06b4eb10a710bf64",
+          "duration_seconds": 4.776,
+          "rms_dbfs": -19.65643310546875,
+          "heuristic_snr_db": 32.085113525390625,
+          "silence_fraction": 0.25210084033613445,
+          "spectral_centroid_hz": 1500.4695206566175,
+          "spectral_tilt_db_per_octave": -8.248513693304135,
+          "voiced_fraction": 0.6129707112970711,
+          "pitch_median_hz": 181.73609144327253,
+          "pitch_range_hz": 164.748638381133
+        },
+        {
+          "id": "fde2c6aa88e3d78d",
+          "duration_seconds": 4.632,
+          "rms_dbfs": -20.349958419799805,
+          "heuristic_snr_db": 24.006752014160156,
+          "silence_fraction": 0.227765726681128,
+          "spectral_centroid_hz": 1456.963174360992,
+          "spectral_tilt_db_per_octave": -6.809286621582152,
+          "voiced_fraction": 0.6530172413793104,
+          "pitch_median_hz": 147.61557577921405,
+          "pitch_range_hz": 87.57324758203092
+        },
+        {
+          "id": "40c8ca88143fe911",
+          "duration_seconds": 4.896,
+          "rms_dbfs": -20.64785385131836,
+          "heuristic_snr_db": 27.050907135009766,
+          "silence_fraction": 0.23565573770491804,
+          "spectral_centroid_hz": 1255.5358069819936,
+          "spectral_tilt_db_per_octave": -7.844520386315757,
+          "voiced_fraction": 0.6040816326530613,
+          "pitch_median_hz": 115.14977748330686,
+          "pitch_range_hz": 65.27446846134578
+        },
+        {
+          "id": "4582add1850f9854",
+          "duration_seconds": 4.656,
+          "rms_dbfs": -21.115650177001953,
+          "heuristic_snr_db": 25.361522674560547,
+          "silence_fraction": 0.27155172413793105,
+          "spectral_centroid_hz": 1547.7007936904433,
+          "spectral_tilt_db_per_octave": -7.840485759170053,
+          "voiced_fraction": 0.6223175965665236,
+          "pitch_median_hz": 180.68936857950385,
+          "pitch_range_hz": 121.03995151656582
+        },
+        {
+          "id": "39a655f2c5569bda",
+          "duration_seconds": 4.776,
+          "rms_dbfs": -21.202850341796875,
+          "heuristic_snr_db": 30.51725196838379,
+          "silence_fraction": 0.2415966386554622,
+          "spectral_centroid_hz": 1569.737781202048,
+          "spectral_tilt_db_per_octave": -6.972186847727005,
+          "voiced_fraction": 0.6652719665271967,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 143.7512896030881
+        },
+        {
+          "id": "b4aef12e6e5a5a44",
+          "duration_seconds": 4.512,
+          "rms_dbfs": -22.325345993041992,
+          "heuristic_snr_db": 22.11087989807129,
+          "silence_fraction": 0.24498886414253898,
+          "spectral_centroid_hz": 1174.6637532750574,
+          "spectral_tilt_db_per_octave": -8.095067503627133,
+          "voiced_fraction": 0.3561946902654867,
+          "pitch_median_hz": 127.76667781088264,
+          "pitch_range_hz": 93.04121761757082
+        },
+        {
+          "id": "a03959cda27d153b",
+          "duration_seconds": 4.392,
+          "rms_dbfs": -22.027908325195312,
+          "heuristic_snr_db": 29.906051635742188,
+          "silence_fraction": 0.2723112128146453,
+          "spectral_centroid_hz": 1231.692978201502,
+          "spectral_tilt_db_per_octave": -9.12545225597217,
+          "voiced_fraction": 0.4318181818181818,
+          "pitch_median_hz": 131.13180478903544,
+          "pitch_range_hz": 66.50235400163392
+        },
+        {
+          "id": "0a33581cad77dd17",
+          "duration_seconds": 5.04,
+          "rms_dbfs": -19.061986923217773,
+          "heuristic_snr_db": 23.842199325561523,
+          "silence_fraction": 0.14741035856573706,
+          "spectral_centroid_hz": 1903.9166265478816,
+          "spectral_tilt_db_per_octave": -7.6405177922546015,
+          "voiced_fraction": 0.7029702970297029,
+          "pitch_median_hz": 192.54268179725335,
+          "pitch_range_hz": 127.84482875420275
+        },
+        {
+          "id": "64060613b6dab002",
+          "duration_seconds": 4.992,
+          "rms_dbfs": -19.79485511779785,
+          "heuristic_snr_db": 26.716773986816406,
+          "silence_fraction": 0.21730382293762576,
+          "spectral_centroid_hz": 1407.3360426195245,
+          "spectral_tilt_db_per_octave": -8.78775107368919,
+          "voiced_fraction": 0.686,
+          "pitch_median_hz": 179.64867439581087,
+          "pitch_range_hz": 154.23870257607584
+        },
+        {
+          "id": "ec4ce814a8130868",
+          "duration_seconds": 4.608,
+          "rms_dbfs": -20.957530975341797,
+          "heuristic_snr_db": 24.078426361083984,
+          "silence_fraction": 0.23529411764705882,
+          "spectral_centroid_hz": 1428.0712241259341,
+          "spectral_tilt_db_per_octave": -6.7672788735689124,
+          "voiced_fraction": 0.6529284164859002,
+          "pitch_median_hz": 150.19585059339548,
+          "pitch_range_hz": 135.60159810839673
+        },
+        {
+          "id": "fb35e536eeafa0e8",
+          "duration_seconds": 4.656,
+          "rms_dbfs": -20.682106018066406,
+          "heuristic_snr_db": 26.038644790649414,
+          "silence_fraction": 0.24568965517241378,
+          "spectral_centroid_hz": 1241.4477145178248,
+          "spectral_tilt_db_per_octave": -9.10089235922572,
+          "voiced_fraction": 0.5386266094420601,
+          "pitch_median_hz": 117.16256013940793,
+          "pitch_range_hz": 80.94604390659885
+        },
+        {
+          "id": "52bace52034052a6",
+          "duration_seconds": 4.056,
+          "rms_dbfs": -21.71943473815918,
+          "heuristic_snr_db": 27.62851905822754,
+          "silence_fraction": 0.31435643564356436,
+          "spectral_centroid_hz": 1386.5537978025807,
+          "spectral_tilt_db_per_octave": -8.491846273466635,
+          "voiced_fraction": 0.6083743842364532,
+          "pitch_median_hz": 173.52918104210445,
+          "pitch_range_hz": 109.52366568362382
+        },
+        {
+          "id": "9fa4b674b57b3ea7",
+          "duration_seconds": 4.92,
+          "rms_dbfs": -22.17057228088379,
+          "heuristic_snr_db": 30.426719665527344,
+          "silence_fraction": 0.22448979591836735,
+          "spectral_centroid_hz": 1724.5960099927768,
+          "spectral_tilt_db_per_octave": -6.094629862166693,
+          "voiced_fraction": 0.6369168356997972,
+          "pitch_median_hz": 195.90826859169485,
+          "pitch_range_hz": 129.4741502938189
+        },
+        {
+          "id": "5b9f629e8d8fb800",
+          "duration_seconds": 4.656,
+          "rms_dbfs": -21.826135635375977,
+          "heuristic_snr_db": 21.17808723449707,
+          "silence_fraction": 0.2478448275862069,
+          "spectral_centroid_hz": 1169.7700498906838,
+          "spectral_tilt_db_per_octave": -7.493161061301356,
+          "voiced_fraction": 0.5107296137339056,
+          "pitch_median_hz": 133.42394836161736,
+          "pitch_range_hz": 119.70739361001176
+        },
+        {
+          "id": "892fa5924d170314",
+          "duration_seconds": 4.08,
+          "rms_dbfs": -22.76409339904785,
+          "heuristic_snr_db": 29.39488410949707,
+          "silence_fraction": 0.30049261083743845,
+          "spectral_centroid_hz": 1254.6913472281644,
+          "spectral_tilt_db_per_octave": -8.609481076606814,
+          "voiced_fraction": 0.4058679706601467,
+          "pitch_median_hz": 127.03079589645196,
+          "pitch_range_hz": 54.26272570591607
+        },
+        {
+          "id": "98749f09c8a767ff",
+          "duration_seconds": 4.632,
+          "rms_dbfs": -19.21098518371582,
+          "heuristic_snr_db": 24.05062484741211,
+          "silence_fraction": 0.14967462039045554,
+          "spectral_centroid_hz": 2108.922496465154,
+          "spectral_tilt_db_per_octave": -8.611575605523743,
+          "voiced_fraction": 0.665948275862069,
+          "pitch_median_hz": 189.23491376948436,
+          "pitch_range_hz": 132.3532669037336
+        },
+        {
+          "id": "5f065e37f46e61c9",
+          "duration_seconds": 5.064,
+          "rms_dbfs": -20.288005828857422,
+          "heuristic_snr_db": 28.339963912963867,
+          "silence_fraction": 0.23015873015873015,
+          "spectral_centroid_hz": 1662.150952557304,
+          "spectral_tilt_db_per_octave": -7.5577902226001115,
+          "voiced_fraction": 0.6765285996055227,
+          "pitch_median_hz": 182.78887791090543,
+          "pitch_range_hz": 161.45291970302432
+        },
+        {
+          "id": "305673d5f6e55da7",
+          "duration_seconds": 4.608,
+          "rms_dbfs": -20.078617095947266,
+          "heuristic_snr_db": 24.003555297851562,
+          "silence_fraction": 0.2440087145969499,
+          "spectral_centroid_hz": 1460.012730601474,
+          "spectral_tilt_db_per_octave": -6.613985660174364,
+          "voiced_fraction": 0.6616052060737527,
+          "pitch_median_hz": 147.61557577921405,
+          "pitch_range_hz": 121.89830785987401
+        },
+        {
+          "id": "e051dae9d353fb4a",
+          "duration_seconds": 5.136,
+          "rms_dbfs": -20.54710578918457,
+          "heuristic_snr_db": 26.87744903564453,
+          "silence_fraction": 0.2265625,
+          "spectral_centroid_hz": 1372.323034730646,
+          "spectral_tilt_db_per_octave": -7.396314462855482,
+          "voiced_fraction": 0.5136186770428015,
+          "pitch_median_hz": 114.4865635674993,
+          "pitch_range_hz": 91.96648156757428
+        },
+        {
+          "id": "5469f6516ed68541",
+          "duration_seconds": 4.248,
+          "rms_dbfs": -21.460506439208984,
+          "heuristic_snr_db": 28.608659744262695,
+          "silence_fraction": 0.3120567375886525,
+          "spectral_centroid_hz": 1438.163462688029,
+          "spectral_tilt_db_per_octave": -8.656006763883553,
+          "voiced_fraction": 0.6211764705882353,
+          "pitch_median_hz": 174.53442536143424,
+          "pitch_range_hz": 106.71287463115365
+        },
+        {
+          "id": "7dc448de247dc64e",
+          "duration_seconds": 4.752,
+          "rms_dbfs": -21.27852439880371,
+          "heuristic_snr_db": 32.1727294921875,
+          "silence_fraction": 0.24101479915433405,
+          "spectral_centroid_hz": 1460.453440808022,
+          "spectral_tilt_db_per_octave": -7.037833805196033,
+          "voiced_fraction": 0.6722689075630253,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 128.74638817139245
+        },
+        {
+          "id": "ad6ba6db8d132bee",
+          "duration_seconds": 4.656,
+          "rms_dbfs": -21.654891967773438,
+          "heuristic_snr_db": 20.88930892944336,
+          "silence_fraction": 0.2435344827586207,
+          "spectral_centroid_hz": 1164.4430337979288,
+          "spectral_tilt_db_per_octave": -7.780393373841093,
+          "voiced_fraction": 0.5300429184549357,
+          "pitch_median_hz": 127.76667781088264,
+          "pitch_range_hz": 114.19237266288684
+        },
+        {
+          "id": "4149f50804c69083",
+          "duration_seconds": 4.464,
+          "rms_dbfs": -23.21893310546875,
+          "heuristic_snr_db": 26.4406681060791,
+          "silence_fraction": 0.25675675675675674,
+          "spectral_centroid_hz": 1654.1422572226697,
+          "spectral_tilt_db_per_octave": -7.170903112311078,
+          "voiced_fraction": 0.4429530201342282,
+          "pitch_median_hz": 130.0,
+          "pitch_range_hz": 59.17108755844448
+        },
+        {
+          "id": "e515764cad66fa0b",
+          "duration_seconds": 4.92,
+          "rms_dbfs": -19.892127990722656,
+          "heuristic_snr_db": 25.62883758544922,
+          "silence_fraction": 0.13673469387755102,
+          "spectral_centroid_hz": 2142.3917131424164,
+          "spectral_tilt_db_per_octave": -8.127529095307347,
+          "voiced_fraction": 0.6673427991886409,
+          "pitch_median_hz": 192.54268179725335,
+          "pitch_range_hz": 123.04705978890408
+        },
+        {
+          "id": "ecdf90e58a560c11",
+          "duration_seconds": 5.04,
+          "rms_dbfs": -19.310049057006836,
+          "heuristic_snr_db": 30.808441162109375,
+          "silence_fraction": 0.25697211155378485,
+          "spectral_centroid_hz": 1799.5658794353546,
+          "spectral_tilt_db_per_octave": -7.227461184296979,
+          "voiced_fraction": 0.6,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 167.86420124003186
+        },
+        {
+          "id": "669c44d7c675ce73",
+          "duration_seconds": 4.2,
+          "rms_dbfs": -20.887920379638672,
+          "heuristic_snr_db": 24.728763580322266,
+          "silence_fraction": 0.27751196172248804,
+          "spectral_centroid_hz": 1960.9902048278789,
+          "spectral_tilt_db_per_octave": -5.427062780162545,
+          "voiced_fraction": 0.5201900237529691,
+          "pitch_median_hz": 150.19585059339548,
+          "pitch_range_hz": 151.3615283881126
+        },
+        {
+          "id": "345e5e43a36dcf6a",
+          "duration_seconds": 4.704,
+          "rms_dbfs": -20.601470947265625,
+          "heuristic_snr_db": 27.88207244873047,
+          "silence_fraction": 0.24358974358974358,
+          "spectral_centroid_hz": 1836.0304363213515,
+          "spectral_tilt_db_per_octave": -6.47629613666237,
+          "voiced_fraction": 0.505307855626327,
+          "pitch_median_hz": 109.9497982220883,
+          "pitch_range_hz": 70.51630450184157
+        },
+        {
+          "id": "01a7319f0394c6b3",
+          "duration_seconds": 3.984,
+          "rms_dbfs": -22.501375198364258,
+          "heuristic_snr_db": 24.392719268798828,
+          "silence_fraction": 0.3055555555555556,
+          "spectral_centroid_hz": 1896.2230896865672,
+          "spectral_tilt_db_per_octave": -5.928007455933604,
+          "voiced_fraction": 0.5338345864661654,
+          "pitch_median_hz": 174.53442536143424,
+          "pitch_range_hz": 132.4473683072659
+        },
+        {
+          "id": "1136f18d9815d239",
+          "duration_seconds": 5.328,
+          "rms_dbfs": -22.22223663330078,
+          "heuristic_snr_db": 26.608455657958984,
+          "silence_fraction": 0.224105461393597,
+          "spectral_centroid_hz": 1851.3825826467653,
+          "spectral_tilt_db_per_octave": -6.587028471838898,
+          "voiced_fraction": 0.6416510318949343,
+          "pitch_median_hz": 181.2127300113882,
+          "pitch_range_hz": 164.22954794680024
+        },
+        {
+          "id": "635d73ec4a3ce930",
+          "duration_seconds": 4.8,
+          "rms_dbfs": -21.800106048583984,
+          "heuristic_snr_db": 23.109676361083984,
+          "silence_fraction": 0.24267782426778242,
+          "spectral_centroid_hz": 1578.2110048221784,
+          "spectral_tilt_db_per_octave": -7.266351979223845,
+          "voiced_fraction": 0.4781704781704782,
+          "pitch_median_hz": 130.75308233882095,
+          "pitch_range_hz": 105.08004751765144
+        },
+        {
+          "id": "80af8227a0f2895c",
+          "duration_seconds": 4.584,
+          "rms_dbfs": -22.717836380004883,
+          "heuristic_snr_db": 33.4759521484375,
+          "silence_fraction": 0.2916666666666667,
+          "spectral_centroid_hz": 1641.8556848128248,
+          "spectral_tilt_db_per_octave": -7.5351849423427995,
+          "voiced_fraction": 0.40522875816993464,
+          "pitch_median_hz": 127.3987368536673,
+          "pitch_range_hz": 53.6936275431288
+        },
+        {
+          "id": "3011450aaf6a2b2f",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -20.01192283630371,
+          "heuristic_snr_db": 27.4870662689209,
+          "silence_fraction": 0.1595959595959596,
+          "spectral_centroid_hz": 2466.426634597313,
+          "spectral_tilt_db_per_octave": -7.478112276401093,
+          "voiced_fraction": 0.6217303822937625,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 119.66223335453051
+        },
+        {
+          "id": "d212b0eac1dec8e4",
+          "duration_seconds": 5.376,
+          "rms_dbfs": -19.65696144104004,
+          "heuristic_snr_db": 34.11333465576172,
+          "silence_fraction": 0.24813432835820895,
+          "spectral_centroid_hz": 1869.029172854965,
+          "spectral_tilt_db_per_octave": -6.289456675448692,
+          "voiced_fraction": 0.620817843866171,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 159.79744858784449
+        },
+        {
+          "id": "9325bc8b6b382797",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -20.493492126464844,
+          "heuristic_snr_db": 23.133588790893555,
+          "silence_fraction": 0.2714285714285714,
+          "spectral_centroid_hz": 1708.0406329760967,
+          "spectral_tilt_db_per_octave": -5.875455140386878,
+          "voiced_fraction": 0.557919621749409,
+          "pitch_median_hz": 150.6308884489573,
+          "pitch_range_hz": 144.5996286855049
+        },
+        {
+          "id": "d2e1aa51d4b35df6",
+          "duration_seconds": 4.392,
+          "rms_dbfs": -20.562374114990234,
+          "heuristic_snr_db": 27.50088119506836,
+          "silence_fraction": 0.2654462242562929,
+          "spectral_centroid_hz": 1817.441381777138,
+          "spectral_tilt_db_per_octave": -4.266317226459102,
+          "voiced_fraction": 0.4727272727272727,
+          "pitch_median_hz": 116.15229340339897,
+          "pitch_range_hz": 68.32652731521358
+        },
+        {
+          "id": "0af56afa6d627250",
+          "duration_seconds": 4.128,
+          "rms_dbfs": -22.487499237060547,
+          "heuristic_snr_db": 27.277828216552734,
+          "silence_fraction": 0.30413625304136255,
+          "spectral_centroid_hz": 1929.8430342562242,
+          "spectral_tilt_db_per_octave": -6.999464462574184,
+          "voiced_fraction": 0.5157384987893463,
+          "pitch_median_hz": 176.56241769755178,
+          "pitch_range_hz": 130.9475144094948
+        },
+        {
+          "id": "28258a84eb005f4d",
+          "duration_seconds": 4.032,
+          "rms_dbfs": -22.336563110351562,
+          "heuristic_snr_db": 28.50706672668457,
+          "silence_fraction": 0.2743142144638404,
+          "spectral_centroid_hz": 1866.0368410044157,
+          "spectral_tilt_db_per_octave": -5.880528775387713,
+          "voiced_fraction": 0.5618811881188119,
+          "pitch_median_hz": 201.6488190383855,
+          "pitch_range_hz": 173.75171172931138
+        },
+        {
+          "id": "9dab35ad4b66c911",
+          "duration_seconds": 4.32,
+          "rms_dbfs": -21.874282836914062,
+          "heuristic_snr_db": 21.415620803833008,
+          "silence_fraction": 0.2627906976744186,
+          "spectral_centroid_hz": 1385.516845811641,
+          "spectral_tilt_db_per_octave": -7.14710842825544,
+          "voiced_fraction": 0.48267898383371827,
+          "pitch_median_hz": 119.21052561660726,
+          "pitch_range_hz": 112.93425254462485
+        },
+        {
+          "id": "19b16cbbbc826e0a",
+          "duration_seconds": 4.32,
+          "rms_dbfs": -22.988346099853516,
+          "heuristic_snr_db": 29.317726135253906,
+          "silence_fraction": 0.29069767441860467,
+          "spectral_centroid_hz": 1593.6339560000367,
+          "spectral_tilt_db_per_octave": -8.15497068884171,
+          "voiced_fraction": 0.4110854503464203,
+          "pitch_median_hz": 122.35030010793437,
+          "pitch_range_hz": 63.92465394477114
+        },
+        {
+          "id": "551530b04ea3f6bb",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -19.8868465423584,
+          "heuristic_snr_db": 28.042139053344727,
+          "silence_fraction": 0.16428571428571428,
+          "spectral_centroid_hz": 2271.473364591563,
+          "spectral_tilt_db_per_octave": -6.777327016226445,
+          "voiced_fraction": 0.5862884160756501,
+          "pitch_median_hz": 193.6580702059513,
+          "pitch_range_hz": 124.39284863329632
+        },
+        {
+          "id": "6adcef69cab9e252",
+          "duration_seconds": 4.776,
+          "rms_dbfs": -19.256166458129883,
+          "heuristic_snr_db": 27.138580322265625,
+          "silence_fraction": 0.25,
+          "spectral_centroid_hz": 1781.589642956753,
+          "spectral_tilt_db_per_octave": -7.76213210620511,
+          "voiced_fraction": 0.600418410041841,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 168.92313510959576
+        },
+        {
+          "id": "f20f7718ce99d70a",
+          "duration_seconds": 4.296,
+          "rms_dbfs": -20.159061431884766,
+          "heuristic_snr_db": 20.998388290405273,
+          "silence_fraction": 0.26635514018691586,
+          "spectral_centroid_hz": 1770.7608297114234,
+          "spectral_tilt_db_per_octave": -5.436016130952597,
+          "voiced_fraction": 0.5651162790697675,
+          "pitch_median_hz": 151.06592630451914,
+          "pitch_range_hz": 131.49272476148707
+        },
+        {
+          "id": "51380f79947bc810",
+          "duration_seconds": 4.704,
+          "rms_dbfs": -20.44639778137207,
+          "heuristic_snr_db": 25.336383819580078,
+          "silence_fraction": 0.24145299145299146,
+          "spectral_centroid_hz": 1669.2902654827144,
+          "spectral_tilt_db_per_octave": -6.433968887033666,
+          "voiced_fraction": 0.524416135881104,
+          "pitch_median_hz": 113.82716948276507,
+          "pitch_range_hz": 68.63115816304763
+        },
+        {
+          "id": "d78f032f6dba1a4a",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -22.206573486328125,
+          "heuristic_snr_db": 27.04154396057129,
+          "silence_fraction": 0.2827586206896552,
+          "spectral_centroid_hz": 1813.6811949889989,
+          "spectral_tilt_db_per_octave": -7.5933301189853655,
+          "voiced_fraction": 0.5789473684210527,
+          "pitch_median_hz": 174.53442536143424,
+          "pitch_range_hz": 131.31408853890275
+        },
+        {
+          "id": "e6cc42970c86d1ae",
+          "duration_seconds": 4.848,
+          "rms_dbfs": -21.973186492919922,
+          "heuristic_snr_db": 28.016157150268555,
+          "silence_fraction": 0.23809523809523808,
+          "spectral_centroid_hz": 1813.5876526623945,
+          "spectral_tilt_db_per_octave": -6.220504696482031,
+          "voiced_fraction": 0.6577319587628866,
+          "pitch_median_hz": 190.3311404729313,
+          "pitch_range_hz": 153.86227113330975
+        },
+        {
+          "id": "a319e3d7d3f535b6",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -21.56501007080078,
+          "heuristic_snr_db": 22.952247619628906,
+          "silence_fraction": 0.2642857142857143,
+          "spectral_centroid_hz": 1385.3919778830982,
+          "spectral_tilt_db_per_octave": -7.910226217854395,
+          "voiced_fraction": 0.46808510638297873,
+          "pitch_median_hz": 128.5068226458765,
+          "pitch_range_hz": 100.10802304961715
+        },
+        {
+          "id": "7e91c324eaa4bd2c",
+          "duration_seconds": 4.632,
+          "rms_dbfs": -22.6712703704834,
+          "heuristic_snr_db": 26.498760223388672,
+          "silence_fraction": 0.26247288503253796,
+          "spectral_centroid_hz": 1597.443881683309,
+          "spectral_tilt_db_per_octave": -7.280128050649101,
+          "voiced_fraction": 0.48060344827586204,
+          "pitch_median_hz": 122.70366064862014,
+          "pitch_range_hz": 54.78824010768868
+        },
+        {
+          "id": "fb0122008523ba56",
+          "duration_seconds": 4.776,
+          "rms_dbfs": -19.261632919311523,
+          "heuristic_snr_db": 26.886520385742188,
+          "silence_fraction": 0.13865546218487396,
+          "spectral_centroid_hz": 2165.7298202111706,
+          "spectral_tilt_db_per_octave": -6.8664674930327685,
+          "voiced_fraction": 0.6317991631799164,
+          "pitch_median_hz": 194.21899509995995,
+          "pitch_range_hz": 122.51558573895667
+        },
+        {
+          "id": "1ab6238f56ac6b53",
+          "duration_seconds": 4.944,
+          "rms_dbfs": -19.268939971923828,
+          "heuristic_snr_db": 28.40378189086914,
+          "silence_fraction": 0.2459349593495935,
+          "spectral_centroid_hz": 1727.0405085102238,
+          "spectral_tilt_db_per_octave": -7.808442737761664,
+          "voiced_fraction": 0.6282828282828283,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 159.8327330234827
+        },
+        {
+          "id": "483b2050f138d3ae",
+          "duration_seconds": 4.44,
+          "rms_dbfs": -20.251937866210938,
+          "heuristic_snr_db": 21.845027923583984,
+          "silence_fraction": 0.2669683257918552,
+          "spectral_centroid_hz": 1729.6104971317206,
+          "spectral_tilt_db_per_octave": -6.092410738285605,
+          "voiced_fraction": 0.5910112359550562,
+          "pitch_median_hz": 154.59692495035372,
+          "pitch_range_hz": 150.61430407924368
+        },
+        {
+          "id": "79853af2dd68303a",
+          "duration_seconds": 4.584,
+          "rms_dbfs": -20.364925384521484,
+          "heuristic_snr_db": 27.511865615844727,
+          "silence_fraction": 0.2412280701754386,
+          "spectral_centroid_hz": 1701.5314085941527,
+          "spectral_tilt_db_per_octave": -7.337281839254276,
+          "voiced_fraction": 0.5250544662309368,
+          "pitch_median_hz": 109.9497982220883,
+          "pitch_range_hz": 72.58418464210251
+        },
+        {
+          "id": "6b638af59660d656",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -22.440006256103516,
+          "heuristic_snr_db": 27.139583587646484,
+          "silence_fraction": 0.3,
+          "spectral_centroid_hz": 1808.8064854154507,
+          "spectral_tilt_db_per_octave": -7.45395420822567,
+          "voiced_fraction": 0.5555555555555556,
+          "pitch_median_hz": 177.5852333780714,
+          "pitch_range_hz": 114.61621888051829
+        },
+        {
+          "id": "414f10e4039a0961",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -22.150531768798828,
+          "heuristic_snr_db": 28.267993927001953,
+          "silence_fraction": 0.24242424242424243,
+          "spectral_centroid_hz": 1942.4627392982366,
+          "spectral_tilt_db_per_octave": -5.793951679097838,
+          "voiced_fraction": 0.6237424547283702,
+          "pitch_median_hz": 198.18461302324906,
+          "pitch_range_hz": 169.03162116515907
+        },
+        {
+          "id": "d2e650466ee16597",
+          "duration_seconds": 4.632,
+          "rms_dbfs": -21.235759735107422,
+          "heuristic_snr_db": 22.271331787109375,
+          "silence_fraction": 0.25379609544468545,
+          "spectral_centroid_hz": 1338.6470455118001,
+          "spectral_tilt_db_per_octave": -7.976655025291986,
+          "voiced_fraction": 0.4956896551724138,
+          "pitch_median_hz": 130.37654116941047,
+          "pitch_range_hz": 100.97166301838219
+        },
+        {
+          "id": "5dc3f7e037744d7a",
+          "duration_seconds": 4.44,
+          "rms_dbfs": -23.118314743041992,
+          "heuristic_snr_db": 26.968093872070312,
+          "silence_fraction": 0.2737556561085973,
+          "spectral_centroid_hz": 1602.2981734085386,
+          "spectral_tilt_db_per_octave": -7.465206541949699,
+          "voiced_fraction": 0.47191011235955055,
+          "pitch_median_hz": 129.25125509628117,
+          "pitch_range_hz": 64.32480019796076
+        },
+        {
+          "id": "e64dfad916c7d59e",
+          "duration_seconds": 4.344,
+          "rms_dbfs": -19.401840209960938,
+          "heuristic_snr_db": 27.073902130126953,
+          "silence_fraction": 0.1550925925925926,
+          "spectral_centroid_hz": 2077.33551726264,
+          "spectral_tilt_db_per_octave": -8.499284243032365,
+          "voiced_fraction": 0.639080459770115,
+          "pitch_median_hz": 191.98819967516084,
+          "pitch_range_hz": 132.07784898373018
+        },
+        {
+          "id": "0271348a5cf8f858",
+          "duration_seconds": 4.656,
+          "rms_dbfs": -19.713829040527344,
+          "heuristic_snr_db": 28.79427146911621,
+          "silence_fraction": 0.2543103448275862,
+          "spectral_centroid_hz": 1736.3893785582388,
+          "spectral_tilt_db_per_octave": -6.7379660365820815,
+          "voiced_fraction": 0.5879828326180258,
+          "pitch_median_hz": 201.6488190383855,
+          "pitch_range_hz": 167.9502094439533
+        },
+        {
+          "id": "55f384ebe7680535",
+          "duration_seconds": 4.656,
+          "rms_dbfs": -20.195514678955078,
+          "heuristic_snr_db": 21.486177444458008,
+          "silence_fraction": 0.24568965517241378,
+          "spectral_centroid_hz": 1874.3116832167123,
+          "spectral_tilt_db_per_octave": -5.4664316417099315,
+          "voiced_fraction": 0.555793991416309,
+          "pitch_median_hz": 144.24403136881983,
+          "pitch_range_hz": 111.31970563393848
+        },
+        {
+          "id": "e474d470986faef4",
+          "duration_seconds": 4.776,
+          "rms_dbfs": -20.700969696044922,
+          "heuristic_snr_db": 24.98147201538086,
+          "silence_fraction": 0.23319327731092437,
+          "spectral_centroid_hz": 1656.7463420642625,
+          "spectral_tilt_db_per_octave": -5.991705016393555,
+          "voiced_fraction": 0.5585774058577406,
+          "pitch_median_hz": 112.51975293079859,
+          "pitch_range_hz": 65.79341446768206
+        },
+        {
+          "id": "0d552e00a0513fac",
+          "duration_seconds": 3.984,
+          "rms_dbfs": -22.051551818847656,
+          "heuristic_snr_db": 24.893774032592773,
+          "silence_fraction": 0.31313131313131315,
+          "spectral_centroid_hz": 1832.5807020444324,
+          "spectral_tilt_db_per_octave": -7.953346961446873,
+          "voiced_fraction": 0.5413533834586466,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 133.89852731375808
+        },
+        {
+          "id": "15f2efc75d60b304",
+          "duration_seconds": 4.512,
+          "rms_dbfs": -22.19822883605957,
+          "heuristic_snr_db": 26.88298225402832,
+          "silence_fraction": 0.2516703786191537,
+          "spectral_centroid_hz": 2097.270791307036,
+          "spectral_tilt_db_per_octave": -5.56669589095946,
+          "voiced_fraction": 0.577433628318584,
+          "pitch_median_hz": 197.04315364635175,
+          "pitch_range_hz": 165.43269344234116
+        },
+        {
+          "id": "7f853b03c5668c76",
+          "duration_seconds": 4.536,
+          "rms_dbfs": -21.8321590423584,
+          "heuristic_snr_db": 21.931560516357422,
+          "silence_fraction": 0.24557522123893805,
+          "spectral_centroid_hz": 1617.2892200217163,
+          "spectral_tilt_db_per_octave": -6.615683862516085,
+          "voiced_fraction": 0.3700440528634361,
+          "pitch_median_hz": 117.50191804253114,
+          "pitch_range_hz": 124.48153063698184
+        },
+        {
+          "id": "79ef8982e03d3853",
+          "duration_seconds": 4.512,
+          "rms_dbfs": -22.826427459716797,
+          "heuristic_snr_db": 27.9841251373291,
+          "silence_fraction": 0.267260579064588,
+          "spectral_centroid_hz": 1600.1632222302055,
+          "spectral_tilt_db_per_octave": -7.2014620099088,
+          "voiced_fraction": 0.4491150442477876,
+          "pitch_median_hz": 125.57172276022992,
+          "pitch_range_hz": 58.33718514421902
+        },
+        {
+          "id": "9358776a491c7815",
+          "duration_seconds": 4.92,
+          "rms_dbfs": -19.69282341003418,
+          "heuristic_snr_db": 26.684513092041016,
+          "silence_fraction": 0.15714285714285714,
+          "spectral_centroid_hz": 2240.705146231904,
+          "spectral_tilt_db_per_octave": -7.153817828262992,
+          "voiced_fraction": 0.6369168356997972,
+          "pitch_median_hz": 199.33601016314066,
+          "pitch_range_hz": 128.1601675210142
+        },
+        {
+          "id": "a830d4a23de63d56",
+          "duration_seconds": 4.848,
+          "rms_dbfs": -19.86937141418457,
+          "heuristic_snr_db": 29.949779510498047,
+          "silence_fraction": 0.2463768115942029,
+          "spectral_centroid_hz": 1743.1153687333067,
+          "spectral_tilt_db_per_octave": -7.7128259088017925,
+          "voiced_fraction": 0.6144329896907217,
+          "pitch_median_hz": 192.54268179725335,
+          "pitch_range_hz": 157.17175152333797
+        },
+        {
+          "id": "e91bf1882d0ca527",
+          "duration_seconds": 4.44,
+          "rms_dbfs": -20.261201858520508,
+          "heuristic_snr_db": 22.046478271484375,
+          "silence_fraction": 0.2669683257918552,
+          "spectral_centroid_hz": 1688.8637897582862,
+          "spectral_tilt_db_per_octave": -5.8659373143038955,
+          "voiced_fraction": 0.5932584269662922,
+          "pitch_median_hz": 153.70651218352927,
+          "pitch_range_hz": 87.9676543722337
+        },
+        {
+          "id": "5fa5ebcd55feb5e8",
+          "duration_seconds": 4.752,
+          "rms_dbfs": -19.923206329345703,
+          "heuristic_snr_db": 25.290605545043945,
+          "silence_fraction": 0.24101479915433405,
+          "spectral_centroid_hz": 1684.6147120438634,
+          "spectral_tilt_db_per_octave": -6.225392774149157,
+          "voiced_fraction": 0.5735294117647058,
+          "pitch_median_hz": 112.51975293079859,
+          "pitch_range_hz": 73.34674937671579
+        },
+        {
+          "id": "84217c56314f64c8",
+          "duration_seconds": 5.256,
+          "rms_dbfs": -22.177204132080078,
+          "heuristic_snr_db": 24.04369354248047,
+          "silence_fraction": 0.26908396946564883,
+          "spectral_centroid_hz": 1561.4757126824952,
+          "spectral_tilt_db_per_octave": -8.36234692751985,
+          "voiced_fraction": 0.6273764258555133,
+          "pitch_median_hz": 182.78887791090543,
+          "pitch_range_hz": 133.89895106782149
+        },
+        {
+          "id": "101ea602627516cb",
+          "duration_seconds": 5.976,
+          "rms_dbfs": -20.90030288696289,
+          "heuristic_snr_db": 32.17149353027344,
+          "silence_fraction": 0.22986577181208054,
+          "spectral_centroid_hz": 1835.7114494488408,
+          "spectral_tilt_db_per_octave": -7.089911679794605,
+          "voiced_fraction": 0.7107023411371237,
+          "pitch_median_hz": 202.8169587634771,
+          "pitch_range_hz": 158.8770830089412
+        },
+        {
+          "id": "1036440865c77ce5",
+          "duration_seconds": 5.256,
+          "rms_dbfs": -20.880504608154297,
+          "heuristic_snr_db": 19.75008773803711,
+          "silence_fraction": 0.24427480916030533,
+          "spectral_centroid_hz": 1252.7572648985451,
+          "spectral_tilt_db_per_octave": -7.495596192138056,
+          "voiced_fraction": 0.5760456273764258,
+          "pitch_median_hz": 119.9011051661721,
+          "pitch_range_hz": 127.68548694797946
+        },
+        {
+          "id": "aeb354741df20edf",
+          "duration_seconds": 5.064,
+          "rms_dbfs": -22.180044174194336,
+          "heuristic_snr_db": 24.833818435668945,
+          "silence_fraction": 0.25595238095238093,
+          "spectral_centroid_hz": 1542.3959286560444,
+          "spectral_tilt_db_per_octave": -7.50753333216415,
+          "voiced_fraction": 0.5877712031558185,
+          "pitch_median_hz": 121.9969395672486,
+          "pitch_range_hz": 89.40731693341786
+        },
+        {
+          "id": "8ca9fd6f5040a28f",
+          "duration_seconds": 5.496,
+          "rms_dbfs": -18.419645309448242,
+          "heuristic_snr_db": 26.400543212890625,
+          "silence_fraction": 0.1843065693430657,
+          "spectral_centroid_hz": 2062.0159127093043,
+          "spectral_tilt_db_per_octave": -8.31918878112244,
+          "voiced_fraction": 0.6745454545454546,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 131.13606414318744
+        },
+        {
+          "id": "ed8917474e9597b0",
+          "duration_seconds": 5.28,
+          "rms_dbfs": -19.217632293701172,
+          "heuristic_snr_db": 36.06013107299805,
+          "silence_fraction": 0.2737642585551331,
+          "spectral_centroid_hz": 1602.4965092476202,
+          "spectral_tilt_db_per_octave": -7.409607985344219,
+          "voiced_fraction": 0.6465028355387523,
+          "pitch_median_hz": 182.262484677089,
+          "pitch_range_hz": 165.28865121975144
+        },
+        {
+          "id": "de95bb0e0cbab555",
+          "duration_seconds": 5.736,
+          "rms_dbfs": -19.96017074584961,
+          "heuristic_snr_db": 22.547832489013672,
+          "silence_fraction": 0.229020979020979,
+          "spectral_centroid_hz": 1519.5920805173382,
+          "spectral_tilt_db_per_octave": -6.580215907965278,
+          "voiced_fraction": 0.6550522648083623,
+          "pitch_median_hz": 151.50348430874052,
+          "pitch_range_hz": 162.90788369919176
+        },
+        {
+          "id": "df19783908d3ad02",
+          "duration_seconds": 5.592,
+          "rms_dbfs": -20.297700881958008,
+          "heuristic_snr_db": 27.77565574645996,
+          "silence_fraction": 0.236983842010772,
+          "spectral_centroid_hz": 1616.3091151657425,
+          "spectral_tilt_db_per_octave": -6.011222977046204,
+          "voiced_fraction": 0.5535714285714286,
+          "pitch_median_hz": 110.26826457284977,
+          "pitch_range_hz": 82.8192726685328
+        },
+        {
+          "id": "c7ac8c09319b826d",
+          "duration_seconds": 5.256,
+          "rms_dbfs": -22.035011291503906,
+          "heuristic_snr_db": 28.70931053161621,
+          "silence_fraction": 0.2881679389312977,
+          "spectral_centroid_hz": 1584.7921672176014,
+          "spectral_tilt_db_per_octave": -8.863478105307715,
+          "voiced_fraction": 0.5779467680608364,
+          "pitch_median_hz": 182.78887791090543,
+          "pitch_range_hz": 144.18017045407038
+        },
+        {
+          "id": "75d37b03e0e86de4",
+          "duration_seconds": 6.096,
+          "rms_dbfs": -20.89935302734375,
+          "heuristic_snr_db": 34.38385009765625,
+          "silence_fraction": 0.2450657894736842,
+          "spectral_centroid_hz": 1942.09754938517,
+          "spectral_tilt_db_per_octave": -7.139074774965346,
+          "voiced_fraction": 0.6688524590163935,
+          "pitch_median_hz": 209.96928336801093,
+          "pitch_range_hz": 157.25280758774554
+        },
+        {
+          "id": "6d1e5cb6b8564b88",
+          "duration_seconds": 5.472,
+          "rms_dbfs": -20.40548324584961,
+          "heuristic_snr_db": 21.97010040283203,
+          "silence_fraction": 0.23486238532110093,
+          "spectral_centroid_hz": 1282.7055049523801,
+          "spectral_tilt_db_per_octave": -6.935818164172823,
+          "voiced_fraction": 0.5401459854014599,
+          "pitch_median_hz": 126.29915234996876,
+          "pitch_range_hz": 135.89704073285944
+        },
+        {
+          "id": "2f31d91e52007ea9",
+          "duration_seconds": 5.208,
+          "rms_dbfs": -21.7452449798584,
+          "heuristic_snr_db": 23.991727828979492,
+          "silence_fraction": 0.24470134874759153,
+          "spectral_centroid_hz": 1370.432275326693,
+          "spectral_tilt_db_per_octave": -7.552486841857558,
+          "voiced_fraction": 0.6161228406909789,
+          "pitch_median_hz": 127.76667781088264,
+          "pitch_range_hz": 86.75287631282902
+        },
+        {
+          "id": "99e8f79efdd73b1c",
+          "duration_seconds": 5.064,
+          "rms_dbfs": -18.202232360839844,
+          "heuristic_snr_db": 23.38397216796875,
+          "silence_fraction": 0.18253968253968253,
+          "spectral_centroid_hz": 1951.7846620233963,
+          "spectral_tilt_db_per_octave": -7.2596803401004095,
+          "voiced_fraction": 0.7080867850098619,
+          "pitch_median_hz": 197.04315364635175,
+          "pitch_range_hz": 136.86899051439954
+        },
+        {
+          "id": "c4e8af86d02f36fc",
+          "duration_seconds": 5.904,
+          "rms_dbfs": -19.40632438659668,
+          "heuristic_snr_db": 29.310379028320312,
+          "silence_fraction": 0.23639455782312926,
+          "spectral_centroid_hz": 2053.810612686406,
+          "spectral_tilt_db_per_octave": -7.732716833623822,
+          "voiced_fraction": 0.6531302876480541,
+          "pitch_median_hz": 188.68995731836677,
+          "pitch_range_hz": 155.28509657647362
+        },
+        {
+          "id": "532338aa437c40ef",
+          "duration_seconds": 4.536,
+          "rms_dbfs": -20.084102630615234,
+          "heuristic_snr_db": 21.98461151123047,
+          "silence_fraction": 0.2831858407079646,
+          "spectral_centroid_hz": 1445.2730396425952,
+          "spectral_tilt_db_per_octave": -6.046252511989545,
+          "voiced_fraction": 0.5903083700440529,
+          "pitch_median_hz": 156.8462431445916,
+          "pitch_range_hz": 134.30855459837716
+        },
+        {
+          "id": "f7e446af1379de3e",
+          "duration_seconds": 5.064,
+          "rms_dbfs": -20.366430282592773,
+          "heuristic_snr_db": 32.67509841918945,
+          "silence_fraction": 0.26785714285714285,
+          "spectral_centroid_hz": 1342.2455476576372,
+          "spectral_tilt_db_per_octave": -7.059015679414545,
+          "voiced_fraction": 0.5621301775147929,
+          "pitch_median_hz": 109.9497982220883,
+          "pitch_range_hz": 85.82441253679079
+        },
+        {
+          "id": "2e8993d7cf579f71",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -22.076814651489258,
+          "heuristic_snr_db": 27.198572158813477,
+          "silence_fraction": 0.27070707070707073,
+          "spectral_centroid_hz": 1591.8258586270974,
+          "spectral_tilt_db_per_octave": -8.533725354829356,
+          "voiced_fraction": 0.5975855130784709,
+          "pitch_median_hz": 182.78887791090543,
+          "pitch_range_hz": 136.22203542485533
+        },
+        {
+          "id": "96bfcf1c703823aa",
+          "duration_seconds": 5.304,
+          "rms_dbfs": -20.938472747802734,
+          "heuristic_snr_db": 35.57079315185547,
+          "silence_fraction": 0.26325757575757575,
+          "spectral_centroid_hz": 1571.4464502442402,
+          "spectral_tilt_db_per_octave": -6.714600958139919,
+          "voiced_fraction": 0.6610169491525424,
+          "pitch_median_hz": 209.96928336801093,
+          "pitch_range_hz": 169.90169687628273
+        },
+        {
+          "id": "3e680c9d471c7564",
+          "duration_seconds": 4.92,
+          "rms_dbfs": -20.982528686523438,
+          "heuristic_snr_db": 20.938766479492188,
+          "silence_fraction": 0.2530612244897959,
+          "spectral_centroid_hz": 1218.957027371683,
+          "spectral_tilt_db_per_octave": -7.4477715313113535,
+          "voiced_fraction": 0.49898580121703856,
+          "pitch_median_hz": 121.9969395672486,
+          "pitch_range_hz": 115.92523677709036
+        },
+        {
+          "id": "25a844f191f78506",
+          "duration_seconds": 5.304,
+          "rms_dbfs": -21.948463439941406,
+          "heuristic_snr_db": 23.263599395751953,
+          "silence_fraction": 0.2537878787878788,
+          "spectral_centroid_hz": 1377.0505862303937,
+          "spectral_tilt_db_per_octave": -7.6074609770199935,
+          "voiced_fraction": 0.583804143126177,
+          "pitch_median_hz": 125.93543755509934,
+          "pitch_range_hz": 88.09974207076958
+        },
+        {
+          "id": "1c91c4d401d944b4",
+          "duration_seconds": 5.352,
+          "rms_dbfs": -17.977174758911133,
+          "heuristic_snr_db": 24.274911880493164,
+          "silence_fraction": 0.1726078799249531,
+          "spectral_centroid_hz": 1798.4003470415769,
+          "spectral_tilt_db_per_octave": -8.250383670157658,
+          "voiced_fraction": 0.7276119402985075,
+          "pitch_median_hz": 202.8169587634771,
+          "pitch_range_hz": 129.44055464419188
+        },
+        {
+          "id": "831ab40ca6ab30d6",
+          "duration_seconds": 5.52,
+          "rms_dbfs": -19.137115478515625,
+          "heuristic_snr_db": 28.408784866333008,
+          "silence_fraction": 0.2381818181818182,
+          "spectral_centroid_hz": 1481.2630190089594,
+          "spectral_tilt_db_per_octave": -8.193446820854506,
+          "voiced_fraction": 0.6871609403254972,
+          "pitch_median_hz": 179.64867439581087,
+          "pitch_range_hz": 156.42933836696935
+        },
+        {
+          "id": "5bcb5945a11a7bab",
+          "duration_seconds": 5.232,
+          "rms_dbfs": -19.44148826599121,
+          "heuristic_snr_db": 18.697547912597656,
+          "silence_fraction": 0.2456813819577735,
+          "spectral_centroid_hz": 1451.4048279050999,
+          "spectral_tilt_db_per_octave": -6.078626880685888,
+          "voiced_fraction": 0.6755725190839694,
+          "pitch_median_hz": 156.8462431445916,
+          "pitch_range_hz": 144.61380459550253
+        },
+        {
+          "id": "8dec461bf0ef56fe",
+          "duration_seconds": 5.016,
+          "rms_dbfs": -20.53586196899414,
+          "heuristic_snr_db": 37.252166748046875,
+          "silence_fraction": 0.284,
+          "spectral_centroid_hz": 1370.125818703178,
+          "spectral_tilt_db_per_octave": -7.070612853070308,
+          "voiced_fraction": 0.5338645418326693,
+          "pitch_median_hz": 112.51975293079859,
+          "pitch_range_hz": 76.18086907514886
+        },
+        {
+          "id": "e6426586dca97b56",
+          "duration_seconds": 5.256,
+          "rms_dbfs": -21.799448013305664,
+          "heuristic_snr_db": 23.377477645874023,
+          "silence_fraction": 0.2538167938931298,
+          "spectral_centroid_hz": 1510.3454874582603,
+          "spectral_tilt_db_per_octave": -7.3531191445991455,
+          "voiced_fraction": 0.6539923954372624,
+          "pitch_median_hz": 181.73609144327253,
+          "pitch_range_hz": 134.30670960630505
+        },
+        {
+          "id": "9f70e77d898e5022",
+          "duration_seconds": 5.688,
+          "rms_dbfs": -20.773395538330078,
+          "heuristic_snr_db": 33.438045501708984,
+          "silence_fraction": 0.24867724867724866,
+          "spectral_centroid_hz": 1495.9557863677987,
+          "spectral_tilt_db_per_octave": -6.460093599946912,
+          "voiced_fraction": 0.6994727592267135,
+          "pitch_median_hz": 201.6488190383855,
+          "pitch_range_hz": 169.93049208528498
+        },
+        {
+          "id": "a498ea2c66869b97",
+          "duration_seconds": 5.184,
+          "rms_dbfs": -20.88188362121582,
+          "heuristic_snr_db": 20.592662811279297,
+          "silence_fraction": 0.24224806201550386,
+          "spectral_centroid_hz": 1230.159506494294,
+          "spectral_tilt_db_per_octave": -7.959219736469914,
+          "voiced_fraction": 0.5568400770712909,
+          "pitch_median_hz": 125.57172276022992,
+          "pitch_range_hz": 139.59934959223222
+        },
+        {
+          "id": "480bdbae530d62ec",
+          "duration_seconds": 5.4,
+          "rms_dbfs": -21.965456008911133,
+          "heuristic_snr_db": 20.800891876220703,
+          "silence_fraction": 0.2379182156133829,
+          "spectral_centroid_hz": 1353.3670942922301,
+          "spectral_tilt_db_per_octave": -7.872195046598956,
+          "voiced_fraction": 0.6136783733826248,
+          "pitch_median_hz": 121.9969395672486,
+          "pitch_range_hz": 86.97088805055468
+        },
+        {
+          "id": "651571ac6f3620ee",
+          "duration_seconds": 5.424,
+          "rms_dbfs": -18.338239669799805,
+          "heuristic_snr_db": 26.480388641357422,
+          "silence_fraction": 0.17037037037037037,
+          "spectral_centroid_hz": 1875.0376820512088,
+          "spectral_tilt_db_per_octave": -8.391514760563465,
+          "voiced_fraction": 0.6979742173112339,
+          "pitch_median_hz": 201.6488190383855,
+          "pitch_range_hz": 131.1305447956639
+        },
+        {
+          "id": "e0716bb1f1a6de89",
+          "duration_seconds": 5.424,
+          "rms_dbfs": -18.926923751831055,
+          "heuristic_snr_db": 37.69339370727539,
+          "silence_fraction": 0.2574074074074074,
+          "spectral_centroid_hz": 1503.643234788563,
+          "spectral_tilt_db_per_octave": -8.039495314764798,
+          "voiced_fraction": 0.6390423572744015,
+          "pitch_median_hz": 185.98397121658357,
+          "pitch_range_hz": 161.8590319239655
+        },
+        {
+          "id": "ad99c87810b2f0dd",
+          "duration_seconds": 5.328,
+          "rms_dbfs": -19.743953704833984,
+          "heuristic_snr_db": 20.97393035888672,
+          "silence_fraction": 0.24105461393596986,
+          "spectral_centroid_hz": 1518.7513570317353,
+          "spectral_tilt_db_per_octave": -5.9614432927110625,
+          "voiced_fraction": 0.6585365853658537,
+          "pitch_median_hz": 157.29923159850804,
+          "pitch_range_hz": 149.37484379945212
+        },
+        {
+          "id": "74be733266e0ad34",
+          "duration_seconds": 5.376,
+          "rms_dbfs": -19.944454193115234,
+          "heuristic_snr_db": 34.185455322265625,
+          "silence_fraction": 0.2574626865671642,
+          "spectral_centroid_hz": 1334.4178370588959,
+          "spectral_tilt_db_per_octave": -7.475555506976872,
+          "voiced_fraction": 0.587360594795539,
+          "pitch_median_hz": 111.87168684176291,
+          "pitch_range_hz": 83.75238370528339
+        },
+        {
+          "id": "c53008b6706d2ce1",
+          "duration_seconds": 5.28,
+          "rms_dbfs": -21.953516006469727,
+          "heuristic_snr_db": 25.067920684814453,
+          "silence_fraction": 0.26996197718631176,
+          "spectral_centroid_hz": 1515.0499056174842,
+          "spectral_tilt_db_per_octave": -8.527021994484217,
+          "voiced_fraction": 0.6465028355387523,
+          "pitch_median_hz": 182.78887791090543,
+          "pitch_range_hz": 150.02157328828685
+        },
+        {
+          "id": "37f192276dd9385a",
+          "duration_seconds": 5.304,
+          "rms_dbfs": -20.710521697998047,
+          "heuristic_snr_db": 33.7823486328125,
+          "silence_fraction": 0.2518939393939394,
+          "spectral_centroid_hz": 1432.2433360133323,
+          "spectral_tilt_db_per_octave": -6.883846620690375,
+          "voiced_fraction": 0.67984934086629,
+          "pitch_median_hz": 208.75994928447787,
+          "pitch_range_hz": 157.17175152333797
+        },
+        {
+          "id": "314c393620c73cce",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -20.72464370727539,
+          "heuristic_snr_db": 21.69870376586914,
+          "silence_fraction": 0.2545454545454545,
+          "spectral_centroid_hz": 1205.0831099809059,
+          "spectral_tilt_db_per_octave": -7.608069953638932,
+          "voiced_fraction": 0.5734406438631791,
+          "pitch_median_hz": 123.4144757235675,
+          "pitch_range_hz": 160.61206936495324
+        },
+        {
+          "id": "523766477da9bf50",
+          "duration_seconds": 5.616,
+          "rms_dbfs": -22.083303451538086,
+          "heuristic_snr_db": 23.10074806213379,
+          "silence_fraction": 0.24107142857142858,
+          "spectral_centroid_hz": 1515.5192207141602,
+          "spectral_tilt_db_per_octave": -7.5775603907284665,
+          "voiced_fraction": 0.604982206405694,
+          "pitch_median_hz": 119.55581539138967,
+          "pitch_range_hz": 83.23475896831906
+        },
+        {
+          "id": "ae0542c8f6cc7297",
+          "duration_seconds": 5.424,
+          "rms_dbfs": -18.241607666015625,
+          "heuristic_snr_db": 23.78974151611328,
+          "silence_fraction": 0.1685185185185185,
+          "spectral_centroid_hz": 1806.452258196554,
+          "spectral_tilt_db_per_octave": -7.6414297432866585,
+          "voiced_fraction": 0.7311233885819521,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 131.89572763463917
+        },
+        {
+          "id": "60ccb26967b3618d",
+          "duration_seconds": 5.28,
+          "rms_dbfs": -18.82419776916504,
+          "heuristic_snr_db": 36.91505432128906,
+          "silence_fraction": 0.2737642585551331,
+          "spectral_centroid_hz": 1521.0310415471647,
+          "spectral_tilt_db_per_octave": -7.96722074377083,
+          "voiced_fraction": 0.6578449905482041,
+          "pitch_median_hz": 185.98397121658357,
+          "pitch_range_hz": 162.1499785883568
+        },
+        {
+          "id": "5c4f5da4added1ab",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -19.61459732055664,
+          "heuristic_snr_db": 19.03213882446289,
+          "silence_fraction": 0.26464646464646463,
+          "spectral_centroid_hz": 1720.8431038056508,
+          "spectral_tilt_db_per_octave": -6.0966215394324665,
+          "voiced_fraction": 0.5653923541247485,
+          "pitch_median_hz": 156.39325469067515,
+          "pitch_range_hz": 155.4233562045023
+        },
+        {
+          "id": "8f9c65af1a731484",
+          "duration_seconds": 5.16,
+          "rms_dbfs": -20.559364318847656,
+          "heuristic_snr_db": 30.65277099609375,
+          "silence_fraction": 0.2509727626459144,
+          "spectral_centroid_hz": 1548.0404578766138,
+          "spectral_tilt_db_per_octave": -5.830129607584542,
+          "voiced_fraction": 0.5996131528046421,
+          "pitch_median_hz": 102.58850055225528,
+          "pitch_range_hz": 86.41679542039104
+        },
+        {
+          "id": "5263a5fa9a692e68",
+          "duration_seconds": 5.136,
+          "rms_dbfs": -21.972291946411133,
+          "heuristic_snr_db": 24.394060134887695,
+          "silence_fraction": 0.267578125,
+          "spectral_centroid_hz": 1501.555222184145,
+          "spectral_tilt_db_per_octave": -7.494505615804918,
+          "voiced_fraction": 0.6556420233463035,
+          "pitch_median_hz": 180.68936857950385,
+          "pitch_range_hz": 133.17535016787193
+        },
+        {
+          "id": "53327bff9b887ea8",
+          "duration_seconds": 5.856,
+          "rms_dbfs": -20.84911346435547,
+          "heuristic_snr_db": 32.20585632324219,
+          "silence_fraction": 0.24486301369863014,
+          "spectral_centroid_hz": 1941.5208826863357,
+          "spectral_tilt_db_per_octave": -6.630804831014497,
+          "voiced_fraction": 0.735494880546075,
+          "pitch_median_hz": 206.36213675586595,
+          "pitch_range_hz": 167.70688083942127
+        },
+        {
+          "id": "9348a6ed4afa3899",
+          "duration_seconds": 5.136,
+          "rms_dbfs": -20.81955337524414,
+          "heuristic_snr_db": 21.700420379638672,
+          "silence_fraction": 0.25390625,
+          "spectral_centroid_hz": 1178.1475770678735,
+          "spectral_tilt_db_per_octave": -7.887860825449384,
+          "voiced_fraction": 0.5642023346303502,
+          "pitch_median_hz": 125.21010280843024,
+          "pitch_range_hz": 129.36337386543516
+        },
+        {
+          "id": "9c4487a057f47d38",
+          "duration_seconds": 5.424,
+          "rms_dbfs": -21.713581085205078,
+          "heuristic_snr_db": 23.876237869262695,
+          "silence_fraction": 0.2518518518518518,
+          "spectral_centroid_hz": 1317.8341278799733,
+          "spectral_tilt_db_per_octave": -7.516264353869966,
+          "voiced_fraction": 0.6611418047882136,
+          "pitch_median_hz": 115.14977748330686,
+          "pitch_range_hz": 82.70538930610843
+        },
+        {
+          "id": "f45c045948531e46",
+          "duration_seconds": 5.376,
+          "rms_dbfs": -18.217361450195312,
+          "heuristic_snr_db": 23.924715042114258,
+          "silence_fraction": 0.17164179104477612,
+          "spectral_centroid_hz": 1864.4609239438955,
+          "spectral_tilt_db_per_octave": -7.544338966158117,
+          "voiced_fraction": 0.7174721189591078,
+          "pitch_median_hz": 201.0681131707089,
+          "pitch_range_hz": 134.28341049915474
+        },
+        {
+          "id": "4a8e584f2998dac7",
+          "duration_seconds": 5.016,
+          "rms_dbfs": -19.364076614379883,
+          "heuristic_snr_db": 28.891769409179688,
+          "silence_fraction": 0.224,
+          "spectral_centroid_hz": 1618.975255334721,
+          "spectral_tilt_db_per_octave": -6.920830967815012,
+          "voiced_fraction": 0.649402390438247,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 144.24403136881983
+        },
+        {
+          "id": "dd557856ffa4d657",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -20.2296142578125,
+          "heuristic_snr_db": 21.17071533203125,
+          "silence_fraction": 0.2222222222222222,
+          "spectral_centroid_hz": 1435.1803523461315,
+          "spectral_tilt_db_per_octave": -6.155006803288611,
+          "voiced_fraction": 0.6659959758551308,
+          "pitch_median_hz": 138.52806521170294,
+          "pitch_range_hz": 120.1539989891287
+        },
+        {
+          "id": "9c6cf84b5b770fb5",
+          "duration_seconds": 4.272,
+          "rms_dbfs": -20.847158432006836,
+          "heuristic_snr_db": 23.883201599121094,
+          "silence_fraction": 0.25882352941176473,
+          "spectral_centroid_hz": 1412.9567624165716,
+          "spectral_tilt_db_per_octave": -6.199915245407903,
+          "voiced_fraction": 0.5794392523364486,
+          "pitch_median_hz": 110.26826457284977,
+          "pitch_range_hz": 87.30012854894957
+        },
+        {
+          "id": "6a7e28855f87c847",
+          "duration_seconds": 4.2,
+          "rms_dbfs": -21.792795181274414,
+          "heuristic_snr_db": 23.09507179260254,
+          "silence_fraction": 0.28708133971291866,
+          "spectral_centroid_hz": 1561.1581233890417,
+          "spectral_tilt_db_per_octave": -6.283578165323841,
+          "voiced_fraction": 0.6009501187648456,
+          "pitch_median_hz": 174.53442536143424,
+          "pitch_range_hz": 95.87520381609355
+        },
+        {
+          "id": "c7a1f5bb0f09eabb",
+          "duration_seconds": 4.944,
+          "rms_dbfs": -21.950197219848633,
+          "heuristic_snr_db": 31.043190002441406,
+          "silence_fraction": 0.24796747967479674,
+          "spectral_centroid_hz": 1690.8828033887335,
+          "spectral_tilt_db_per_octave": -5.48140511288585,
+          "voiced_fraction": 0.6767676767676768,
+          "pitch_median_hz": 202.8169587634771,
+          "pitch_range_hz": 136.54702042467775
+        },
+        {
+          "id": "8555c408fa197f83",
+          "duration_seconds": 3.864,
+          "rms_dbfs": -20.85311508178711,
+          "heuristic_snr_db": 21.030223846435547,
+          "silence_fraction": 0.2864583333333333,
+          "spectral_centroid_hz": 1140.9863807344618,
+          "spectral_tilt_db_per_octave": -6.66516590943728,
+          "voiced_fraction": 0.49612403100775193,
+          "pitch_median_hz": 130.75308233882095,
+          "pitch_range_hz": 133.9561436376376
+        },
+        {
+          "id": "061d753e0cece849",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -22.77130889892578,
+          "heuristic_snr_db": 23.38054656982422,
+          "silence_fraction": 0.23232323232323232,
+          "spectral_centroid_hz": 1329.795834836321,
+          "spectral_tilt_db_per_octave": -7.824958847361794,
+          "voiced_fraction": 0.5593561368209256,
+          "pitch_median_hz": 118.52392351256819,
+          "pitch_range_hz": 62.825044258263134
+        },
+        {
+          "id": "57e8d3b56f042368",
+          "duration_seconds": 4.584,
+          "rms_dbfs": -18.33473777770996,
+          "heuristic_snr_db": 22.622547149658203,
+          "silence_fraction": 0.14912280701754385,
+          "spectral_centroid_hz": 1959.7761286366774,
+          "spectral_tilt_db_per_octave": -7.584065388362307,
+          "voiced_fraction": 0.6840958605664488,
+          "pitch_median_hz": 202.8169587634771,
+          "pitch_range_hz": 147.90682320695808
+        },
+        {
+          "id": "2006c8fa6837f110",
+          "duration_seconds": 4.92,
+          "rms_dbfs": -19.26740264892578,
+          "heuristic_snr_db": 32.0178108215332,
+          "silence_fraction": 0.22857142857142856,
+          "spectral_centroid_hz": 1580.8545429024803,
+          "spectral_tilt_db_per_octave": -7.1516942600686475,
+          "voiced_fraction": 0.6024340770791075,
+          "pitch_median_hz": 193.6580702059513,
+          "pitch_range_hz": 142.9147761887673
+        },
+        {
+          "id": "3ff06d741fca65de",
+          "duration_seconds": 5.016,
+          "rms_dbfs": -20.29515838623047,
+          "heuristic_snr_db": 24.1337890625,
+          "silence_fraction": 0.23,
+          "spectral_centroid_hz": 1532.3233187668957,
+          "spectral_tilt_db_per_octave": -6.486690438779676,
+          "voiced_fraction": 0.6254980079681275,
+          "pitch_median_hz": 149.76331837150502,
+          "pitch_range_hz": 105.94305072715724
+        },
+        {
+          "id": "618f6c1647831d1b",
+          "duration_seconds": 4.632,
+          "rms_dbfs": -20.99553108215332,
+          "heuristic_snr_db": 27.146291732788086,
+          "silence_fraction": 0.25162689804772237,
+          "spectral_centroid_hz": 1356.6987185820617,
+          "spectral_tilt_db_per_octave": -6.07254889801874,
+          "voiced_fraction": 0.5560344827586207,
+          "pitch_median_hz": 113.17157322849613,
+          "pitch_range_hz": 84.49789307130273
+        },
+        {
+          "id": "af467f885ff53620",
+          "duration_seconds": 4.296,
+          "rms_dbfs": -21.44774627685547,
+          "heuristic_snr_db": 24.091449737548828,
+          "silence_fraction": 0.2780373831775701,
+          "spectral_centroid_hz": 1374.7419264761368,
+          "spectral_tilt_db_per_octave": -6.306387082179245,
+          "voiced_fraction": 0.6348837209302326,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 95.06629120882477
+        },
+        {
+          "id": "62a062873f8ecc06",
+          "duration_seconds": 4.512,
+          "rms_dbfs": -22.132890701293945,
+          "heuristic_snr_db": 28.99308967590332,
+          "silence_fraction": 0.2650334075723831,
+          "spectral_centroid_hz": 1631.2156823736977,
+          "spectral_tilt_db_per_octave": -4.947884341471713,
+          "voiced_fraction": 0.6858407079646017,
+          "pitch_median_hz": 203.99186545315516,
+          "pitch_range_hz": 143.40004241493367
+        },
+        {
+          "id": "855aa6befe6ee2a6",
+          "duration_seconds": 4.416,
+          "rms_dbfs": -20.961509704589844,
+          "heuristic_snr_db": 21.70835304260254,
+          "silence_fraction": 0.25227272727272726,
+          "spectral_centroid_hz": 1190.9739173428004,
+          "spectral_tilt_db_per_octave": -7.328464008850927,
+          "voiced_fraction": 0.5294117647058824,
+          "pitch_median_hz": 130.0,
+          "pitch_range_hz": 112.50508589965457
+        },
+        {
+          "id": "c79d7c98e55900db",
+          "duration_seconds": 3.912,
+          "rms_dbfs": -23.039466857910156,
+          "heuristic_snr_db": 26.321535110473633,
+          "silence_fraction": 0.2930591259640103,
+          "spectral_centroid_hz": 1239.4464954451341,
+          "spectral_tilt_db_per_octave": -7.801528269016869,
+          "voiced_fraction": 0.41836734693877553,
+          "pitch_median_hz": 122.70366064862014,
+          "pitch_range_hz": 75.42000821733338
+        },
+        {
+          "id": "74b34ebbb653ce02",
+          "duration_seconds": 4.344,
+          "rms_dbfs": -18.144834518432617,
+          "heuristic_snr_db": 24.044052124023438,
+          "silence_fraction": 0.1597222222222222,
+          "spectral_centroid_hz": 1713.8991581264156,
+          "spectral_tilt_db_per_octave": -7.48178656341949,
+          "voiced_fraction": 0.7402298850574712,
+          "pitch_median_hz": 201.6488190383855,
+          "pitch_range_hz": 147.42412495766993
+        },
+        {
+          "id": "a5aafabff313aec6",
+          "duration_seconds": 4.704,
+          "rms_dbfs": -19.003719329833984,
+          "heuristic_snr_db": 30.021442413330078,
+          "silence_fraction": 0.23717948717948717,
+          "spectral_centroid_hz": 1590.2786064010809,
+          "spectral_tilt_db_per_octave": -7.1700938022192,
+          "voiced_fraction": 0.6369426751592356,
+          "pitch_median_hz": 192.54268179725335,
+          "pitch_range_hz": 148.51141631360775
+        },
+        {
+          "id": "fa1bcaaa4a00b17a",
+          "duration_seconds": 4.248,
+          "rms_dbfs": -20.48923683166504,
+          "heuristic_snr_db": 26.62674903869629,
+          "silence_fraction": 0.2576832151300236,
+          "spectral_centroid_hz": 1511.6253107491243,
+          "spectral_tilt_db_per_octave": -5.901844977020752,
+          "voiced_fraction": 0.6023529411764705,
+          "pitch_median_hz": 150.19585059339548,
+          "pitch_range_hz": 119.2800265072527
+        },
+        {
+          "id": "c1b65e900534cfb6",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -20.250778198242188,
+          "heuristic_snr_db": 24.114608764648438,
+          "silence_fraction": 0.2619047619047619,
+          "spectral_centroid_hz": 1368.7942210454516,
+          "spectral_tilt_db_per_octave": -7.073613443398016,
+          "voiced_fraction": 0.541371158392435,
+          "pitch_median_hz": 110.58673092361124,
+          "pitch_range_hz": 89.08852026294223
+        },
+        {
+          "id": "2107ede530b84490",
+          "duration_seconds": 4.32,
+          "rms_dbfs": -21.55196189880371,
+          "heuristic_snr_db": 22.137975692749023,
+          "silence_fraction": 0.2744186046511628,
+          "spectral_centroid_hz": 1399.801174710365,
+          "spectral_tilt_db_per_octave": -6.036803471978482,
+          "voiced_fraction": 0.605080831408776,
+          "pitch_median_hz": 173.52918104210445,
+          "pitch_range_hz": 97.9187723125826
+        },
+        {
+          "id": "cb2da55b83218ffe",
+          "duration_seconds": 4.848,
+          "rms_dbfs": -21.16635513305664,
+          "heuristic_snr_db": 30.109344482421875,
+          "silence_fraction": 0.2587991718426501,
+          "spectral_centroid_hz": 1477.3110448835407,
+          "spectral_tilt_db_per_octave": -5.779327420473976,
+          "voiced_fraction": 0.6804123711340206,
+          "pitch_median_hz": 204.58272188060099,
+          "pitch_range_hz": 141.2463629375866
+        },
+        {
+          "id": "17f4418da6c549af",
+          "duration_seconds": 4.344,
+          "rms_dbfs": -21.09228515625,
+          "heuristic_snr_db": 19.91734504699707,
+          "silence_fraction": 0.2523148148148148,
+          "spectral_centroid_hz": 1146.2413762825654,
+          "spectral_tilt_db_per_octave": -7.531237357449895,
+          "voiced_fraction": 0.503448275862069,
+          "pitch_median_hz": 131.51052723924994,
+          "pitch_range_hz": 121.09281372257811
+        },
+        {
+          "id": "aacf30886f32cd96",
+          "duration_seconds": 4.584,
+          "rms_dbfs": -23.05586814880371,
+          "heuristic_snr_db": 22.581640243530273,
+          "silence_fraction": 0.23684210526315788,
+          "spectral_centroid_hz": 1294.846800285088,
+          "spectral_tilt_db_per_octave": -7.66936514807852,
+          "voiced_fraction": 0.5403050108932462,
+          "pitch_median_hz": 114.81817052540308,
+          "pitch_range_hz": 74.36242491215233
+        },
+        {
+          "id": "2830b56733d862b8",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -18.099271774291992,
+          "heuristic_snr_db": 26.57718276977539,
+          "silence_fraction": 0.16105769230769232,
+          "spectral_centroid_hz": 1766.5287234777477,
+          "spectral_tilt_db_per_octave": -7.272663627360466,
+          "voiced_fraction": 0.65311004784689,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 155.40744104099244
+        },
+        {
+          "id": "c3d4904e94bf6b06",
+          "duration_seconds": 5.184,
+          "rms_dbfs": -18.68328285217285,
+          "heuristic_snr_db": 28.11049461364746,
+          "silence_fraction": 0.2248062015503876,
+          "spectral_centroid_hz": 1628.636285769667,
+          "spectral_tilt_db_per_octave": -6.9318248368966335,
+          "voiced_fraction": 0.653179190751445,
+          "pitch_median_hz": 191.43371755306833,
+          "pitch_range_hz": 139.2959382988017
+        },
+        {
+          "id": "c9bafd2dff847dcb",
+          "duration_seconds": 4.776,
+          "rms_dbfs": -19.98542022705078,
+          "heuristic_snr_db": 20.634746551513672,
+          "silence_fraction": 0.23109243697478993,
+          "spectral_centroid_hz": 1373.3426771580114,
+          "spectral_tilt_db_per_octave": -5.818007122129763,
+          "voiced_fraction": 0.6589958158995816,
+          "pitch_median_hz": 144.24403136881983,
+          "pitch_range_hz": 98.40908014584274
+        },
+        {
+          "id": "081b2b201a07862e",
+          "duration_seconds": 4.896,
+          "rms_dbfs": -20.724754333496094,
+          "heuristic_snr_db": 22.935455322265625,
+          "silence_fraction": 0.23565573770491804,
+          "spectral_centroid_hz": 1328.2490033709566,
+          "spectral_tilt_db_per_octave": -6.0776808155146105,
+          "voiced_fraction": 0.5938775510204082,
+          "pitch_median_hz": 112.51975293079859,
+          "pitch_range_hz": 84.62577711175439
+        },
+        {
+          "id": "ceb97c58940b2f4e",
+          "duration_seconds": 4.488,
+          "rms_dbfs": -21.347965240478516,
+          "heuristic_snr_db": 19.5048885345459,
+          "silence_fraction": 0.2595078299776286,
+          "spectral_centroid_hz": 1394.3225863408302,
+          "spectral_tilt_db_per_octave": -6.441010557842275,
+          "voiced_fraction": 0.6391982182628062,
+          "pitch_median_hz": 177.5852333780714,
+          "pitch_range_hz": 93.1813407795243
+        },
+        {
+          "id": "8f384303d2490d27",
+          "duration_seconds": 4.8,
+          "rms_dbfs": -21.22610092163086,
+          "heuristic_snr_db": 30.590648651123047,
+          "silence_fraction": 0.25523012552301255,
+          "spectral_centroid_hz": 1484.360732676099,
+          "spectral_tilt_db_per_octave": -5.695306450640671,
+          "voiced_fraction": 0.6756756756756757,
+          "pitch_median_hz": 199.33268480704808,
+          "pitch_range_hz": 135.33452112575745
+        },
+        {
+          "id": "cb9bd08634d4667c",
+          "duration_seconds": 4.2,
+          "rms_dbfs": -21.15407943725586,
+          "heuristic_snr_db": 22.92821502685547,
+          "silence_fraction": 0.2703349282296651,
+          "spectral_centroid_hz": 1087.4810271661408,
+          "spectral_tilt_db_per_octave": -7.69492303709975,
+          "voiced_fraction": 0.5558194774346793,
+          "pitch_median_hz": 128.87903887107882,
+          "pitch_range_hz": 114.55524478364379
+        },
+        {
+          "id": "3a0c2395e3d05f43",
+          "duration_seconds": 4.632,
+          "rms_dbfs": -22.482221603393555,
+          "heuristic_snr_db": 23.691131591796875,
+          "silence_fraction": 0.2472885032537961,
+          "spectral_centroid_hz": 1386.3818327342387,
+          "spectral_tilt_db_per_octave": -7.677376059906685,
+          "voiced_fraction": 0.5301724137931034,
+          "pitch_median_hz": 111.87168684176291,
+          "pitch_range_hz": 74.85775278493247
+        },
+        {
+          "id": "305aef27e09ba641",
+          "duration_seconds": 4.488,
+          "rms_dbfs": -18.119272232055664,
+          "heuristic_snr_db": 24.993915557861328,
+          "silence_fraction": 0.15212527964205816,
+          "spectral_centroid_hz": 1691.3082004957528,
+          "spectral_tilt_db_per_octave": -7.760502558225267,
+          "voiced_fraction": 0.7126948775055679,
+          "pitch_median_hz": 198.18461302324906,
+          "pitch_range_hz": 149.56911275962776
+        },
+        {
+          "id": "3e73ea6b65fac472",
+          "duration_seconds": 4.992,
+          "rms_dbfs": -19.11222267150879,
+          "heuristic_snr_db": 30.748310089111328,
+          "silence_fraction": 0.23742454728370221,
+          "spectral_centroid_hz": 1575.9941876369808,
+          "spectral_tilt_db_per_octave": -7.017317130511517,
+          "voiced_fraction": 0.696,
+          "pitch_median_hz": 205.1735783080468,
+          "pitch_range_hz": 147.5961011916171
+        },
+        {
+          "id": "0f61b63a56e6bed6",
+          "duration_seconds": 4.536,
+          "rms_dbfs": -19.84858512878418,
+          "heuristic_snr_db": 19.700275421142578,
+          "silence_fraction": 0.24778761061946902,
+          "spectral_centroid_hz": 1339.4425141088996,
+          "spectral_tilt_db_per_octave": -6.2502400353610374,
+          "voiced_fraction": 0.6343612334801763,
+          "pitch_median_hz": 141.7660052464835,
+          "pitch_range_hz": 109.11932676121013
+        },
+        {
+          "id": "4bf88fa3da378307",
+          "duration_seconds": 4.104,
+          "rms_dbfs": -20.567157745361328,
+          "heuristic_snr_db": 27.953689575195312,
+          "silence_fraction": 0.27941176470588236,
+          "spectral_centroid_hz": 1227.3145918080118,
+          "spectral_tilt_db_per_octave": -6.987558322962635,
+          "voiced_fraction": 0.5523114355231143,
+          "pitch_median_hz": 110.58673092361124,
+          "pitch_range_hz": 88.75721129718269
+        },
+        {
+          "id": "39dbf4925da805ef",
+          "duration_seconds": 4.656,
+          "rms_dbfs": -21.50820541381836,
+          "heuristic_snr_db": 24.13994598388672,
+          "silence_fraction": 0.2672413793103448,
+          "spectral_centroid_hz": 1541.4600744689262,
+          "spectral_tilt_db_per_octave": -5.6271796751070955,
+          "voiced_fraction": 0.6180257510729614,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 98.7222669736764
+        },
+        {
+          "id": "dfa8bcafba09456f",
+          "duration_seconds": 4.704,
+          "rms_dbfs": -21.57758331298828,
+          "heuristic_snr_db": 27.244869232177734,
+          "silence_fraction": 0.25854700854700857,
+          "spectral_centroid_hz": 1491.0737588889738,
+          "spectral_tilt_db_per_octave": -5.432570680916665,
+          "voiced_fraction": 0.7091295116772823,
+          "pitch_median_hz": 201.6488190383855,
+          "pitch_range_hz": 138.44346990523871
+        },
+        {
+          "id": "d85234293d019210",
+          "duration_seconds": 3.84,
+          "rms_dbfs": -21.452266693115234,
+          "heuristic_snr_db": 20.448699951171875,
+          "silence_fraction": 0.28272251308900526,
+          "spectral_centroid_hz": 1067.6722935085222,
+          "spectral_tilt_db_per_octave": -7.438063845423774,
+          "voiced_fraction": 0.509090909090909,
+          "pitch_median_hz": 132.2723599733492,
+          "pitch_range_hz": 127.28066255327538
+        },
+        {
+          "id": "f13f2e2090e310c3",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -23.238880157470703,
+          "heuristic_snr_db": 21.983644485473633,
+          "silence_fraction": 0.2597701149425287,
+          "spectral_centroid_hz": 1584.6831501957395,
+          "spectral_tilt_db_per_octave": -7.377275342002464,
+          "voiced_fraction": 0.4622425629290618,
+          "pitch_median_hz": 114.4865635674993,
+          "pitch_range_hz": 78.46770919638348
+        },
+        {
+          "id": "b1af6f8353e78adc",
+          "duration_seconds": 4.464,
+          "rms_dbfs": -18.307607650756836,
+          "heuristic_snr_db": 23.946285247802734,
+          "silence_fraction": 0.14189189189189189,
+          "spectral_centroid_hz": 1985.4958030405744,
+          "spectral_tilt_db_per_octave": -6.903762191646248,
+          "voiced_fraction": 0.6756152125279642,
+          "pitch_median_hz": 201.0681131707089,
+          "pitch_range_hz": 153.4876344831475
+        },
+        {
+          "id": "c4eea102a6e6d0bf",
+          "duration_seconds": 4.896,
+          "rms_dbfs": -18.77830696105957,
+          "heuristic_snr_db": 27.512115478515625,
+          "silence_fraction": 0.22540983606557377,
+          "spectral_centroid_hz": 1535.081334549835,
+          "spectral_tilt_db_per_octave": -7.0251293410506,
+          "voiced_fraction": 0.6612244897959184,
+          "pitch_median_hz": 197.04315364635175,
+          "pitch_range_hz": 144.24403136881983
+        },
+        {
+          "id": "d275a2e48cd3322d",
+          "duration_seconds": 4.944,
+          "rms_dbfs": -19.93222427368164,
+          "heuristic_snr_db": 21.85446548461914,
+          "silence_fraction": 0.23170731707317074,
+          "spectral_centroid_hz": 1340.576000131531,
+          "spectral_tilt_db_per_octave": -6.253677736094658,
+          "voiced_fraction": 0.6585858585858586,
+          "pitch_median_hz": 144.24403136881983,
+          "pitch_range_hz": 115.53608588168818
+        },
+        {
+          "id": "c7572fee4a2c93dc",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -20.862735748291016,
+          "heuristic_snr_db": 26.54446029663086,
+          "silence_fraction": 0.2619047619047619,
+          "spectral_centroid_hz": 1275.857082793897,
+          "spectral_tilt_db_per_octave": -7.241092688507976,
+          "voiced_fraction": 0.5673758865248227,
+          "pitch_median_hz": 111.2273533387383,
+          "pitch_range_hz": 88.61102496593647
+        },
+        {
+          "id": "fc9d858e810aff00",
+          "duration_seconds": 4.464,
+          "rms_dbfs": -21.47018051147461,
+          "heuristic_snr_db": 25.02293586730957,
+          "silence_fraction": 0.28378378378378377,
+          "spectral_centroid_hz": 1329.184289022664,
+          "spectral_tilt_db_per_octave": -6.576666893441614,
+          "voiced_fraction": 0.6420581655480985,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 94.88963593056673
+        },
+        {
+          "id": "f05fdb9089954f36",
+          "duration_seconds": 4.824,
+          "rms_dbfs": -21.231159210205078,
+          "heuristic_snr_db": 29.039024353027344,
+          "silence_fraction": 0.25416666666666665,
+          "spectral_centroid_hz": 1467.0275362041316,
+          "spectral_tilt_db_per_octave": -5.661464338200515,
+          "voiced_fraction": 0.7246376811594203,
+          "pitch_median_hz": 203.99186545315516,
+          "pitch_range_hz": 138.26251077910726
+        },
+        {
+          "id": "13959cf165ab8250",
+          "duration_seconds": 5.184,
+          "rms_dbfs": -22.007366180419922,
+          "heuristic_snr_db": 20.533443450927734,
+          "silence_fraction": 0.2248062015503876,
+          "spectral_centroid_hz": 1508.04947320818,
+          "spectral_tilt_db_per_octave": -6.266278449792714,
+          "voiced_fraction": 0.5028901734104047,
+          "pitch_median_hz": 129.25125509628117,
+          "pitch_range_hz": 107.51270731325148
+        },
+        {
+          "id": "eeaab026a90ed543",
+          "duration_seconds": 5.616,
+          "rms_dbfs": -22.110097885131836,
+          "heuristic_snr_db": 24.105806350708008,
+          "silence_fraction": 0.21964285714285714,
+          "spectral_centroid_hz": 1565.3704692217561,
+          "spectral_tilt_db_per_octave": -7.399246289341337,
+          "voiced_fraction": 0.5462633451957295,
+          "pitch_median_hz": 111.87168684176291,
+          "pitch_range_hz": 52.62814786623311
+        },
+        {
+          "id": "7f912036c2058a1f",
+          "duration_seconds": 5.232,
+          "rms_dbfs": -19.269046783447266,
+          "heuristic_snr_db": 23.50043296813965,
+          "silence_fraction": 0.15738963531669867,
+          "spectral_centroid_hz": 2225.802120962148,
+          "spectral_tilt_db_per_octave": -6.57706117884581,
+          "voiced_fraction": 0.683206106870229,
+          "pitch_median_hz": 193.10037600160234,
+          "pitch_range_hz": 151.27274717729196
+        },
+        {
+          "id": "61ead95d72fb9588",
+          "duration_seconds": 5.496,
+          "rms_dbfs": -20.06774139404297,
+          "heuristic_snr_db": 29.15072250366211,
+          "silence_fraction": 0.23175182481751824,
+          "spectral_centroid_hz": 1892.9638391814806,
+          "spectral_tilt_db_per_octave": -6.71666244985622,
+          "voiced_fraction": 0.5854545454545454,
+          "pitch_median_hz": 193.6580702059513,
+          "pitch_range_hz": 172.43921527390484
+        },
+        {
+          "id": "41eb4d21dc2163e8",
+          "duration_seconds": 5.568,
+          "rms_dbfs": -21.253870010375977,
+          "heuristic_snr_db": 20.406280517578125,
+          "silence_fraction": 0.21441441441441442,
+          "spectral_centroid_hz": 1820.0924481921063,
+          "spectral_tilt_db_per_octave": -5.901045770817132,
+          "voiced_fraction": 0.6535008976660682,
+          "pitch_median_hz": 154.59692495035372,
+          "pitch_range_hz": 131.47890951364323
+        },
+        {
+          "id": "391c238ca366c484",
+          "duration_seconds": 5.136,
+          "rms_dbfs": -21.25855255126953,
+          "heuristic_snr_db": 24.083105087280273,
+          "silence_fraction": 0.23046875,
+          "spectral_centroid_hz": 1675.591832742851,
+          "spectral_tilt_db_per_octave": -6.3116126208149135,
+          "voiced_fraction": 0.4805447470817121,
+          "pitch_median_hz": 108.68691707750624,
+          "pitch_range_hz": 92.13297096302018
+        },
+        {
+          "id": "9f80938bfbf4865d",
+          "duration_seconds": 6.072,
+          "rms_dbfs": -20.985105514526367,
+          "heuristic_snr_db": 22.093542098999023,
+          "silence_fraction": 0.22148760330578512,
+          "spectral_centroid_hz": 2131.4568975886796,
+          "spectral_tilt_db_per_octave": -6.5371256411287915,
+          "voiced_fraction": 0.6365131578947368,
+          "pitch_median_hz": 172.52972650401387,
+          "pitch_range_hz": 98.91425059256821
+        },
+        {
+          "id": "de84c7b1cb719e4a",
+          "duration_seconds": 5.88,
+          "rms_dbfs": -22.169097900390625,
+          "heuristic_snr_db": 27.044536590576172,
+          "silence_fraction": 0.20648464163822525,
+          "spectral_centroid_hz": 2331.7452768908597,
+          "spectral_tilt_db_per_octave": -6.53945089526885,
+          "voiced_fraction": 0.66553480475382,
+          "pitch_median_hz": 199.33268480704808,
+          "pitch_range_hz": 164.74417362330445
+        },
+        {
+          "id": "57ecf0368dae6fc3",
+          "duration_seconds": 5.256,
+          "rms_dbfs": -21.681604385375977,
+          "heuristic_snr_db": 23.115568161010742,
+          "silence_fraction": 0.22137404580152673,
+          "spectral_centroid_hz": 1529.2291172686614,
+          "spectral_tilt_db_per_octave": -6.854278820600365,
+          "voiced_fraction": 0.46577946768060835,
+          "pitch_median_hz": 127.03079589645196,
+          "pitch_range_hz": 107.79029586744849
+        },
+        {
+          "id": "6c4c5c4d608b086e",
+          "duration_seconds": 5.568,
+          "rms_dbfs": -22.25176239013672,
+          "heuristic_snr_db": 24.968141555786133,
+          "silence_fraction": 0.22882882882882882,
+          "spectral_centroid_hz": 1700.5819358489773,
+          "spectral_tilt_db_per_octave": -7.419929759707155,
+          "voiced_fraction": 0.5152603231597845,
+          "pitch_median_hz": 116.48775344855382,
+          "pitch_range_hz": 61.665748324949504
+        },
+        {
+          "id": "33502e79976b1e4c",
+          "duration_seconds": 5.544,
+          "rms_dbfs": -19.833131790161133,
+          "heuristic_snr_db": 24.367389678955078,
+          "silence_fraction": 0.161231884057971,
+          "spectral_centroid_hz": 2200.2004332259844,
+          "spectral_tilt_db_per_octave": -6.397719924538228,
+          "voiced_fraction": 0.6432432432432432,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 146.58952334818537
+        },
+        {
+          "id": "83525fcc535309da",
+          "duration_seconds": 5.736,
+          "rms_dbfs": -19.748567581176758,
+          "heuristic_snr_db": 31.90548324584961,
+          "silence_fraction": 0.23426573426573427,
+          "spectral_centroid_hz": 1745.1276707377615,
+          "spectral_tilt_db_per_octave": -7.499573635543122,
+          "voiced_fraction": 0.632404181184669,
+          "pitch_median_hz": 195.90826859169485,
+          "pitch_range_hz": 145.91516947038002
+        },
+        {
+          "id": "a0c481864f56b745",
+          "duration_seconds": 5.184,
+          "rms_dbfs": -21.331470489501953,
+          "heuristic_snr_db": 18.652023315429688,
+          "silence_fraction": 0.2248062015503876,
+          "spectral_centroid_hz": 1759.7884583094915,
+          "spectral_tilt_db_per_octave": -5.013339809788249,
+          "voiced_fraction": 0.6088631984585742,
+          "pitch_median_hz": 152.82122781686914,
+          "pitch_range_hz": 139.55850668082806
+        },
+        {
+          "id": "f3dfc3fa8cdf2a97",
+          "duration_seconds": 5.208,
+          "rms_dbfs": -21.287250518798828,
+          "heuristic_snr_db": 23.000455856323242,
+          "silence_fraction": 0.22928709055876687,
+          "spectral_centroid_hz": 1674.4262297813666,
+          "spectral_tilt_db_per_octave": -7.079478127144963,
+          "voiced_fraction": 0.4875239923224568,
+          "pitch_median_hz": 114.4865635674993,
+          "pitch_range_hz": 91.35952643723442
+        },
+        {
+          "id": "6e935cc0c6c6ceee",
+          "duration_seconds": 4.8,
+          "rms_dbfs": -22.02244758605957,
+          "heuristic_snr_db": 20.98480987548828,
+          "silence_fraction": 0.24267782426778242,
+          "spectral_centroid_hz": 1859.8552535007973,
+          "spectral_tilt_db_per_octave": -5.683881953234671,
+          "voiced_fraction": 0.5571725571725572,
+          "pitch_median_hz": 173.02945377305917,
+          "pitch_range_hz": 141.1568547916412
+        },
+        {
+          "id": "91f1be4f43b84cf9",
+          "duration_seconds": 5.568,
+          "rms_dbfs": -22.162811279296875,
+          "heuristic_snr_db": 28.590984344482422,
+          "silence_fraction": 0.2126126126126126,
+          "spectral_centroid_hz": 1789.3638562683532,
+          "spectral_tilt_db_per_octave": -6.163645937114516,
+          "voiced_fraction": 0.6319569120287253,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 188.07455188269526
+        },
+        {
+          "id": "09e095fa17b56fef",
+          "duration_seconds": 4.944,
+          "rms_dbfs": -21.914941787719727,
+          "heuristic_snr_db": 22.129531860351562,
+          "silence_fraction": 0.23983739837398374,
+          "spectral_centroid_hz": 1476.2854537832445,
+          "spectral_tilt_db_per_octave": -6.9978896655127745,
+          "voiced_fraction": 0.3333333333333333,
+          "pitch_median_hz": 130.75308233882095,
+          "pitch_range_hz": 120.13129458129751
+        },
+        {
+          "id": "e77fc7adb9e83b88",
+          "duration_seconds": 5.088,
+          "rms_dbfs": -22.33820152282715,
+          "heuristic_snr_db": 25.66891860961914,
+          "silence_fraction": 0.23668639053254437,
+          "spectral_centroid_hz": 1657.9480011443568,
+          "spectral_tilt_db_per_octave": -7.476783161744121,
+          "voiced_fraction": 0.49901768172888017,
+          "pitch_median_hz": 119.21052561660726,
+          "pitch_range_hz": 61.798175581104374
+        },
+        {
+          "id": "df0b0779329aaeb5",
+          "duration_seconds": 5.04,
+          "rms_dbfs": -19.639890670776367,
+          "heuristic_snr_db": 23.35492706298828,
+          "silence_fraction": 0.16135458167330677,
+          "spectral_centroid_hz": 2207.582416227003,
+          "spectral_tilt_db_per_octave": -6.984240612988126,
+          "voiced_fraction": 0.6693069306930693,
+          "pitch_median_hz": 191.98819967516084,
+          "pitch_range_hz": 149.5676237775654
+        },
+        {
+          "id": "91ba9eeafed2a20c",
+          "duration_seconds": 5.832,
+          "rms_dbfs": -19.807313919067383,
+          "heuristic_snr_db": 30.030067443847656,
+          "silence_fraction": 0.22375215146299485,
+          "spectral_centroid_hz": 2269.2697805501803,
+          "spectral_tilt_db_per_octave": -7.215962027211949,
+          "voiced_fraction": 0.6027397260273972,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 143.59053039707274
+        },
+        {
+          "id": "de58f081c0cdd0fa",
+          "duration_seconds": 5.448,
+          "rms_dbfs": -20.21243667602539,
+          "heuristic_snr_db": 18.23183250427246,
+          "silence_fraction": 0.22467771639042358,
+          "spectral_centroid_hz": 1647.5801193170396,
+          "spectral_tilt_db_per_octave": -6.157684560755571,
+          "voiced_fraction": 0.636697247706422,
+          "pitch_median_hz": 156.39325469067515,
+          "pitch_range_hz": 154.92980993530352
+        },
+        {
+          "id": "184917eff9884d23",
+          "duration_seconds": 5.424,
+          "rms_dbfs": -21.032329559326172,
+          "heuristic_snr_db": 23.94687843322754,
+          "silence_fraction": 0.2222222222222222,
+          "spectral_centroid_hz": 1610.9564210002031,
+          "spectral_tilt_db_per_octave": -7.265875088820415,
+          "voiced_fraction": 0.5211786372007366,
+          "pitch_median_hz": 113.17157322849613,
+          "pitch_range_hz": 79.01200656238716
+        },
+        {
+          "id": "b09314636646d17c",
+          "duration_seconds": 5.568,
+          "rms_dbfs": -21.09816551208496,
+          "heuristic_snr_db": 20.31895637512207,
+          "silence_fraction": 0.22342342342342342,
+          "spectral_centroid_hz": 1774.9539098659345,
+          "spectral_tilt_db_per_octave": -6.428085327087838,
+          "voiced_fraction": 0.6247755834829444,
+          "pitch_median_hz": 176.56241769755178,
+          "pitch_range_hz": 126.01119964511153
+        },
+        {
+          "id": "279b36c703356f03",
+          "duration_seconds": 5.328,
+          "rms_dbfs": -21.565954208374023,
+          "heuristic_snr_db": 29.80014419555664,
+          "silence_fraction": 0.22598870056497175,
+          "spectral_centroid_hz": 1782.710970546424,
+          "spectral_tilt_db_per_octave": -6.919716125651936,
+          "voiced_fraction": 0.6472795497185742,
+          "pitch_median_hz": 195.90826859169485,
+          "pitch_range_hz": 157.41764474279452
+        },
+        {
+          "id": "47af4b97a25c457c",
+          "duration_seconds": 5.256,
+          "rms_dbfs": -21.577289581298828,
+          "heuristic_snr_db": 21.84149932861328,
+          "silence_fraction": 0.21946564885496184,
+          "spectral_centroid_hz": 1489.8620789055867,
+          "spectral_tilt_db_per_octave": -6.597173552297277,
+          "voiced_fraction": 0.4049429657794677,
+          "pitch_median_hz": 125.57172276022992,
+          "pitch_range_hz": 116.67710818613324
+        },
+        {
+          "id": "9023ecd488c77918",
+          "duration_seconds": 5.448,
+          "rms_dbfs": -22.071613311767578,
+          "heuristic_snr_db": 23.298154830932617,
+          "silence_fraction": 0.2283609576427256,
+          "spectral_centroid_hz": 1525.8849239401184,
+          "spectral_tilt_db_per_octave": -6.8978816347140715,
+          "voiced_fraction": 0.5504587155963303,
+          "pitch_median_hz": 114.4865635674993,
+          "pitch_range_hz": 58.36826461633123
+        },
+        {
+          "id": "5c01a768ad3260cf",
+          "duration_seconds": 5.232,
+          "rms_dbfs": -18.714895248413086,
+          "heuristic_snr_db": 25.19114875793457,
+          "silence_fraction": 0.15930902111324377,
+          "spectral_centroid_hz": 2057.37385456732,
+          "spectral_tilt_db_per_octave": -7.508129878832392,
+          "voiced_fraction": 0.6679389312977099,
+          "pitch_median_hz": 197.04315364635175,
+          "pitch_range_hz": 154.47163490657252
+        },
+        {
+          "id": "983aadfcda1e2a7e",
+          "duration_seconds": 5.928,
+          "rms_dbfs": -19.311893463134766,
+          "heuristic_snr_db": 30.22208023071289,
+          "silence_fraction": 0.22165820642978004,
+          "spectral_centroid_hz": 2169.630407542776,
+          "spectral_tilt_db_per_octave": -7.643860132163735,
+          "voiced_fraction": 0.6475548060708263,
+          "pitch_median_hz": 190.3311404729313,
+          "pitch_range_hz": 137.6119442127485
+        },
+        {
+          "id": "383b3db174e05784",
+          "duration_seconds": 5.328,
+          "rms_dbfs": -20.07144546508789,
+          "heuristic_snr_db": 20.392515182495117,
+          "silence_fraction": 0.22598870056497175,
+          "spectral_centroid_hz": 1679.3508302821028,
+          "spectral_tilt_db_per_octave": -6.159296544439792,
+          "voiced_fraction": 0.5909943714821764,
+          "pitch_median_hz": 151.06592630451914,
+          "pitch_range_hz": 125.20039278614621
+        },
+        {
+          "id": "cd08d809a46654de",
+          "duration_seconds": 5.28,
+          "rms_dbfs": -20.691585540771484,
+          "heuristic_snr_db": 24.81216812133789,
+          "silence_fraction": 0.2376425855513308,
+          "spectral_centroid_hz": 1619.9940876388916,
+          "spectral_tilt_db_per_octave": -7.114529312796805,
+          "voiced_fraction": 0.4933837429111531,
+          "pitch_median_hz": 116.48775344855382,
+          "pitch_range_hz": 87.04326575225006
+        },
+        {
+          "id": "b86d0c17d6845b4c",
+          "duration_seconds": 5.64,
+          "rms_dbfs": -21.800724029541016,
+          "heuristic_snr_db": 19.831438064575195,
+          "silence_fraction": 0.22597864768683273,
+          "spectral_centroid_hz": 1948.859020910766,
+          "spectral_tilt_db_per_octave": -5.694378276979634,
+          "voiced_fraction": 0.6035398230088496,
+          "pitch_median_hz": 176.56241769755178,
+          "pitch_range_hz": 117.10098819828139
+        },
+        {
+          "id": "6d87335298713178",
+          "duration_seconds": 5.736,
+          "rms_dbfs": -21.668167114257812,
+          "heuristic_snr_db": 29.58879280090332,
+          "silence_fraction": 0.22377622377622378,
+          "spectral_centroid_hz": 1769.2801879920485,
+          "spectral_tilt_db_per_octave": -6.879456368383935,
+          "voiced_fraction": 0.6533101045296167,
+          "pitch_median_hz": 198.18461302324906,
+          "pitch_range_hz": 180.4297728846668
+        },
+        {
+          "id": "8e9a06c3114b2472",
+          "duration_seconds": 5.04,
+          "rms_dbfs": -21.918331146240234,
+          "heuristic_snr_db": 21.444965362548828,
+          "silence_fraction": 0.22709163346613545,
+          "spectral_centroid_hz": 1503.161854725056,
+          "spectral_tilt_db_per_octave": -6.472238850812603,
+          "voiced_fraction": 0.39603960396039606,
+          "pitch_median_hz": 117.16256013940793,
+          "pitch_range_hz": 116.4406724380596
+        },
+        {
+          "id": "5c17b71c084ede44",
+          "duration_seconds": 5.208,
+          "rms_dbfs": -22.089872360229492,
+          "heuristic_snr_db": 22.613134384155273,
+          "silence_fraction": 0.2350674373795761,
+          "spectral_centroid_hz": 1489.501721165988,
+          "spectral_tilt_db_per_octave": -7.466999941641031,
+          "voiced_fraction": 0.5585412667946257,
+          "pitch_median_hz": 121.29428889978496,
+          "pitch_range_hz": 68.6509060030486
+        },
+        {
+          "id": "8a1647b4fa11dfe4",
+          "duration_seconds": 4.944,
+          "rms_dbfs": -19.633119583129883,
+          "heuristic_snr_db": 25.576698303222656,
+          "silence_fraction": 0.16463414634146342,
+          "spectral_centroid_hz": 2130.392499378649,
+          "spectral_tilt_db_per_octave": -6.6682136812928885,
+          "voiced_fraction": 0.6626262626262627,
+          "pitch_median_hz": 194.21899509995995,
+          "pitch_range_hz": 155.6539276407998
+        },
+        {
+          "id": "5578d862efe6f569",
+          "duration_seconds": 6.216,
+          "rms_dbfs": -19.918771743774414,
+          "heuristic_snr_db": 32.40132141113281,
+          "silence_fraction": 0.21935483870967742,
+          "spectral_centroid_hz": 2141.383989279507,
+          "spectral_tilt_db_per_octave": -6.92000501995509,
+          "voiced_fraction": 0.6141479099678456,
+          "pitch_median_hz": 188.14500086724917,
+          "pitch_range_hz": 150.94534033095275
+        },
+        {
+          "id": "631e8c209dc4ad0f",
+          "duration_seconds": 5.424,
+          "rms_dbfs": -20.42720603942871,
+          "heuristic_snr_db": 17.87265396118164,
+          "silence_fraction": 0.22037037037037038,
+          "spectral_centroid_hz": 1641.553852901361,
+          "spectral_tilt_db_per_octave": -6.17982608633861,
+          "voiced_fraction": 0.6261510128913443,
+          "pitch_median_hz": 152.38113506491553,
+          "pitch_range_hz": 140.34545136892785
+        },
+        {
+          "id": "22a41a454312dc23",
+          "duration_seconds": 5.088,
+          "rms_dbfs": -20.778831481933594,
+          "heuristic_snr_db": 24.021320343017578,
+          "silence_fraction": 0.23865877712031558,
+          "spectral_centroid_hz": 1599.6916340986368,
+          "spectral_tilt_db_per_octave": -7.22278077913195,
+          "voiced_fraction": 0.5245579567779961,
+          "pitch_median_hz": 112.51975293079859,
+          "pitch_range_hz": 80.392050258952
+        },
+        {
+          "id": "f17c529b8ec1180d",
+          "duration_seconds": 5.28,
+          "rms_dbfs": -21.54444122314453,
+          "heuristic_snr_db": 20.68231773376465,
+          "silence_fraction": 0.2300380228136882,
+          "spectral_centroid_hz": 2113.192185865461,
+          "spectral_tilt_db_per_octave": -5.778876808791282,
+          "voiced_fraction": 0.5765595463137996,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 123.7791919225391
+        },
+        {
+          "id": "661374cd55f5b784",
+          "duration_seconds": 5.64,
+          "rms_dbfs": -22.447595596313477,
+          "heuristic_snr_db": 27.468904495239258,
+          "silence_fraction": 0.21530249110320285,
+          "spectral_centroid_hz": 1899.7502400927867,
+          "spectral_tilt_db_per_octave": -6.181100121063423,
+          "voiced_fraction": 0.6601769911504425,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 187.54054222946192
+        },
+        {
+          "id": "f9e54153bcac0f23",
+          "duration_seconds": 5.208,
+          "rms_dbfs": -21.73468589782715,
+          "heuristic_snr_db": 20.711992263793945,
+          "silence_fraction": 0.22157996146435452,
+          "spectral_centroid_hz": 1473.2156439141634,
+          "spectral_tilt_db_per_octave": -6.592928623647497,
+          "voiced_fraction": 0.4779270633397313,
+          "pitch_median_hz": 125.57172276022992,
+          "pitch_range_hz": 131.10502749161927
+        },
+        {
+          "id": "e82bd2073f2b40aa",
+          "duration_seconds": 5.64,
+          "rms_dbfs": -21.367719650268555,
+          "heuristic_snr_db": 23.68027114868164,
+          "silence_fraction": 0.21708185053380782,
+          "spectral_centroid_hz": 1549.0094649959274,
+          "spectral_tilt_db_per_octave": -7.347877125347366,
+          "voiced_fraction": 0.5592920353982301,
+          "pitch_median_hz": 111.54952009025061,
+          "pitch_range_hz": 75.87790157218906
+        },
+        {
+          "id": "90372ac79b0e9789",
+          "duration_seconds": 5.184,
+          "rms_dbfs": -19.947956085205078,
+          "heuristic_snr_db": 24.38318634033203,
+          "silence_fraction": 0.16472868217054262,
+          "spectral_centroid_hz": 2153.958674891139,
+          "spectral_tilt_db_per_octave": -6.666968491053831,
+          "voiced_fraction": 0.6647398843930635,
+          "pitch_median_hz": 199.33268480704808,
+          "pitch_range_hz": 150.7019637043294
+        },
+        {
+          "id": "e02cf0cd5546e7a4",
+          "duration_seconds": 5.88,
+          "rms_dbfs": -19.927467346191406,
+          "heuristic_snr_db": 31.84191131591797,
+          "silence_fraction": 0.22525597269624573,
+          "spectral_centroid_hz": 2165.758325976025,
+          "spectral_tilt_db_per_octave": -6.82890311209084,
+          "voiced_fraction": 0.6434634974533107,
+          "pitch_median_hz": 188.14500086724917,
+          "pitch_range_hz": 151.02134194058218
+        },
+        {
+          "id": "d4345798ef9be356",
+          "duration_seconds": 5.352,
+          "rms_dbfs": -20.576250076293945,
+          "heuristic_snr_db": 18.329803466796875,
+          "silence_fraction": 0.22326454033771106,
+          "spectral_centroid_hz": 1690.0456413847166,
+          "spectral_tilt_db_per_octave": -5.9602423293580715,
+          "voiced_fraction": 0.6305970149253731,
+          "pitch_median_hz": 153.70651218352927,
+          "pitch_range_hz": 134.40938014780374
+        },
+        {
+          "id": "d18ca55a85551ee2",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -19.915653228759766,
+          "heuristic_snr_db": 27.59859275817871,
+          "silence_fraction": 0.27403846153846156,
+          "spectral_centroid_hz": 1267.3186836912364,
+          "spectral_tilt_db_per_octave": -7.680325157940321,
+          "voiced_fraction": 0.5311004784688995,
+          "pitch_median_hz": 115.48330542077548,
+          "pitch_range_hz": 61.75326321708165
+        },
+        {
+          "id": "72023c6e88ead10a",
+          "duration_seconds": 4.344,
+          "rms_dbfs": -20.847885131835938,
+          "heuristic_snr_db": 23.939727783203125,
+          "silence_fraction": 0.2708333333333333,
+          "spectral_centroid_hz": 1274.8893023835767,
+          "spectral_tilt_db_per_octave": -7.430437290904867,
+          "voiced_fraction": 0.6482758620689655,
+          "pitch_median_hz": 172.03287745224506,
+          "pitch_range_hz": 104.04481479994135
+        },
+        {
+          "id": "693bb6eaadeb2c5b",
+          "duration_seconds": 3.888,
+          "rms_dbfs": -22.256027221679688,
+          "heuristic_snr_db": 33.254581451416016,
+          "silence_fraction": 0.2997416020671835,
+          "spectral_centroid_hz": 1423.800294143039,
+          "spectral_tilt_db_per_octave": -5.681024673183185,
+          "voiced_fraction": 0.6555269922879178,
+          "pitch_median_hz": 207.55758045272898,
+          "pitch_range_hz": 137.4641913500495
+        },
+        {
+          "id": "671de2fda737528e",
+          "duration_seconds": 3.912,
+          "rms_dbfs": -21.771181106567383,
+          "heuristic_snr_db": 22.77132797241211,
+          "silence_fraction": 0.29048843187660667,
+          "spectral_centroid_hz": 1245.1817155031363,
+          "spectral_tilt_db_per_octave": -7.936770001941905,
+          "voiced_fraction": 0.47959183673469385,
+          "pitch_median_hz": 129.25125509628117,
+          "pitch_range_hz": 106.27781854524642
+        },
+        {
+          "id": "9f11acd8d9da67e2",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -22.281057357788086,
+          "heuristic_snr_db": 28.318798065185547,
+          "silence_fraction": 0.27586206896551724,
+          "spectral_centroid_hz": 1327.7232197757703,
+          "spectral_tilt_db_per_octave": -7.869840096367917,
+          "voiced_fraction": 0.5331807780320366,
+          "pitch_median_hz": 121.29428889978496,
+          "pitch_range_hz": 37.772574011412516
+        },
+        {
+          "id": "c5397a4a29d99412",
+          "duration_seconds": 3.6,
+          "rms_dbfs": -18.451250076293945,
+          "heuristic_snr_db": 28.264373779296875,
+          "silence_fraction": 0.18994413407821228,
+          "spectral_centroid_hz": 1753.615847458992,
+          "spectral_tilt_db_per_octave": -7.365045066346308,
+          "voiced_fraction": 0.6703601108033241,
+          "pitch_median_hz": 190.3311404729313,
+          "pitch_range_hz": 120.86347958306308
+        },
+        {
+          "id": "799c07b7d522d926",
+          "duration_seconds": 5.376,
+          "rms_dbfs": -19.911888122558594,
+          "heuristic_snr_db": 31.398902893066406,
+          "silence_fraction": 0.23507462686567165,
+          "spectral_centroid_hz": 1596.1801515630266,
+          "spectral_tilt_db_per_octave": -7.281236707083454,
+          "voiced_fraction": 0.637546468401487,
+          "pitch_median_hz": 195.90826859169485,
+          "pitch_range_hz": 144.86526033414916
+        },
+        {
+          "id": "a4681cc1745ef2a3",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -20.17605209350586,
+          "heuristic_snr_db": 24.418731689453125,
+          "silence_fraction": 0.2482758620689655,
+          "spectral_centroid_hz": 1546.6891296298652,
+          "spectral_tilt_db_per_octave": -6.41216784405171,
+          "voiced_fraction": 0.5949656750572082,
+          "pitch_median_hz": 157.75484418784242,
+          "pitch_range_hz": 94.17924812809468
+        },
+        {
+          "id": "ca317f8d2a33084b",
+          "duration_seconds": 4.32,
+          "rms_dbfs": -19.943431854248047,
+          "heuristic_snr_db": 32.74568557739258,
+          "silence_fraction": 0.28837209302325584,
+          "spectral_centroid_hz": 1245.683666524926,
+          "spectral_tilt_db_per_octave": -7.987025690928306,
+          "voiced_fraction": 0.49653579676674364,
+          "pitch_median_hz": 115.81683335824411,
+          "pitch_range_hz": 69.17300934433378
+        },
+        {
+          "id": "cd81c7ac9e225568",
+          "duration_seconds": 4.56,
+          "rms_dbfs": -21.54330062866211,
+          "heuristic_snr_db": 25.74641227722168,
+          "silence_fraction": 0.27312775330396477,
+          "spectral_centroid_hz": 1496.9866337678632,
+          "spectral_tilt_db_per_octave": -6.840373634271412,
+          "voiced_fraction": 0.5973741794310722,
+          "pitch_median_hz": 174.53442536143424,
+          "pitch_range_hz": 109.57066878251942
+        },
+        {
+          "id": "29cdf36109b85c0f",
+          "duration_seconds": 4.416,
+          "rms_dbfs": -21.40386962890625,
+          "heuristic_snr_db": 33.32829284667969,
+          "silence_fraction": 0.2727272727272727,
+          "spectral_centroid_hz": 1411.4934433269018,
+          "spectral_tilt_db_per_octave": -6.644432991656922,
+          "voiced_fraction": 0.6787330316742082,
+          "pitch_median_hz": 211.18562305262122,
+          "pitch_range_hz": 139.6211181140021
+        },
+        {
+          "id": "ecbd1c77950c343d",
+          "duration_seconds": 4.2,
+          "rms_dbfs": -21.443912506103516,
+          "heuristic_snr_db": 23.842119216918945,
+          "silence_fraction": 0.2727272727272727,
+          "spectral_centroid_hz": 1125.4663501518653,
+          "spectral_tilt_db_per_octave": -7.932444834364818,
+          "voiced_fraction": 0.4750593824228028,
+          "pitch_median_hz": 128.87903887107882,
+          "pitch_range_hz": 116.15407252641646
+        },
+        {
+          "id": "d00e46a4ba0ae63c",
+          "duration_seconds": 3.936,
+          "rms_dbfs": -22.373558044433594,
+          "heuristic_snr_db": 25.76584815979004,
+          "silence_fraction": 0.288265306122449,
+          "spectral_centroid_hz": 1337.920278402476,
+          "spectral_tilt_db_per_octave": -7.444135105817683,
+          "voiced_fraction": 0.5558375634517766,
+          "pitch_median_hz": 122.70366064862014,
+          "pitch_range_hz": 46.51362462490373
+        },
+        {
+          "id": "174c1c833d16440a",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -18.394285202026367,
+          "heuristic_snr_db": 28.20938491821289,
+          "silence_fraction": 0.19047619047619047,
+          "spectral_centroid_hz": 1764.7648258705217,
+          "spectral_tilt_db_per_octave": -8.645133726704598,
+          "voiced_fraction": 0.6713947990543735,
+          "pitch_median_hz": 193.6580702059513,
+          "pitch_range_hz": 135.2848069195116
+        },
+        {
+          "id": "2ee4fcce4fe6715c",
+          "duration_seconds": 4.08,
+          "rms_dbfs": -20.37970733642578,
+          "heuristic_snr_db": 33.12333679199219,
+          "silence_fraction": 0.27832512315270935,
+          "spectral_centroid_hz": 1361.402589650124,
+          "spectral_tilt_db_per_octave": -7.246335959810262,
+          "voiced_fraction": 0.5843520782396088,
+          "pitch_median_hz": 202.8169587634771,
+          "pitch_range_hz": 142.49794229194964
+        },
+        {
+          "id": "fff2a6a02a518d45",
+          "duration_seconds": 4.008,
+          "rms_dbfs": -20.05924415588379,
+          "heuristic_snr_db": 27.695053100585938,
+          "silence_fraction": 0.2807017543859649,
+          "spectral_centroid_hz": 1331.9290044815034,
+          "spectral_tilt_db_per_octave": -6.120889198147832,
+          "voiced_fraction": 0.6583541147132169,
+          "pitch_median_hz": 157.29923159850804,
+          "pitch_range_hz": 117.70876709715056
+        },
+        {
+          "id": "d44ed5143ffc796a",
+          "duration_seconds": 4.032,
+          "rms_dbfs": -19.948631286621094,
+          "heuristic_snr_db": 32.645103454589844,
+          "silence_fraction": 0.29177057356608477,
+          "spectral_centroid_hz": 1173.416396953065,
+          "spectral_tilt_db_per_octave": -9.042283491228691,
+          "voiced_fraction": 0.5297029702970297,
+          "pitch_median_hz": 119.9011051661721,
+          "pitch_range_hz": 52.32014981456865
+        },
+        {
+          "id": "cea4b5049f671508",
+          "duration_seconds": 3.816,
+          "rms_dbfs": -21.564849853515625,
+          "heuristic_snr_db": 29.129602432250977,
+          "silence_fraction": 0.3,
+          "spectral_centroid_hz": 1465.846715110152,
+          "spectral_tilt_db_per_octave": -6.7291319348719085,
+          "voiced_fraction": 0.56282722513089,
+          "pitch_median_hz": 192.54268179725335,
+          "pitch_range_hz": 107.97322044396586
+        },
+        {
+          "id": "cbd5dcd23701ae20",
+          "duration_seconds": 3.864,
+          "rms_dbfs": -21.36195945739746,
+          "heuristic_snr_db": 32.7666015625,
+          "silence_fraction": 0.2994791666666667,
+          "spectral_centroid_hz": 1356.3837829595584,
+          "spectral_tilt_db_per_octave": -6.678823819181659,
+          "voiced_fraction": 0.6666666666666666,
+          "pitch_median_hz": 201.6488190383855,
+          "pitch_range_hz": 130.33416499886303
+        },
+        {
+          "id": "5bffa2497e684d1a",
+          "duration_seconds": 4.032,
+          "rms_dbfs": -21.793262481689453,
+          "heuristic_snr_db": 21.355867385864258,
+          "silence_fraction": 0.2743142144638404,
+          "spectral_centroid_hz": 1074.433694460524,
+          "spectral_tilt_db_per_octave": -7.256254210421376,
+          "voiced_fraction": 0.5668316831683168,
+          "pitch_median_hz": 127.03079589645196,
+          "pitch_range_hz": 116.69921238388699
+        },
+        {
+          "id": "0b2d12907ac241eb",
+          "duration_seconds": 4.32,
+          "rms_dbfs": -21.965862274169922,
+          "heuristic_snr_db": 25.719627380371094,
+          "silence_fraction": 0.26976744186046514,
+          "spectral_centroid_hz": 1192.1400728077062,
+          "spectral_tilt_db_per_octave": -8.182314670100931,
+          "voiced_fraction": 0.5681293302540416,
+          "pitch_median_hz": 122.70366064862014,
+          "pitch_range_hz": 50.12079984362791
+        },
+        {
+          "id": "5b06767d0448e395",
+          "duration_seconds": 3.96,
+          "rms_dbfs": -18.562835693359375,
+          "heuristic_snr_db": 27.0946044921875,
+          "silence_fraction": 0.19035532994923857,
+          "spectral_centroid_hz": 1656.508418529158,
+          "spectral_tilt_db_per_octave": -8.90207865988553,
+          "voiced_fraction": 0.7052896725440806,
+          "pitch_median_hz": 186.5226683089951,
+          "pitch_range_hz": 131.18883113913162
+        },
+        {
+          "id": "b73c0d896b5ee4af",
+          "duration_seconds": 4.776,
+          "rms_dbfs": -19.30062484741211,
+          "heuristic_snr_db": 28.358402252197266,
+          "silence_fraction": 0.23739495798319327,
+          "spectral_centroid_hz": 1396.379353818176,
+          "spectral_tilt_db_per_octave": -7.377976293285623,
+          "voiced_fraction": 0.6820083682008368,
+          "pitch_median_hz": 197.04315364635175,
+          "pitch_range_hz": 140.70951743272494
+        },
+        {
+          "id": "b2dbafbf7cb73fde",
+          "duration_seconds": 3.84,
+          "rms_dbfs": -19.74551010131836,
+          "heuristic_snr_db": 27.78034210205078,
+          "silence_fraction": 0.2905759162303665,
+          "spectral_centroid_hz": 1294.0298255076789,
+          "spectral_tilt_db_per_octave": -6.745876631190237,
+          "voiced_fraction": 0.5532467532467532,
+          "pitch_median_hz": 157.29923159850804,
+          "pitch_range_hz": 105.70901765358937
+        },
+        {
+          "id": "96304faa3e07697f",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -19.867097854614258,
+          "heuristic_snr_db": 29.648040771484375,
+          "silence_fraction": 0.2764423076923077,
+          "spectral_centroid_hz": 1194.339363649233,
+          "spectral_tilt_db_per_octave": -7.790510528919796,
+          "voiced_fraction": 0.6196172248803827,
+          "pitch_median_hz": 114.4865635674993,
+          "pitch_range_hz": 68.74785380647974
+        },
+        {
+          "id": "43d6d8ee5cda15b0",
+          "duration_seconds": 4.128,
+          "rms_dbfs": -20.880111694335938,
+          "heuristic_snr_db": 20.542552947998047,
+          "silence_fraction": 0.2725060827250608,
+          "spectral_centroid_hz": 1201.4427088312168,
+          "spectral_tilt_db_per_octave": -7.31501488979919,
+          "voiced_fraction": 0.639225181598063,
+          "pitch_median_hz": 178.6139741695516,
+          "pitch_range_hz": 106.24447531686155
+        },
+        {
+          "id": "3ba9f6a217d9e615",
+          "duration_seconds": 4.608,
+          "rms_dbfs": -20.995067596435547,
+          "heuristic_snr_db": 30.26719093322754,
+          "silence_fraction": 0.2636165577342048,
+          "spectral_centroid_hz": 1419.915882268773,
+          "spectral_tilt_db_per_octave": -6.1308612106298614,
+          "voiced_fraction": 0.6789587852494577,
+          "pitch_median_hz": 195.90826859169485,
+          "pitch_range_hz": 147.84913348117374
+        },
+        {
+          "id": "e85c8695d4720275",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -21.17361831665039,
+          "heuristic_snr_db": 22.051050186157227,
+          "silence_fraction": 0.26904761904761904,
+          "spectral_centroid_hz": 1104.09434383496,
+          "spectral_tilt_db_per_octave": -8.343116814623606,
+          "voiced_fraction": 0.5484633569739953,
+          "pitch_median_hz": 121.29428889978496,
+          "pitch_range_hz": 106.22237614347785
+        },
+        {
+          "id": "7f22f274812b7f8a",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -22.32300567626953,
+          "heuristic_snr_db": 26.715328216552734,
+          "silence_fraction": 0.26904761904761904,
+          "spectral_centroid_hz": 1218.7986236431136,
+          "spectral_tilt_db_per_octave": -8.284063703994798,
+          "voiced_fraction": 0.5508274231678487,
+          "pitch_median_hz": 120.59568520237023,
+          "pitch_range_hz": 52.72750611734661
+        },
+        {
+          "id": "2dcad2badd09957d",
+          "duration_seconds": 3.84,
+          "rms_dbfs": -18.615070343017578,
+          "heuristic_snr_db": 29.01105499267578,
+          "silence_fraction": 0.20680628272251309,
+          "spectral_centroid_hz": 1663.1657952753606,
+          "spectral_tilt_db_per_octave": -9.037635011737946,
+          "voiced_fraction": 0.6649350649350649,
+          "pitch_median_hz": 188.14500086724917,
+          "pitch_range_hz": 135.08698012714024
+        },
+        {
+          "id": "26b2a0768d5ab6c3",
+          "duration_seconds": 4.968,
+          "rms_dbfs": -20.127521514892578,
+          "heuristic_snr_db": 30.46668243408203,
+          "silence_fraction": 0.22828282828282828,
+          "spectral_centroid_hz": 1547.6622645534567,
+          "spectral_tilt_db_per_octave": -6.991018953412261,
+          "voiced_fraction": 0.6841046277665996,
+          "pitch_median_hz": 184.9127823656466,
+          "pitch_range_hz": 151.94778788279308
+        },
+        {
+          "id": "dedbf80cd11b24c5",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -19.690017700195312,
+          "heuristic_snr_db": 26.454574584960938,
+          "silence_fraction": 0.25961538461538464,
+          "spectral_centroid_hz": 1326.767283186408,
+          "spectral_tilt_db_per_octave": -6.928030690390491,
+          "voiced_fraction": 0.6698564593301436,
+          "pitch_median_hz": 157.29923159850804,
+          "pitch_range_hz": 96.28960691363291
+        },
+        {
+          "id": "e8787dee60ed31d1",
+          "duration_seconds": 4.296,
+          "rms_dbfs": -19.9699764251709,
+          "heuristic_snr_db": 28.614280700683594,
+          "silence_fraction": 0.2780373831775701,
+          "spectral_centroid_hz": 1139.7339181211355,
+          "spectral_tilt_db_per_octave": -8.35040900903339,
+          "voiced_fraction": 0.5953488372093023,
+          "pitch_median_hz": 115.14977748330686,
+          "pitch_range_hz": 55.579266639849095
+        },
+        {
+          "id": "6c873d8a2c1c5a5b",
+          "duration_seconds": 3.912,
+          "rms_dbfs": -21.15323829650879,
+          "heuristic_snr_db": 22.807252883911133,
+          "silence_fraction": 0.2930591259640103,
+          "spectral_centroid_hz": 1119.5088985332652,
+          "spectral_tilt_db_per_octave": -8.89102191844479,
+          "voiced_fraction": 0.6352040816326531,
+          "pitch_median_hz": 172.52972650401387,
+          "pitch_range_hz": 97.19289071218918
+        },
+        {
+          "id": "b03297f3f1226f9c",
+          "duration_seconds": 3.792,
+          "rms_dbfs": -21.347124099731445,
+          "heuristic_snr_db": 30.875247955322266,
+          "silence_fraction": 0.29973474801061006,
+          "spectral_centroid_hz": 1257.169971321613,
+          "spectral_tilt_db_per_octave": -6.134954055410513,
+          "voiced_fraction": 0.65,
+          "pitch_median_hz": 213.63948179230545,
+          "pitch_range_hz": 131.03229645425282
+        },
+        {
+          "id": "f1f60e7e4ae4828b",
+          "duration_seconds": 4.392,
+          "rms_dbfs": -21.52155876159668,
+          "heuristic_snr_db": 20.35393714904785,
+          "silence_fraction": 0.2631578947368421,
+          "spectral_centroid_hz": 1281.8326544340582,
+          "spectral_tilt_db_per_octave": -7.357477972820251,
+          "voiced_fraction": 0.509090909090909,
+          "pitch_median_hz": 126.29915234996876,
+          "pitch_range_hz": 120.64776382587445
+        },
+        {
+          "id": "7382b544ecda943d",
+          "duration_seconds": 4.344,
+          "rms_dbfs": -23.019088745117188,
+          "heuristic_snr_db": 25.046422958374023,
+          "silence_fraction": 0.26157407407407407,
+          "spectral_centroid_hz": 1191.4842069874169,
+          "spectral_tilt_db_per_octave": -7.65135359565859,
+          "voiced_fraction": 0.5678160919540229,
+          "pitch_median_hz": 115.81683335824411,
+          "pitch_range_hz": 47.009917927669804
+        },
+        {
+          "id": "1d2e09aa96066bfc",
+          "duration_seconds": 3.552,
+          "rms_dbfs": -18.435344696044922,
+          "heuristic_snr_db": 28.57756996154785,
+          "silence_fraction": 0.20113314447592068,
+          "spectral_centroid_hz": 1630.5454683167823,
+          "spectral_tilt_db_per_octave": -8.913265169561567,
+          "voiced_fraction": 0.699438202247191,
+          "pitch_median_hz": 197.04315364635175,
+          "pitch_range_hz": 122.45920547305221
+        },
+        {
+          "id": "24c3f913bbd345a3",
+          "duration_seconds": 4.56,
+          "rms_dbfs": -20.19397735595703,
+          "heuristic_snr_db": 30.56207275390625,
+          "silence_fraction": 0.2422907488986784,
+          "spectral_centroid_hz": 1679.3720400679933,
+          "spectral_tilt_db_per_octave": -7.384276925404023,
+          "voiced_fraction": 0.6280087527352297,
+          "pitch_median_hz": 185.98397121658357,
+          "pitch_range_hz": 146.20448076273865
+        },
+        {
+          "id": "0619929ef9adcbd7",
+          "duration_seconds": 4.056,
+          "rms_dbfs": -20.6801815032959,
+          "heuristic_snr_db": 23.444677352905273,
+          "silence_fraction": 0.26485148514851486,
+          "spectral_centroid_hz": 1540.6363451705945,
+          "spectral_tilt_db_per_octave": -5.191567179214801,
+          "voiced_fraction": 0.6477832512315271,
+          "pitch_median_hz": 155.49249582586248,
+          "pitch_range_hz": 122.69278699649568
+        },
+        {
+          "id": "c0b0c9e5d2f9153e",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -19.916900634765625,
+          "heuristic_snr_db": 28.872777938842773,
+          "silence_fraction": 0.2668269230769231,
+          "spectral_centroid_hz": 1189.2904076851496,
+          "spectral_tilt_db_per_octave": -7.486483362081418,
+          "voiced_fraction": 0.5311004784688995,
+          "pitch_median_hz": 117.16256013940793,
+          "pitch_range_hz": 52.55467777917683
+        },
+        {
+          "id": "5939ae6f9ee7fbd2",
+          "duration_seconds": 4.416,
+          "rms_dbfs": -21.20053482055664,
+          "heuristic_snr_db": 21.791345596313477,
+          "silence_fraction": 0.275,
+          "spectral_centroid_hz": 1298.6749527883362,
+          "spectral_tilt_db_per_octave": -6.938816419881723,
+          "voiced_fraction": 0.6470588235294118,
+          "pitch_median_hz": 173.52918104210445,
+          "pitch_range_hz": 98.84078325569826
+        },
+        {
+          "id": "c06f6be592c64532",
+          "duration_seconds": 3.984,
+          "rms_dbfs": -21.52970314025879,
+          "heuristic_snr_db": 32.57713317871094,
+          "silence_fraction": 0.2828282828282828,
+          "spectral_centroid_hz": 1250.5244625667922,
+          "spectral_tilt_db_per_octave": -6.524555224209436,
+          "voiced_fraction": 0.6666666666666666,
+          "pitch_median_hz": 195.90826859169485,
+          "pitch_range_hz": 131.5310017201266
+        },
+        {
+          "id": "40090d6cad00f5be",
+          "duration_seconds": 4.176,
+          "rms_dbfs": -21.4399356842041,
+          "heuristic_snr_db": 20.538475036621094,
+          "silence_fraction": 0.25961538461538464,
+          "spectral_centroid_hz": 1020.2530080517353,
+          "spectral_tilt_db_per_octave": -7.862344026545615,
+          "voiced_fraction": 0.5645933014354066,
+          "pitch_median_hz": 121.9969395672486,
+          "pitch_range_hz": 107.87724195202141
+        },
+        {
+          "id": "90171de700858c7c",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -21.857513427734375,
+          "heuristic_snr_db": 26.2608699798584,
+          "silence_fraction": 0.26436781609195403,
+          "spectral_centroid_hz": 1222.4271633985002,
+          "spectral_tilt_db_per_octave": -7.940356664904297,
+          "voiced_fraction": 0.597254004576659,
+          "pitch_median_hz": 122.70366064862014,
+          "pitch_range_hz": 44.93697014350785
+        },
+        {
+          "id": "ed6f468391502bf5",
+          "duration_seconds": 3.36,
+          "rms_dbfs": -18.44723129272461,
+          "heuristic_snr_db": 27.898921966552734,
+          "silence_fraction": 0.19760479041916168,
+          "spectral_centroid_hz": 1734.544351412937,
+          "spectral_tilt_db_per_octave": -8.043372691408168,
+          "voiced_fraction": 0.6498516320474778,
+          "pitch_median_hz": 189.23491376948436,
+          "pitch_range_hz": 166.38457717385353
+        },
+        {
+          "id": "ab98f695b1cc4a61",
+          "duration_seconds": 3.72,
+          "rms_dbfs": -20.307600021362305,
+          "heuristic_snr_db": 27.29266929626465,
+          "silence_fraction": 0.28378378378378377,
+          "spectral_centroid_hz": 1392.8496769486696,
+          "spectral_tilt_db_per_octave": -7.336459750806642,
+          "voiced_fraction": 0.6246648793565683,
+          "pitch_median_hz": 190.3311404729313,
+          "pitch_range_hz": 172.81193857855436
+        },
+        {
+          "id": "6589fecdaf3f3def",
+          "duration_seconds": 3.576,
+          "rms_dbfs": -20.08692741394043,
+          "heuristic_snr_db": 25.911495208740234,
+          "silence_fraction": 0.3146067415730337,
+          "spectral_centroid_hz": 1481.6266536384846,
+          "spectral_tilt_db_per_octave": -6.049835147745107,
+          "voiced_fraction": 0.5167597765363129,
+          "pitch_median_hz": 154.59692495035372,
+          "pitch_range_hz": 119.55639271986185
+        },
+        {
+          "id": "ce0c5c61954b0768",
+          "duration_seconds": 3.408,
+          "rms_dbfs": -20.42593765258789,
+          "heuristic_snr_db": 29.545114517211914,
+          "silence_fraction": 0.336283185840708,
+          "spectral_centroid_hz": 1280.9085085367099,
+          "spectral_tilt_db_per_octave": -7.552857750973881,
+          "voiced_fraction": 0.4222873900293255,
+          "pitch_median_hz": 118.18259972911127,
+          "pitch_range_hz": 80.26483365724016
+        },
+        {
+          "id": "f8fe24361de28f4f",
+          "duration_seconds": 3.672,
+          "rms_dbfs": -22.057846069335938,
+          "heuristic_snr_db": 27.27461051940918,
+          "silence_fraction": 0.3232876712328767,
+          "spectral_centroid_hz": 1646.7213104085097,
+          "spectral_tilt_db_per_octave": -6.71202208488683,
+          "voiced_fraction": 0.5625,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 96.3877538907731
+        },
+        {
+          "id": "33a9467b698a689e",
+          "duration_seconds": 3.864,
+          "rms_dbfs": -21.596487045288086,
+          "heuristic_snr_db": 33.02354431152344,
+          "silence_fraction": 0.3151041666666667,
+          "spectral_centroid_hz": 1682.4602494107166,
+          "spectral_tilt_db_per_octave": -6.440638113596027,
+          "voiced_fraction": 0.5710594315245479,
+          "pitch_median_hz": 217.37383415501247,
+          "pitch_range_hz": 129.3611021080345
+        },
+        {
+          "id": "3f94aa3c0573faac",
+          "duration_seconds": 3.696,
+          "rms_dbfs": -21.856929779052734,
+          "heuristic_snr_db": 24.136947631835938,
+          "silence_fraction": 0.29891304347826086,
+          "spectral_centroid_hz": 1349.5576451997995,
+          "spectral_tilt_db_per_octave": -7.537841647156107,
+          "voiced_fraction": 0.31351351351351353,
+          "pitch_median_hz": 139.73411696264463,
+          "pitch_range_hz": 99.63899223750339
+        },
+        {
+          "id": "ba6036035420031d",
+          "duration_seconds": 3.624,
+          "rms_dbfs": -23.073827743530273,
+          "heuristic_snr_db": 29.936742782592773,
+          "silence_fraction": 0.325,
+          "spectral_centroid_hz": 1471.8017989965454,
+          "spectral_tilt_db_per_octave": -8.38733296032043,
+          "voiced_fraction": 0.349862258953168,
+          "pitch_median_hz": 130.0,
+          "pitch_range_hz": 65.02791210671973
+        },
+        {
+          "id": "5240c149824ab675",
+          "duration_seconds": 4.224,
+          "rms_dbfs": -18.6708984375,
+          "heuristic_snr_db": 21.761104583740234,
+          "silence_fraction": 0.15476190476190477,
+          "spectral_centroid_hz": 1937.7720336832517,
+          "spectral_tilt_db_per_octave": -8.583693996552002,
+          "voiced_fraction": 0.6973995271867612,
+          "pitch_median_hz": 193.6580702059513,
+          "pitch_range_hz": 157.37708776421454
+        },
+        {
+          "id": "178b3e208bfedcff",
+          "duration_seconds": 4.68,
+          "rms_dbfs": -19.108108520507812,
+          "heuristic_snr_db": 27.530372619628906,
+          "silence_fraction": 0.23605150214592274,
+          "spectral_centroid_hz": 1694.5345898496898,
+          "spectral_tilt_db_per_octave": -7.694507403022473,
+          "voiced_fraction": 0.6204690831556503,
+          "pitch_median_hz": 194.7799199939686,
+          "pitch_range_hz": 158.10275198920982
+        },
+        {
+          "id": "c9b7ee8b77ccab85",
+          "duration_seconds": 4.368,
+          "rms_dbfs": -20.47625732421875,
+          "heuristic_snr_db": 18.00275421142578,
+          "silence_fraction": 0.23908045977011494,
+          "spectral_centroid_hz": 1624.2329731026432,
+          "spectral_tilt_db_per_octave": -5.950761835008954,
+          "voiced_fraction": 0.6521739130434783,
+          "pitch_median_hz": 154.59692495035372,
+          "pitch_range_hz": 124.42043460093147
+        },
+        {
+          "id": "c3fa7fe8cb7abdbb",
+          "duration_seconds": 4.392,
+          "rms_dbfs": -20.322301864624023,
+          "heuristic_snr_db": 21.477561950683594,
+          "silence_fraction": 0.2471395881006865,
+          "spectral_centroid_hz": 1590.9906798104698,
+          "spectral_tilt_db_per_octave": -6.673046283836809,
+          "voiced_fraction": 0.5136363636363637,
+          "pitch_median_hz": 115.81683335824411,
+          "pitch_range_hz": 84.95016256109228
+        },
+        {
+          "id": "ae9d815d66543c2e",
+          "duration_seconds": 4.536,
+          "rms_dbfs": -22.010051727294922,
+          "heuristic_snr_db": 25.504064559936523,
+          "silence_fraction": 0.2809734513274336,
+          "spectral_centroid_hz": 1759.1790713563576,
+          "spectral_tilt_db_per_octave": -7.841213348597919,
+          "voiced_fraction": 0.5682819383259912,
+          "pitch_median_hz": 178.0996037738115,
+          "pitch_range_hz": 116.77910918180791
+        },
+        {
+          "id": "e8764a817179b6fd",
+          "duration_seconds": 4.752,
+          "rms_dbfs": -21.278688430786133,
+          "heuristic_snr_db": 29.621891021728516,
+          "silence_fraction": 0.2536997885835095,
+          "spectral_centroid_hz": 1819.1493412997647,
+          "spectral_tilt_db_per_octave": -7.052112202114518,
+          "voiced_fraction": 0.6302521008403361,
+          "pitch_median_hz": 205.7678575319564,
+          "pitch_range_hz": 147.30492941298982
+        },
+        {
+          "id": "1ca5a2ee45252e22",
+          "duration_seconds": 4.392,
+          "rms_dbfs": -21.144397735595703,
+          "heuristic_snr_db": 22.1232852935791,
+          "silence_fraction": 0.2562929061784897,
+          "spectral_centroid_hz": 1533.9696810580392,
+          "spectral_tilt_db_per_octave": -7.512884683247336,
+          "voiced_fraction": 0.4772727272727273,
+          "pitch_median_hz": 133.03860595958074,
+          "pitch_range_hz": 121.93716286979756
+        },
+        {
+          "id": "cc1f7f2ce7162ea8",
+          "duration_seconds": 4.416,
+          "rms_dbfs": -21.350297927856445,
+          "heuristic_snr_db": 26.24347686767578,
+          "silence_fraction": 0.26590909090909093,
+          "spectral_centroid_hz": 1560.955521876744,
+          "spectral_tilt_db_per_octave": -8.136805170222503,
+          "voiced_fraction": 0.5180995475113123,
+          "pitch_median_hz": 129.25125509628117,
+          "pitch_range_hz": 69.08879000463469
+        },
+        {
+          "id": "d916af132b54cfd8",
+          "duration_seconds": 3.888,
+          "rms_dbfs": -18.67197036743164,
+          "heuristic_snr_db": 24.856185913085938,
+          "silence_fraction": 0.17571059431524547,
+          "spectral_centroid_hz": 1982.3569375320003,
+          "spectral_tilt_db_per_octave": -7.275798659123462,
+          "voiced_fraction": 0.6760925449871465,
+          "pitch_median_hz": 199.33268480704808,
+          "pitch_range_hz": 158.84831440224488
+        },
+        {
+          "id": "ea8900727a728080",
+          "duration_seconds": 4.392,
+          "rms_dbfs": -19.56591796875,
+          "heuristic_snr_db": 26.244403839111328,
+          "silence_fraction": 0.2379862700228833,
+          "spectral_centroid_hz": 1714.0930518509779,
+          "spectral_tilt_db_per_octave": -7.148115248289548,
+          "voiced_fraction": 0.6409090909090909,
+          "pitch_median_hz": 208.75994928447787,
+          "pitch_range_hz": 165.95326686582663
+        },
+        {
+          "id": "9397248e240146b9",
+          "duration_seconds": 3.936,
+          "rms_dbfs": -20.727035522460938,
+          "heuristic_snr_db": 21.587200164794922,
+          "silence_fraction": 0.27040816326530615,
+          "spectral_centroid_hz": 1553.375261139759,
+          "spectral_tilt_db_per_octave": -5.957245344982451,
+          "voiced_fraction": 0.5736040609137056,
+          "pitch_median_hz": 149.33078614961454,
+          "pitch_range_hz": 152.44697946862317
+        },
+        {
+          "id": "fed6944f17eb2864",
+          "duration_seconds": 4.032,
+          "rms_dbfs": -21.21454429626465,
+          "heuristic_snr_db": 26.819067001342773,
+          "silence_fraction": 0.27680798004987534,
+          "spectral_centroid_hz": 1411.6880593207509,
+          "spectral_tilt_db_per_octave": -6.329714741346638,
+          "voiced_fraction": 0.5544554455445545,
+          "pitch_median_hz": 108.06092649856241,
+          "pitch_range_hz": 98.30063582440116
+        },
+        {
+          "id": "6cdb31d9a6def811",
+          "duration_seconds": 3.696,
+          "rms_dbfs": -21.508750915527344,
+          "heuristic_snr_db": 30.368497848510742,
+          "silence_fraction": 0.34782608695652173,
+          "spectral_centroid_hz": 1688.5341068285438,
+          "spectral_tilt_db_per_octave": -8.125057002772875,
+          "voiced_fraction": 0.5108108108108108,
+          "pitch_median_hz": 175.5454930018647,
+          "pitch_range_hz": 105.2997990431019
+        },
+        {
+          "id": "7b25ef964aa6af7c",
+          "duration_seconds": 3.84,
+          "rms_dbfs": -21.30504608154297,
+          "heuristic_snr_db": 32.94406509399414,
+          "silence_fraction": 0.29842931937172773,
+          "spectral_centroid_hz": 1683.9133119605929,
+          "spectral_tilt_db_per_octave": -6.646220508408798,
+          "voiced_fraction": 0.5766233766233766,
+          "pitch_median_hz": 219.8995964441766,
+          "pitch_range_hz": 136.55463669883704
+        },
+        {
+          "id": "2755d66d3e5cda33",
+          "duration_seconds": 3.672,
+          "rms_dbfs": -21.473358154296875,
+          "heuristic_snr_db": 24.341270446777344,
+          "silence_fraction": 0.3150684931506849,
+          "spectral_centroid_hz": 1407.9402591745372,
+          "spectral_tilt_db_per_octave": -7.746870280597135,
+          "voiced_fraction": 0.41304347826086957,
+          "pitch_median_hz": 128.87903887107882,
+          "pitch_range_hz": 148.95565483367727
+        },
+        {
+          "id": "68bbdc68fc9fd7e8",
+          "duration_seconds": 3.768,
+          "rms_dbfs": -23.4706974029541,
+          "heuristic_snr_db": 25.981380462646484,
+          "silence_fraction": 0.30933333333333335,
+          "spectral_centroid_hz": 1491.5362113169147,
+          "spectral_tilt_db_per_octave": -8.446664614790839,
+          "voiced_fraction": 0.4827586206896552,
+          "pitch_median_hz": 122.35030010793437,
+          "pitch_range_hz": 85.21282891811985
+        }
+      ],
+      "real": [
+        {
+          "id": "b8c44d27d6ef1501",
+          "duration_seconds": 10.935,
+          "rms_dbfs": -22.21409034729004,
+          "heuristic_snr_db": 24.650236129760742,
+          "silence_fraction": 0.029304029304029304,
+          "spectral_centroid_hz": 1266.4995220207672,
+          "spectral_tilt_db_per_octave": -8.405290813852616,
+          "voiced_fraction": 0.6005484460694699,
+          "pitch_median_hz": 125.57172276022992,
+          "pitch_range_hz": 38.89166240879078
+        },
+        {
+          "id": "d61553a20d46ad61",
+          "duration_seconds": 23.253,
+          "rms_dbfs": -21.764209747314453,
+          "heuristic_snr_db": 30.956146240234375,
+          "silence_fraction": 0.31597072750753336,
+          "spectral_centroid_hz": 1163.747132234364,
+          "spectral_tilt_db_per_octave": -11.187153798539981,
+          "voiced_fraction": 0.4165950128976784,
+          "pitch_median_hz": 126.29915234996876,
+          "pitch_range_hz": 151.77389518074477
+        },
+        {
+          "id": "e8297e261eef4ce3",
+          "duration_seconds": 289.253,
+          "rms_dbfs": -18.429601669311523,
+          "heuristic_snr_db": 26.199176788330078,
+          "silence_fraction": 0.21498461432078278,
+          "spectral_centroid_hz": 1304.397229397129,
+          "spectral_tilt_db_per_octave": -7.960852532686456,
+          "voiced_fraction": 0.4090437668533499,
+          "pitch_median_hz": 136.93693467412865,
+          "pitch_range_hz": 167.37487787579173
+        },
+        {
+          "id": "f633d4288e46f5ed",
+          "duration_seconds": 23.616,
+          "rms_dbfs": -35.132286071777344,
+          "heuristic_snr_db": 26.691804885864258,
+          "silence_fraction": 0.2639830508474576,
+          "spectral_centroid_hz": 1191.2680789707806,
+          "spectral_tilt_db_per_octave": -8.365451191614069,
+          "voiced_fraction": 0.5664690939881456,
+          "pitch_median_hz": 124.12940850835416,
+          "pitch_range_hz": 64.21264705912157
+        },
+        {
+          "id": "cdcdc6b34c0bf300",
+          "duration_seconds": 41.26,
+          "rms_dbfs": -23.22322654724121,
+          "heuristic_snr_db": 34.46561050415039,
+          "silence_fraction": 0.1908341416100873,
+          "spectral_centroid_hz": 1084.1648630662035,
+          "spectral_tilt_db_per_octave": -8.231226435025398,
+          "voiced_fraction": 0.6220014538405622,
+          "pitch_median_hz": 117.84127594565435,
+          "pitch_range_hz": 170.68255189130872
+        },
+        {
+          "id": "bd514040e3e875e2",
+          "duration_seconds": 264.432,
+          "rms_dbfs": -18.46162223815918,
+          "heuristic_snr_db": 28.422359466552734,
+          "silence_fraction": 0.16028138118830604,
+          "spectral_centroid_hz": 1129.6212289822076,
+          "spectral_tilt_db_per_octave": -9.748257604726646,
+          "voiced_fraction": 0.6355695053698381,
+          "pitch_median_hz": 138.52806521170294,
+          "pitch_range_hz": 65.01167719947449
+        },
+        {
+          "id": "5f9e9b10bdeba025",
+          "duration_seconds": 85.978,
+          "rms_dbfs": -25.94886016845703,
+          "heuristic_snr_db": 32.161014556884766,
+          "silence_fraction": 0.08992554676593764,
+          "spectral_centroid_hz": 1069.161415534315,
+          "spectral_tilt_db_per_octave": -10.744006817618223,
+          "voiced_fraction": 0.7122586648057688,
+          "pitch_median_hz": 189.23491376948436,
+          "pitch_range_hz": 108.77798032065337
+        },
+        {
+          "id": "de5cb864ec72b840",
+          "duration_seconds": 5.887,
+          "rms_dbfs": -20.864166259765625,
+          "heuristic_snr_db": 30.810115814208984,
+          "silence_fraction": 0.29642248722316866,
+          "spectral_centroid_hz": 1274.626946576393,
+          "spectral_tilt_db_per_octave": -10.9255103158795,
+          "voiced_fraction": 0.4363327674023769,
+          "pitch_median_hz": 141.7660052464835,
+          "pitch_range_hz": 322.9124737877045
+        },
+        {
+          "id": "667cf9de9d96dd0c",
+          "duration_seconds": 39.06,
+          "rms_dbfs": -21.65218734741211,
+          "heuristic_snr_db": 31.69521141052246,
+          "silence_fraction": 0.08913934426229508,
+          "spectral_centroid_hz": 1103.2044323040086,
+          "spectral_tilt_db_per_octave": -7.612005762047921,
+          "voiced_fraction": 0.4665984131046839,
+          "pitch_median_hz": 94.61745688474217,
+          "pitch_range_hz": 38.92500851112591
+        },
+        {
+          "id": "d00a1e77740f2114",
+          "duration_seconds": 136.451,
+          "rms_dbfs": -18.397829055786133,
+          "heuristic_snr_db": 26.162132263183594,
+          "silence_fraction": 0.10936011141244595,
+          "spectral_centroid_hz": 959.9341648844677,
+          "spectral_tilt_db_per_octave": -10.990121645450326,
+          "voiced_fraction": 0.7613952806683277,
+          "pitch_median_hz": 149.33078614961454,
+          "pitch_range_hz": 81.52266986369213
+        },
+        {
+          "id": "8c36b383ba52516d",
+          "duration_seconds": 7.408,
+          "rms_dbfs": -18.77446174621582,
+          "heuristic_snr_db": 31.55554962158203,
+          "silence_fraction": 0.19079837618403248,
+          "spectral_centroid_hz": 1462.0796567441919,
+          "spectral_tilt_db_per_octave": -5.772610598871756,
+          "voiced_fraction": 0.4939271255060729,
+          "pitch_median_hz": 208.75994928447787,
+          "pitch_range_hz": 139.62899538758285
+        },
+        {
+          "id": "0a42be7455313326",
+          "duration_seconds": 6.176,
+          "rms_dbfs": -32.3962287902832,
+          "heuristic_snr_db": 1.7864933013916016,
+          "silence_fraction": 0.0,
+          "spectral_centroid_hz": 486.8686287575206,
+          "spectral_tilt_db_per_octave": -7.554282717116104,
+          "voiced_fraction": 0.3446601941747573,
+          "pitch_median_hz": 216.12185299712482,
+          "pitch_range_hz": 310.1590176570379
+        },
+        {
+          "id": "857938fc804e30c9",
+          "duration_seconds": 6.265,
+          "rms_dbfs": -20.11543083190918,
+          "heuristic_snr_db": 34.85759735107422,
+          "silence_fraction": 0.1072,
+          "spectral_centroid_hz": 1244.2429310711307,
+          "spectral_tilt_db_per_octave": -10.075901122971096,
+          "voiced_fraction": 0.580542264752791,
+          "pitch_median_hz": 157.29923159850804,
+          "pitch_range_hz": 41.256821068755244
+        },
+        {
+          "id": "b6177c44b3aea920",
+          "duration_seconds": 7.749,
+          "rms_dbfs": -29.585630416870117,
+          "heuristic_snr_db": 33.50029754638672,
+          "silence_fraction": 0.09961190168175937,
+          "spectral_centroid_hz": 1460.4733220813248,
+          "spectral_tilt_db_per_octave": -4.982487247930975,
+          "voiced_fraction": 0.30451612903225805,
+          "pitch_median_hz": 111.54952009025061,
+          "pitch_range_hz": 46.35798011207223
+        },
+        {
+          "id": "40e34a0f027f73a8",
+          "duration_seconds": 6.666,
+          "rms_dbfs": -27.959592819213867,
+          "heuristic_snr_db": 35.736778259277344,
+          "silence_fraction": 0.1443609022556391,
+          "spectral_centroid_hz": 1039.3291817927384,
+          "spectral_tilt_db_per_octave": -7.730845795063169,
+          "voiced_fraction": 0.5952023988005997,
+          "pitch_median_hz": 142.58724736030138,
+          "pitch_range_hz": 97.64303544507575
+        },
+        {
+          "id": "a7d792884020a012",
+          "duration_seconds": 5.721,
+          "rms_dbfs": -34.681297302246094,
+          "heuristic_snr_db": 26.389665603637695,
+          "silence_fraction": 0.01929824561403509,
+          "spectral_centroid_hz": 1046.6951281658794,
+          "spectral_tilt_db_per_octave": -7.664684428389484,
+          "voiced_fraction": 0.8324607329842932,
+          "pitch_median_hz": 152.82122781686914,
+          "pitch_range_hz": 87.06564788472554
+        },
+        {
+          "id": "e0b5b0add6a95e45",
+          "duration_seconds": 7.799,
+          "rms_dbfs": -17.389835357666016,
+          "heuristic_snr_db": 36.84006118774414,
+          "silence_fraction": 0.2969151670951157,
+          "spectral_centroid_hz": 1409.6252178441218,
+          "spectral_tilt_db_per_octave": -9.276902596705373,
+          "voiced_fraction": 0.5743589743589743,
+          "pitch_median_hz": 203.99186545315516,
+          "pitch_range_hz": 167.1510450599792
+        },
+        {
+          "id": "d792d6fe6c34b180",
+          "duration_seconds": 5.083,
+          "rms_dbfs": -16.619979858398438,
+          "heuristic_snr_db": 29.96249008178711,
+          "silence_fraction": 0.04743083003952569,
+          "spectral_centroid_hz": 1145.5719557906748,
+          "spectral_tilt_db_per_octave": -9.501843911783483,
+          "voiced_fraction": 0.7387033398821218,
+          "pitch_median_hz": 200.48740730303228,
+          "pitch_range_hz": 158.18909656303123
+        },
+        {
+          "id": "d577e248310dcc22",
+          "duration_seconds": 5.13,
+          "rms_dbfs": -25.261154174804688,
+          "heuristic_snr_db": 20.310287475585938,
+          "silence_fraction": 0.0136986301369863,
+          "spectral_centroid_hz": 1135.9493515793604,
+          "spectral_tilt_db_per_octave": -4.746849352464395,
+          "voiced_fraction": 0.5836575875486382,
+          "pitch_median_hz": 65.0,
+          "pitch_range_hz": 76.8483673282237
+        },
+        {
+          "id": "e06c13bcf716066f",
+          "duration_seconds": 5.749,
+          "rms_dbfs": -19.239091873168945,
+          "heuristic_snr_db": 36.24623107910156,
+          "silence_fraction": 0.3036649214659686,
+          "spectral_centroid_hz": 1539.475659187057,
+          "spectral_tilt_db_per_octave": -4.518957400443631,
+          "voiced_fraction": 0.4226086956521739,
+          "pitch_median_hz": 129.25125509628117,
+          "pitch_range_hz": 91.65174770399531
+        }
+      ]
+    }
+  },
+  "common_control_error_analysis": {
+    "n_common_clips": 10,
+    "trials": [
+      {
+        "seed": 11,
+        "transitions": {
+          "substitute": {
+            "introduced": 0,
+            "resolved": 6,
+            "retained": 8
+          },
+          "insert": {
+            "introduced": 0,
+            "resolved": 5,
+            "retained": 2
+          },
+          "delete": {
+            "introduced": 23,
+            "resolved": 0,
+            "retained": 8
+          }
+        },
+        "adapted_error_word_classes": {
+          "other": 29,
+          "function": 11,
+          "numeric": 1
+        },
+        "top_substitutions": [
+          [
+            "pathfinder -> scratch",
+            1
+          ],
+          [
+            "and -> finder",
+            1
+          ],
+          [
+            "readouts -> readout",
+            1
+          ],
+          [
+            "now -> not",
+            1
+          ],
+          [
+            "now -> thank",
+            1
+          ],
+          [
+            "open -> you",
+            1
+          ],
+          [
+            "harry -> ari",
+            1
+          ],
+          [
+            "inaudible -> berg",
+            1
+          ],
+          [
+            "uh -> ",
+            0
+          ],
+          [
+            "so -> ",
+            0
+          ],
+          [
+            "in -> ",
+            0
+          ],
+          [
+            "fiscal -> ",
+            0
+          ],
+          [
+            "21 -> ",
+            0
+          ],
+          [
+            " -> to",
+            0
+          ],
+          [
+            " -> us",
+            0
+          ],
+          [
+            "and -> ",
+            0
+          ],
+          [
+            "the -> ",
+            0
+          ],
+          [
+            "next -> ",
+            0
+          ],
+          [
+            "question -> ",
+            0
+          ],
+          [
+            "comes -> ",
+            0
+          ]
+        ]
+      },
+      {
+        "seed": 22,
+        "transitions": {
+          "substitute": {
+            "introduced": 0,
+            "resolved": 6,
+            "retained": 8
+          },
+          "insert": {
+            "introduced": 0,
+            "resolved": 5,
+            "retained": 2
+          },
+          "delete": {
+            "introduced": 23,
+            "resolved": 0,
+            "retained": 8
+          }
+        },
+        "adapted_error_word_classes": {
+          "other": 29,
+          "function": 11,
+          "numeric": 1
+        },
+        "top_substitutions": [
+          [
+            "pathfinder -> scratch",
+            1
+          ],
+          [
+            "and -> finder",
+            1
+          ],
+          [
+            "readouts -> readout",
+            1
+          ],
+          [
+            "now -> not",
+            1
+          ],
+          [
+            "now -> thank",
+            1
+          ],
+          [
+            "open -> you",
+            1
+          ],
+          [
+            "harry -> ari",
+            1
+          ],
+          [
+            "inaudible -> berg",
+            1
+          ],
+          [
+            "uh -> ",
+            0
+          ],
+          [
+            "so -> ",
+            0
+          ],
+          [
+            "in -> ",
+            0
+          ],
+          [
+            "fiscal -> ",
+            0
+          ],
+          [
+            "21 -> ",
+            0
+          ],
+          [
+            " -> to",
+            0
+          ],
+          [
+            " -> us",
+            0
+          ],
+          [
+            "and -> ",
+            0
+          ],
+          [
+            "the -> ",
+            0
+          ],
+          [
+            "next -> ",
+            0
+          ],
+          [
+            "question -> ",
+            0
+          ],
+          [
+            "comes -> ",
+            0
+          ]
+        ]
+      },
+      {
+        "seed": 33,
+        "transitions": {
+          "substitute": {
+            "introduced": 0,
+            "resolved": 6,
+            "retained": 8
+          },
+          "insert": {
+            "introduced": 0,
+            "resolved": 5,
+            "retained": 2
+          },
+          "delete": {
+            "introduced": 23,
+            "resolved": 0,
+            "retained": 8
+          }
+        },
+        "adapted_error_word_classes": {
+          "other": 29,
+          "function": 11,
+          "numeric": 1
+        },
+        "top_substitutions": [
+          [
+            "pathfinder -> scratch",
+            1
+          ],
+          [
+            "and -> finder",
+            1
+          ],
+          [
+            "readouts -> readout",
+            1
+          ],
+          [
+            "now -> not",
+            1
+          ],
+          [
+            "now -> thank",
+            1
+          ],
+          [
+            "open -> you",
+            1
+          ],
+          [
+            "harry -> ari",
+            1
+          ],
+          [
+            "inaudible -> berg",
+            1
+          ],
+          [
+            "uh -> ",
+            0
+          ],
+          [
+            "so -> ",
+            0
+          ],
+          [
+            "in -> ",
+            0
+          ],
+          [
+            "fiscal -> ",
+            0
+          ],
+          [
+            "21 -> ",
+            0
+          ],
+          [
+            " -> to",
+            0
+          ],
+          [
+            " -> us",
+            0
+          ],
+          [
+            "and -> ",
+            0
+          ],
+          [
+            "the -> ",
+            0
+          ],
+          [
+            "next -> ",
+            0
+          ],
+          [
+            "question -> ",
+            0
+          ],
+          [
+            "comes -> ",
+            0
+          ]
+        ]
+      },
+      {
+        "seed": 44,
+        "transitions": {
+          "substitute": {
+            "introduced": 0,
+            "resolved": 6,
+            "retained": 8
+          },
+          "insert": {
+            "introduced": 0,
+            "resolved": 5,
+            "retained": 2
+          },
+          "delete": {
+            "introduced": 23,
+            "resolved": 0,
+            "retained": 8
+          }
+        },
+        "adapted_error_word_classes": {
+          "other": 29,
+          "function": 11,
+          "numeric": 1
+        },
+        "top_substitutions": [
+          [
+            "pathfinder -> scratch",
+            1
+          ],
+          [
+            "and -> finder",
+            1
+          ],
+          [
+            "readouts -> readout",
+            1
+          ],
+          [
+            "now -> not",
+            1
+          ],
+          [
+            "now -> thank",
+            1
+          ],
+          [
+            "open -> you",
+            1
+          ],
+          [
+            "harry -> ari",
+            1
+          ],
+          [
+            "inaudible -> berg",
+            1
+          ],
+          [
+            "uh -> ",
+            0
+          ],
+          [
+            "so -> ",
+            0
+          ],
+          [
+            "in -> ",
+            0
+          ],
+          [
+            "fiscal -> ",
+            0
+          ],
+          [
+            "21 -> ",
+            0
+          ],
+          [
+            " -> to",
+            0
+          ],
+          [
+            " -> us",
+            0
+          ],
+          [
+            "and -> ",
+            0
+          ],
+          [
+            "the -> ",
+            0
+          ],
+          [
+            "next -> ",
+            0
+          ],
+          [
+            "question -> ",
+            0
+          ],
+          [
+            "comes -> ",
+            0
+          ]
+        ]
+      },
+      {
+        "seed": 55,
+        "transitions": {
+          "substitute": {
+            "introduced": 0,
+            "resolved": 6,
+            "retained": 8
+          },
+          "insert": {
+            "introduced": 0,
+            "resolved": 5,
+            "retained": 2
+          },
+          "delete": {
+            "introduced": 23,
+            "resolved": 0,
+            "retained": 8
+          }
+        },
+        "adapted_error_word_classes": {
+          "other": 29,
+          "function": 11,
+          "numeric": 1
+        },
+        "top_substitutions": [
+          [
+            "pathfinder -> scratch",
+            1
+          ],
+          [
+            "and -> finder",
+            1
+          ],
+          [
+            "readouts -> readout",
+            1
+          ],
+          [
+            "now -> not",
+            1
+          ],
+          [
+            "now -> thank",
+            1
+          ],
+          [
+            "open -> you",
+            1
+          ],
+          [
+            "harry -> ari",
+            1
+          ],
+          [
+            "inaudible -> berg",
+            1
+          ],
+          [
+            "uh -> ",
+            0
+          ],
+          [
+            "so -> ",
+            0
+          ],
+          [
+            "in -> ",
+            0
+          ],
+          [
+            "fiscal -> ",
+            0
+          ],
+          [
+            "21 -> ",
+            0
+          ],
+          [
+            " -> to",
+            0
+          ],
+          [
+            " -> us",
+            0
+          ],
+          [
+            "and -> ",
+            0
+          ],
+          [
+            "the -> ",
+            0
+          ],
+          [
+            "next -> ",
+            0
+          ],
+          [
+            "question -> ",
+            0
+          ],
+          [
+            "comes -> ",
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-08-01T01:11:51.954497+00:00",
+    "git_commit": "9def7f190d757c03b688cb1b96e9b37e3628a679",
+    "git_dirty": false,
+    "arguments": {
+      "synthetic_manifest": "data/financial_research/train_manifest.parquet",
+      "real_manifest": "data/earnings21_eval/eval_manifest.parquet",
+      "baseline": "experiments/results/earnings21/baseline.json",
+      "adapted_template": "experiments/results/earnings21/seed_{seed}/finetuned.json",
+      "domain_vocab": "configs/financial_terms.txt",
+      "output": "experiments/results/earnings21/regression_diagnosis.json",
+      "bootstrap_resamples": 10000
+    },
+    "seed": 20260731,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\financial_research\\train_manifest.parquet": "415eedab115230e11a3441d222646ca350c30a4225685849d1e9c9cd3fed9755",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\earnings21_eval\\eval_manifest.parquet": "41a8bc96a4dd0df0ff3c45b69340211a74de9d46a2b70841a58f797ff841d012",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\experiments\\results\\earnings21\\baseline.json": "5d9fd79a9218ae62a8533a76c32dc5cbc4a3a0d6de4c8a9174d4f261c4ccf2d1",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\configs\\financial_terms.txt": "27678f147dbbf03e76e27cdc8a94afb03436b6f51320d92c7747dd0a5b0cc3ba",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\experiments\\results\\earnings21\\seed_11\\finetuned.json": "a747793b1a2833a4c819c8a46cc45b333480d18b63f79e2e845336cc439dba12",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\experiments\\results\\earnings21\\seed_22\\finetuned.json": "29f46af1186916c98f1262dea3683aa01c4ea96401a743ef6f793fbf0715d685",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\experiments\\results\\earnings21\\seed_33\\finetuned.json": "edb2bd080beb732d58a644e2b57ab91a2d5c0ca2f3e9fe1ecff910a90ba5f453",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\experiments\\results\\earnings21\\seed_44\\finetuned.json": "6f805291af5102638a1bd4ea414848b9f07f4bc437ce5939e9035f19ef683c1e",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\experiments\\results\\earnings21\\seed_55\\finetuned.json": "7c705f8bce725a442df0b78068a3e6e3385652f4415ed8c469150636c93ee680"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

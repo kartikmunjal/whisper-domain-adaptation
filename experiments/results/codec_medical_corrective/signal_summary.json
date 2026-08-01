@@ -49,7 +49,22 @@
         ]
       },
       "wer_representative_seed": 11,
-      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 12.954225309689841,
+        "trial_values": [
+          13.142972747484842,
+          12.232540130615234,
+          13.851327856381735,
+          11.755051930745443,
+          13.789233883221945
+        ],
+        "trial_bootstrap_95_ci": [
+          12.22363137404124,
+          13.68481924533844
+        ],
+        "lower_is_better": true
+      }
     },
     {
       "quantizer": "fsq",
@@ -79,7 +94,7 @@
           -26.92331814548488
         ],
         "trial_bootstrap_95_ci": [
-          -31.998989332496222,
+          -32.12198952124429,
           -26.52591201335457
         ]
       },
@@ -93,12 +108,27 @@
           83.5336551023031
         ],
         "trial_bootstrap_95_ci": [
-          42.76438673646988,
-          70.9517036859125
+          42.76438673646987,
+          70.4534076496152
         ]
       },
       "wer_representative_seed": 55,
-      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 14.150368849436441,
+        "trial_values": [
+          12.317793170611063,
+          12.56740653514862,
+          15.268956343332926,
+          15.895782033602396,
+          14.701906164487204
+        ],
+        "trial_bootstrap_95_ci": [
+          12.894461115201315,
+          15.40627658367157
+        ],
+        "lower_is_better": true
+      }
     },
     {
       "quantizer": "vq",
@@ -128,7 +158,7 @@
           -17.950504474491417
         ],
         "trial_bootstrap_95_ci": [
-          -19.942782603757237,
+          -19.942782603757234,
           -16.10991016822245
         ]
       },
@@ -142,12 +172,27 @@
           173.94804664798957
         ],
         "trial_bootstrap_95_ci": [
-          158.92017942073625,
+          158.92017942073628,
           189.77319513841067
         ]
       },
       "wer_representative_seed": 11,
-      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 11.733512274424234,
+        "trial_values": [
+          11.210861484209696,
+          12.929936011632284,
+          12.55055820941925,
+          11.394776622454325,
+          10.581429044405619
+        ],
+        "trial_bootstrap_95_ci": [
+          10.99587153593699,
+          12.47115301291148
+        ],
+        "lower_is_better": true
+      }
     },
     {
       "quantizer": "fsq",
@@ -196,7 +241,22 @@
         ]
       },
       "wer_representative_seed": 33,
-      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 11.848305614789329,
+        "trial_values": [
+          13.292151967684427,
+          10.994846304257711,
+          12.140686710675558,
+          11.503868063290914,
+          11.309975028038025
+        ],
+        "trial_bootstrap_95_ci": [
+          11.222702145576479,
+          12.60239778359731
+        ],
+        "lower_is_better": true
+      }
     },
     {
       "quantizer": "vq",
@@ -245,7 +305,22 @@
         ]
       },
       "wer_representative_seed": 11,
-      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 12.512781556447345,
+        "trial_values": [
+          11.627188364664713,
+          11.21809951464335,
+          11.440450429916382,
+          15.079372803370157,
+          13.19879666964213
+        ],
+        "trial_bootstrap_95_ci": [
+          11.388857650756835,
+          13.95102712313334
+        ],
+        "lower_is_better": true
+      }
     },
     {
       "quantizer": "fsq",
@@ -289,12 +364,27 @@
           0.5070165380057752
         ],
         "trial_bootstrap_95_ci": [
-          33.498375383690004,
-          86.92097111645242
+          33.49837538369001,
+          86.92097111645244
         ]
       },
       "wer_representative_seed": 11,
-      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER"
+      "wer_selection_rule": "closest mean SI-SDR to the five-seed cell median; selected before and without ASR WER",
+      "log_mel_l1_db": {
+        "mean": 13.945677137374878,
+        "trial_values": [
+          11.494100530942282,
+          11.027366995811462,
+          13.000556230545044,
+          13.624800523122152,
+          20.58156140645345
+        ],
+        "trial_bootstrap_95_ci": [
+          11.608698256810507,
+          17.372717054684955
+        ],
+        "lower_is_better": true
+      }
     }
   ],
   "selection_uses_wer": false

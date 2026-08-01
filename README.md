@@ -21,6 +21,16 @@ Domain change is inconclusive, while the common-control slice exposes a stable
 regression. Figures, intervals, and per-seed predictions live in the generated
 artifacts rather than being hand-entered here.
 
+The preregistered [synthetic-to-real diagnosis](experiments/results/earnings21/REGRESSION_DIAGNOSIS.md)
+finds a large silence-fraction mismatch (Cliff's delta -0.510) after correcting
+an invalid silence-floor SNR estimator. That correction reduced the SNR effect
+to 0.448, below its locked trigger, but silence still triggered the fixed
+augmentation ablation. Five augmented adapters averaged 11.70% real-audio WER
+versus 11.47% for the clean-synthetic adapters (paired +0.23 points; the 95%
+trial interval crosses zero), while common-control WER worsened by 0.53 points.
+The [ablation report](experiments/results/earnings21_augmented/comparison.md)
+therefore rejects augmentation as an improvement rather than selecting it.
+
 The previous medical, rank, data-scaling, synthetic-mixture, prefix-tuning, and
 catastrophic-forgetting numbers were not accompanied by sufficient primary run
 artifacts and are not treated as verified. The completed replacement medical
@@ -166,6 +176,16 @@ also changed substantially, this is evidence that collapse was mitigated, not
 a matched-bitrate claim that the corrected codecs are competitive. All six
 conditions still have negative SI-SDR and large positive ΔWER.
 
+The extended [200–500 bps rate-distortion report](experiments/results/codec_medical_extended/REPORT.md)
+adds 200/250-bps VQ and FSQ trials and an 80-bin log-mel distance, a
+phase-insensitive complement to SI-SDR. At the four lower-rate representative
+points, adapted-Whisper ΔWER remains +70.20 to +94.58 percentage points.
+VQ-250 has the best lower-grid SI-SDR (-23.01 dB) and log-mel distance
+(12.98 dB), while FSQ remains less stable. Across the full grid, log-mel
+distance generally improves with empirical bitrate even where SI-SDR and WER
+do not rank systems identically; this quantifies the previously unexplained
+metric disagreement without claiming perceptual quality.
+
 It also includes a small autoregressive Transformer mapping UTF-8 text tokens
 to VQ codec tokens. The held-out path is
 text → predicted tokens → codec decoder → waveform, followed by round-trip
@@ -189,6 +209,16 @@ implemented but was disabled after its locked tiny-set diagnostic increased
 token error from 30.08% to 43.55%. Thus the correction controls duration, not
 intelligibility; this small autoregressive model remains decisively
 noncompetitive.
+
+The follow-up [text-conditioning diagnosis](experiments/results/codec_tts_text_only/CONDITIONING_REPORT.md)
+confirmed the autoregressive shortcut: shuffled text changed teacher-forced
+NLL by only 0.00029 nats/token. A preregistered text-forced parallel decoder
+then removed codec-token history entirely. It reduced mean round-trip WER to
+291.34% (95% trial-bootstrap CI 148.23–534.16%) with 100% EOS completion, but
+remained far behind Edge-TTS at 1.18%. Its shuffled-text NLL difference rose
+to 0.0255 but still failed the locked 0.05 conditioning gate, and mean SI-SDR
+was -43.56 dB. The replacement is therefore reported as a useful root-cause
+intervention and negative generative result, not a successful TTS system.
 
 ## License
 

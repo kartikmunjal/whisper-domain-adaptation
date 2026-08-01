@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "checkpoint": "checkpoints\\codec_low_rate_grid\\fsq_200bps\\seed_11\\codec.pt",
+  "checkpoint_sha256": "0fa52a733716029ee59c4918cf1f70f7ceee59094acd8f1aec300fb8c1c5cdf8",
+  "quantizer": "fsq",
+  "n_clips": 24,
+  "nominal_bitrate_bps": 200.0,
+  "empirical_bitrate_bps": 43.90156558973569,
+  "si_sdr_db": {
+    "mean": -29.796117638265468,
+    "clip_bootstrap_95_ci": [
+      -31.790227114875176,
+      -27.818854469592445
+    ],
+    "clip_values": [
+      -23.796565848833595,
+      -25.10707888193487,
+      -23.60686821601742,
+      -23.863313952166088,
+      -25.910985982896143,
+      -25.36552060209038,
+      -27.01727182256859,
+      -33.41403108231273,
+      -17.58889084632015,
+      -32.39121762979973,
+      -37.41246044721408,
+      -33.22774385943075,
+      -32.048065182979315,
+      -41.30945678828283,
+      -31.44845992306444,
+      -31.083637481983647,
+      -32.5741566542047,
+      -31.72948813330806,
+      -33.42513136793427,
+      -33.727743407850824,
+      -29.61939681701569,
+      -32.66924493760575,
+      -27.092286455027782,
+      -29.677806997529306
+    ]
+  },
+  "log_mel_l1_db": {
+    "mean": 11.331756432851156,
+    "clip_bootstrap_95_ci": [
+      10.884320093194644,
+      12.00728087524573
+    ],
+    "clip_values": [
+      12.1597261428833,
+      11.536227226257324,
+      11.684720039367676,
+      11.766463279724121,
+      11.263245582580566,
+      11.429953575134277,
+      11.329686164855957,
+      12.351948738098145,
+      17.857769012451172,
+      11.031925201416016,
+      10.928594589233398,
+      11.058302879333496,
+      10.73318862915039,
+      10.92702579498291,
+      10.757235527038574,
+      10.949738502502441,
+      10.655638694763184,
+      10.555257797241211,
+      10.880415916442871,
+      10.313849449157715,
+      10.749689102172852,
+      10.43114185333252,
+      10.381989479064941,
+      10.228421211242676
+    ],
+    "lower_is_better": true,
+    "configuration": {
+      "n_mels": 80,
+      "window_samples": 400,
+      "hop_samples": 160,
+      "fmin_hz": 20,
+      "fmax_hz": 7600
+    }
+  },
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-08-01T03:31:05.600504+00:00",
+    "git_commit": "9def7f190d757c03b688cb1b96e9b37e3628a679",
+    "git_dirty": false,
+    "arguments": {
+      "checkpoint": "checkpoints/codec_low_rate_grid/fsq_200bps/seed_11/codec.pt",
+      "eval_manifest": "data/med_dictate_eval/eval_en_manifest.parquet",
+      "output_dir": "experiments/results/codec_medical_low_rate/fsq_200bps/seed_11",
+      "bootstrap_resamples": 10000,
+      "device": "cuda"
+    },
+    "seed": 20260729,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_low_rate_grid\\fsq_200bps\\seed_11\\codec.pt": "0fa52a733716029ee59c4918cf1f70f7ceee59094acd8f1aec300fb8c1c5cdf8",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\med_dictate_eval\\eval_en_manifest.parquet": "629d2e4c9c084191b5275567992efb24c8475ae2eaf795a3eac0133742a96e79"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}
