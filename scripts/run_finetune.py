@@ -25,6 +25,7 @@ python scripts/run_finetune.py \
 """
 
 import argparse
+import hashlib
 import json
 import logging
 import sys
@@ -64,10 +65,38 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--batch_size", type=int, default=None)
     p.add_argument("--lora_r", type=int, default=None)
     p.add_argument("--seed", type=int, required=True)
+    p.add_argument("--acoustic_augmentation", action="store_true")
     return p.parse_args()
 
 
-def load_audio_dataset(manifest_path: str, extractor: WhisperFeatureExtractor) -> Dataset:
+def shoebox_rir(rng, sample_rate: int = 16_000):
+    """Deterministic order-2 image-source RIR for a sampled shoebox room."""
+    import numpy as np
+    room = rng.uniform([3.0, 3.0, 2.4], [10.0, 8.0, 4.0]); source = rng.uniform([0.5]*3, room-0.5); microphone = rng.uniform([0.5]*3, room-0.5); rt60=float(rng.uniform(0.2,0.8))
+    volume=float(np.prod(room)); area=float(2*(room[0]*room[1]+room[0]*room[2]+room[1]*room[2])); absorption=float(np.clip(0.161*volume/(area*rt60),0.05,0.95)); reflection=np.sqrt(1-absorption)
+    length=int(np.ceil((rt60+0.1)*sample_rate)); rir=np.zeros(length,dtype=np.float32)
+    for nx in range(-2,3):
+        for ny in range(-2,3):
+            for nz in range(-2,3):
+                order=abs(nx)+abs(ny)+abs(nz); image=2*np.array([nx,ny,nz])*room+((-1.0)**np.array([nx,ny,nz]))*source; distance=float(np.linalg.norm(image-microphone)); delay=int(round(distance/343.0*sample_rate))
+                if delay<length: rir[delay]+=reflection**order/max(distance,0.1)
+    direct=float(np.max(np.abs(rir))); return rir/max(direct,1e-8)
+
+
+def augment_financial_audio(audio, seed: int, key: str, sample_rate: int = 16_000):
+    """Apply the locked augmentation recipe with clip-stable randomness."""
+    import numpy as np
+    from scipy.signal import fftconvolve
+    rng=np.random.default_rng(int.from_bytes(hashlib.sha256(f"{seed}:{key}".encode()).digest()[:8],"little")); result=np.asarray(audio,dtype=np.float32)
+    if rng.random()<0.5: result=fftconvolve(result,shoebox_rir(rng,sample_rate),mode="full").astype(np.float32)
+    if rng.random()<0.5:
+        snr_db=float(rng.uniform(5,25)); signal_rms=float(np.sqrt(np.mean(result**2))+1e-8); noise=rng.standard_normal(len(result)).astype(np.float32); noise/=float(np.sqrt(np.mean(noise**2))+1e-8); result=result+noise*signal_rms/(10**(snr_db/20))
+    if rng.random()<0.5: result=result*float(10**(rng.uniform(-6,6)/20))
+    if rng.random()<0.5: result=np.pad(result,(int(rng.uniform(0,.5)*sample_rate),int(rng.uniform(0,.5)*sample_rate)))
+    peak=float(np.max(np.abs(result))) if len(result) else 0.0; return (result/max(peak/.99,1.0)).astype(np.float32)
+
+
+def load_audio_dataset(manifest_path: str, extractor: WhisperFeatureExtractor, *, augmentation_seed: int | None = None) -> Dataset:
     """
     Load a parquet manifest and convert to HuggingFace Dataset with
     pre-extracted log-mel features.
@@ -89,6 +118,8 @@ def load_audio_dataset(manifest_path: str, extractor: WhisperFeatureExtractor) -
             if not path.is_absolute():
                 path = repo_root / path
             audio, _ = librosa.load(path, sr=16_000, mono=True)
+            if augmentation_seed is not None:
+                audio = augment_financial_audio(audio, augmentation_seed, str(row.get("id", row["path"])))
             processed = extractor(audio, row["sentence"])
             records.append({
                 "input_features": processed["input_features"].numpy().tolist(),
@@ -157,7 +188,7 @@ def main() -> None:
 
     # Load datasets
     logger.info("Preparing training data...")
-    train_ds = load_audio_dataset(args.train_manifest, extractor)
+    train_ds = load_audio_dataset(args.train_manifest, extractor, augmentation_seed=args.seed if args.acoustic_augmentation else None)
     eval_ds = load_audio_dataset(args.eval_manifest, extractor)
 
     # Training config
