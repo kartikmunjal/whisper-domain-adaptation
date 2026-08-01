@@ -55,7 +55,7 @@ def _cmudict_resources() -> tuple[dict[str, list[list[str]]], tuple[str, ...]]:
 def phoneme_vocabulary() -> list[str]:
     """Stable CMUdict phone vocabulary plus explicit OOV grapheme fallback."""
     _, phones = _cmudict_resources()
-    return ["<wb>", "<unk>"] + phones + [f"G_{c}" for c in "abcdefghijklmnopqrstuvwxyz0123456789"]
+    return ["<wb>", "<unk>"] + list(phones) + [f"G_{c}" for c in "abcdefghijklmnopqrstuvwxyz0123456789"]
 
 
 def encode_text_phonemes(text: str, max_length: int = 256) -> tuple[list[int], int]:
