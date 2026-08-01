@@ -17,7 +17,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from whisper_adapt.models.audio_codec import AudioVQVAE
-from whisper_adapt.models.codec_tts import CodecTokenTTS, encode_text_bytes
+from whisper_adapt.models.codec_tts import CodecTokenTTS, encode_conditioning_text
 from whisper_adapt.reproducibility import collect_provenance, sha256_file
 
 
@@ -67,6 +67,7 @@ def main() -> None:
         default="checkpoints/codec_rate_grid/vq_400bps/seed_11/codec.pt",
     )
     parser.add_argument("--manifest", default="data/financial_research/test_manifest.parquet")
+    parser.add_argument("--target-token-data", default="data/codec_tts_tokens")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--max-new-tokens", type=int, default=800)
     parser.add_argument("--use-duration-control", action="store_true")
@@ -83,14 +84,14 @@ def main() -> None:
     wav_dir = output / "wav"
     wav_dir.mkdir(parents=True, exist_ok=True)
     frame = pd.read_parquet(root / args.manifest)
-    targets = pd.read_parquet(root / "data/codec_tts_tokens/test.parquet")
+    targets = pd.read_parquet(root / args.target_token_data / "test.parquet")
     target_lengths = dict(zip(targets.id.astype(str), targets.n_codec_tokens))
     rows = []
     records = frame.to_dict("records")
     for start in range(0, len(records), args.batch_size):
         batch = records[start:start + args.batch_size]
         encoded = [
-            encode_text_bytes(row["sentence"], tts.config.max_text_tokens)
+            encode_conditioning_text(row["sentence"], tts.config)
             for row in batch
         ]
         text_ids = torch.zeros(
@@ -188,7 +189,7 @@ def main() -> None:
                 root / args.tts_checkpoint,
                 root / args.codec_checkpoint,
                 root / args.manifest,
-                root / "data/codec_tts_tokens/test.parquet",
+                root / args.target_token_data / "test.parquet",
             ],
             seed=args.seed,
         ),

@@ -6,6 +6,8 @@ from whisper_adapt.models.codec_tts import (
     CodecTTSConfig,
     CodecTokenTTS,
     encode_text_bytes,
+    encode_text_phonemes,
+    phoneme_vocabulary,
 )
 
 
@@ -31,6 +33,11 @@ def tiny_text_only_model():
 def test_byte_tokenizer_is_stable():
     assert encode_text_bytes("A") == [66]
     assert encode_text_bytes("é", max_length=1) == [196]
+
+
+def test_phoneme_tokenizer_is_stable_and_marks_oov():
+    ids, oov = encode_text_phonemes("revenue qzxq", max_length=64)
+    assert ids and oov == 1 and max(ids) < len(phoneme_vocabulary()) + 1
 
 
 def test_forward_and_checkpoint(tmp_path):

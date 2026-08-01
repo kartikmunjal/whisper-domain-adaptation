@@ -102,6 +102,9 @@ def parse_args():
     parser.add_argument("--scheduled-sampling-warmup-fraction", type=float, default=0.5)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--decoder-input-mode", choices=("autoregressive", "text_only"), default="autoregressive")
+    parser.add_argument("--d-model", type=int, default=256); parser.add_argument("--nhead", type=int, default=8)
+    parser.add_argument("--encoder-layers", type=int, default=4); parser.add_argument("--decoder-layers", type=int, default=4)
+    parser.add_argument("--dim-feedforward", type=int, default=1024); parser.add_argument("--gradient-accumulation-steps", type=int, default=1)
     return parser.parse_args()
 
 
@@ -117,7 +120,7 @@ def main():
     root = Path(__file__).resolve().parents[1]
     data = root / args.data_dir
     report = json.loads((data / "dataset_report.json").read_text())
-    cfg = CodecTTSConfig(codebook_size=report["codebook_size"], decoder_input_mode=args.decoder_input_mode)
+    cfg = CodecTTSConfig(codebook_size=report["codebook_size"], text_vocab_size=report.get("text_vocab_size",258), text_representation=report.get("text_representation","bytes"), decoder_input_mode=args.decoder_input_mode, d_model=args.d_model, nhead=args.nhead, encoder_layers=args.encoder_layers, decoder_layers=args.decoder_layers, dim_feedforward=args.dim_feedforward)
     train = TokenDataset(data / "train.parquet")
     validation = TokenDataset(data / "validation.parquet")
     generator = torch.Generator().manual_seed(args.seed)
@@ -147,7 +150,8 @@ def main():
         )
         if cfg.decoder_input_mode == "text_only":
             scheduled_sampling_probability = 0.0
-        for text, decoder, labels in train_loader:
+        optimizer.zero_grad(set_to_none=True)
+        for batch_index, (text, decoder, labels) in enumerate(train_loader):
             text, decoder, labels = text.to(device), decoder.to(device), labels.to(device)
             teacher_logits = model(text, decoder)
             sampled_decoder = decoder
@@ -173,11 +177,10 @@ def main():
                 model.predict_log_lengths(text),
                 torch.log1p(target_lengths.float()),
             )
-            loss = token_loss + args.duration_loss_weight * duration_loss
-            optimizer.zero_grad(set_to_none=True)
+            loss = (token_loss + args.duration_loss_weight * duration_loss) / args.gradient_accumulation_steps
             loss.backward()
-            clip_grad_norm_(model.parameters(), 1.0)
-            optimizer.step()
+            if (batch_index + 1) % args.gradient_accumulation_steps == 0 or batch_index + 1 == len(train_loader):
+                clip_grad_norm_(model.parameters(), 1.0); optimizer.step(); optimizer.zero_grad(set_to_none=True)
             tokens = int(labels.ne(-100).sum())
             total += float(token_loss.detach()) * tokens
             duration_total += float(duration_loss.detach()) * len(text)
@@ -217,7 +220,8 @@ def main():
             if parameter.requires_grad
         ),
         "optimizer_steps_per_epoch": len(train_loader),
-        "planned_optimizer_steps": len(train_loader) * args.epochs,
+        "planned_optimizer_steps": int(np.ceil(len(train_loader) / args.gradient_accumulation_steps)) * args.epochs,
+        "gradient_accumulation_steps": args.gradient_accumulation_steps,
         "duration_loss_weight": args.duration_loss_weight,
         "scheduled_sampling_max": args.scheduled_sampling_max,
         "scheduled_sampling_warmup_fraction": args.scheduled_sampling_warmup_fraction,

@@ -143,3 +143,39 @@ duration loss and cap, optimizer and epochs, five seeds, checkpoint selection,
 Edge-TTS comparator, Whisper evaluation, failure accounting, and uncertainty
 protocol remain fixed. The same shuffled-text diagnostic is rerun on the five
 replacement checkpoints before round-trip claims are interpreted.
+
+## Amendment 5 — Capacity, paired-data, and phoneme scale study
+
+Locked 2026-08-01 after Amendment 4 completed and before generating expanded
+training audio or observing any scale-study validation/test outcome. The
+text-forced model reduced mean round-trip WER from 1151.24% to 291.34%, but
+its mean shuffled-minus-true NLL remained 0.0255 nats/token, below the locked
+0.05 conditioning gate. Duration is therefore not used to select this study.
+
+Two sequential interventions are evaluated; neither may be tuned on held-out
+WER. Stage A retains byte conditioning and the parallel no-history decoder,
+expands only the training split from 294 clips to a fixed target of 1,774 clips
+(the original 294 plus eight new carrier templates crossed with every fixed
+financial term and four existing training voices, plus fixed common controls),
+and scales the Transformer from d_model 256, 4+4 layers, FFN 1024 to d_model
+384, 6+6 layers, FFN 1536, 8 heads. Validation and test manifests, voices,
+template families, codec, duration loss/cap, optimizer family, checkpoint
+criterion, and five seeds remain unchanged. Training is 30 epochs, micro-batch
+2, gradient accumulation 4, learning rate 3e-4, with no scheduled sampling.
+
+Stage B changes only the text representation to deterministic CMUdict ARPAbet
+phonemes (cmudict 1.1.1, first listed pronunciation, word-boundary tokens;
+explicit grapheme fallback for out-of-vocabulary words). The phone vocabulary,
+CMUdict version, OOV counts, manifests, and hashes are recorded. Stage B uses
+the same capacity, data, training budget, seeds, selection, and evaluation as
+Stage A. Each stage independently reruns the existing shuffled-text gate,
+position errors, attention plots, generation failures, SI-SDR, and paired
+overall/domain/common round-trip WER with 10,000-resample intervals.
+
+The fixed external comparator is Piper 1.4.2 with the independently pretrained
+`en_US-lessac-low` 16-kHz voice from `rhasspy/piper-voices`, synthesized once
+on the identical 98 held-out sentences and transcribed by all five frozen
+financial adapters. Model/config revisions and SHA-256 hashes are recorded;
+weights and generated audio are not redistributed. Edge-TTS remains the upper
+reference. Comparators contextualize distance from usable TTS and are not
+used for model selection.

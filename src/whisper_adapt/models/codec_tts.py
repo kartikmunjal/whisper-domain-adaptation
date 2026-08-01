@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from pathlib import Path
+import re
 
 import torch
 from torch import nn
@@ -22,6 +23,7 @@ class CodecTTSConfig:
     max_text_tokens: int = 256
     max_audio_tokens: int = 1024
     decoder_input_mode: str = "autoregressive"
+    text_representation: str = "bytes"
 
     @property
     def audio_eos_id(self) -> int:
@@ -39,6 +41,37 @@ class CodecTTSConfig:
 def encode_text_bytes(text: str, max_length: int = 256) -> list[int]:
     """Stable UTF-8 byte tokenizer: PAD=0, byte values shifted by one."""
     return [byte + 1 for byte in text.encode("utf-8")[:max_length]]
+
+
+def phoneme_vocabulary() -> list[str]:
+    """Stable CMUdict phone vocabulary plus explicit OOV grapheme fallback."""
+    import cmudict
+    phones = sorted(set(cmudict.symbols()))
+    return ["<wb>", "<unk>"] + phones + [f"G_{c}" for c in "abcdefghijklmnopqrstuvwxyz0123456789"]
+
+
+def encode_text_phonemes(text: str, max_length: int = 256) -> tuple[list[int], int]:
+    """Encode first CMUdict pronunciations; spell OOV words with marked graphemes."""
+    import cmudict
+    vocab = phoneme_vocabulary(); ids = {token: i + 1 for i, token in enumerate(vocab)}
+    dictionary = cmudict.dict(); output: list[int] = []; oov = 0
+    for word in re.findall(r"[a-z]+(?:'[a-z]+)?|\d+(?:\.\d+)?", text.lower()):
+        if output: output.append(ids["<wb>"])
+        pronunciations = dictionary.get(word)
+        if pronunciations:
+            output.extend(ids.get(phone, ids["<unk>"]) for phone in pronunciations[0])
+        else:
+            oov += 1
+            output.extend(ids.get(f"G_{char}", ids["<unk>"]) for char in word if char.isalnum())
+    return output[:max_length], oov
+
+
+def encode_conditioning_text(text: str, config: CodecTTSConfig) -> list[int]:
+    if config.text_representation == "bytes":
+        return encode_text_bytes(text, config.max_text_tokens)
+    if config.text_representation == "phonemes":
+        return encode_text_phonemes(text, config.max_text_tokens)[0]
+    raise ValueError(f"Unknown text_representation: {config.text_representation}")
 
 
 class CodecTokenTTS(nn.Module):

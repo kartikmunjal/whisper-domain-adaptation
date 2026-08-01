@@ -15,7 +15,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from whisper_adapt.models.audio_codec import AudioVQVAE
-from whisper_adapt.models.codec_tts import encode_text_bytes
+from whisper_adapt.models.codec_tts import encode_text_bytes, encode_text_phonemes, phoneme_vocabulary
 from whisper_adapt.reproducibility import sha256_file
 
 
@@ -28,6 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--data-dir", default="data/financial_research")
     parser.add_argument("--output-dir", default="data/codec_tts_tokens")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--text-representation", choices=("bytes", "phonemes"), default="bytes")
     return parser.parse_args()
 
 
@@ -42,7 +43,7 @@ def main() -> None:
         raise RuntimeError("Text-to-codec study is preregistered for a VQ codec")
     output = root / args.output_dir
     output.mkdir(parents=True, exist_ok=True)
-    counts = {}
+    counts = {}; total_words = 0; total_oov = 0
     for split in ("train", "validation", "test"):
         frame = pd.read_parquet(root / args.data_dir / f"{split}_manifest.parquet")
         rows = []
@@ -54,11 +55,15 @@ def main() -> None:
             with torch.inference_mode():
                 _, info = codec.quantize(codec.encode(tensor))
             tokens = info["indices"][0].cpu().tolist()
+            if args.text_representation == "phonemes":
+                text_ids, oov = encode_text_phonemes(row["sentence"], max_length=256)
+                total_oov += oov
+            else:
+                text_ids = encode_text_bytes(row["sentence"], max_length=256)
+            total_words += len(str(row["sentence"]).split())
             rows.append({
                 **row,
-                "text_token_ids": encode_text_bytes(
-                    row["sentence"], max_length=256
-                ),
+                "text_token_ids": text_ids,
                 "codec_token_ids": tokens,
                 "n_codec_tokens": len(tokens),
                 "codec_checkpoint": args.codec_checkpoint,
@@ -73,6 +78,11 @@ def main() -> None:
         "codec_sha256": sha256_file(checkpoint),
         "codebook_size": codec.cfg.codebook_size,
         "frame_rate_hz": codec.cfg.frame_rate_hz,
+        "text_representation": args.text_representation,
+        "text_vocab_size": 258 if args.text_representation == "bytes" else len(phoneme_vocabulary()) + 1,
+        "phoneme_vocabulary": phoneme_vocabulary() if args.text_representation == "phonemes" else None,
+        "oov_word_count": total_oov,
+        "approximate_word_count": total_words,
         "split_counts": counts,
         "selection_rule": (
             "Preregistered median-rate VQ checkpoint, seed 11; selected without "
