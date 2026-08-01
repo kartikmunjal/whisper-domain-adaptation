@@ -47,6 +47,30 @@ An augmented-training ablation is launched only if the acoustic comparison
 shows a large clean-speech mismatch (absolute Cliff's delta at least 0.474 for
 SNR or silence fraction); its recipe must be locked before training.
 
+## Amendment 2 — Active-frame SNR correction
+
+Locked 2026-07-31 after the first diagnostic exposed an invalid estimator and
+before inspecting any corrected value or training an augmentation ablation.
+The original report is retained as a failed diagnostic. Its percentile SNR
+included exact digital-silence frames at the numerical floor, producing an
+implausible synthetic mean of 132.25 dB. The corrected heuristic excludes
+frames below both -80 dBFS and 50 dB below the clip peak, then reports the
+90th-minus-10th percentile RMS level among the remaining active frames. Clips
+with fewer than two active frames are undefined for this metric. Silence
+fraction and every other preregistered feature are unchanged. The locked
+augmentation gate is reevaluated using corrected active-frame SNR and the
+unchanged silence fraction.
+
+If the gate remains met, the sole ablation adds deterministic on-the-fly
+acoustic augmentation to the existing synthetic financial training audio:
+room impulse response convolution (image-source rectangular rooms, RT60
+uniform 0.2–0.8 s), additive stationary noise at SNR uniform 5–25 dB, gain
+uniform -6–6 dB, and leading/trailing silence uniform 0–0.5 s. Each transform
+is independently applied with probability 0.5 using the trial seed. Text,
+splits, optimizer, LoRA configuration, epoch count, checkpoint rule, five
+seeds, and Earnings-21 evaluation remain fixed. No augmentation parameter may
+be selected using Earnings-21 outcomes.
+
 ## Leakage guard
 
 The selection manifest is hashed before inference. Evaluation exits if an

@@ -21,6 +21,7 @@ class CodecTTSConfig:
     dropout: float = 0.1
     max_text_tokens: int = 256
     max_audio_tokens: int = 1024
+    decoder_input_mode: str = "autoregressive"
 
     @property
     def audio_eos_id(self) -> int:
@@ -49,6 +50,7 @@ class CodecTokenTTS(nn.Module):
         self.audio_embedding = nn.Embedding(cfg.audio_vocab_size, cfg.d_model)
         self.text_position = nn.Embedding(cfg.max_text_tokens, cfg.d_model)
         self.audio_position = nn.Embedding(cfg.max_audio_tokens + 1, cfg.d_model)
+        self.output_query = nn.Parameter(torch.zeros(1, 1, cfg.d_model))
         encoder_layer = nn.TransformerEncoderLayer(
             cfg.d_model,
             cfg.nhead,
@@ -95,10 +97,14 @@ class CodecTokenTTS(nn.Module):
     ) -> torch.Tensor:
         audio_positions = torch.arange(decoder_ids.shape[1], device=decoder_ids.device)
         memory, text_padding = self.encode_text(text_ids)
-        target = self.audio_embedding(decoder_ids) + self.audio_position(audio_positions)
-        causal = nn.Transformer.generate_square_subsequent_mask(
-            decoder_ids.shape[1], device=decoder_ids.device
-        )
+        if self.config.decoder_input_mode == "text_only":
+            target = self.output_query.expand(decoder_ids.shape[0], decoder_ids.shape[1], -1) + self.audio_position(audio_positions)
+            causal = None
+        elif self.config.decoder_input_mode == "autoregressive":
+            target = self.audio_embedding(decoder_ids) + self.audio_position(audio_positions)
+            causal = nn.Transformer.generate_square_subsequent_mask(decoder_ids.shape[1], device=decoder_ids.device)
+        else:
+            raise ValueError(f"Unknown decoder_input_mode: {self.config.decoder_input_mode}")
         decoded = self.decoder(
             target,
             memory,
@@ -131,6 +137,12 @@ class CodecTokenTTS(nn.Module):
                 (text_ids.shape[0],), hard_limit, device=text_ids.device,
                 dtype=torch.long,
             )
+        if self.config.decoder_input_mode == "text_only":
+            width = int(length_caps.max().item()) + 1
+            placeholder = torch.full((text_ids.shape[0], width), self.config.audio_bos_id, dtype=torch.long, device=text_ids.device)
+            predicted = self(text_ids, placeholder).argmax(dim=-1)
+            positions = torch.arange(width, device=text_ids.device)[None, :]
+            return predicted.masked_fill(positions >= length_caps[:, None], self.config.audio_eos_id)
         generated = torch.full(
             (text_ids.shape[0], 1),
             self.config.audio_bos_id,
@@ -182,6 +194,7 @@ class CodecTokenTTS(nn.Module):
         allowed_missing = {
             "duration_head.0.weight", "duration_head.0.bias",
             "duration_head.2.weight", "duration_head.2.bias",
+            "output_query",
         }
         unexpected_missing = set(incompatible.missing_keys) - allowed_missing
         if unexpected_missing or incompatible.unexpected_keys:

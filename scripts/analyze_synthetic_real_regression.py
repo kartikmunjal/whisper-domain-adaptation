@@ -20,11 +20,11 @@ def resolve_audio(root:Path,value:str)->Path:
 
 def acoustic_features(path:Path,sample_rate:int=16_000)->dict:
     audio,_=librosa.load(path,sr=sample_rate,mono=True); duration=len(audio)/sample_rate
-    rms=librosa.feature.rms(y=audio,frame_length=400,hop_length=160,center=False)[0]; rms_db=20*np.log10(np.maximum(rms,1e-8)); peak=float(rms_db.max()) if len(rms_db) else -160.0
+    rms=librosa.feature.rms(y=audio,frame_length=400,hop_length=160,center=False)[0]; rms_db=20*np.log10(np.maximum(rms,1e-8)); peak=float(rms_db.max()) if len(rms_db) else -160.0; active=rms_db[(rms_db>=-80.0)&(rms_db>=peak-50.0)]
     centroid=librosa.feature.spectral_centroid(y=audio,sr=sample_rate,n_fft=400,hop_length=160,center=False)[0]
     spectrum=np.abs(librosa.stft(audio,n_fft=512,hop_length=160,win_length=400,center=False))**2; frequencies=librosa.fft_frequencies(sr=sample_rate,n_fft=512); keep=(frequencies>=200)&(frequencies<=4000); mean_power=np.maximum(spectrum[keep].mean(axis=1),1e-12)
     f0,voiced,_=librosa.pyin(audio,fmin=65,fmax=500,sr=sample_rate,frame_length=1024,hop_length=160); voiced_f0=f0[np.isfinite(f0)]
-    return {"duration_seconds":duration,"rms_dbfs":float(20*np.log10(np.sqrt(np.mean(audio**2))+1e-8)),"heuristic_snr_db":float(np.percentile(rms_db,90)-np.percentile(rms_db,10)) if len(rms_db) else 0.0,"silence_fraction":float(np.mean(rms_db<peak-40)) if len(rms_db) else 1.0,"spectral_centroid_hz":float(np.mean(centroid)),"spectral_tilt_db_per_octave":float(np.polyfit(np.log2(frequencies[keep]/200),10*np.log10(mean_power),1)[0]),"voiced_fraction":float(np.mean(voiced)),"pitch_median_hz":float(np.median(voiced_f0)) if len(voiced_f0) else None,"pitch_range_hz":float(np.percentile(voiced_f0,95)-np.percentile(voiced_f0,5)) if len(voiced_f0) else None}
+    return {"duration_seconds":duration,"rms_dbfs":float(20*np.log10(np.sqrt(np.mean(audio**2))+1e-8)),"heuristic_snr_db":float(np.percentile(active,90)-np.percentile(active,10)) if len(active)>=2 else None,"silence_fraction":float(np.mean(rms_db<peak-40)) if len(rms_db) else 1.0,"spectral_centroid_hz":float(np.mean(centroid)),"spectral_tilt_db_per_octave":float(np.polyfit(np.log2(frequencies[keep]/200),10*np.log10(mean_power),1)[0]),"voiced_fraction":float(np.mean(voiced)),"pitch_median_hz":float(np.median(voiced_f0)) if len(voiced_f0) else None,"pitch_range_hz":float(np.percentile(voiced_f0,95)-np.percentile(voiced_f0,5)) if len(voiced_f0) else None}
 
 def cliffs_delta(left:list[float],right:list[float])->float:
     a=np.asarray(left)[:,None]; b=np.asarray(right)[None,:]; return float((np.sum(a>b)-np.sum(a<b))/(a.size*b.shape[1]))

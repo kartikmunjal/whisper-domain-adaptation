@@ -101,6 +101,7 @@ def parse_args():
     parser.add_argument("--scheduled-sampling-max", type=float, default=0.25)
     parser.add_argument("--scheduled-sampling-warmup-fraction", type=float, default=0.5)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--decoder-input-mode", choices=("autoregressive", "text_only"), default="autoregressive")
     return parser.parse_args()
 
 
@@ -116,7 +117,7 @@ def main():
     root = Path(__file__).resolve().parents[1]
     data = root / args.data_dir
     report = json.loads((data / "dataset_report.json").read_text())
-    cfg = CodecTTSConfig(codebook_size=report["codebook_size"])
+    cfg = CodecTTSConfig(codebook_size=report["codebook_size"], decoder_input_mode=args.decoder_input_mode)
     train = TokenDataset(data / "train.parquet")
     validation = TokenDataset(data / "validation.parquet")
     generator = torch.Generator().manual_seed(args.seed)
@@ -144,6 +145,8 @@ def main():
             1.0,
             epoch / max(args.epochs * args.scheduled_sampling_warmup_fraction, 1.0),
         )
+        if cfg.decoder_input_mode == "text_only":
+            scheduled_sampling_probability = 0.0
         for text, decoder, labels in train_loader:
             text, decoder, labels = text.to(device), decoder.to(device), labels.to(device)
             teacher_logits = model(text, decoder)

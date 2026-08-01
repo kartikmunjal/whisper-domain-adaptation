@@ -122,3 +122,24 @@ is permitted. If both pass while free-running errors grow with position, the
 next model is a duration-aware non-autoregressive predictor with output length
 fixed before token prediction. Any replacement retains the same data, frozen
 codec, five seeds, Edge-TTS comparator, WER splits, and uncertainty protocol.
+
+## Amendment 4 — Text-forced parallel decoder
+
+Locked 2026-07-31 after all five Amendment 3 diagnostics completed and before
+replacement training. The shuffled-minus-true NLL was 0.00029 nats/token
+(95% trial-bootstrap CI -0.00104 to 0.00176), triggering the conditioning
+failure gate. Mean cross-attention entropy was 0.9713 and centroid
+monotonicity was -0.058, supporting the mechanical diagnosis that
+teacher-forced codec history provides a shortcut around text.
+
+The targeted replacement removes codec-token identities from decoder inputs.
+Training and inference use learned output-position queries cross-attending to
+the encoded text, without a causal mask; target length is supplied during
+training and fixed from the existing duration head at inference. Thus codec
+content cannot be predicted from previous ground-truth or generated codec
+tokens. Scheduled sampling is disabled because the model has no autoregressive
+history. All other architecture dimensions, data and splits, frozen VQ codec,
+duration loss and cap, optimizer and epochs, five seeds, checkpoint selection,
+Edge-TTS comparator, Whisper evaluation, failure accounting, and uncertainty
+protocol remain fixed. The same shuffled-text diagnostic is rerun on the five
+replacement checkpoints before round-trip claims are interpreted.
