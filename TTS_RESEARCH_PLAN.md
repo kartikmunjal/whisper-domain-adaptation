@@ -160,8 +160,8 @@ financial term and four existing training voices, plus fixed common controls),
 and scales the Transformer from d_model 256, 4+4 layers, FFN 1024 to d_model
 384, 6+6 layers, FFN 1536, 8 heads. Validation and test manifests, voices,
 template families, codec, duration loss/cap, optimizer family, checkpoint
-criterion, and five seeds remain unchanged. Training is 30 epochs, micro-batch
-2, gradient accumulation 4, learning rate 3e-4, with no scheduled sampling.
+criterion, and five seeds remain unchanged. Training is 30 epochs, effective
+batch 16, learning rate 3e-4, with no scheduled sampling.
 
 Stage B changes only the text representation to deterministic CMUdict ARPAbet
 phonemes (cmudict 1.1.1, first listed pronunciation, word-boundary tokens;
@@ -179,3 +179,14 @@ financial adapters. Model/config revisions and SHA-256 hashes are recorded;
 weights and generated audio are not redistributed. Edge-TTS remains the upper
 reference. Comparators contextualize distance from usable TTS and are not
 used for model selection.
+
+### Amendment 5 execution correction — GPU-tested micro-batch
+
+Locked 2026-08-01 after a synthetic forward/backward memory smoke test and
+before any Stage A or B training began. The 25.7M-parameter model used 346 MiB
+peak allocated CUDA memory at batch 2 and 400 output tokens on the RTX 3070.
+The execution setting is therefore fixed at micro-batch 8 with gradient
+accumulation 2, preserving the preregistered effective batch 16 while avoiding
+an unnecessarily slow run. Model, data, epochs, optimizer, learning rate,
+selection, and every evaluation rule are unchanged. No validation or test
+metric informed this correction.
