@@ -8,3 +8,4 @@ foreach($seed in @(11,22,33,44,55)){
   $result="experiments/results/earnings21_augmented/seed_$seed/finetuned.json"
   if(-not(Test-Path $result)){ RunPy scripts/evaluate_longform.py --adapter-path "$checkpoint/adapter" --base-model openai/whisper-small --eval-manifest data/earnings21_eval/eval_manifest.parquet --domain-vocab configs/financial_terms.txt --seed $seed --output $result }
 }
+RunPy scripts/summarize_financial_augmentation.py
