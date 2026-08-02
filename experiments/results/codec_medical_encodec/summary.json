@@ -1,0 +1,1051 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "n_clips": 24,
+    "adapter_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "bootstrap_resamples": 10000,
+    "delta_definition": "reconstructed-audio WER minus paired original-audio WER",
+    "comparison_rate_warning": "EnCodec is 1500 nominal bps; custom cells are 500 nominal bps. This is not a matched-rate ranking."
+  },
+  "encodec": {
+    "model_id": "facebook/encodec_24khz",
+    "revision": "c1dbe2ae3f1de713481a3b3e7c47f357092ee040",
+    "weight_sha256": "37a7cb100f71a29e6c1d815aca8666a1d7ea8885ebe44c306c751a5103559d57",
+    "nominal_bitrate_bps": 1500.0,
+    "empirical_bitrate_bps": {
+      "pooled": 962.5415540935245,
+      "clip_mean": 913.8999612354519,
+      "clip_bootstrap_95_ci": [
+        897.8447628801538,
+        929.4952573291786
+      ],
+      "clip_values": [
+        911.6770241163068,
+        964.8750980635489,
+        947.9459590153227,
+        943.2777295954586,
+        965.458833016499,
+        965.3214801521697,
+        970.4279537689055,
+        850.4454080682118,
+        864.2516100749367,
+        868.3357360825077,
+        873.6476061383601,
+        874.5896758439727,
+        842.8375916924629,
+        890.5458690841778,
+        901.7767455061943,
+        912.5650608068053,
+        860.2127999789265,
+        914.4635994612319,
+        916.308398327138,
+        950.7649492326188,
+        932.8508580572282,
+        930.8478377229146,
+        921.0109525278999,
+        959.1602933170462
+      ]
+    },
+    "utilization": {
+      "n_codebooks": 2,
+      "codebook_size": 1024,
+      "frame_rate_hz": 75.0,
+      "nominal_fixed_width_bps": 1500.0,
+      "empirical_entropy_bps": 962.5415540935245,
+      "entropy_utilization": 0.641694369395683,
+      "codebooks": [
+        {
+          "index": 0,
+          "unique_codes": 306,
+          "unique_fraction": 0.298828125,
+          "entropy_bits_per_frame": 5.923895678811752,
+          "entropy_fraction_of_fixed_width": 0.5923895678811751,
+          "perplexity": 60.71140597229172,
+          "n_observations": 299059
+        },
+        {
+          "index": 1,
+          "unique_codes": 764,
+          "unique_fraction": 0.74609375,
+          "entropy_bits_per_frame": 6.909991709101908,
+          "entropy_fraction_of_fixed_width": 0.6909991709101908,
+          "perplexity": 120.25822079594471,
+          "n_observations": 299059
+        }
+      ]
+    },
+    "si_sdr_db": {
+      "mean": -2.6171198905530595,
+      "clip_bootstrap_95_ci": [
+        -3.4490322506284925,
+        -1.7364327172667808
+      ],
+      "clip_values": [
+        -0.42178545091083297,
+        0.3963950827337416,
+        0.3528412630018576,
+        -0.34619987107747874,
+        0.01832860513582736,
+        -0.05928420753575345,
+        0.26815092610543534,
+        -1.6172187721708988,
+        1.3874575514111467,
+        -4.529234180749332,
+        -5.630997678289499,
+        -5.285607286663704,
+        -4.323478959428016,
+        -4.534717022276537,
+        -4.2593573024332505,
+        -4.535389452092511,
+        -4.443962242512985,
+        -3.9979954131454303,
+        -3.458372477928446,
+        -2.2982098605978276,
+        -3.7533281994450003,
+        -4.292864283556903,
+        -3.0662218172815154,
+        -4.379826323565518
+      ]
+    },
+    "log_mel_l1_db": {
+      "mean": 7.753849287827809,
+      "clip_bootstrap_95_ci": [
+        7.419775813321272,
+        8.109438568353653
+      ],
+      "clip_values": [
+        7.005486011505127,
+        6.802911281585693,
+        7.0078349113464355,
+        6.923559665679932,
+        6.662132263183594,
+        6.773255348205566,
+        6.7669291496276855,
+        8.139105796813965,
+        7.566513538360596,
+        8.942261695861816,
+        8.441259384155273,
+        8.84481143951416,
+        9.70882511138916,
+        8.365772247314453,
+        8.513413429260254,
+        8.245070457458496,
+        9.326990127563477,
+        8.12597942352295,
+        7.632574558258057,
+        7.179034233093262,
+        7.479325294494629,
+        7.276466369628906,
+        7.374122142791748,
+        6.988749027252197
+      ],
+      "lower_is_better": true,
+      "configuration": {
+        "n_mels": 80,
+        "window_samples": 400,
+        "hop_samples": 160,
+        "fmin_hz": 20,
+        "fmax_hz": 7600
+      }
+    },
+    "wer": {
+      "overall": {
+        "base_whisper": {
+          "absolute_wer": {
+            "estimate": 0.6586,
+            "clip_bootstrap_95_ci": [
+              0.515905,
+              0.814357
+            ],
+            "n_resamples": 10000
+          },
+          "delta_wer": {
+            "estimate": 0.409297,
+            "ci_low": 0.268738,
+            "ci_high": 0.565015,
+            "n_resamples": 10000
+          }
+        },
+        "adapted_whisper": {
+          "n_trials": 5,
+          "absolute_wer_trial_values": [
+            0.4541,
+            0.4548,
+            0.4839,
+            0.4962,
+            0.4822
+          ],
+          "absolute_wer_mean_ci95": [
+            0.47424,
+            0.4600000000000001,
+            0.48848
+          ],
+          "delta_wer_trial_values": [
+            0.156122,
+            0.153472,
+            0.167826,
+            0.205808,
+            0.197858
+          ],
+          "delta_wer_mean_ci95": [
+            0.17621720000000002,
+            0.1574028,
+            0.1950316
+          ],
+          "per_trial_clip_bootstrap": [
+            {
+              "estimate": 0.156122,
+              "ci_low": 0.08397,
+              "ci_high": 0.221233,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.153472,
+              "ci_low": 0.073085,
+              "ci_high": 0.219932,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.167826,
+              "ci_low": 0.087745,
+              "ci_high": 0.251953,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.205808,
+              "ci_low": 0.145055,
+              "ci_high": 0.276931,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.197858,
+              "ci_low": 0.128391,
+              "ci_high": 0.276662,
+              "n_resamples": 10000
+            }
+          ]
+        }
+      },
+      "domain_terms": {
+        "base_whisper": {
+          "absolute_wer": {
+            "estimate": 0.6843,
+            "clip_bootstrap_95_ci": [
+              0.503739,
+              0.910568
+            ],
+            "n_resamples": 10000
+          },
+          "delta_wer": {
+            "estimate": 0.398175,
+            "ci_low": 0.214283,
+            "ci_high": 0.631073,
+            "n_resamples": 10000
+          }
+        },
+        "adapted_whisper": {
+          "n_trials": 5,
+          "absolute_wer_trial_values": [
+            0.504,
+            0.5077,
+            0.5172,
+            0.5182,
+            0.5032
+          ],
+          "absolute_wer_mean_ci95": [
+            0.5100600000000001,
+            0.50442,
+            0.5157
+          ],
+          "delta_wer_trial_values": [
+            0.176276,
+            0.140555,
+            0.170646,
+            0.192778,
+            0.182489
+          ],
+          "delta_wer_mean_ci95": [
+            0.1725488,
+            0.15496000000000001,
+            0.1862938
+          ],
+          "per_trial_clip_bootstrap": [
+            {
+              "estimate": 0.176276,
+              "ci_low": 0.08819,
+              "ci_high": 0.259428,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.140555,
+              "ci_low": 0.005164,
+              "ci_high": 0.247432,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.170646,
+              "ci_low": 0.075747,
+              "ci_high": 0.242023,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.192778,
+              "ci_low": 0.145706,
+              "ci_high": 0.236784,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.182489,
+              "ci_low": 0.102849,
+              "ci_high": 0.250736,
+              "n_resamples": 10000
+            }
+          ]
+        }
+      },
+      "common_terms": {
+        "base_whisper": {
+          "absolute_wer": {
+            "estimate": 0.6247,
+            "clip_bootstrap_95_ci": [
+              0.417402,
+              0.839438
+            ],
+            "n_resamples": 10000
+          },
+          "delta_wer": {
+            "estimate": 0.423963,
+            "ci_low": 0.221279,
+            "ci_high": 0.625755,
+            "n_resamples": 10000
+          }
+        },
+        "adapted_whisper": {
+          "n_trials": 5,
+          "absolute_wer_trial_values": [
+            0.3884,
+            0.385,
+            0.4401,
+            0.4672,
+            0.4544
+          ],
+          "absolute_wer_mean_ci95": [
+            0.42702,
+            0.39738,
+            0.45666
+          ],
+          "delta_wer_trial_values": [
+            0.129544,
+            0.170507,
+            0.164107,
+            0.22299,
+            0.218126
+          ],
+          "delta_wer_mean_ci95": [
+            0.1810548,
+            0.1515618,
+            0.21054779999999998
+          ],
+          "per_trial_clip_bootstrap": [
+            {
+              "estimate": 0.129544,
+              "ci_low": 0.009764,
+              "ci_high": 0.225469,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.170507,
+              "ci_low": 0.102302,
+              "ci_high": 0.232229,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.164107,
+              "ci_low": 0.030485,
+              "ci_high": 0.328633,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.22299,
+              "ci_low": 0.09859,
+              "ci_high": 0.37443,
+              "n_resamples": 10000
+            },
+            {
+              "estimate": 0.218126,
+              "ci_low": 0.100394,
+              "ci_high": 0.363151,
+              "n_resamples": 10000
+            }
+          ]
+        }
+      }
+    }
+  },
+  "custom_cells": {
+    "vq_500bps": {
+      "quantizer": "vq",
+      "nominal_bitrate_bps": 500,
+      "empirical_bitrate_bps": {
+        "mean": 200.33347485840721,
+        "trial_values": [
+          163.22215473984662,
+          150.99365022096674,
+          227.28215413092832,
+          221.2983769419821,
+          238.8710382583124
+        ],
+        "trial_bootstrap_95_ci": [
+          168.69705190673503,
+          230.72095234409272
+        ]
+      },
+      "entropy_utilization": {
+        "mean_ci95": [
+          0.40066694971681444,
+          0.3373941038134701,
+          0.46144190468818536
+        ],
+        "definition": "empirical entropy rate divided by nominal fixed-width rate"
+      },
+      "si_sdr_db": {
+        "mean": -15.731332755849175,
+        "trial_values": [
+          -16.033121739299933,
+          -14.354081117187183,
+          -16.998503378914048,
+          -16.642093807229106,
+          -14.628863736615608
+        ],
+        "trial_bootstrap_95_ci": [
+          -16.66286322231725,
+          -14.799802289381102
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 12.512781556447345,
+        "trial_values": [
+          11.627188364664713,
+          11.21809951464335,
+          11.440450429916382,
+          15.079372803370157,
+          13.19879666964213
+        ],
+        "trial_bootstrap_95_ci": [
+          11.388857650756835,
+          13.95102712313334
+        ],
+        "lower_is_better": true
+      },
+      "wer": {
+        "overall": {
+          "base_absolute_wer": {
+            "estimate": 1.2942,
+            "clip_bootstrap_95_ci": [
+              1.130741,
+              1.514703
+            ],
+            "n_resamples": 10000
+          },
+          "adapted_absolute_wer_trial_values": [
+            1.0371,
+            1.4004,
+            1.2616,
+            1.2302,
+            1.3124
+          ],
+          "adapted_absolute_wer_mean_ci95": [
+            1.24834,
+            1.1370599999999997,
+            1.3476000000000001
+          ],
+          "base_delta_wer": {
+            "n_trials": 1,
+            "estimate": 1.044938,
+            "ci_low": 0.879286,
+            "ci_high": 1.271513,
+            "n_resamples": 10000
+          },
+          "adapted_delta_wer": {
+            "n_trials": 5,
+            "trial_values": [
+              0.739097,
+              1.099039,
+              0.945457,
+              0.939826,
+              1.028045
+            ],
+            "mean_delta_wer": 0.9502928,
+            "trial_bootstrap_95_ci": [
+              0.8381586000000001,
+              1.0422438
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.739097,
+                "ci_low": 0.663074,
+                "ci_high": 0.822096,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.099039,
+                "ci_low": 0.922745,
+                "ci_high": 1.301048,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.945457,
+                "ci_low": 0.81789,
+                "ci_high": 1.104136,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.939826,
+                "ci_low": 0.811513,
+                "ci_high": 1.097868,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.028045,
+                "ci_low": 0.867538,
+                "ci_high": 1.237489,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_absolute_wer": {
+            "estimate": 1.2339,
+            "clip_bootstrap_95_ci": [
+              1.059593,
+              1.497735
+            ],
+            "n_resamples": 10000
+          },
+          "adapted_absolute_wer_trial_values": [
+            1.0509,
+            1.4141,
+            1.2766,
+            1.2157,
+            1.3287
+          ],
+          "adapted_absolute_wer_mean_ci95": [
+            1.2571999999999999,
+            1.14978,
+            1.35734
+          ],
+          "base_delta_wer": {
+            "n_trials": 1,
+            "estimate": 0.947777,
+            "ci_low": 0.764226,
+            "ci_high": 1.222844,
+            "n_resamples": 10000
+          },
+          "adapted_delta_wer": {
+            "n_trials": 5,
+            "trial_values": [
+              0.723161,
+              1.046981,
+              0.930111,
+              0.890313,
+              1.00796
+            ],
+            "mean_delta_wer": 0.9197051999999999,
+            "trial_bootstrap_95_ci": [
+              0.8135512,
+              1.0079985999999999
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.723161,
+                "ci_low": 0.63796,
+                "ci_high": 0.843106,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.046981,
+                "ci_low": 0.789312,
+                "ci_high": 1.355964,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.930111,
+                "ci_low": 0.764449,
+                "ci_high": 1.153359,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.890313,
+                "ci_low": 0.716228,
+                "ci_high": 1.116198,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.00796,
+                "ci_low": 0.787963,
+                "ci_high": 1.341981,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_absolute_wer": {
+            "estimate": 1.3738,
+            "clip_bootstrap_95_ci": [
+              1.109106,
+              1.756385
+            ],
+            "n_resamples": 10000
+          },
+          "adapted_absolute_wer_trial_values": [
+            1.0189,
+            1.3822,
+            1.2417,
+            1.2494,
+            1.2908
+          ],
+          "adapted_absolute_wer_mean_ci95": [
+            1.2366000000000001,
+            1.11784,
+            1.3275400000000002
+          ],
+          "base_delta_wer": {
+            "n_trials": 1,
+            "estimate": 1.173067,
+            "ci_low": 0.917258,
+            "ci_high": 1.547223,
+            "n_resamples": 10000
+          },
+          "adapted_delta_wer": {
+            "n_trials": 5,
+            "trial_values": [
+              0.760113,
+              1.167691,
+              0.965694,
+              1.00512,
+              1.054531
+            ],
+            "mean_delta_wer": 0.9906298,
+            "trial_bootstrap_95_ci": [
+              0.8601128000000001,
+              1.0947774000000001
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.760113,
+                "ci_low": 0.624688,
+                "ci_high": 0.866108,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.167691,
+                "ci_low": 0.958786,
+                "ci_high": 1.408603,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.965694,
+                "ci_low": 0.789171,
+                "ci_high": 1.203393,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.00512,
+                "ci_low": 0.852594,
+                "ci_high": 1.228317,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.054531,
+                "ci_low": 0.857493,
+                "ci_high": 1.324292,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    },
+    "fsq_500bps": {
+      "quantizer": "fsq",
+      "nominal_bitrate_bps": 500,
+      "empirical_bitrate_bps": {
+        "mean": 66.84402245841727,
+        "trial_values": [
+          77.81880151807069,
+          89.54467609260982,
+          78.19759235703812,
+          88.15202578636202,
+          0.5070165380057752
+        ],
+        "trial_bootstrap_95_ci": [
+          33.49837538369001,
+          86.92097111645244
+        ]
+      },
+      "entropy_utilization": {
+        "mean_ci95": [
+          0.13368804491683456,
+          0.06699675076738001,
+          0.17384194223290486
+        ],
+        "definition": "empirical entropy rate divided by nominal fixed-width rate"
+      },
+      "si_sdr_db": {
+        "mean": -28.43819609871091,
+        "trial_values": [
+          -21.83217190109795,
+          -22.23392495827385,
+          -19.36687652422137,
+          -19.736452388742652,
+          -59.02155472121874
+        ],
+        "trial_bootstrap_95_ci": [
+          -43.80700830213455,
+          -20.007765945405197
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 13.945677137374878,
+        "trial_values": [
+          11.494100530942282,
+          11.027366995811462,
+          13.000556230545044,
+          13.624800523122152,
+          20.58156140645345
+        ],
+        "trial_bootstrap_95_ci": [
+          11.608698256810507,
+          17.372717054684955
+        ],
+        "lower_is_better": true
+      },
+      "wer": {
+        "overall": {
+          "base_absolute_wer": {
+            "estimate": 1.187,
+            "clip_bootstrap_95_ci": [
+              1.055064,
+              1.333675
+            ],
+            "n_resamples": 10000
+          },
+          "adapted_absolute_wer_trial_values": [
+            1.0838,
+            1.334,
+            1.5412,
+            1.5478,
+            1.2672
+          ],
+          "adapted_absolute_wer_mean_ci95": [
+            1.3548,
+            1.2071999999999998,
+            1.5024000000000002
+          ],
+          "base_delta_wer": {
+            "n_trials": 1,
+            "estimate": 0.937728,
+            "ci_low": 0.794949,
+            "ci_high": 1.093344,
+            "n_resamples": 10000
+          },
+          "adapted_delta_wer": {
+            "n_trials": 5,
+            "trial_values": [
+              0.785801,
+              1.032682,
+              1.22513,
+              1.25737,
+              0.982886
+            ],
+            "mean_delta_wer": 1.0567738,
+            "trial_bootstrap_95_ci": [
+              0.9040520000000001,
+              1.1995364
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.785801,
+                "ci_low": 0.698372,
+                "ci_high": 0.875753,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.032682,
+                "ci_low": 0.830742,
+                "ci_high": 1.26817,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.22513,
+                "ci_low": 1.043979,
+                "ci_high": 1.40398,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.25737,
+                "ci_low": 0.99691,
+                "ci_high": 1.553683,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.982886,
+                "ci_low": 0.829511,
+                "ci_high": 1.17362,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "domain_terms": {
+          "base_absolute_wer": {
+            "estimate": 1.3106,
+            "clip_bootstrap_95_ci": [
+              1.102659,
+              1.53489
+            ],
+            "n_resamples": 10000
+          },
+          "adapted_absolute_wer_trial_values": [
+            1.0901,
+            1.4432,
+            1.5878,
+            1.5795,
+            1.3386
+          ],
+          "adapted_absolute_wer_mean_ci95": [
+            1.4078399999999998,
+            1.23768,
+            1.5555599999999998
+          ],
+          "base_delta_wer": {
+            "n_trials": 1,
+            "estimate": 1.024461,
+            "ci_low": 0.787779,
+            "ci_high": 1.275842,
+            "n_resamples": 10000
+          },
+          "adapted_delta_wer": {
+            "n_trials": 5,
+            "trial_values": [
+              0.762376,
+              1.076102,
+              1.241312,
+              1.254125,
+              1.017861
+            ],
+            "mean_delta_wer": 1.0703552,
+            "trial_bootstrap_95_ci": [
+              0.9092602000000001,
+              1.2133952
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.762376,
+                "ci_low": 0.675218,
+                "ci_high": 0.864984,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.076102,
+                "ci_low": 0.758283,
+                "ci_high": 1.480916,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.241312,
+                "ci_low": 0.980972,
+                "ci_high": 1.497985,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.254125,
+                "ci_low": 0.874857,
+                "ci_high": 1.707127,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.017861,
+                "ci_low": 0.778733,
+                "ci_high": 1.342745,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        },
+        "common_terms": {
+          "base_absolute_wer": {
+            "estimate": 1.0241,
+            "clip_bootstrap_95_ci": [
+              1.0,
+              1.080849
+            ],
+            "n_resamples": 10000
+          },
+          "adapted_absolute_wer_trial_values": [
+            1.0755,
+            1.19,
+            1.4798,
+            1.5059,
+            1.1731
+          ],
+          "adapted_absolute_wer_mean_ci95": [
+            1.28486,
+            1.13744,
+            1.4341199999999998
+          ],
+          "base_delta_wer": {
+            "n_trials": 1,
+            "estimate": 0.823349,
+            "ci_low": 0.740502,
+            "ci_high": 0.916527,
+            "n_resamples": 10000
+          },
+          "adapted_delta_wer": {
+            "n_trials": 5,
+            "trial_values": [
+              0.816692,
+              0.975422,
+              1.203789,
+              1.261649,
+              0.936764
+            ],
+            "mean_delta_wer": 1.0388632000000002,
+            "trial_bootstrap_95_ci": [
+              0.8964668,
+              1.1850999999999998
+            ],
+            "per_trial_clip_bootstrap": [
+              {
+                "estimate": 0.816692,
+                "ci_low": 0.653313,
+                "ci_high": 0.967827,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.975422,
+                "ci_low": 0.819635,
+                "ci_high": 1.149475,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.203789,
+                "ci_low": 0.965343,
+                "ci_high": 1.456598,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 1.261649,
+                "ci_low": 0.965794,
+                "ci_high": 1.574042,
+                "n_resamples": 10000
+              },
+              {
+                "estimate": 0.936764,
+                "ci_low": 0.787024,
+                "ci_high": 1.108342,
+                "n_resamples": 10000
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "vq_500bps": {
+      "rate_context": {
+        "encodec_to_custom_nominal_bitrate_ratio": 3.0,
+        "encodec_to_custom_empirical_bitrate_ratio": 4.804696542970838,
+        "interpretation": "Descriptive rate mismatch; not a matched-rate comparison."
+      },
+      "overall": {
+        "custom_minus_encodec_absolute_wer_mean_ci95": [
+          0.7741,
+          0.67138,
+          0.87636
+        ],
+        "custom_over_encodec_absolute_wer_ratio_mean_ci95": [
+          2.6342197152814144,
+          2.4131750036714017,
+          2.8876803006767413
+        ]
+      },
+      "domain_terms": {
+        "custom_minus_encodec_absolute_wer_mean_ci95": [
+          0.7471399999999999,
+          0.63726,
+          0.8484399999999999
+        ],
+        "custom_over_encodec_absolute_wer_ratio_mean_ci95": [
+          2.4650444651371965,
+          2.248372668217777,
+          2.6684850095892276
+        ]
+      },
+      "common_terms": {
+        "custom_minus_encodec_absolute_wer_mean_ci95": [
+          0.8095800000000001,
+          0.7058999999999997,
+          0.9189600000000002
+        ],
+        "custom_over_encodec_absolute_wer_ratio_mean_ci95": [
+          2.9099518060281175,
+          2.6833032131080445,
+          3.257057615305782
+        ]
+      }
+    },
+    "fsq_500bps": {
+      "rate_context": {
+        "encodec_to_custom_nominal_bitrate_ratio": 3.0,
+        "encodec_to_custom_empirical_bitrate_ratio": 14.399814952672966,
+        "interpretation": "Descriptive rate mismatch; not a matched-rate comparison."
+      },
+      "overall": {
+        "custom_minus_encodec_absolute_wer_mean_ci95": [
+          0.8805600000000002,
+          0.7417200000000002,
+          1.0193999999999999
+        ],
+        "custom_over_encodec_absolute_wer_ratio_mean_ci95": [
+          2.850414780524431,
+          2.58147176628457,
+          3.1083364065633536
+        ]
+      },
+      "domain_terms": {
+        "custom_minus_encodec_absolute_wer_mean_ci95": [
+          0.89778,
+          0.7310000000000001,
+          1.03986
+        ],
+        "custom_over_encodec_absolute_wer_ratio_mean_ci95": [
+          2.756747702880184,
+          2.43938326050689,
+          3.0157420039739575
+        ]
+      },
+      "common_terms": {
+        "custom_minus_encodec_absolute_wer_mean_ci95": [
+          0.8578399999999998,
+          0.72332,
+          0.9923599999999999
+        ],
+        "custom_over_encodec_absolute_wer_ratio_mean_ci95": [
+          3.0054540472423246,
+          2.7474471532934754,
+          3.2524468163298104
+        ]
+      }
+    }
+  }
+}

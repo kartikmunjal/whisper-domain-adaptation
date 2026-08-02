@@ -186,6 +186,24 @@ distance generally improves with empirical bitrate even where SI-SDR and WER
 do not rank systems identically; this quantifies the previously unexplained
 metric disagreement without claiming perceptual quality.
 
+<!-- BEGIN GENERATED ENCODEC RESULT -->
+The preregistered [external EnCodec benchmark](experiments/results/codec_medical_encodec/REPORT.md)
+anchors those results to the pinned open `facebook/encodec_24khz` checkpoint.
+At its lowest supported rate, 1.5 kbps, EnCodec's
+five-adapter mean absolute WER is 47.42% (95% CI 46.00–48.85), and its reconstructed-minus-
+original ΔWER is +17.62 points (95% CI 15.74–19.50). At 500 nominal bps,
+VQ-VAE and FSQ have 2.63× (95% CI 2.41–2.89) and 2.85× (95% CI 2.58–3.11) EnCodec's
+absolute WER, respectively. Signal fidelity and utilization show the same gap:
+EnCodec reaches -2.62 dB SI-SDR and 64.2%
+entropy utilization, versus -15.73 dB/40.1% for
+VQ-VAE and -28.44 dB/13.4% for FSQ. This is an
+external anchor, not a matched-rate ranking: EnCodec receives 3× the nominal
+bitrate and 4.80×/14.40× the measured empirical entropy rate of
+the VQ-VAE/FSQ cells. The elevated but improved custom-codec utilization is
+therefore a plausible mechanism for part of the gap, not proof that utilization
+alone causes it.
+<!-- END GENERATED ENCODEC RESULT -->
+
 It also includes a small autoregressive Transformer mapping UTF-8 text tokens
 to VQ codec tokens. The held-out path is
 text → predicted tokens → codec decoder → waveform, followed by round-trip

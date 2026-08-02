@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "condition": "encodec_24khz_1.5kbps",
+  "model_id": "facebook/encodec_24khz",
+  "revision": "c1dbe2ae3f1de713481a3b3e7c47f357092ee040",
+  "upstream_project": "https://github.com/facebookresearch/encodec",
+  "upstream_paper": "https://arxiv.org/abs/2210.13438",
+  "weight_file": "model.safetensors",
+  "weight_sha256": "37a7cb100f71a29e6c1d815aca8666a1d7ea8885ebe44c306c751a5103559d57",
+  "config_sha256": "cd7da7da3b3b34daee262e213e3daa24dc01b4fdc3aadd38ed760f0d6f955871",
+  "n_clips": 24,
+  "sample_rate_hz": 24000,
+  "target_bandwidth_kbps": 1.5,
+  "chunk_seconds": 10.0,
+  "overlap_seconds": 0.1,
+  "trainable_parameters": 14851810,
+  "utilization": {
+    "n_codebooks": 2,
+    "codebook_size": 1024,
+    "frame_rate_hz": 75.0,
+    "nominal_fixed_width_bps": 1500.0,
+    "empirical_entropy_bps": 962.5415540935245,
+    "entropy_utilization": 0.641694369395683,
+    "codebooks": [
+      {
+        "index": 0,
+        "unique_codes": 306,
+        "unique_fraction": 0.298828125,
+        "entropy_bits_per_frame": 5.923895678811752,
+        "entropy_fraction_of_fixed_width": 0.5923895678811751,
+        "perplexity": 60.71140597229172,
+        "n_observations": 299059
+      },
+      {
+        "index": 1,
+        "unique_codes": 764,
+        "unique_fraction": 0.74609375,
+        "entropy_bits_per_frame": 6.909991709101908,
+        "entropy_fraction_of_fixed_width": 0.6909991709101908,
+        "perplexity": 120.25822079594471,
+        "n_observations": 299059
+      }
+    ]
+  },
+  "empirical_bitrate_bps": {
+    "pooled": 962.5415540935245,
+    "clip_mean": 913.8999612354519,
+    "clip_bootstrap_95_ci": [
+      897.8447628801538,
+      929.4952573291786
+    ],
+    "clip_values": [
+      911.6770241163068,
+      964.8750980635489,
+      947.9459590153227,
+      943.2777295954586,
+      965.458833016499,
+      965.3214801521697,
+      970.4279537689055,
+      850.4454080682118,
+      864.2516100749367,
+      868.3357360825077,
+      873.6476061383601,
+      874.5896758439727,
+      842.8375916924629,
+      890.5458690841778,
+      901.7767455061943,
+      912.5650608068053,
+      860.2127999789265,
+      914.4635994612319,
+      916.308398327138,
+      950.7649492326188,
+      932.8508580572282,
+      930.8478377229146,
+      921.0109525278999,
+      959.1602933170462
+    ]
+  },
+  "si_sdr_db": {
+    "mean": -2.6171198905530595,
+    "clip_bootstrap_95_ci": [
+      -3.4490322506284925,
+      -1.7364327172667808
+    ],
+    "clip_values": [
+      -0.42178545091083297,
+      0.3963950827337416,
+      0.3528412630018576,
+      -0.34619987107747874,
+      0.01832860513582736,
+      -0.05928420753575345,
+      0.26815092610543534,
+      -1.6172187721708988,
+      1.3874575514111467,
+      -4.529234180749332,
+      -5.630997678289499,
+      -5.285607286663704,
+      -4.323478959428016,
+      -4.534717022276537,
+      -4.2593573024332505,
+      -4.535389452092511,
+      -4.443962242512985,
+      -3.9979954131454303,
+      -3.458372477928446,
+      -2.2982098605978276,
+      -3.7533281994450003,
+      -4.292864283556903,
+      -3.0662218172815154,
+      -4.379826323565518
+    ]
+  },
+  "log_mel_l1_db": {
+    "mean": 7.753849287827809,
+    "clip_bootstrap_95_ci": [
+      7.419775813321272,
+      8.109438568353653
+    ],
+    "clip_values": [
+      7.005486011505127,
+      6.802911281585693,
+      7.0078349113464355,
+      6.923559665679932,
+      6.662132263183594,
+      6.773255348205566,
+      6.7669291496276855,
+      8.139105796813965,
+      7.566513538360596,
+      8.942261695861816,
+      8.441259384155273,
+      8.84481143951416,
+      9.70882511138916,
+      8.365772247314453,
+      8.513413429260254,
+      8.245070457458496,
+      9.326990127563477,
+      8.12597942352295,
+      7.632574558258057,
+      7.179034233093262,
+      7.479325294494629,
+      7.276466369628906,
+      7.374122142791748,
+      6.988749027252197
+    ],
+    "lower_is_better": true,
+    "configuration": {
+      "n_mels": 80,
+      "window_samples": 400,
+      "hop_samples": 160,
+      "fmin_hz": 20,
+      "fmax_hz": 7600
+    }
+  },
+  "reconstructed_manifest_sha256": "1f0300ff246b6dc909939b30b3936d6971d3c186a8ca3e9fa8b6a4f62da76807",
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-08-02T02:36:13.868182+00:00",
+    "git_commit": "5c5c196c185fe26dee805d4e42706d8dad6d49a8",
+    "git_dirty": false,
+    "arguments": {
+      "eval_manifest": "data/med_dictate_eval/eval_en_manifest.parquet",
+      "output_dir": "experiments/results/codec_medical_encodec",
+      "model_id": "facebook/encodec_24khz",
+      "revision": "c1dbe2ae3f1de713481a3b3e7c47f357092ee040",
+      "bandwidth_kbps": 1.5,
+      "chunk_seconds": 10.0,
+      "overlap_seconds": 0.1,
+      "bootstrap_resamples": 10000,
+      "device": "cuda"
+    },
+    "seed": 20260801,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\med_dictate_eval\\eval_en_manifest.parquet": "629d2e4c9c084191b5275567992efb24c8475ae2eaf795a3eac0133742a96e79",
+      "C:\\Users\\Kunal Munjal\\.cache\\huggingface\\hub\\models--facebook--encodec_24khz\\snapshots\\c1dbe2ae3f1de713481a3b3e7c47f357092ee040\\model.safetensors": "37a7cb100f71a29e6c1d815aca8666a1d7ea8885ebe44c306c751a5103559d57",
+      "C:\\Users\\Kunal Munjal\\.cache\\huggingface\\hub\\models--facebook--encodec_24khz\\snapshots\\c1dbe2ae3f1de713481a3b3e7c47f357092ee040\\config.json": "cd7da7da3b3b34daee262e213e3daa24dc01b4fdc3aadd38ed760f0d6f955871"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

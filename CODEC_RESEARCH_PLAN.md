@@ -149,3 +149,27 @@ SI-SDR, log-mel distance, absolute reconstructed WER, and reconstructed-minus-
 original ΔWER. WER ratios may be descriptive only, must carry a 95% interval,
 and must be labeled with the bitrate mismatch. No claim may divide a quality
 metric by bitrate or imply EnCodec performance at an unsupported rate.
+
+<!-- BEGIN GENERATED ENCODEC FINAL RESULT -->
+## Amendment 4 final result
+
+The pinned EnCodec evaluation completed on all 24 clips, the
+frozen Whisper baseline, and all 5 fixed medical adapters with clean
+provenance and 10,000-resample uncertainty. EnCodec's mean
+adapted absolute WER is 47.42% (95% CI 46.00–48.85), and reconstructed-minus-original
+ΔWER is +17.62 points (95% CI 15.74–19.50). The corresponding
+absolute-WER ratios are 2.63× (95% CI 2.41–2.89) for corrective VQ-500 and
+2.85× (95% CI 2.58–3.11) for corrective FSQ-500.
+
+EnCodec records -2.62 dB mean SI-SDR, 7.75 dB mean log-mel
+distance, and 64.2% pooled entropy utilization. VQ-500 records
+-15.73 dB, 12.51 dB, and 40.1%; FSQ-500 records
+-28.44 dB, 13.95 dB, and 13.4%. This supports the
+mechanical diagnosis that residual custom-codec under-utilization accompanies
+materially worse reconstruction and transcription. It does not isolate
+utilization as the sole cause. EnCodec receives 3× the nominal bitrate and
+4.80×/14.40× the empirical entropy rate of VQ-500/FSQ-500, so no
+matched-rate superiority claim is made.
+The complete machine-generated tables, per-split intervals, hashes, and plot
+are in `experiments/results/codec_medical_encodec/`.
+<!-- END GENERATED ENCODEC FINAL RESULT -->
