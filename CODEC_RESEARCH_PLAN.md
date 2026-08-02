@@ -117,3 +117,35 @@ VQ size 32; FSQ levels [4,4,2]). Seeds, architecture, 30-epoch budget, training
 data, 24-clip English medical evaluation, representative selection rule, ASR
 models, and 10,000-resample uncertainty remain fixed. These cells extend a
 rate-distortion curve; they are not selected using their WER.
+
+## Amendment 4 — Fixed open pretrained codec comparator
+
+Locked 2026-08-01 before downloading the comparator weights or observing any
+comparator reconstruction, signal metric, or ASR output. The external model is
+the open 24 kHz monophonic Meta EnCodec checkpoint
+`facebook/encodec_24khz`, pinned to Hugging Face revision
+`c1dbe2ae3f1de713481a3b3e7c47f357092ee040`, at its lowest officially
+supported 1.5 kbps operating point (two 1,024-entry residual codebooks at
+75 frames/s). The upstream implementation supports 1.5, 3, 6, 12, and
+24 kbps; it has no official 200–500 bps operating point.
+
+The same frozen 24-clip English `med-dictate` manifest, Whisper-small model,
+five medical adapters, domain vocabulary, overall/domain/common WER splits,
+SI-SDR, 80-bin log-mel distance, and 10,000-resample uncertainty procedures
+are retained. Long clips use deterministic 10 s chunks with 100 ms overlap
+and linear crossfades, matching the custom-codec reconstruction convention.
+The pretrained comparator has one fixed checkpoint rather than five training
+seeds: signal intervals therefore bootstrap the 24 clips; frozen-Whisper WER
+uses a paired clip bootstrap; adapted-Whisper summaries and contrasts use the
+five fixed adapter seeds with seed-level bootstrap intervals.
+
+The preregistered custom contrasts are the corrective VQ-500 and FSQ-500
+cells, the closest nominal design points already in the grid. EnCodec receives
+three times their nominal bitrate and substantially more than their measured
+entropy rates, so this is an external quality anchor, not a matched-rate codec
+ranking. The report must show nominal fixed-width bitrate, pooled empirical
+code entropy rate, entropy utilization, per-codebook unique-code fraction,
+SI-SDR, log-mel distance, absolute reconstructed WER, and reconstructed-minus-
+original ΔWER. WER ratios may be descriptive only, must carry a 95% interval,
+and must be labeled with the bitrate mismatch. No claim may divide a quality
+metric by bitrate or imply EnCodec performance at an unsupported rate.
