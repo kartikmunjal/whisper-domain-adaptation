@@ -328,6 +328,20 @@ def main() -> None:
         "",
         "The pretrained EnCodec point is 1.5 kbps, three times the nominal rate of the closest custom cells. This is an external quality anchor, **not a matched-rate ranking**.",
         "",
+        "## Result",
+        "",
+        f"EnCodec adds {encodec_metrics['overall']['adapted_whisper']['delta_wer_mean_ci95'][0] * 100:.2f} overall WER points "
+        f"[{encodec_metrics['overall']['adapted_whisper']['delta_wer_mean_ci95'][1] * 100:.2f}, "
+        f"{encodec_metrics['overall']['adapted_whisper']['delta_wer_mean_ci95'][2] * 100:.2f}], versus "
+        f"{custom_cells['vq_500bps']['wer']['overall']['adapted_delta_wer']['mean_delta_wer'] * 100:.2f} for VQ-VAE 500 "
+        f"and {custom_cells['fsq_500bps']['wer']['overall']['adapted_delta_wer']['mean_delta_wer'] * 100:.2f} for FSQ 500. "
+        f"Absolute reconstructed WER is {comparisons['vq_500bps']['overall']['custom_over_encodec_absolute_wer_ratio_mean_ci95'][0]:.2f}x "
+        f"higher for VQ-VAE and {comparisons['fsq_500bps']['overall']['custom_over_encodec_absolute_wer_ratio_mean_ci95'][0]:.2f}x higher for FSQ. "
+        f"Mechanically, EnCodec realizes {signal['utilization']['entropy_utilization'] * 100:.1f}% entropy utilization, compared with "
+        f"{custom_cells['vq_500bps']['entropy_utilization']['mean_ci95'][0] * 100:.1f}% for VQ-VAE and "
+        f"{custom_cells['fsq_500bps']['entropy_utilization']['mean_ci95'][0] * 100:.1f}% for FSQ. "
+        "These ratios are descriptive because EnCodec receives 3x the nominal bitrate.",
+        "",
         "## Signal and utilization",
         "",
         "| Codec | Nominal rate | Empirical entropy rate | Entropy utilization | SI-SDR | Log-mel L1 | Uncertainty unit |",
@@ -342,11 +356,12 @@ def main() -> None:
     )
     for condition in ("vq_500bps", "fsq_500bps"):
         cell = custom_cells[condition]
+        display_name = "VQ-VAE 500" if condition.startswith("vq_") else "FSQ 500"
         utilization_ci = cell["entropy_utilization"]["mean_ci95"]
         si = cell["si_sdr_db"]
         mel = cell["log_mel_l1_db"]
         lines.append(
-            f"| {condition.upper()} | 500 bps | {cell['empirical_bitrate_bps']['mean']:.1f} bps | "
+            f"| {display_name} | 500 bps | {cell['empirical_bitrate_bps']['mean']:.1f} bps | "
             f"{interval(utilization_ci, scale=100, suffix='%')} | "
             f"{interval([si['mean'], *si['trial_bootstrap_95_ci']], suffix=' dB')} | "
             f"{interval([mel['mean'], *mel['trial_bootstrap_95_ci']], suffix=' dB')} | 5 training seeds |"
@@ -356,7 +371,7 @@ def main() -> None:
             "",
             "## Medical-ASR cost",
             "",
-            "| Codec | Split | Base reconstructed WER [95% CI] | Base ΔWER [95% CI] | Adapted reconstructed WER mean [95% CI] | Adapted ΔWER mean [95% CI] | N_trials |",
+            "| Codec | Split | Base reconstructed WER [95% CI] | Base delta WER [95% CI] | Adapted reconstructed WER mean [95% CI] | Adapted delta WER mean [95% CI] | N_trials |",
             "|---|---|---:|---:|---:|---:|---:|",
         ]
     )
@@ -373,13 +388,14 @@ def main() -> None:
             f"{interval(row['adapted_whisper']['delta_wer_mean_ci95'], scale=100, suffix=' pp')} | 5 |"
         )
     for condition in ("vq_500bps", "fsq_500bps"):
+        display_name = "VQ-VAE 500" if condition.startswith("vq_") else "FSQ 500"
         for metric in METRICS:
             row = custom_cells[condition]["wer"][metric]
             delta = row["adapted_delta_wer"]
             base_absolute = row["base_absolute_wer"]
             base_delta = row["base_delta_wer"]
             lines.append(
-                f"| {condition.upper()} | {labels[metric]} | "
+                f"| {display_name} | {labels[metric]} | "
                 f"{interval([base_absolute['estimate'], *base_absolute['clip_bootstrap_95_ci']], scale=100, suffix='%')} | "
                 f"{interval([base_delta['estimate'], base_delta['ci_low'], base_delta['ci_high']], scale=100, suffix=' pp')} | "
                 f"{interval(row['adapted_absolute_wer_mean_ci95'], scale=100, suffix='%')} | "
@@ -390,19 +406,20 @@ def main() -> None:
             "",
             "## Bitrate-qualified distance from EnCodec",
             "",
-            "Ratios use seed-matched absolute WER from the same five medical adapters. EnCodec receives 3× the nominal bitrate; ratios are descriptive and are not rate-controlled superiority estimates.",
+            "Ratios use seed-matched absolute WER from the same five medical adapters. EnCodec receives 3x the nominal bitrate; ratios are descriptive and are not rate-controlled superiority estimates.",
             "",
-            "| Custom codec | Split | Custom − EnCodec WER [95% CI] | Custom / EnCodec WER ratio [95% CI] |",
+            "| Custom codec | Split | Custom - EnCodec WER [95% CI] | Custom / EnCodec WER ratio [95% CI] |",
             "|---|---|---:|---:|",
         ]
     )
     for condition in ("vq_500bps", "fsq_500bps"):
+        display_name = "VQ-VAE 500" if condition.startswith("vq_") else "FSQ 500"
         for metric in METRICS:
             row = comparisons[condition][metric]
             lines.append(
-                f"| {condition.upper()} | {labels[metric]} | "
+                f"| {display_name} | {labels[metric]} | "
                 f"{interval(row['custom_minus_encodec_absolute_wer_mean_ci95'], scale=100, suffix=' pp')} | "
-                f"{interval(row['custom_over_encodec_absolute_wer_ratio_mean_ci95'], suffix='×')} |"
+                f"{interval(row['custom_over_encodec_absolute_wer_ratio_mean_ci95'], suffix='x')} |"
             )
     lines.extend(
         [
