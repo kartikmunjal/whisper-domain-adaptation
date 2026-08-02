@@ -106,11 +106,11 @@ def main() -> None:
     analyzer = DomainWERAnalyzer(load_domain_vocab(args.domain_vocab))
 
     original_base = json.loads(
-        (encodec_root / "asr" / "original" / "baseline.json").read_text()
+        (custom_root / "asr" / "original" / "baseline.json").read_text()
     )
     original_adapted = {
         seed: json.loads(
-            (encodec_root / "asr" / "original" / f"seed_{seed}.json").read_text()
+            (custom_root / "asr" / "original" / f"seed_{seed}.json").read_text()
         )
         for seed in SEEDS
     }
