@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "comparison": "codec-token TTS minus paired Edge-TTS on identical held-out sentences",
+  "metrics": {
+    "overall": {
+      "codec_tts_mean_wer": 2.7398200000000004,
+      "codec_tts_trial_values": [
+        1.215,
+        5.6731,
+        3.6509,
+        1.3327,
+        1.8274
+      ],
+      "codec_tts_trial_bootstrap_95_ci": [
+        1.38456,
+        4.40058
+      ],
+      "edge_tts_mean_wer": 0.011759999999999998,
+      "edge_tts_trial_values": [
+        0.0116,
+        0.0116,
+        0.0125,
+        0.0096,
+        0.0135
+      ],
+      "edge_tts_trial_bootstrap_95_ci": [
+        0.010579999999999999,
+        0.012739999999999998
+      ],
+      "mean_paired_delta": 2.7280618,
+      "paired_delta_trial_values": [
+        1.203472,
+        5.661524,
+        3.63838,
+        1.323047,
+        1.813886
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        1.3733848000000002,
+        4.389199799999999
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 1.203472,
+          "ci_low": 0.9846,
+          "ci_high": 1.528791,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 5.661524,
+          "ci_low": 3.58692,
+          "ci_high": 7.901314,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 3.63838,
+          "ci_low": 2.041905,
+          "ci_high": 5.478579,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.323047,
+          "ci_low": 0.984571,
+          "ci_high": 1.998045,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.813886,
+          "ci_low": 0.986679,
+          "ci_high": 2.950626,
+          "n_resamples": 10000
+        }
+      ]
+    },
+    "domain_terms": {
+      "codec_tts_mean_wer": 2.8852599999999997,
+      "codec_tts_trial_values": [
+        1.233,
+        6.0637,
+        3.8725,
+        1.3605,
+        1.8966
+      ],
+      "codec_tts_trial_bootstrap_95_ci": [
+        1.4167200000000002,
+        4.68482
+      ],
+      "edge_tts_mean_wer": 0.01272,
+      "edge_tts_trial_values": [
+        0.0125,
+        0.0125,
+        0.0136,
+        0.0104,
+        0.0146
+      ],
+      "edge_tts_trial_bootstrap_95_ci": [
+        0.01146,
+        0.013980000000000001
+      ],
+      "mean_paired_delta": 2.8725183999999997,
+      "paired_delta_trial_values": [
+        1.220481,
+        6.051202,
+        3.858934,
+        1.350052,
+        1.881923
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        1.4045978,
+        4.6466042000000005
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 1.220481,
+          "ci_low": 0.98411,
+          "ci_high": 1.572623,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 6.051202,
+          "ci_low": 3.873801,
+          "ci_high": 8.436551,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 3.858934,
+          "ci_low": 2.153306,
+          "ci_high": 5.823792,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.350052,
+          "ci_low": 0.983211,
+          "ci_high": 2.082107,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.881923,
+          "ci_low": 0.985263,
+          "ci_high": 3.102268,
+          "n_resamples": 10000
+        }
+      ]
+    },
+    "common_terms": {
+      "codec_tts_mean_wer": 1.0,
+      "codec_tts_trial_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "codec_tts_trial_bootstrap_95_ci": [
+        1.0,
+        1.0
+      ],
+      "edge_tts_mean_wer": 0.0,
+      "edge_tts_trial_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "edge_tts_trial_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "mean_paired_delta": 1.0,
+      "paired_delta_trial_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "paired_delta_trial_bootstrap_95_ci": [
+        1.0,
+        1.0
+      ],
+      "per_trial_paired_clip_bootstrap": [
+        {
+          "estimate": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "n_resamples": 10000
+        },
+        {
+          "estimate": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "n_resamples": 10000
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "validation_nll": {
+      "mean": 3.342877101145239,
+      "trial_values": [
+        3.352610464742321,
+        3.3102072633820194,
+        3.3373665704741264,
+        3.3570109126787786,
+        3.3571902944489525
+      ],
+      "trial_bootstrap_95_ci": [
+        3.325035731013827,
+        3.356202575799556
+      ]
+    },
+    "validation_token_accuracy": {
+      "mean": 0.2573189782562803,
+      "trial_values": [
+        0.2622757019210471,
+        0.26067131095630147,
+        0.24551403842094152,
+        0.2566603335444374,
+        0.2614735064386743
+      ],
+      "trial_bootstrap_95_ci": [
+        0.25109563014566183,
+        0.26163394553514885
+      ]
+    },
+    "trainable_parameters": {
+      "mean": 25658371.0,
+      "trial_values": [
+        25658371,
+        25658371,
+        25658371,
+        25658371,
+        25658371
+      ],
+      "trial_bootstrap_95_ci": [
+        25658371.0,
+        25658371.0
+      ]
+    },
+    "planned_optimizer_steps": {
+      "mean": 3330.0,
+      "trial_values": [
+        3330,
+        3330,
+        3330,
+        3330,
+        3330
+      ],
+      "trial_bootstrap_95_ci": [
+        3330.0,
+        3330.0
+      ]
+    },
+    "eos_rate": {
+      "mean": 1.0,
+      "trial_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "trial_bootstrap_95_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    "generation_failure_rate": {
+      "mean": 0.0,
+      "trial_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "trial_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "empty_token_failure_rate": {
+      "mean": 0.0,
+      "trial_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "trial_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "absolute_sequence_length_error_tokens": {
+      "mean": 38.791836734693874,
+      "trial_values": [
+        29.214285714285715,
+        53.295918367346935,
+        32.37755102040816,
+        39.43877551020408,
+        39.63265306122449
+      ],
+      "trial_bootstrap_95_ci": [
+        31.930612244897965,
+        46.37959183673469
+      ]
+    },
+    "si_sdr_db_conditional_on_decodable_output": {
+      "mean": -43.00166081098156,
+      "trial_values": [
+        -44.2326271741533,
+        -42.18341895645431,
+        -42.851061942890645,
+        -42.27459667405926,
+        -43.46659930735026
+      ],
+      "trial_bootstrap_95_ci": [
+        -43.68781550077388,
+        -42.35341864078356
+      ]
+    }
+  }
+}

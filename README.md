@@ -220,6 +220,31 @@ to 0.0255 but still failed the locked 0.05 conditioning gate, and mean SI-SDR
 was -43.56 dB. The replacement is therefore reported as a useful root-cause
 intervention and negative generative result, not a successful TTS system.
 
+The completed [capacity/data/phoneme scale study](experiments/results/codec_tts_scale_study/REPORT.md)
+then expanded the training split from 294 to 1,774 paired clips and scaled the
+parallel decoder to approximately 25.7M trainable parameters. Across the same
+five seeds, byte conditioning reduced mean overall WER from 291.34% to 240.12%
+(paired change -51.22 percentage points; 95% seed-bootstrap CI -269.76 to
++127.39), but its shuffled-minus-true NLL remained 0.0385 and still failed the
+locked 0.05 conditioning gate. Deterministic CMUdict phonemes raised that
+diagnostic to 0.0871 (0.0626–0.1125), clearing the gate, yet overall WER was
+273.98% (138.46–437.70%). Relative to scaled bytes, the paired overall change
+was +33.86 points (-54.39 to +151.88), while domain WER worsened by +65.79
+points (+0.86 to +171.28). Thus explicit phonemes repair measured text
+sensitivity but do not repair codec-token content accuracy.
+
+The fixed open comparator, Piper 1.4.2 `en_US-lessac-low`, reaches 2.86%
+overall WER (2.76–2.95), versus 1.18% (1.06–1.27) for Edge-TTS. Both learned
+systems generated all 490 seed-by-clip outputs without execution failure, but
+their mean conditional SI-SDR remained -44.01 dB for bytes and -43.00 dB for
+phonemes. These are TTS-on-TTS held-out sentences transcribed by five frozen
+financial adapters, so the absolute comparator WER is optimistic and the five
+values are adapter trials, not five independent audio datasets. The study
+supports a mechanical conditioning diagnosis and a negative scaling
+result—not usable or competitive TTS. Compact per-seed reports, hashes,
+data-generation records, and 10,000-resample intervals are committed;
+generated audio and model weights are not.
+
 ## License
 
 Code is released under the MIT License. Dataset and model artifacts retain

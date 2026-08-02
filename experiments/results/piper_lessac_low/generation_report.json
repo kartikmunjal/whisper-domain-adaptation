@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "n_samples": 98,
+  "model_repo": "rhasspy/piper-voices",
+  "revision": "5512791644e2148e4be301d4c7fc2a4bf51a5057",
+  "model_file": "en/en_US/lessac/low/en_US-lessac-low.onnx",
+  "model_sha256": "f7d01dde371555732c4c314111ac79672b1a5ce2fc19266ab42178fd8df7f375",
+  "config_sha256": "45754dfdebb3b8661c3fc564713772deec6e064feeb5b4e9594857dc7305193a",
+  "voice_model_card": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/lessac/low/MODEL_CARD",
+  "piper_project": "https://github.com/OHF-Voice/piper1-gpl",
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-08-01T20:42:41.249657+00:00",
+    "git_commit": "ccad83b532505c3e7b6fb1529650f11ba2c7525a",
+    "git_dirty": false,
+    "arguments": {
+      "manifest": "data/financial_research/test_manifest.parquet",
+      "output_dir": "experiments/results/piper_lessac_low"
+    },
+    "seed": 20260801,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\financial_research\\test_manifest.parquet": "e9e256c6a8bdbb16e2bdadacd004461220b2f7558fdd82d2f753c052cd939a69",
+      "C:\\Users\\Kunal Munjal\\.cache\\huggingface\\hub\\models--rhasspy--piper-voices\\snapshots\\5512791644e2148e4be301d4c7fc2a4bf51a5057\\en\\en_US\\lessac\\low\\en_US-lessac-low.onnx": "f7d01dde371555732c4c314111ac79672b1a5ce2fc19266ab42178fd8df7f375",
+      "C:\\Users\\Kunal Munjal\\.cache\\huggingface\\hub\\models--rhasspy--piper-voices\\snapshots\\5512791644e2148e4be301d4c7fc2a4bf51a5057\\en\\en_US\\lessac\\low\\en_US-lessac-low.onnx.json": "45754dfdebb3b8661c3fc564713772deec6e064feeb5b4e9594857dc7305193a"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

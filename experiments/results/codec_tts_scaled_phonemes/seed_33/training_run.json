@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "seed": 33,
+  "n_trials_planned": 5,
+  "best_validation_nll": 3.3373665704741264,
+  "n_train_clips": 1774,
+  "n_validation_clips": 98,
+  "trainable_parameters": 25658371,
+  "optimizer_steps_per_epoch": 222,
+  "planned_optimizer_steps": 3330,
+  "gradient_accumulation_steps": 2,
+  "duration_loss_weight": 0.1,
+  "scheduled_sampling_max": 0.0,
+  "scheduled_sampling_warmup_fraction": 0.5,
+  "history": [
+    {
+      "epoch": 1,
+      "train_nll": 4.425424494181148,
+      "validation_nll": 3.368906926192738,
+      "validation_token_accuracy": 0.2599957779185138,
+      "train_duration_loss": 0.3943575638080732,
+      "validation_duration_mae_tokens": 98.97992628447864,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 2,
+      "train_nll": 2.8940731911856017,
+      "validation_nll": 3.3758091738738916,
+      "validation_token_accuracy": 0.2602913236225459,
+      "train_duration_loss": 0.011695611741332906,
+      "validation_duration_mae_tokens": 82.33004262496014,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 3,
+      "train_nll": 2.713682560974268,
+      "validation_nll": 3.3569819889467225,
+      "validation_token_accuracy": 0.2588980367321089,
+      "train_duration_loss": 0.013098148003550249,
+      "validation_duration_mae_tokens": 27.269213618064413,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 4,
+      "train_nll": 2.6178864272490054,
+      "validation_nll": 3.368934551139962,
+      "validation_token_accuracy": 0.24331855604813174,
+      "train_duration_loss": 0.006488314907070724,
+      "validation_duration_mae_tokens": 29.048067365373885,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 5,
+      "train_nll": 2.5674885797486042,
+      "validation_nll": 3.3798198111278235,
+      "validation_token_accuracy": 0.2560270213215115,
+      "train_duration_loss": 0.004377524427919446,
+      "validation_duration_mae_tokens": 31.80051702382613,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 6,
+      "train_nll": 2.52738471987139,
+      "validation_nll": 3.3373665704741264,
+      "validation_token_accuracy": 0.24551403842094152,
+      "train_duration_loss": 0.004589467801194609,
+      "validation_duration_mae_tokens": 28.605568399234695,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 7,
+      "train_nll": 2.4851957668318976,
+      "validation_nll": 3.3381665033908594,
+      "validation_token_accuracy": 0.25167827739075366,
+      "train_duration_loss": 0.004147379734976534,
+      "validation_duration_mae_tokens": 32.18122879339724,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 8,
+      "train_nll": 2.449307355887834,
+      "validation_nll": 3.361664953507626,
+      "validation_token_accuracy": 0.2593202448807262,
+      "train_duration_loss": 0.00472405859471452,
+      "validation_duration_mae_tokens": 28.161291939871653,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 9,
+      "train_nll": 2.4162552345886525,
+      "validation_nll": 3.449493819227293,
+      "validation_token_accuracy": 0.24635845471817605,
+      "train_duration_loss": 0.00532980841011483,
+      "validation_duration_mae_tokens": 28.47129790636958,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 10,
+      "train_nll": 2.3736423394617416,
+      "validation_nll": 3.4846813379875186,
+      "validation_token_accuracy": 0.2561536837660967,
+      "train_duration_loss": 0.006049117586195359,
+      "validation_duration_mae_tokens": 28.2789093328982,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 11,
+      "train_nll": 2.336451469096419,
+      "validation_nll": 3.4972149208524645,
+      "validation_token_accuracy": 0.23926535782140596,
+      "train_duration_loss": 0.003681341075131579,
+      "validation_duration_mae_tokens": 28.956954177545043,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 12,
+      "train_nll": 2.2940299385283374,
+      "validation_nll": 3.5413156958353125,
+      "validation_token_accuracy": 0.2406164238969812,
+      "train_duration_loss": 0.004012922479575783,
+      "validation_duration_mae_tokens": 27.938607974928253,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 13,
+      "train_nll": 2.2483215907779854,
+      "validation_nll": 3.6108309790281297,
+      "validation_token_accuracy": 0.23580325100274435,
+      "train_duration_loss": 0.004028695967681538,
+      "validation_duration_mae_tokens": 30.961545360331634,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 14,
+      "train_nll": 2.2010076096499818,
+      "validation_nll": 3.6952792882164345,
+      "validation_token_accuracy": 0.2257969178805151,
+      "train_duration_loss": 0.0045268003915577264,
+      "validation_duration_mae_tokens": 43.33428363410794,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 15,
+      "train_nll": 2.1506403660979254,
+      "validation_nll": 3.7465484174616055,
+      "validation_token_accuracy": 0.22955457040320879,
+      "train_duration_loss": 0.003247237617696983,
+      "validation_duration_mae_tokens": 29.61437941570671,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 16,
+      "train_nll": 2.0955827420876876,
+      "validation_nll": 3.8508693715200812,
+      "validation_token_accuracy": 0.21638167616635,
+      "train_duration_loss": 0.003855628915091193,
+      "validation_duration_mae_tokens": 29.518483220314494,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 17,
+      "train_nll": 2.046298475971927,
+      "validation_nll": 3.868201892185191,
+      "validation_token_accuracy": 0.21519949335022165,
+      "train_duration_loss": 0.005267959023251491,
+      "validation_duration_mae_tokens": 29.13484425447425,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 18,
+      "train_nll": 1.9921333123719651,
+      "validation_nll": 3.9703491545941523,
+      "validation_token_accuracy": 0.21511505172049822,
+      "train_duration_loss": 0.003517223343309834,
+      "validation_duration_mae_tokens": 27.996411226233658,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 19,
+      "train_nll": 1.9424621293229711,
+      "validation_nll": 4.027969248898301,
+      "validation_token_accuracy": 0.22119484906058687,
+      "train_duration_loss": 0.004095093884978867,
+      "validation_duration_mae_tokens": 29.4693150423011,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 20,
+      "train_nll": 1.8963368936358795,
+      "validation_nll": 4.100455863168277,
+      "validation_token_accuracy": 0.21106185349377243,
+      "train_duration_loss": 0.0038820446412191384,
+      "validation_duration_mae_tokens": 28.472207828443878,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 21,
+      "train_nll": 1.850487707771266,
+      "validation_nll": 4.244050410993244,
+      "validation_token_accuracy": 0.2083597213426219,
+      "train_duration_loss": 0.003969562999860057,
+      "validation_duration_mae_tokens": 31.60434863032127,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 22,
+      "train_nll": 1.809470984540072,
+      "validation_nll": 4.280128741531098,
+      "validation_token_accuracy": 0.20443318556048132,
+      "train_duration_loss": 0.004114818361061788,
+      "validation_duration_mae_tokens": 29.770139110331634,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 23,
+      "train_nll": 1.7691330036278685,
+      "validation_nll": 4.38488063961236,
+      "validation_token_accuracy": 0.20135106607557526,
+      "train_duration_loss": 0.004610987952380129,
+      "validation_duration_mae_tokens": 31.406315083406408,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 24,
+      "train_nll": 1.734290237745041,
+      "validation_nll": 4.402741265775082,
+      "validation_token_accuracy": 0.19932446696221237,
+      "train_duration_loss": 0.004277460794452801,
+      "validation_duration_mae_tokens": 32.64469847387197,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 25,
+      "train_nll": 1.7018898395158915,
+      "validation_nll": 4.587171056971712,
+      "validation_token_accuracy": 0.20527760185771585,
+      "train_duration_loss": 0.0032962882645735823,
+      "validation_duration_mae_tokens": 29.668223322654256,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 26,
+      "train_nll": 1.6707621959384176,
+      "validation_nll": 4.645047439662168,
+      "validation_token_accuracy": 0.2073886426008022,
+      "train_duration_loss": 0.0034680714460117103,
+      "validation_duration_mae_tokens": 32.2443431932099,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 27,
+      "train_nll": 1.6433006329338868,
+      "validation_nll": 4.579720789092186,
+      "validation_token_accuracy": 0.20924635845471817,
+      "train_duration_loss": 0.00405732285427696,
+      "validation_duration_mae_tokens": 31.323217586595185,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 28,
+      "train_nll": 1.6156949384561181,
+      "validation_nll": 4.629031103422855,
+      "validation_token_accuracy": 0.20561536837660968,
+      "train_duration_loss": 0.0028389592286463925,
+      "validation_duration_mae_tokens": 28.08302696383729,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 29,
+      "train_nll": 1.5918233224776568,
+      "validation_nll": 4.675587540365408,
+      "validation_token_accuracy": 0.1998733375554148,
+      "train_duration_loss": 0.0029275467485560076,
+      "validation_duration_mae_tokens": 31.03795561498525,
+      "scheduled_sampling_probability": 0.0
+    },
+    {
+      "epoch": 30,
+      "train_nll": 1.570527988954107,
+      "validation_nll": 4.855036234035254,
+      "validation_token_accuracy": 0.19586236014355077,
+      "train_duration_loss": 0.003033431902057423,
+      "validation_duration_mae_tokens": 29.706126154685506,
+      "scheduled_sampling_probability": 0.0
+    }
+  ],
+  "train_manifest_sha256": "c7140fccfbb8f84172a283ebfb5b35fbbee7caa53af1251b49823b4c27008ae1",
+  "validation_manifest_sha256": "112af965da310b677ddff8864fd173363da0cda52b9eda6df90ff3f4a957cb54",
+  "config": {
+    "codebook_size": 256,
+    "text_vocab_size": 123,
+    "d_model": 384,
+    "nhead": 8,
+    "encoder_layers": 6,
+    "decoder_layers": 6,
+    "dim_feedforward": 1536,
+    "dropout": 0.1,
+    "max_text_tokens": 256,
+    "max_audio_tokens": 1024,
+    "decoder_input_mode": "text_only",
+    "text_representation": "phonemes"
+  },
+  "model_sha256": "afe75373233e94ab6a2f3f47e8a8a243944a10545a7094c4590af4b4e3ac931b",
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-08-02T01:14:04.155643+00:00",
+    "git_commit": "7674a1b30a2b473fbbeb83ef5d438c40d3e01976",
+    "git_dirty": false,
+    "arguments": {
+      "data_dir": "data/codec_tts_tokens_scaled_phonemes",
+      "output_dir": "checkpoints/codec_tts_scaled_phonemes/seed_33",
+      "seed": 33,
+      "epochs": 30,
+      "batch_size": 8,
+      "learning_rate": 0.0003,
+      "duration_loss_weight": 0.1,
+      "scheduled_sampling_max": 0.0,
+      "scheduled_sampling_warmup_fraction": 0.5,
+      "device": "cuda",
+      "decoder_input_mode": "text_only",
+      "d_model": 384,
+      "nhead": 8,
+      "encoder_layers": 6,
+      "decoder_layers": 6,
+      "dim_feedforward": 1536,
+      "gradient_accumulation_steps": 2
+    },
+    "seed": 33,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\dataset_report.json": "5dd4539ab538915624def5285ec7619779775d8c82763a67bcce20983271768a",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\train.parquet": "c7140fccfbb8f84172a283ebfb5b35fbbee7caa53af1251b49823b4c27008ae1",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\validation.parquet": "112af965da310b677ddff8864fd173363da0cda52b9eda6df90ff3f4a957cb54"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

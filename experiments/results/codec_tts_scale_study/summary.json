@@ -1,0 +1,366 @@
+{
+  "schema_version": 2,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "bootstrap": {
+    "unit": "training_seed",
+    "n_resamples": 10000,
+    "seed": 20260801,
+    "interval": "percentile_95"
+  },
+  "metrics": {
+    "overall": {
+      "text_forced": {
+        "mean_ci95": [
+          2.9134,
+          1.48234,
+          5.34158
+        ],
+        "trial_values": [
+          1.6509,
+          7.6278,
+          2.4079,
+          1.4638,
+          1.4166
+        ]
+      },
+      "scaled_bytes": {
+        "mean_ci95": [
+          2.40118,
+          1.3435200000000003,
+          3.7377200000000004
+        ],
+        "trial_values": [
+          1.3954,
+          3.1842,
+          4.703,
+          1.2035,
+          1.5198
+        ],
+        "paired_minus_text_forced_ci95": [
+          -0.5122199999999999,
+          -2.69758,
+          1.2739
+        ]
+      },
+      "scaled_phonemes": {
+        "mean_ci95": [
+          2.7398200000000004,
+          1.38456,
+          4.37704
+        ],
+        "trial_values": [
+          1.215,
+          5.6731,
+          3.6509,
+          1.3327,
+          1.8274
+        ],
+        "paired_minus_text_forced_ci95": [
+          -0.17358000000000007,
+          -1.17784,
+          0.69336
+        ],
+        "paired_minus_scaled_bytes_ci95": [
+          0.33863999999999983,
+          -0.5439000000000002,
+          1.5187799999999996
+        ]
+      },
+      "edge_tts": {
+        "mean_ci95": [
+          0.011759999999999998,
+          0.010579999999999999,
+          0.012740000000000001
+        ],
+        "trial_values": [
+          0.0116,
+          0.0116,
+          0.0125,
+          0.0096,
+          0.0135
+        ]
+      },
+      "piper_lessac_low": {
+        "mean_ci95": [
+          0.028560000000000002,
+          0.027600000000000003,
+          0.02952
+        ],
+        "trial_values": [
+          0.028,
+          0.0299,
+          0.027,
+          0.028,
+          0.0299
+        ]
+      }
+    },
+    "domain_terms": {
+      "text_forced": {
+        "mean_ci95": [
+          3.0215199999999998,
+          1.5226600000000001,
+          5.65266
+        ],
+        "trial_values": [
+          1.7053,
+          8.1818,
+          2.2665,
+          1.5026,
+          1.4514
+        ]
+      },
+      "scaled_bytes": {
+        "mean_ci95": [
+          2.2273799999999997,
+          1.3721999999999999,
+          3.0938399999999997
+        ],
+        "trial_values": [
+          1.4284,
+          3.3668,
+          3.558,
+          1.2205,
+          1.5632
+        ],
+        "paired_minus_text_forced_ci95": [
+          -0.7941400000000005,
+          -2.9230600000000004,
+          0.6630999999999998
+        ]
+      },
+      "scaled_phonemes": {
+        "mean_ci95": [
+          2.8852599999999997,
+          1.4167200000000002,
+          4.65932
+        ],
+        "trial_values": [
+          1.233,
+          6.0637,
+          3.8725,
+          1.3605,
+          1.8966
+        ],
+        "paired_minus_text_forced_ci95": [
+          -0.13626000000000013,
+          -1.2762800000000005,
+          0.9067599999999999
+        ],
+        "paired_minus_scaled_bytes_ci95": [
+          0.6578800000000001,
+          0.008560000000000212,
+          1.71282
+        ]
+      },
+      "edge_tts": {
+        "mean_ci95": [
+          0.01272,
+          0.01146,
+          0.013799999999999998
+        ],
+        "trial_values": [
+          0.0125,
+          0.0125,
+          0.0136,
+          0.0104,
+          0.0146
+        ]
+      },
+      "piper_lessac_low": {
+        "mean_ci95": [
+          0.030940000000000002,
+          0.0299,
+          0.031979999999999995
+        ],
+        "trial_values": [
+          0.0303,
+          0.0324,
+          0.0293,
+          0.0303,
+          0.0324
+        ]
+      }
+    },
+    "common_terms": {
+      "text_forced": {
+        "mean_ci95": [
+          1.6199999999999999,
+          1.0,
+          2.86
+        ],
+        "trial_values": [
+          1.0,
+          1.0,
+          4.1,
+          1.0,
+          1.0
+        ]
+      },
+      "scaled_bytes": {
+        "mean_ci95": [
+          4.4799999999999995,
+          1.0,
+          11.44
+        ],
+        "trial_values": [
+          1.0,
+          1.0,
+          18.4,
+          1.0,
+          1.0
+        ],
+        "paired_minus_text_forced_ci95": [
+          2.86,
+          0.0,
+          8.58
+        ]
+      },
+      "scaled_phonemes": {
+        "mean_ci95": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "trial_values": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "paired_minus_text_forced_ci95": [
+          -0.6199999999999999,
+          -1.8599999999999999,
+          0.0
+        ],
+        "paired_minus_scaled_bytes_ci95": [
+          -3.4799999999999995,
+          -10.44,
+          0.0
+        ]
+      },
+      "edge_tts": {
+        "mean_ci95": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trial_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "piper_lessac_low": {
+        "mean_ci95": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trial_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "conditioning": {
+    "text_forced": {
+      "shuffled_minus_true_nll_mean_ci95": [
+        0.025519498232915792,
+        0.014490383439215382,
+        0.03709319605769896
+      ],
+      "generated_sequence_sensitivity_mean_ci95": [
+        0.1460818254429237,
+        0.12865308530243685,
+        0.1698298614496451
+      ],
+      "passes_locked_gate": false
+    },
+    "scaled_bytes": {
+      "shuffled_minus_true_nll_mean_ci95": [
+        0.03853563231736583,
+        0.026698198997255496,
+        0.05282341909084387
+      ],
+      "generated_sequence_sensitivity_mean_ci95": [
+        0.2609166879280627,
+        0.22395789549710451,
+        0.2965326497446091
+      ],
+      "passes_locked_gate": false
+    },
+    "scaled_phonemes": {
+      "shuffled_minus_true_nll_mean_ci95": [
+        0.08707684068416235,
+        0.06262381558825432,
+        0.11254785345093073
+      ],
+      "generated_sequence_sensitivity_mean_ci95": [
+        0.23898609748947855,
+        0.19224970687227555,
+        0.30014542612448747
+      ],
+      "passes_locked_gate": true
+    }
+  },
+  "piper_generation_provenance": {
+    "schema_version": 1,
+    "n_samples": 98,
+    "model_repo": "rhasspy/piper-voices",
+    "revision": "5512791644e2148e4be301d4c7fc2a4bf51a5057",
+    "model_file": "en/en_US/lessac/low/en_US-lessac-low.onnx",
+    "model_sha256": "f7d01dde371555732c4c314111ac79672b1a5ce2fc19266ab42178fd8df7f375",
+    "config_sha256": "45754dfdebb3b8661c3fc564713772deec6e064feeb5b4e9594857dc7305193a",
+    "voice_model_card": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/lessac/low/MODEL_CARD",
+    "piper_project": "https://github.com/OHF-Voice/piper1-gpl",
+    "provenance": {
+      "schema_version": 1,
+      "created_at_utc": "2026-08-01T20:42:41.249657+00:00",
+      "git_commit": "ccad83b532505c3e7b6fb1529650f11ba2c7525a",
+      "git_dirty": false,
+      "arguments": {
+        "manifest": "data/financial_research/test_manifest.parquet",
+        "output_dir": "experiments/results/piper_lessac_low"
+      },
+      "seed": 20260801,
+      "inputs": {
+        "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\financial_research\\test_manifest.parquet": "e9e256c6a8bdbb16e2bdadacd004461220b2f7558fdd82d2f753c052cd939a69",
+        "C:\\Users\\Kunal Munjal\\.cache\\huggingface\\hub\\models--rhasspy--piper-voices\\snapshots\\5512791644e2148e4be301d4c7fc2a4bf51a5057\\en\\en_US\\lessac\\low\\en_US-lessac-low.onnx": "f7d01dde371555732c4c314111ac79672b1a5ce2fc19266ab42178fd8df7f375",
+        "C:\\Users\\Kunal Munjal\\.cache\\huggingface\\hub\\models--rhasspy--piper-voices\\snapshots\\5512791644e2148e4be301d4c7fc2a4bf51a5057\\en\\en_US\\lessac\\low\\en_US-lessac-low.onnx.json": "45754dfdebb3b8661c3fc564713772deec6e064feeb5b4e9594857dc7305193a"
+      },
+      "environment": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "torch": "2.11.0+cu128",
+        "cuda_available": true,
+        "cuda_version": "12.8",
+        "device": "NVIDIA GeForce RTX 3070",
+        "packages": {
+          "torch": "2.11.0+cu128",
+          "transformers": "4.57.6",
+          "peft": "0.20.0",
+          "datasets": "4.8.5",
+          "jiwer": "4.0.0",
+          "librosa": "0.11.0",
+          "numpy": "2.4.6",
+          "pandas": "3.0.5"
+        }
+      }
+    }
+  }
+}

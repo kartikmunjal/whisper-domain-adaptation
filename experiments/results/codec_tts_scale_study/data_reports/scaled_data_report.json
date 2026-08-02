@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/prepare_codec_tts_scaled_data.py",
+  "source_dir": "data/financial_research",
+  "original_train_count": 294,
+  "new_train_count": 1480,
+  "train_count": 1774,
+  "validation_count": 98,
+  "test_count": 98,
+  "scale_templates": [
+    "The chief financial officer explained that {term} influenced the quarterly outlook.",
+    "Analysts asked management to clarify the reported change in {term}.",
+    "During the earnings call, the company provided additional detail about {term}.",
+    "The prepared remarks compared this quarter's {term} with the prior-year period.",
+    "Management said its updated guidance incorporates recent trends in {term}.",
+    "The investor presentation includes a reconciliation and discussion of {term}.",
+    "Our financial results reflect both recurring operations and movements in {term}.",
+    "The question-and-answer session returned to the outlook for {term}."
+  ],
+  "scale_common": [
+    "The operator introduced the speakers before the prepared remarks.",
+    "Management thanked employees and customers for their continued support.",
+    "The company will publish additional information on its investor website.",
+    "Participants were reminded that the discussion included forward-looking statements.",
+    "The leadership team reviewed priorities for the coming reporting period.",
+    "Analysts joined the call from several research organizations.",
+    "The presentation concluded before the question-and-answer session began.",
+    "Management discussed execution across its principal operating regions.",
+    "The company continues to monitor changes in the broader environment.",
+    "The operator provided instructions for submitting a question."
+  ],
+  "training_voices": [
+    "en-US-GuyNeural",
+    "en-US-ChristopherNeural",
+    "en-US-JennyNeural",
+    "en-US-AriaNeural"
+  ],
+  "frozen_validation_sha256": "6c560e36bb8ea9baf6226f4d3ce3eea493a4a22bc4de6c3a7e33b0f29b16878f",
+  "frozen_test_sha256": "e9e256c6a8bdbb16e2bdadacd004461220b2f7558fdd82d2f753c052cd939a69"
+}

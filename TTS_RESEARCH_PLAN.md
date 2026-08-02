@@ -190,3 +190,42 @@ accumulation 2, preserving the preregistered effective batch 16 while avoiding
 an unnecessarily slow run. Model, data, epochs, optimizer, learning rate,
 selection, and every evaluation rule are unchanged. No validation or test
 metric informed this correction.
+
+## Amendment 5 final result
+
+All ten learned-model trials and all five Piper adapter evaluations completed
+on the frozen 98-sentence test manifest. Every learned trial produced 98/98
+waveforms with zero generation failures. The committed
+[scale-study report](experiments/results/codec_tts_scale_study/REPORT.md) and
+[machine-readable summary](experiments/results/codec_tts_scale_study/summary.json)
+regenerate the following conclusions from seed-level primary reports with
+10,000 bootstrap resamples.
+
+Stage A (larger model plus 1,774 training pairs, byte conditioning) changed
+overall WER from 291.34% to 240.12%; the paired change was -51.22 percentage
+points (95% CI -269.76 to +127.39). Domain WER changed by -79.41 points
+(-292.31 to +66.31). Neither interval excludes zero. The shuffled-minus-true
+NLL was 0.0385 (0.0267–0.0528), so Stage A still fails the locked 0.05 primary
+conditioning gate even though generated-sequence sensitivity was 0.2609.
+
+Stage B (phonemes only) achieved shuffled-minus-true NLL 0.0871
+(0.0626–0.1125) and generated-sequence sensitivity 0.2390
+(0.1922–0.3001), clearing both locked gates. Its overall WER was nevertheless
+273.98% (138.46–437.70%). Against paired Stage A seeds, overall WER changed by
++33.86 points (-54.39 to +151.88) and domain WER worsened by +65.79 points
+(+0.86 to +171.28). Passing the adequacy gate is therefore necessary but not
+sufficient for phonetic codec-token accuracy. Validation NLL selects very
+early epochs while later epochs overfit, and similar validation losses coexist
+with widely varying WER; teacher-forced validation loss is not a proxy for
+usable speech.
+
+Piper 1.4.2 `en_US-lessac-low` produced 2.86% overall WER (2.76–2.95) and
+Edge-TTS produced 1.18% (1.06–1.27), compared with 240.12% for scaled bytes and
+273.98% for scaled phonemes. Mean conditional SI-SDR remained -44.01 dB and
+-43.00 dB, respectively. The held-out audio and training pairs are synthesized,
+so this TTS-on-TTS evaluation is optimistic; the five WER trials reflect five
+frozen ASR adapters over the same audio, not independent speech samples. No
+real-audio, perceptual-quality, usable-TTS, or competitive-baseline claim is
+made. The mechanistic conclusion is narrower: additional capacity/data alone
+did not reliably clear the conditioning gate, phonemes did clear it, and
+neither intervention solved content generation.

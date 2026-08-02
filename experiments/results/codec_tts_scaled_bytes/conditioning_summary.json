@@ -1,0 +1,1257 @@
+{
+  "schema_version": 2,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "shuffled_minus_true_nll_mean_ci95": [
+    0.03853563231736583,
+    0.026698198997255496,
+    0.05282341909084387
+  ],
+  "generated_sequence_sensitivity_mean_ci95": [
+    0.2609166879280627,
+    0.22395789549710451,
+    0.2965326497446091
+  ],
+  "conditioning_broken_by_locked_gate": true,
+  "position_error_counts": [
+    12584,
+    14148,
+    14743,
+    13330,
+    14562,
+    14761,
+    14292,
+    13460,
+    7930,
+    1124
+  ],
+  "position_event_counts": [
+    18537,
+    17637,
+    17368,
+    16892,
+    16531,
+    16119,
+    16045,
+    15964,
+    16145,
+    16300
+  ],
+  "position_error_rates": [
+    0.6788584992177806,
+    0.8021772410273856,
+    0.8488599723629664,
+    0.7891309495619228,
+    0.8808904482487447,
+    0.915751597493641,
+    0.8907447803053911,
+    0.8431470809320972,
+    0.49117373799938063,
+    0.06895705521472392
+  ],
+  "attention_centroid_r_mean_ci95": [
+    0.6122867615283873,
+    0.5758300879498781,
+    0.6458894953744637
+  ],
+  "attention_entropy_mean_ci95": [
+    0.9374172556952719,
+    0.9309264929504514,
+    0.9438756498912205
+  ],
+  "trial_reports": [
+    {
+      "seed": 11,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.354742861487119,
+        "shuffled_text_nll": 4.398402282284617,
+        "shuffled_minus_true_nll": 0.04365942079749807,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.22143990716730533,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2534,
+          2853,
+          2879,
+          2627,
+          2888,
+          2931,
+          2862,
+          2700,
+          1572,
+          102
+        ],
+        "event_counts": [
+          3707,
+          3577,
+          3387,
+          3361,
+          3264,
+          3224,
+          3209,
+          3203,
+          3215,
+          3161
+        ],
+        "rates": [
+          0.6835716212570812,
+          0.7975957506290188,
+          0.8500147623265427,
+          0.7816126152930676,
+          0.8848039215686274,
+          0.9091191066997518,
+          0.8918666251168589,
+          0.842959725257571,
+          0.4889580093312597,
+          0.03226826953495729
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.6859369016763207,
+          "attention_entropy": 0.8873293775953055
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.740711033930621,
+          "attention_entropy": 0.8864041402297959
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7485534193602514,
+          "attention_entropy": 0.9042076395142234
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7604387597231528,
+          "attention_entropy": 0.9470257273312895
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7655506364848461,
+          "attention_entropy": 0.9710544032618178
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6893036680877216,
+          "attention_entropy": 0.9779265030342961
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.4612436803535998,
+          "attention_entropy": 0.8958845649653653
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.5847292707246559,
+          "attention_entropy": 0.9032422164244546
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6579971229171795,
+          "attention_entropy": 0.9282122771283213
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7115498225673239,
+          "attention_entropy": 0.9524929352918543
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.6354812742830129,
+          "attention_entropy": 0.9713394873149068
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6799810478120984,
+          "attention_entropy": 0.968671824189659
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.4612436803535998,
+          "attention_entropy": 0.8958845649653653
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.5847292707246559,
+          "attention_entropy": 0.9032422164244546
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6579971229171795,
+          "attention_entropy": 0.9282122771283213
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7115498225673239,
+          "attention_entropy": 0.9524929352918543
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.6354812742830129,
+          "attention_entropy": 0.9713394873149068
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6799810478120984,
+          "attention_entropy": 0.968671824189659
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.685182956279283,
+          "attention_entropy": 0.8907483412836283
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7727449501684373,
+          "attention_entropy": 0.8841492094629805
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7640051972913,
+          "attention_entropy": 0.9129479725657557
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7737200700976873,
+          "attention_entropy": 0.9497856814443238
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7889233985619208,
+          "attention_entropy": 0.972344772813363
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6959798314515923,
+          "attention_entropy": 0.9761851279931041
+        }
+      ],
+      "checkpoint_sha256": "a245e58e62436d0ac87c7dfb659a512e22ecc8323c432569ea08f74e61298927",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-01T21:33:18.927787+00:00",
+        "git_commit": "78f661524aafcd91d93ce4f88aad32f13aab661e",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_bytes/seed_11/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_bytes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_bytes/conditioning/seed_11.json",
+          "seed": 11,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 11,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_bytes\\seed_11\\model.pt": "a245e58e62436d0ac87c7dfb659a512e22ecc8323c432569ea08f74e61298927",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_bytes\\test.parquet": "6649d3c099fe707a5f826cf5ddffb9da5978a18cf9b09c46361227bb137f5395"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 22,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.182721119737248,
+        "shuffled_text_nll": 4.213300901865916,
+        "shuffled_minus_true_nll": 0.030579782128668853,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.28045097953577974,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2976,
+          3127,
+          3411,
+          3010,
+          3085,
+          2976,
+          2857,
+          2691,
+          1641,
+          557
+        ],
+        "event_counts": [
+          4161,
+          3826,
+          3981,
+          3679,
+          3474,
+          3213,
+          3202,
+          3191,
+          3285,
+          3577
+        ],
+        "rates": [
+          0.71521268925739,
+          0.8173026659696812,
+          0.8568198944988696,
+          0.818157107909758,
+          0.8880253310305124,
+          0.9262371615312792,
+          0.8922548407245472,
+          0.8433093074271388,
+          0.4995433789954338,
+          0.15571708135308918
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.5790958158282553,
+          "attention_entropy": 0.9045339704943601
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6794926155431911,
+          "attention_entropy": 0.9004731799575431
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7450397401010249,
+          "attention_entropy": 0.9563187549187311
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7619938106835131,
+          "attention_entropy": 0.9741183468279813
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7588957991219049,
+          "attention_entropy": 0.9819002350265568
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.74769109092688,
+          "attention_entropy": 0.9852850108890753
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.24707609899278474,
+          "attention_entropy": 0.9025268230178385
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.19739102776473266,
+          "attention_entropy": 0.9268217601771299
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": -0.2416328403918559,
+          "attention_entropy": 0.9696489609876155
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.47554175329560266,
+          "attention_entropy": 0.9772918991540681
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.4648239113906116,
+          "attention_entropy": 0.9835906614015865
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.21328200479647894,
+          "attention_entropy": 0.9844125988507513
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.24707609899278474,
+          "attention_entropy": 0.9025268230178385
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.19739102776473266,
+          "attention_entropy": 0.9268217601771299
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": -0.2416328403918559,
+          "attention_entropy": 0.9696489609876155
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.47554175329560266,
+          "attention_entropy": 0.9772918991540681
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.4648239113906116,
+          "attention_entropy": 0.9835906614015865
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.21328200479647894,
+          "attention_entropy": 0.9844125988507513
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.5342602859033883,
+          "attention_entropy": 0.9024315838029635
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6481530754416351,
+          "attention_entropy": 0.9096545574062049
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7422519577704942,
+          "attention_entropy": 0.9584873670581029
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7664040204477169,
+          "attention_entropy": 0.9748029107319689
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7506741847091953,
+          "attention_entropy": 0.9828452162681204
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7462879198545022,
+          "attention_entropy": 0.9844228561048616
+        }
+      ],
+      "checkpoint_sha256": "7b2257d51e41a13b1f4537b8d0c6dc0987f857732af0a4c366635cc1e86111da",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-01T21:56:09.595169+00:00",
+        "git_commit": "78f661524aafcd91d93ce4f88aad32f13aab661e",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_bytes/seed_22/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_bytes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_bytes/conditioning/seed_22.json",
+          "seed": 22,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 22,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_bytes\\seed_22\\model.pt": "7b2257d51e41a13b1f4537b8d0c6dc0987f857732af0a4c366635cc1e86111da",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_bytes\\test.parquet": "6649d3c099fe707a5f826cf5ddffb9da5978a18cf9b09c46361227bb137f5395"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 33,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.306109473320246,
+        "shuffled_text_nll": 4.372678889851109,
+        "shuffled_minus_true_nll": 0.06656941653086257,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.28766233048249257,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2255,
+          2766,
+          2799,
+          2539,
+          2843,
+          2912,
+          2866,
+          2690,
+          1565,
+          138
+        ],
+        "event_counts": [
+          3430,
+          3363,
+          3300,
+          3270,
+          3254,
+          3225,
+          3220,
+          3190,
+          3205,
+          3186
+        ],
+        "rates": [
+          0.6574344023323615,
+          0.8224799286351472,
+          0.8481818181818181,
+          0.7764525993883792,
+          0.8736939151813153,
+          0.9029457364341086,
+          0.8900621118012423,
+          0.8432601880877743,
+          0.48829953198127923,
+          0.04331450094161959
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.711384867745628,
+          "attention_entropy": 0.8798103557733556
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7952801732155452,
+          "attention_entropy": 0.8766801638007872
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.770429639884016,
+          "attention_entropy": 0.9179439625661948
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7715836787166955,
+          "attention_entropy": 0.9571825474185739
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7276332926380519,
+          "attention_entropy": 0.9649609437483354
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7329951948287855,
+          "attention_entropy": 0.9667281793626247
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.4186191181873559,
+          "attention_entropy": 0.8784755218620288
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6761837708963464,
+          "attention_entropy": 0.8848857429326628
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.35278038182885363,
+          "attention_entropy": 0.9028565300844309
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.508498040837947,
+          "attention_entropy": 0.958023938763815
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.5502126328226191,
+          "attention_entropy": 0.9636369781417257
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.662098819158453,
+          "attention_entropy": 0.9642465887997973
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.4186191181873559,
+          "attention_entropy": 0.8784755218620288
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6761837708963464,
+          "attention_entropy": 0.8848857429326628
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.35278038182885363,
+          "attention_entropy": 0.9028565300844309
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.508498040837947,
+          "attention_entropy": 0.958023938763815
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.5502126328226191,
+          "attention_entropy": 0.9636369781417257
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.662098819158453,
+          "attention_entropy": 0.9642465887997973
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.7290779688183329,
+          "attention_entropy": 0.883878781863818
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.8135557399219592,
+          "attention_entropy": 0.8879912505252391
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.8065315199322747,
+          "attention_entropy": 0.9197011921509636
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7947525591101563,
+          "attention_entropy": 0.9554325339959933
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7781302541972882,
+          "attention_entropy": 0.9593541325648386
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7574113051373448,
+          "attention_entropy": 0.9601578270515724
+        }
+      ],
+      "checkpoint_sha256": "2d8d8075516e6c7555d689b4b2d0f40020f4365bb78d952335f2bae016649088",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-01T22:18:51.559728+00:00",
+        "git_commit": "78f661524aafcd91d93ce4f88aad32f13aab661e",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_bytes/seed_33/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_bytes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_bytes/conditioning/seed_33.json",
+          "seed": 33,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 33,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_bytes\\seed_33\\model.pt": "2d8d8075516e6c7555d689b4b2d0f40020f4365bb78d952335f2bae016649088",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_bytes\\test.parquet": "6649d3c099fe707a5f826cf5ddffb9da5978a18cf9b09c46361227bb137f5395"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.296085742443352,
+        "shuffled_text_nll": 4.327493395974011,
+        "shuffled_minus_true_nll": 0.03140765353065955,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.3134438041111402,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2455,
+          2779,
+          2927,
+          2658,
+          2874,
+          2964,
+          2849,
+          2689,
+          1592,
+          223
+        ],
+        "event_counts": [
+          3704,
+          3509,
+          3449,
+          3346,
+          3304,
+          3236,
+          3212,
+          3190,
+          3240,
+          3218
+        ],
+        "rates": [
+          0.6627969762419006,
+          0.7919635223710458,
+          0.8486517831255437,
+          0.7943813508667065,
+          0.8698547215496368,
+          0.9159456118665018,
+          0.886986301369863,
+          0.8429467084639498,
+          0.49135802469135803,
+          0.06929770043505283
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.7100498262907875,
+          "attention_entropy": 0.8786761420399298
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.5564372220799909,
+          "attention_entropy": 0.889138919654721
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6755057760160127,
+          "attention_entropy": 0.9081014356204732
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7492180791161182,
+          "attention_entropy": 0.9425963139074445
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7304787398532314,
+          "attention_entropy": 0.9620384938295312
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6592801139613712,
+          "attention_entropy": 0.9754839035561078
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.40921464154607445,
+          "attention_entropy": 0.882167639595563
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6702008798141582,
+          "attention_entropy": 0.9086953626375951
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.14108841996597898,
+          "attention_entropy": 0.9208015244159681
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.6801815857716089,
+          "attention_entropy": 0.9292767948335885
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.6963524874379197,
+          "attention_entropy": 0.9530409810304977
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.26418266840992133,
+          "attention_entropy": 0.9741012357668175
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.40921464154607445,
+          "attention_entropy": 0.882167639595563
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6702008798141582,
+          "attention_entropy": 0.9086953626375951
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.14108841996597898,
+          "attention_entropy": 0.9208015244159681
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.6801815857716089,
+          "attention_entropy": 0.9292767948335885
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.6963524874379197,
+          "attention_entropy": 0.9530409810304977
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.26418266840992133,
+          "attention_entropy": 0.9741012357668175
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.697011195382679,
+          "attention_entropy": 0.8795721619607303
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.5831189432852485,
+          "attention_entropy": 0.8888369137473736
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7371456313104092,
+          "attention_entropy": 0.911514978815708
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7340667517797111,
+          "attention_entropy": 0.9420620865088172
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7150963205861343,
+          "attention_entropy": 0.9585148626072998
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6401067736336439,
+          "attention_entropy": 0.9720156100121847
+        }
+      ],
+      "checkpoint_sha256": "fb29b9a08dbf611d421e5da1a9d52751cc4a21844ce20e017721674fb75b00b5",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-01T22:41:44.701163+00:00",
+        "git_commit": "78f661524aafcd91d93ce4f88aad32f13aab661e",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_bytes/seed_44/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_bytes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_bytes/conditioning/seed_44.json",
+          "seed": 44,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 44,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_bytes\\seed_44\\model.pt": "fb29b9a08dbf611d421e5da1a9d52751cc4a21844ce20e017721674fb75b00b5",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_bytes\\test.parquet": "6649d3c099fe707a5f826cf5ddffb9da5978a18cf9b09c46361227bb137f5395"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 55,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.349711053303463,
+        "shuffled_text_nll": 4.370172941902603,
+        "shuffled_minus_true_nll": 0.02046188859914011,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.20158641834359559,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2364,
+          2623,
+          2727,
+          2496,
+          2872,
+          2978,
+          2858,
+          2690,
+          1560,
+          104
+        ],
+        "event_counts": [
+          3535,
+          3362,
+          3251,
+          3236,
+          3235,
+          3221,
+          3202,
+          3190,
+          3200,
+          3158
+        ],
+        "rates": [
+          0.6687411598302687,
+          0.7801903628792386,
+          0.8388188249769302,
+          0.7713226205191595,
+          0.887789799072643,
+          0.9245575908103073,
+          0.8925671455340413,
+          0.8432601880877743,
+          0.4875,
+          0.032932235592146926
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.7364246912361015,
+          "attention_entropy": 0.894267829516166
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.77536434978193,
+          "attention_entropy": 0.9004800735940065
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7827666721661086,
+          "attention_entropy": 0.943729691961549
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7815461959734894,
+          "attention_entropy": 0.9710598534848142
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.759601269608473,
+          "attention_entropy": 0.9821928247361573
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7349063611727334,
+          "attention_entropy": 0.9839630268684494
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.5410129990575472,
+          "attention_entropy": 0.8841600738007892
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6321751971453621,
+          "attention_entropy": 0.9101180646878633
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6687979313887226,
+          "attention_entropy": 0.9459880790987893
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.6260216888568446,
+          "attention_entropy": 0.9726976978482453
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.6696126839224911,
+          "attention_entropy": 0.9827810755490596
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.5331844933129137,
+          "attention_entropy": 0.9819186305825921
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.5410129990575472,
+          "attention_entropy": 0.8841600738007892
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6321751971453621,
+          "attention_entropy": 0.9101180646878633
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6687979313887226,
+          "attention_entropy": 0.9459880790987893
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.6260216888568446,
+          "attention_entropy": 0.9726976978482453
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.6696126839224911,
+          "attention_entropy": 0.9827810755490596
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.5331844933129137,
+          "attention_entropy": 0.9819186305825921
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.6996145767496192,
+          "attention_entropy": 0.8889444998495074
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7799349365726345,
+          "attention_entropy": 0.9071428588819164
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.8032749022039408,
+          "attention_entropy": 0.9462666186451154
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.8031745863463987,
+          "attention_entropy": 0.9695510244206921
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7757097318831941,
+          "attention_entropy": 0.9813482889039952
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7587551730909287,
+          "attention_entropy": 0.9833505748005309
+        }
+      ],
+      "checkpoint_sha256": "ace00636ed060249cd598fa80ffe49de3186008d693f76630425e3c2b9233f0d",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-01T23:03:38.074235+00:00",
+        "git_commit": "78f661524aafcd91d93ce4f88aad32f13aab661e",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_bytes/seed_55/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_bytes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_bytes/conditioning/seed_55.json",
+          "seed": 55,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 55,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_bytes\\seed_55\\model.pt": "ace00636ed060249cd598fa80ffe49de3186008d693f76630425e3c2b9233f0d",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_bytes\\test.parquet": "6649d3c099fe707a5f826cf5ddffb9da5978a18cf9b09c46361227bb137f5395"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    }
+  ],
+  "input_reports": [
+    "experiments\\results\\codec_tts_scaled_bytes\\conditioning\\seed_11.json",
+    "experiments\\results\\codec_tts_scaled_bytes\\conditioning\\seed_22.json",
+    "experiments\\results\\codec_tts_scaled_bytes\\conditioning\\seed_33.json",
+    "experiments\\results\\codec_tts_scaled_bytes\\conditioning\\seed_44.json",
+    "experiments\\results\\codec_tts_scaled_bytes\\conditioning\\seed_55.json"
+  ]
+}

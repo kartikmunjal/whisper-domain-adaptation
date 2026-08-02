@@ -1,0 +1,1257 @@
+{
+  "schema_version": 2,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "shuffled_minus_true_nll_mean_ci95": [
+    0.08707684068416235,
+    0.06262381558825432,
+    0.11254785345093073
+  ],
+  "generated_sequence_sensitivity_mean_ci95": [
+    0.23898609748947855,
+    0.19224970687227555,
+    0.30014542612448747
+  ],
+  "conditioning_broken_by_locked_gate": false,
+  "position_error_counts": [
+    12418,
+    14108,
+    14499,
+    13387,
+    14352,
+    14701,
+    14293,
+    13455,
+    7804,
+    679
+  ],
+  "position_event_counts": [
+    18207,
+    17415,
+    16944,
+    16836,
+    16318,
+    16134,
+    16063,
+    15951,
+    16006,
+    15924
+  ],
+  "position_error_rates": [
+    0.6820453671664745,
+    0.810106230261269,
+    0.8557011331444759,
+    0.7951413637443573,
+    0.8795195489643338,
+    0.9111813561423082,
+    0.8898088775446679,
+    0.843520782396088,
+    0.4875671623141322,
+    0.04264004019090681
+  ],
+  "attention_centroid_r_mean_ci95": [
+    0.5006655862239366,
+    0.441242577409284,
+    0.5559897936265596
+  ],
+  "attention_entropy_mean_ci95": [
+    0.9452827518439605,
+    0.9395933464335976,
+    0.95076747906763
+  ],
+  "trial_reports": [
+    {
+      "seed": 11,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.401401377238827,
+        "shuffled_text_nll": 4.459500365929196,
+        "shuffled_minus_true_nll": 0.05809898869036889,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.19981769097499025,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2393,
+          2685,
+          2820,
+          2541,
+          2876,
+          2968,
+          2870,
+          2691,
+          1558,
+          109
+        ],
+        "event_counts": [
+          3613,
+          3416,
+          3275,
+          3270,
+          3265,
+          3221,
+          3218,
+          3191,
+          3200,
+          3165
+        ],
+        "rates": [
+          0.662330473290894,
+          0.7860070257611241,
+          0.8610687022900764,
+          0.7770642201834862,
+          0.8808575803981623,
+          0.9214529649177274,
+          0.891858297078931,
+          0.8433093074271388,
+          0.486875,
+          0.0344391785150079
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.4221997399471107,
+          "attention_entropy": 0.8988311570870805
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6047558786447839,
+          "attention_entropy": 0.8992162790111531
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.754184239286564,
+          "attention_entropy": 0.9218885007052439
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.793557887658334,
+          "attention_entropy": 0.9531071143852688
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.754223682478914,
+          "attention_entropy": 0.9698340809713536
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7071898698347648,
+          "attention_entropy": 0.9810261031430706
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.12438866519939047,
+          "attention_entropy": 0.8945719364361222
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.21908958541544774,
+          "attention_entropy": 0.9048658121369172
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.015412113933229122,
+          "attention_entropy": 0.9187639848037336
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": -0.3779294884629672,
+          "attention_entropy": 0.9522234178362108
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": -0.4011401784994242,
+          "attention_entropy": 0.9713811954546604
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": -0.5396370018268692,
+          "attention_entropy": 0.9770112597819112
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.12438866519939047,
+          "attention_entropy": 0.8945719364361222
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.21908958541544774,
+          "attention_entropy": 0.9048658121369172
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.015412113933229122,
+          "attention_entropy": 0.9187639848037336
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": -0.3779294884629672,
+          "attention_entropy": 0.9522234178362108
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": -0.4011401784994242,
+          "attention_entropy": 0.9713811954546604
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": -0.5396370018268692,
+          "attention_entropy": 0.9770112597819112
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.4365781959630506,
+          "attention_entropy": 0.8994317259397707
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6919121733294546,
+          "attention_entropy": 0.8963655335705275
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7610856326557132,
+          "attention_entropy": 0.9257998830622527
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.8084552064715126,
+          "attention_entropy": 0.9531470826241817
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7191875311854009,
+          "attention_entropy": 0.9728255109770482
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.674868894957787,
+          "attention_entropy": 0.9827369881508473
+        }
+      ],
+      "checkpoint_sha256": "8b30661ca8ec99654fb6b25f8fa8015487c47ed173d12c7ee76a417ef41e0b26",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-01T23:25:31.742666+00:00",
+        "git_commit": "78f661524aafcd91d93ce4f88aad32f13aab661e",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_phonemes/seed_11/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_phonemes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_phonemes/conditioning/seed_11.json",
+          "seed": 11,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 11,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_phonemes\\seed_11\\model.pt": "8b30661ca8ec99654fb6b25f8fa8015487c47ed173d12c7ee76a417ef41e0b26",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\test.parquet": "68c673fb7406546594f2b61743a066563eda7651fd28a7d4507dffd52a2cfbf6"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 22,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.060531683790878,
+        "shuffled_text_nll": 4.18833767905981,
+        "shuffled_minus_true_nll": 0.12780599526893166,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.20561300702304916,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2382,
+          2653,
+          2768,
+          2551,
+          2805,
+          2924,
+          2843,
+          2688,
+          1560,
+          98
+        ],
+        "event_counts": [
+          3497,
+          3361,
+          3219,
+          3233,
+          3201,
+          3241,
+          3203,
+          3190,
+          3200,
+          3157
+        ],
+        "rates": [
+          0.6811552759508149,
+          0.7893484082118417,
+          0.8598943771357564,
+          0.7890504175688215,
+          0.8762886597938144,
+          0.9021906818883061,
+          0.8876053699656572,
+          0.8426332288401254,
+          0.4875,
+          0.031042128603104215
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.6839630812532935,
+          "attention_entropy": 0.9096428537795856
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7434136936229644,
+          "attention_entropy": 0.9265994020279685
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7614997352707429,
+          "attention_entropy": 0.9524920667885355
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7487941603073007,
+          "attention_entropy": 0.9759766521343902
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7165086519562957,
+          "attention_entropy": 0.9835452830368167
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7049150748215441,
+          "attention_entropy": 0.98423255626895
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.2946780234765841,
+          "attention_entropy": 0.910234826661847
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.41904278939009704,
+          "attention_entropy": 0.9390916673757983
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.26594398697445776,
+          "attention_entropy": 0.9618826002006483
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.2659145747046768,
+          "attention_entropy": 0.9764004670589
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.2454284636151815,
+          "attention_entropy": 0.9805290358398617
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.3873064656966491,
+          "attention_entropy": 0.9839300800726655
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.2946780234765841,
+          "attention_entropy": 0.910234826661847
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.41904278939009704,
+          "attention_entropy": 0.9390916673757983
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.26594398697445776,
+          "attention_entropy": 0.9618826002006483
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.2659145747046768,
+          "attention_entropy": 0.9764004670589
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.2454284636151815,
+          "attention_entropy": 0.9805290358398617
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.3873064656966491,
+          "attention_entropy": 0.9839300800726655
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.6213406432964538,
+          "attention_entropy": 0.9118253362790143
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7130245578827883,
+          "attention_entropy": 0.9333201891350584
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7323027087830544,
+          "attention_entropy": 0.9616669638687545
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7365964851246951,
+          "attention_entropy": 0.9783007831031535
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.6976358603881405,
+          "attention_entropy": 0.984130022842385
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6555447776088473,
+          "attention_entropy": 0.9847307349632216
+        }
+      ],
+      "checkpoint_sha256": "85501168d769e5f8a16e36cf69c5fedaea5cccc92a31e331a4a0f1c3074a8a22",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-01T23:48:56.641373+00:00",
+        "git_commit": "78f661524aafcd91d93ce4f88aad32f13aab661e",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_phonemes/seed_22/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_phonemes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_phonemes/conditioning/seed_22.json",
+          "seed": 22,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 22,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_phonemes\\seed_22\\model.pt": "85501168d769e5f8a16e36cf69c5fedaea5cccc92a31e331a4a0f1c3074a8a22",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\test.parquet": "68c673fb7406546594f2b61743a066563eda7651fd28a7d4507dffd52a2cfbf6"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 33,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.422355590462424,
+        "shuffled_text_nll": 4.533012698053771,
+        "shuffled_minus_true_nll": 0.11065710759134628,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.355613670586542,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2162,
+          2681,
+          2733,
+          2608,
+          2887,
+          2896,
+          2876,
+          2696,
+          1560,
+          164
+        ],
+        "event_counts": [
+          3271,
+          3243,
+          3254,
+          3217,
+          3291,
+          3240,
+          3233,
+          3190,
+          3200,
+          3199
+        ],
+        "rates": [
+          0.660959951085295,
+          0.8267036694418748,
+          0.8398893669330055,
+          0.8106931924152938,
+          0.8772409601944697,
+          0.8938271604938272,
+          0.8895762449737087,
+          0.845141065830721,
+          0.4875,
+          0.05126602063144733
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.7089450414459646,
+          "attention_entropy": 0.8950514563183649
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7244188846800239,
+          "attention_entropy": 0.8994559546177049
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7600102818693774,
+          "attention_entropy": 0.9177206681540966
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7935378822918405,
+          "attention_entropy": 0.9533329719634792
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7832846909201598,
+          "attention_entropy": 0.9666037192181989
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6717768747868613,
+          "attention_entropy": 0.9699694192199386
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.5190713598022417,
+          "attention_entropy": 0.8978437119746999
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.557414788280787,
+          "attention_entropy": 0.9095371140265772
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6819203443904109,
+          "attention_entropy": 0.9339948831705331
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.6934009430182548,
+          "attention_entropy": 0.9607671677187433
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.3857865885290597,
+          "attention_entropy": 0.9649082859689164
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.043629215547942315,
+          "attention_entropy": 0.962924489385687
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.5190713598022417,
+          "attention_entropy": 0.8978437119746999
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.557414788280787,
+          "attention_entropy": 0.9095371140265772
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6819203443904109,
+          "attention_entropy": 0.9339948831705331
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.6934009430182548,
+          "attention_entropy": 0.9607671677187433
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.3857865885290597,
+          "attention_entropy": 0.9649082859689164
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.043629215547942315,
+          "attention_entropy": 0.962924489385687
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.6704583125612229,
+          "attention_entropy": 0.8966682503715178
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6486533966379384,
+          "attention_entropy": 0.9044799594884421
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6406703897663637,
+          "attention_entropy": 0.9232634980646031
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7937973978685746,
+          "attention_entropy": 0.9570563713448308
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7496937213406701,
+          "attention_entropy": 0.9655775672508979
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6774775309255279,
+          "attention_entropy": 0.9659291361869425
+        }
+      ],
+      "checkpoint_sha256": "afe75373233e94ab6a2f3f47e8a8a243944a10545a7094c4590af4b4e3ac931b",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-02T01:24:19.708951+00:00",
+        "git_commit": "7674a1b30a2b473fbbeb83ef5d438c40d3e01976",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_phonemes/seed_33/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_phonemes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_phonemes/conditioning/seed_33.json",
+          "seed": 33,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 33,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_phonemes\\seed_33\\model.pt": "afe75373233e94ab6a2f3f47e8a8a243944a10545a7094c4590af4b4e3ac931b",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\test.parquet": "68c673fb7406546594f2b61743a066563eda7651fd28a7d4507dffd52a2cfbf6"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.36175726333208,
+        "shuffled_text_nll": 4.414766313668147,
+        "shuffled_minus_true_nll": 0.053009050336067176,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.2558860461686372,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          2399,
+          2834,
+          2774,
+          2627,
+          2844,
+          2926,
+          2847,
+          2690,
+          1560,
+          105
+        ],
+        "event_counts": [
+          3534,
+          3472,
+          3259,
+          3311,
+          3283,
+          3222,
+          3207,
+          3190,
+          3200,
+          3162
+        ],
+        "rates": [
+          0.678834182229768,
+          0.8162442396313364,
+          0.8511813439705431,
+          0.7934158864391423,
+          0.8662808406944867,
+          0.9081315952824333,
+          0.8877455565949486,
+          0.8432601880877743,
+          0.4875,
+          0.03320683111954459
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.7064424819693486,
+          "attention_entropy": 0.8979338065208579
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7437596762335055,
+          "attention_entropy": 0.897343759612389
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7697669484031371,
+          "attention_entropy": 0.9170358619092964
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7872511145349054,
+          "attention_entropy": 0.9466208930390364
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7696912139014029,
+          "attention_entropy": 0.9681275479664285
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7691248646603284,
+          "attention_entropy": 0.9805767222763064
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.3465306184543965,
+          "attention_entropy": 0.9017654926353382
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.46476831638184435,
+          "attention_entropy": 0.9199674281593473
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6887896528474098,
+          "attention_entropy": 0.930769307854345
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7136117737204851,
+          "attention_entropy": 0.9611749056356137
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7359477576658063,
+          "attention_entropy": 0.9769909189684265
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7249244587819412,
+          "attention_entropy": 0.9792891090638401
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.3465306184543965,
+          "attention_entropy": 0.9017654926353382
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.46476831638184435,
+          "attention_entropy": 0.9199674281593473
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.6887896528474098,
+          "attention_entropy": 0.930769307854345
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7136117737204851,
+          "attention_entropy": 0.9611749056356137
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7359477576658063,
+          "attention_entropy": 0.9769909189684265
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7249244587819412,
+          "attention_entropy": 0.9792891090638401
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.6440705698081544,
+          "attention_entropy": 0.9000319618363359
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.6695161228156971,
+          "attention_entropy": 0.9031745446144891
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7714794665074713,
+          "attention_entropy": 0.9311942438775096
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7909635904759261,
+          "attention_entropy": 0.9512191651403427
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.786977382537781,
+          "attention_entropy": 0.9676557684019826
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7803190423020268,
+          "attention_entropy": 0.9803830075421707
+        }
+      ],
+      "checkpoint_sha256": "cbd0c2d34c8bef04ba099464176aa63f0266fc0471c93f903d0aa4c245ceb2b9",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-02T00:35:53.954679+00:00",
+        "git_commit": "7674a1b30a2b473fbbeb83ef5d438c40d3e01976",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_phonemes/seed_44/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_phonemes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_phonemes/conditioning/seed_44.json",
+          "seed": 44,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 44,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_phonemes\\seed_44\\model.pt": "cbd0c2d34c8bef04ba099464176aa63f0266fc0471c93f903d0aa4c245ceb2b9",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\test.parquet": "68c673fb7406546594f2b61743a066563eda7651fd28a7d4507dffd52a2cfbf6"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    },
+    {
+      "seed": 55,
+      "n_examples": 98,
+      "conditioning": {
+        "true_text_nll": 4.337037511062551,
+        "shuffled_text_nll": 4.422850572596649,
+        "shuffled_minus_true_nll": 0.08581306153409773,
+        "mean_generated_true_vs_shuffled_edit_rate": 0.1780000726941741,
+        "nll_gate": 0.05,
+        "generated_sensitivity_gate": 0.05
+      },
+      "free_running_position_error": {
+        "n_bins": 10,
+        "error_counts": [
+          3082,
+          3255,
+          3404,
+          3060,
+          2940,
+          2987,
+          2857,
+          2690,
+          1566,
+          203
+        ],
+        "event_counts": [
+          4292,
+          3923,
+          3937,
+          3805,
+          3278,
+          3210,
+          3202,
+          3190,
+          3206,
+          3241
+        ],
+        "rates": [
+          0.7180801491146319,
+          0.8297221514147336,
+          0.8646177292354584,
+          0.8042049934296978,
+          0.896888346552776,
+          0.9305295950155763,
+          0.8922548407245472,
+          0.8432601880877743,
+          0.48845913911416095,
+          0.06263498920086392
+        ]
+      },
+      "attention_summaries": [
+        {
+          "id": "00d402460c7b952d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.7018846321484964,
+          "attention_entropy": 0.9044828427468333
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.7773103021141333,
+          "attention_entropy": 0.9176113877147607
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7811809723439768,
+          "attention_entropy": 0.9368529133790081
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7731171953747521,
+          "attention_entropy": 0.9686455785078217
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7566431834060661,
+          "attention_entropy": 0.9808226393199229
+        },
+        {
+          "id": "00d402460c7b952d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.7325595117470982,
+          "attention_entropy": 0.9881318139270228
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.3410748829584254,
+          "attention_entropy": 0.913951264279829
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": -0.24288272168417785,
+          "attention_entropy": 0.9261291689792531
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.1710413874960037,
+          "attention_entropy": 0.9513245385771175
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.28218333723786226,
+          "attention_entropy": 0.9784571241693295
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.2280233042951168,
+          "attention_entropy": 0.9853741505162555
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.17868568794736817,
+          "attention_entropy": 0.9867031956651099
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.3410748829584254,
+          "attention_entropy": 0.913951264279829
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 1,
+          "centroid_monotonicity_r": -0.24288272168417785,
+          "attention_entropy": 0.9261291689792531
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.1710413874960037,
+          "attention_entropy": 0.9513245385771175
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.28218333723786226,
+          "attention_entropy": 0.9784571241693295
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.2280233042951168,
+          "attention_entropy": 0.9853741505162555
+        },
+        {
+          "id": "010489c8978af66d",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.17868568794736817,
+          "attention_entropy": 0.9867031956651099
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 0,
+          "centroid_monotonicity_r": 0.6434977117848604,
+          "attention_entropy": 0.9053375594921772
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 1,
+          "centroid_monotonicity_r": 0.75527894224865,
+          "attention_entropy": 0.9223497629231021
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 2,
+          "centroid_monotonicity_r": 0.7914591556147965,
+          "attention_entropy": 0.9430720444083062
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 3,
+          "centroid_monotonicity_r": 0.7861209925872554,
+          "attention_entropy": 0.9729767854329258
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 4,
+          "centroid_monotonicity_r": 0.7620836021108585,
+          "attention_entropy": 0.9829376214363327
+        },
+        {
+          "id": "01b8635d4bd8a93a",
+          "layer": 5,
+          "centroid_monotonicity_r": 0.6980695128424731,
+          "attention_entropy": 0.9881131323787786
+        }
+      ],
+      "checkpoint_sha256": "49db7ddd81e0f0699d11f15bfed5486ddc4f7d2c9ed35b7ed2802b6a6e29bef5",
+      "provenance": {
+        "schema_version": 1,
+        "created_at_utc": "2026-08-02T00:59:15.012956+00:00",
+        "git_commit": "7674a1b30a2b473fbbeb83ef5d438c40d3e01976",
+        "git_dirty": false,
+        "arguments": {
+          "checkpoint": "checkpoints/codec_tts_scaled_phonemes/seed_55/model.pt",
+          "tokens": "data/codec_tts_tokens_scaled_phonemes/test.parquet",
+          "output": "experiments/results/codec_tts_scaled_phonemes/conditioning/seed_55.json",
+          "seed": 55,
+          "batch_size": 4,
+          "attention_examples": 4,
+          "device": "cuda"
+        },
+        "seed": 55,
+        "inputs": {
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\codec_tts_scaled_phonemes\\seed_55\\model.pt": "49db7ddd81e0f0699d11f15bfed5486ddc4f7d2c9ed35b7ed2802b6a6e29bef5",
+          "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\codec_tts_tokens_scaled_phonemes\\test.parquet": "68c673fb7406546594f2b61743a066563eda7651fd28a7d4507dffd52a2cfbf6"
+        },
+        "environment": {
+          "python": "3.11.9",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "torch": "2.11.0+cu128",
+          "cuda_available": true,
+          "cuda_version": "12.8",
+          "device": "NVIDIA GeForce RTX 3070",
+          "packages": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.6",
+            "peft": "0.20.0",
+            "datasets": "4.8.5",
+            "jiwer": "4.0.0",
+            "librosa": "0.11.0",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          }
+        }
+      }
+    }
+  ],
+  "input_reports": [
+    "experiments\\results\\codec_tts_scaled_phonemes\\conditioning\\seed_11.json",
+    "experiments\\results\\codec_tts_scaled_phonemes\\conditioning\\seed_22.json",
+    "experiments\\results\\codec_tts_scaled_phonemes\\conditioning\\seed_33.json",
+    "experiments\\results\\codec_tts_scaled_phonemes\\conditioning\\seed_44.json",
+    "experiments\\results\\codec_tts_scaled_phonemes\\conditioning\\seed_55.json"
+  ]
+}
