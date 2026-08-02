@@ -42,12 +42,12 @@ def main():
     conditioning_broken=nll[0] <= .05 or sensitivity[0] <= .05
     attn_r=ci([x["centroid_monotonicity_r"] for r in reports for x in r["attention"]]); attn_entropy=ci([x["attention_entropy"] for r in reports for x in r["attention"]])
     result={"schema_version":2,"n_trials":5,"seeds":[11,22,33,44,55],"shuffled_minus_true_nll_mean_ci95":nll,"generated_sequence_sensitivity_mean_ci95":sensitivity,"conditioning_broken_by_locked_gate":conditioning_broken,"position_error_counts":errors.tolist(),"position_event_counts":events.tolist(),"position_error_rates":rates.tolist(),"attention_centroid_r_mean_ci95":attn_r,"attention_entropy_mean_ci95":attn_entropy,"trial_reports":[compact_report(report) for report in reports],"input_reports":[str(Path(a.input_dir)/f"seed_{s}.json") for s in (11,22,33,44,55)]}
-    out=root/a.output_json; out.parent.mkdir(parents=True,exist_ok=True); out.write_text(json.dumps(result,indent=2),encoding="utf-8")
+    out=root/a.output_json; out.parent.mkdir(parents=True,exist_ok=True); out.write_text(json.dumps(result,indent=2),encoding="utf-8",newline="\n")
     def fmt(x): return f"{x[0]:.4f} [{x[1]:.4f}, {x[2]:.4f}]"
     decision="conditioning is broken; repair the conditioning path" if conditioning_broken else "conditioning passes; use the pre-registered duration-aware non-autoregressive path if drift is position-dependent"
     lines=["# Codec-TTS conditioning diagnostic","",f"Five deterministic trials (seeds 11, 22, 33, 44, 55). Decision: **{decision}**.","","| Diagnostic | Mean [95% bootstrap CI] | Locked failure gate |","|---|---:|---:|",f"| Shuffled − true teacher-forced NLL (nats/token) | {fmt(nll)} | ≤ 0.05 |",f"| True-vs-shuffled generated token edit rate | {fmt(sensitivity)} | ≤ 0.05 |",f"| Cross-attention centroid monotonicity | {fmt(attn_r)} | descriptive |",f"| Normalized cross-attention entropy | {fmt(attn_entropy)} | descriptive |","","## Free-running error by normalized position","","| Decile | Errors / events | Rate |","|---:|---:|---:|"]
     lines += [f"| {i+1} | {int(errors[i])} / {int(events[i])} | {rates[i]:.4f} |" for i in range(10)]
-    (root/a.output_md).write_text("\n".join(lines)+"\n",encoding="utf-8")
+    (root/a.output_md).write_text("\n".join(lines)+"\n",encoding="utf-8",newline="\n")
     rows=reports[0]["attention"]; n=min(4,len(rows)); fig,axes=plt.subplots(n,1,figsize=(9,2.5*n),squeeze=False)
     for ax,item in zip(axes[:,0],rows[:n]): ax.imshow(np.asarray(item["matrix"]).T,aspect="auto",origin="lower",cmap="magma"); ax.set(title=f"{item['id']} — decoder layer {item['layer']}",xlabel="Codec-token position",ylabel="Text-byte position")
     fig.tight_layout(); fig.savefig(root/a.attention_plot,dpi=160); plt.close(fig)

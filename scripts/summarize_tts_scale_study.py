@@ -111,7 +111,7 @@ def main():
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "summary.json").write_text(
-        json.dumps(result, indent=2) + "\n", encoding="utf-8"
+        json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n"
     )
     lines = [
         "# Codec-TTS scale study",
@@ -165,7 +165,7 @@ def main():
             f"{stage_b[0]*100:+.2f} pp [{stage_b[1]*100:+.2f}, {stage_b[2]*100:+.2f}] |"
         )
     (output_dir / "REPORT.md").write_text(
-        "\n".join(lines) + "\n", encoding="utf-8"
+        "\n".join(lines) + "\n", encoding="utf-8", newline="\n"
     )
     print(json.dumps(result, indent=2))
 

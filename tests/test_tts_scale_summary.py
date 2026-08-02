@@ -26,6 +26,8 @@ def test_paired_effect_uses_seedwise_differences():
 
 def test_report_text_is_portable_utf8(tmp_path):
     report = tmp_path / "REPORT.md"
-    report.write_text("Scaled phonemes − scaled bytes", encoding="utf-8")
+    report.write_text(
+        "Scaled phonemes − scaled bytes", encoding="utf-8", newline="\n"
+    )
 
-    assert report.read_bytes().decode("utf-8") == "Scaled phonemes − scaled bytes"
+    assert report.read_bytes() == "Scaled phonemes − scaled bytes".encode("utf-8")
