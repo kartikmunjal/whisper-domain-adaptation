@@ -89,12 +89,14 @@ def main():
             "paired_minus_scaled_bytes_ci95"
         ] = ci(np.asarray(values["scaled_phonemes"]) - scaled_bytes)
 
-    for name in ("scaled_bytes", "scaled_phonemes"):
+    conditioning_paths = {
+        "text_forced": Path("experiments/results/codec_tts_text_only"),
+        "scaled_bytes": Path("experiments/results/codec_tts_scaled_bytes"),
+        "scaled_phonemes": Path("experiments/results/codec_tts_scaled_phonemes"),
+    }
+    for name, conditioning_path in conditioning_paths.items():
         report = json.loads(
-            (
-                Path(f"experiments/results/codec_tts_{name}")
-                / "conditioning_summary.json"
-            ).read_text()
+            (conditioning_path / "conditioning_summary.json").read_text()
         )
         result["conditioning"][name] = {
             "shuffled_minus_true_nll_mean_ci95": report[
