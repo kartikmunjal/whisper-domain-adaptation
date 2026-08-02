@@ -22,3 +22,10 @@ def test_paired_effect_uses_seedwise_differences():
     effect = ci(stage_b - stage_a, n_resamples=200)
 
     assert effect[0] == np.mean([1.0, -1.0, 2.0, -2.0, 3.0])
+
+
+def test_report_text_is_portable_utf8(tmp_path):
+    report = tmp_path / "REPORT.md"
+    report.write_text("Scaled phonemes − scaled bytes", encoding="utf-8")
+
+    assert report.read_bytes().decode("utf-8") == "Scaled phonemes − scaled bytes"
