@@ -149,7 +149,16 @@ def main() -> None:
         delta_trials = [row["estimate"] for row in adapted_deltas]
         encodec_metrics[metric] = {
             "base_whisper": {
-                "absolute_wer": encodec_base["wer"][metric],
+                "absolute_wer": {
+                    "estimate": encodec_base["wer"][metric],
+                    "clip_bootstrap_95_ci": [
+                        encodec_base["uncertainty"][metric]["ci_low"],
+                        encodec_base["uncertainty"][metric]["ci_high"],
+                    ],
+                    "n_resamples": encodec_base["uncertainty"][metric][
+                        "n_resamples"
+                    ],
+                },
                 "delta_wer": base_delta,
             },
             "adapted_whisper": {
@@ -208,7 +217,16 @@ def main() -> None:
                 "absolute_wer_trial_values"
             ]
             custom_cells[condition]["wer"][metric] = {
-                "base_absolute_wer": custom_base["wer"][metric],
+                "base_absolute_wer": {
+                    "estimate": custom_base["wer"][metric],
+                    "clip_bootstrap_95_ci": [
+                        custom_base["uncertainty"][metric]["ci_low"],
+                        custom_base["uncertainty"][metric]["ci_high"],
+                    ],
+                    "n_resamples": custom_base["uncertainty"][metric][
+                        "n_resamples"
+                    ],
+                },
                 "adapted_absolute_wer_trial_values": absolute_trials,
                 "adapted_absolute_wer_mean_ci95": trial_mean_ci(
                     absolute_trials, args.bootstrap_resamples
@@ -338,16 +356,19 @@ def main() -> None:
             "",
             "## Medical-ASR cost",
             "",
-            "| Codec | Split | Base reconstructed WER | Base ΔWER | Adapted reconstructed WER mean [95% CI] | Adapted ΔWER mean [95% CI] | N_trials |",
+            "| Codec | Split | Base reconstructed WER [95% CI] | Base ΔWER [95% CI] | Adapted reconstructed WER mean [95% CI] | Adapted ΔWER mean [95% CI] | N_trials |",
             "|---|---|---:|---:|---:|---:|---:|",
         ]
     )
     labels = {"overall": "Overall", "domain_terms": "Domain", "common_terms": "Common"}
     for metric in METRICS:
         row = encodec_metrics[metric]
+        base_absolute = row["base_whisper"]["absolute_wer"]
+        base_delta = row["base_whisper"]["delta_wer"]
         lines.append(
-            f"| EnCodec | {labels[metric]} | {row['base_whisper']['absolute_wer'] * 100:.2f}% | "
-            f"{row['base_whisper']['delta_wer']['estimate'] * 100:+.2f} pp | "
+            f"| EnCodec | {labels[metric]} | "
+            f"{interval([base_absolute['estimate'], *base_absolute['clip_bootstrap_95_ci']], scale=100, suffix='%')} | "
+            f"{interval([base_delta['estimate'], base_delta['ci_low'], base_delta['ci_high']], scale=100, suffix=' pp')} | "
             f"{interval(row['adapted_whisper']['absolute_wer_mean_ci95'], scale=100, suffix='%')} | "
             f"{interval(row['adapted_whisper']['delta_wer_mean_ci95'], scale=100, suffix=' pp')} | 5 |"
         )
@@ -355,9 +376,12 @@ def main() -> None:
         for metric in METRICS:
             row = custom_cells[condition]["wer"][metric]
             delta = row["adapted_delta_wer"]
+            base_absolute = row["base_absolute_wer"]
+            base_delta = row["base_delta_wer"]
             lines.append(
-                f"| {condition.upper()} | {labels[metric]} | {row['base_absolute_wer'] * 100:.2f}% | "
-                f"{row['base_delta_wer']['estimate'] * 100:+.2f} pp | "
+                f"| {condition.upper()} | {labels[metric]} | "
+                f"{interval([base_absolute['estimate'], *base_absolute['clip_bootstrap_95_ci']], scale=100, suffix='%')} | "
+                f"{interval([base_delta['estimate'], base_delta['ci_low'], base_delta['ci_high']], scale=100, suffix=' pp')} | "
                 f"{interval(row['adapted_absolute_wer_mean_ci95'], scale=100, suffix='%')} | "
                 f"{interval([delta['mean_delta_wer'], *delta['trial_bootstrap_95_ci']], scale=100, suffix=' pp')} | 5 |"
             )
