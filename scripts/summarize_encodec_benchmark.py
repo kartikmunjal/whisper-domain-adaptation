@@ -210,7 +210,20 @@ def main() -> None:
             "log_mel_l1_db": signal_cell["log_mel_l1_db"],
             "wer": {},
         }
-        comparisons[condition] = {}
+        comparisons[condition] = {
+            "rate_context": {
+                "encodec_to_custom_nominal_bitrate_ratio": (
+                    signal["utilization"]["nominal_fixed_width_bps"] / 500.0
+                ),
+                "encodec_to_custom_empirical_bitrate_ratio": (
+                    signal["empirical_bitrate_bps"]["pooled"]
+                    / signal_cell["empirical_bitrate_bps"]["mean"]
+                ),
+                "interpretation": (
+                    "Descriptive rate mismatch; not a matched-rate comparison."
+                ),
+            }
+        }
         for metric in METRICS:
             absolute_trials = [custom_adapted[seed]["wer"][metric] for seed in SEEDS]
             encodec_trials = encodec_metrics[metric]["adapted_whisper"][
