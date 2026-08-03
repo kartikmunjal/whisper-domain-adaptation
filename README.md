@@ -263,6 +263,17 @@ result—not usable or competitive TTS. Compact per-seed reports, hashes,
 data-generation records, and 10,000-resample intervals are committed;
 generated audio and model weights are not.
 
+<!-- BEGIN GENERATED ELEVENLABS RESULT -->
+The fixed ElevenLabs `eleven_multilingual_v2` comparator on the same 98
+held-out sentences reaches 0.484% (95% seed-bootstrap CI 0.310–0.658) overall,
+0.522% (95% seed-bootstrap CI 0.332–0.712) on domain sentences, and
+0.000% (95% seed-bootstrap CI 0.000–0.000) on common controls across the same 5
+frozen adapters. It is included beside Piper and Edge-TTS in the
+[scale-study table](experiments/results/codec_tts_scale_study/REPORT.md).
+This round-trip content metric does not measure naturalness or preference, and
+the TTS-on-TTS evaluation remains optimistic.
+<!-- END GENERATED ELEVENLABS RESULT -->
+
 ## License
 
 Code is released under the MIT License. Dataset and model artifacts retain

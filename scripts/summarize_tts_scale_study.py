@@ -88,6 +88,13 @@ def main():
             name: {"mean_ci95": ci(value), "trial_values": value}
             for name, value in values.items()
         }
+        elevenlabs_values = np.asarray(values["elevenlabs_multilingual_v2"])
+        result["metrics"][metric]["elevenlabs_multilingual_v2"][
+            "paired_minus_edge_tts_ci95"
+        ] = ci(elevenlabs_values - np.asarray(values["edge_tts"]))
+        result["metrics"][metric]["elevenlabs_multilingual_v2"][
+            "paired_minus_piper_ci95"
+        ] = ci(elevenlabs_values - np.asarray(values["piper_lessac_low"]))
         text_forced = np.asarray(values["text_forced"])
         scaled_bytes = np.asarray(values["scaled_bytes"])
         result["metrics"][metric]["scaled_bytes"][
@@ -175,6 +182,27 @@ def main():
             f"| {metric} | {stage_a[0]*100:+.2f} pp "
             f"[{stage_a[1]*100:+.2f}, {stage_a[2]*100:+.2f}] | "
             f"{stage_b[0]*100:+.2f} pp [{stage_b[1]*100:+.2f}, {stage_b[2]*100:+.2f}] |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Paired external-comparator contrasts",
+            "",
+            "Negative values mean lower WER for ElevenLabs. Each interval uses "
+            "the same five frozen adapters.",
+            "",
+            "| Metric | ElevenLabs − Edge-TTS | ElevenLabs − Piper |",
+            "|---|---:|---:|",
+        ]
+    )
+    for metric in METRICS:
+        elevenlabs = result["metrics"][metric]["elevenlabs_multilingual_v2"]
+        edge = elevenlabs["paired_minus_edge_tts_ci95"]
+        piper = elevenlabs["paired_minus_piper_ci95"]
+        lines.append(
+            f"| {metric} | {edge[0]*100:+.2f} pp "
+            f"[{edge[1]*100:+.2f}, {edge[2]*100:+.2f}] | "
+            f"{piper[0]*100:+.2f} pp [{piper[1]*100:+.2f}, {piper[2]*100:+.2f}] |"
         )
     (output_dir / "REPORT.md").write_text(
         "\n".join(lines) + "\n", encoding="utf-8", newline="\n"

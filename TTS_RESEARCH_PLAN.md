@@ -257,3 +257,23 @@ selection input. Because the held-out text and adapter training data originate
 from synthetic financial speech, the existing TTS-on-TTS optimism caveat
 remains. No human preference, naturalness, speaker-similarity, latency, cost,
 or real-audio claim is inferred from round-trip WER.
+
+<!-- BEGIN GENERATED ELEVENLABS FINAL RESULT -->
+## Amendment 6 final result
+
+The locked ElevenLabs `eleven_multilingual_v2` / `JBFqnCBsd6RMkjVDRZzb` run completed all
+98 held-out sentences, and all 5 frozen financial adapters
+completed with clean provenance. With 10,000 seed-level bootstrap
+resamples, overall WER is 0.484% (95% seed-bootstrap CI 0.310–0.658), domain WER is
+0.522% (95% seed-bootstrap CI 0.332–0.712), and common-control WER is
+0.000% (95% seed-bootstrap CI 0.000–0.000). The comparator is more accurately
+transcribed by these adapters than Piper or Edge-TTS on this narrow synthetic
+content protocol. This is not evidence of perceptual preference or general TTS
+superiority: voice, model family, latency, cost, naturalness, and real speech
+were not evaluated, and the frozen adapters were trained on synthetic
+financial speech. The complete table and machine-readable aggregation are in
+`experiments/results/codec_tts_scale_study/`; the committed primary API report
+and five ASR reports are in
+`experiments/results/elevenlabs_multilingual_v2/`. Generated audio and the API
+key are not retained in Git.
+<!-- END GENERATED ELEVENLABS FINAL RESULT -->
