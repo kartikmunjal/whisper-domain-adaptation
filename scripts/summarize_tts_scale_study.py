@@ -42,8 +42,13 @@ def main():
 
     piper_dir = Path("experiments/results/piper_lessac_low")
     piper = [json.loads((piper_dir / f"seed_{seed}.json").read_text()) for seed in SEEDS]
+    elevenlabs_dir = Path("experiments/results/elevenlabs_multilingual_v2")
+    elevenlabs = [
+        json.loads((elevenlabs_dir / f"seed_{seed}.json").read_text())
+        for seed in SEEDS
+    ]
     result = {
-        "schema_version": 2,
+        "schema_version": 3,
         "n_trials": len(SEEDS),
         "seeds": list(SEEDS),
         "bootstrap": {
@@ -60,6 +65,9 @@ def main():
         result["piper_generation_provenance"] = json.loads(
             generation_report.read_text()
         )
+    result["elevenlabs_generation_provenance"] = json.loads(
+        (elevenlabs_dir / "generation_report.json").read_text()
+    )
 
     for metric in METRICS:
         values = {
@@ -70,6 +78,9 @@ def main():
             "edge_tts_trial_values"
         ]
         values["piper_lessac_low"] = [row["wer"][metric] for row in piper]
+        values["elevenlabs_multilingual_v2"] = [
+            row["wer"][metric] for row in elevenlabs
+        ]
         if any(len(value) != len(SEEDS) for value in values.values()):
             raise ValueError(f"{metric}: expected exactly {len(SEEDS)} paired trials")
 
@@ -128,6 +139,7 @@ def main():
         "scaled_phonemes",
         "piper_lessac_low",
         "edge_tts",
+        "elevenlabs_multilingual_v2",
     ):
         cells = []
         for metric in METRICS:

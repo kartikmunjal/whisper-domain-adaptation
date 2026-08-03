@@ -1,3 +1,4 @@
+param([string]$ElevenLabsApiKeyFile=$env:ELEVENLABS_API_KEY_FILE)
 $ErrorActionPreference="Stop"
 $repoRoot=Split-Path -Parent $PSScriptRoot; Set-Location $repoRoot
 function Py { & .\.venv\Scripts\python.exe @args; if($LASTEXITCODE -ne 0){throw "Python failed: $LASTEXITCODE"} }
@@ -14,4 +15,10 @@ foreach($rep in @("bytes","phonemes")){foreach($seed in @(11,22,33,44,55)){
 }
 if(-not(Test-Path experiments/results/piper_lessac_low/generation_report.json)){Py scripts/synthesize_piper_baseline.py}
 foreach($seed in @(11,22,33,44,55)){if(-not(Test-Path "experiments/results/piper_lessac_low/seed_$seed.json")){Py scripts/evaluate_longform.py --adapter-path "checkpoints/financial_research/seed_$seed/adapter" --base-model openai/whisper-small --eval-manifest experiments/results/piper_lessac_low/generated_manifest.parquet --domain-vocab configs/financial_terms.txt --seed $seed --output "experiments/results/piper_lessac_low/seed_$seed.json"}}
+if(-not(Test-Path experiments/results/elevenlabs_multilingual_v2/generation_report.json)){
+ if($ElevenLabsApiKeyFile){Py scripts/synthesize_elevenlabs_baseline.py --api-key-file $ElevenLabsApiKeyFile}
+ elseif($env:ELEVENLABS_API_KEY){Py scripts/synthesize_elevenlabs_baseline.py}
+ else{throw "Set ELEVENLABS_API_KEY or pass -ElevenLabsApiKeyFile for the locked comparator run."}
+}
+foreach($seed in @(11,22,33,44,55)){if(-not(Test-Path "experiments/results/elevenlabs_multilingual_v2/seed_$seed.json")){Py scripts/evaluate_longform.py --adapter-path "checkpoints/financial_research/seed_$seed/adapter" --base-model openai/whisper-small --eval-manifest experiments/results/elevenlabs_multilingual_v2/generated_manifest.parquet --domain-vocab configs/financial_terms.txt --seed $seed --output "experiments/results/elevenlabs_multilingual_v2/seed_$seed.json"}}
 Py scripts/summarize_tts_scale_study.py

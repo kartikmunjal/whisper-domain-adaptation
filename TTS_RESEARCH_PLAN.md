@@ -229,3 +229,31 @@ real-audio, perceptual-quality, usable-TTS, or competitive-baseline claim is
 made. The mechanistic conclusion is narrower: additional capacity/data alone
 did not reliably clear the conditioning gate, phonemes did clear it, and
 neither intervention solved content generation.
+
+## Amendment 6 — Fixed ElevenLabs API comparator
+
+Locked 2026-08-03 before making any ElevenLabs synthesis request or observing
+any ElevenLabs audio or ASR outcome. The scale study adds one commercial API
+comparator without changing the frozen 98-sentence financial test manifest,
+the five financial adapters (seeds 11, 22, 33, 44, and 55), domain vocabulary,
+Whisper-small base model, normalization, overall/domain/common splits, or
+10,000-resample seed-level interval procedure.
+
+The fixed synthesizer is ElevenLabs `eleven_multilingual_v2`, voice ID
+`JBFqnCBsd6RMkjVDRZzb`, with stability 0.50, similarity boost 0.75, style 0.00,
+speaker boost enabled, and `mp3_44100_128` output. Each sentence is submitted
+independently through the documented text-to-speech endpoint. Requests are
+restart-safe, use bounded exponential retry for transient HTTP failures, and
+store no API key in arguments, reports, manifests, logs, or Git. The generated
+audio is not redistributed. The report records endpoint/model/voice/settings,
+input-manifest hash, per-file hashes, response request IDs when supplied, and
+clean repository provenance.
+
+The 98 generated clips are transcribed once by each of the same five frozen
+financial adapters. ElevenLabs is added to the existing scale-study table with
+mean overall/domain/common WER and 95% seed-bootstrap intervals. It is an
+external contextual comparator, not a training intervention and not a model-
+selection input. Because the held-out text and adapter training data originate
+from synthetic financial speech, the existing TTS-on-TTS optimism caveat
+remains. No human preference, naturalness, speaker-similarity, latency, cost,
+or real-audio claim is inferred from round-trip WER.
