@@ -1,0 +1,9 @@
+schema_version: 1
+status: preregistered
+chunk_milliseconds: [200, 500, 1000]
+warmup_iterations: 10
+timed_iterations: 100
+batch_size: 1
+precision: float32
+conversational_p95_latency_ms: 300
+realtime_factor_threshold: 1.0

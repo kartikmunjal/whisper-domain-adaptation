@@ -1,0 +1,14 @@
+schema_version: 1
+status: preregistered
+seeds: [11, 22, 33, 44, 55]
+sample_rate: 16000
+strides: [4, 4, 4, 5]
+hidden_dim: 128
+encoder_latent_dim: 64
+continuous_latent_dim: 8
+kl_weight: 0.0001
+uniform_quantization_bits: [2, 4, 6, 8]
+uniform_clip_value: 3.0
+train_manifest: data/financial_research/train_manifest.parquet
+eval_manifest: data/med_dictate_eval/eval_manifest.parquet
+bootstrap_resamples: 10000

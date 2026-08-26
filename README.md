@@ -5,6 +5,8 @@
 Reproducible evaluation of Whisper-small LoRA adaptation for specialized
 vocabulary, plus preregistered neural-codec and text-to-codec-token studies.
 
+Author: **Kartik Munjal**.
+
 ## Research status
 
 The projected financial value has been withdrawn. It is replaced by two direct
@@ -54,6 +56,34 @@ Three follow-on studies are preregistered and complete:
 Their evaluation sets were isolated until training and selection procedures
 were fixed. The linked generated artifacts contain the complete per-seed
 predictions and uncertainty calculations; no value below is projected.
+
+Two additional extensions are preregistered but do not yet have confirmatory
+results:
+
+- [continuous-latent codec comparison](continuous_codec/PREREGISTRATION.md), a
+  matched-backbone Gaussian baseline with explicit fixed-width transmission
+  cost; and
+- [latency/throughput benchmarking](latency_benchmark/PREREGISTRATION.md), with
+  synchronized raw timing trials, RTF, p95 latency, and hardware provenance.
+
+Run the unit-tested codec benchmark with:
+
+```bash
+python scripts/benchmark_latency.py \
+  --checkpoint checkpoints/audio_codec/codec.pt \
+  --output experiments/results/latency/codec.json
+```
+
+The continuous experiment has separate training and held-out reconstruction
+entrypoints (`scripts/train_continuous_codec.py` and
+`scripts/evaluate_continuous_codec.py`). Its reconstructed manifest is accepted
+by the existing frozen-ASR evaluation pipeline. Parallel TTS timing is provided
+by `scripts/benchmark_tts_latency.py`; it rejects autoregressive checkpoints so
+the reported condition cannot silently differ from the locked protocol.
+
+No latency or continuous-codec performance claim is made until the locked
+experiments have run. Chunked batch inference is described as a streaming
+simulation, not as a production streaming system.
 
 ## Confirmatory financial experiment
 
@@ -146,6 +176,8 @@ src/whisper_adapt/data/     Medical, financial, and curation bridges
 src/whisper_adapt/models/   Whisper LoRA implementation
 src/whisper_adapt/evaluation/ WER, OOV, and uncertainty calculations
 tests/                      Unit and leakage-control tests
+continuous_codec/           Locked continuous-baseline protocol and configuration
+latency_benchmark/          Locked timing protocol and configuration
 RESEARCH_PLAN.md            Locked confirmatory protocol
 DATA_CARD.md                Data provenance and limitations
 ```
