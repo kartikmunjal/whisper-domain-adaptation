@@ -1,6 +1,12 @@
 schema_version: 1
 status: preregistered
 chunk_milliseconds: [200, 500, 1000]
+include_full_clips: true
+codec_checkpoint: checkpoints/codec_rate_grid_corrective/vq_400bps/seed_11/codec.pt
+tts_checkpoint: checkpoints/codec_tts_scaled_phonemes/seed_11/model.pt
+tts_codec_checkpoint: checkpoints/codec_rate_grid_corrective/vq_400bps/seed_11/codec.pt
+codec_eval_manifest: data/med_dictate_eval/eval_en_manifest.parquet
+tts_eval_manifest: data/financial_research/test_manifest.parquet
 warmup_iterations: 10
 timed_iterations: 100
 batch_size: 1

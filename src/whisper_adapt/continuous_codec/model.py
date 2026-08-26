@@ -91,6 +91,52 @@ class ContinuousAudioVAE(nn.Module):
             self.train()
         return output
 
+    @torch.inference_mode()
+    def reconstruct_chunked(
+        self,
+        audio: torch.Tensor,
+        *,
+        quantization_bits: int | None = None,
+        chunk_samples: int = 160_000,
+        overlap_samples: int = 16_000,
+    ) -> torch.Tensor:
+        """Deterministically reconstruct long audio with linear crossfades."""
+        if audio.dim() != 2 or audio.shape[0] != 1:
+            raise ValueError("chunked reconstruction requires [1, samples] audio")
+        if chunk_samples <= overlap_samples or overlap_samples < 0:
+            raise ValueError("require chunk_samples > overlap_samples >= 0")
+        total = audio.shape[-1]
+        if total <= chunk_samples:
+            mean, _ = self.encode_distribution(audio)
+            if quantization_bits is not None:
+                mean, _, _ = uniform_quantize(
+                    mean, quantization_bits, self.config.quantization_clip
+                )
+            return self.decode(mean, total)
+        step = chunk_samples - overlap_samples
+        output = torch.zeros(1, 1, total, device=audio.device, dtype=audio.dtype)
+        weight = torch.zeros_like(output)
+        for start in range(0, total, step):
+            end = min(start + chunk_samples, total)
+            segment = audio[..., start:end]
+            mean, _ = self.encode_distribution(segment)
+            if quantization_bits is not None:
+                mean, _, _ = uniform_quantize(
+                    mean, quantization_bits, self.config.quantization_clip
+                )
+            decoded = self.decode(mean, end - start)
+            window = torch.ones(end - start, device=audio.device, dtype=audio.dtype)
+            fade = min(overlap_samples, end - start)
+            if start > 0 and fade:
+                window[:fade] = torch.linspace(0, 1, fade, device=audio.device)
+            if end < total and fade:
+                window[-fade:] = torch.linspace(1, 0, fade, device=audio.device)
+            output[..., start:end] += decoded * window
+            weight[..., start:end] += window
+            if end == total:
+                break
+        return output / weight.clamp_min(torch.finfo(output.dtype).eps)
+
     def forward(self, audio: torch.Tensor) -> Dict[str, torch.Tensor]:
         target = audio.unsqueeze(1) if audio.dim() == 2 else audio
         mean, log_variance = self.encode_distribution(audio)

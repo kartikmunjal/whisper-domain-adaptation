@@ -24,3 +24,15 @@ def test_benchmark_retains_trials_and_computes_rtf():
 def test_hardware_metadata_has_reproducibility_fields():
     metadata = hardware_metadata(torch.device("cpu"))
     assert {"platform", "python", "torch", "device_type", "device_name"} <= metadata.keys()
+
+
+def test_p95_uses_retained_trials():
+    result = benchmark_callable(
+        lambda: None,
+        device=torch.device("cpu"),
+        audio_duration_seconds=1.0,
+        warmup_iterations=0,
+        timed_iterations=100,
+    )
+    assert len(result.raw_latency_ms) == 100
+    assert result.latency_ms_p95 == sorted(result.raw_latency_ms)[94]

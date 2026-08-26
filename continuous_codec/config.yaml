@@ -7,8 +7,12 @@ hidden_dim: 128
 encoder_latent_dim: 64
 continuous_latent_dim: 8
 kl_weight: 0.0001
-uniform_quantization_bits: [2, 4, 6, 8]
+uniform_quantization_bits: [1, 2, 4, 6, 8]
 uniform_clip_value: 3.0
 train_manifest: data/financial_research/train_manifest.parquet
-eval_manifest: data/med_dictate_eval/eval_manifest.parquet
+eval_manifest: data/med_dictate_eval/eval_en_manifest.parquet
+reconstruction_chunk_seconds: 10
+reconstruction_overlap_seconds: 1
+metadata_header_bits_per_clip: 128
+primary_matched_payload_bps: 400
 bootstrap_resamples: 10000

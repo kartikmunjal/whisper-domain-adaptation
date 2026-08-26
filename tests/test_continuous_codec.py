@@ -42,3 +42,13 @@ def test_continuous_checkpoint_roundtrip(tmp_path):
     restored = ContinuousAudioVAE.from_checkpoint(checkpoint)
     audio = torch.randn(1, 1024)
     assert restored.reconstruct(audio, quantized=True).shape == (1, 1, 1024)
+
+
+def test_chunked_reconstruction_preserves_length_for_mean_and_quantized():
+    model = ContinuousAudioVAE(tiny_config()).eval()
+    audio = torch.randn(1, 2500)
+    mean = model.reconstruct_chunked(audio, chunk_samples=1024, overlap_samples=128)
+    quantized = model.reconstruct_chunked(
+        audio, quantization_bits=1, chunk_samples=1024, overlap_samples=128
+    )
+    assert mean.shape == quantized.shape == (1, 1, 2500)

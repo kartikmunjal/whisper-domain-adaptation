@@ -37,3 +37,30 @@ that either family win. Negative and inconclusive results will be retained.
 Any change after the first confirmatory result must be recorded with date,
 rationale, and whether the result had been inspected. Changed analyses are
 exploratory and cannot replace the locked outcomes above.
+
+## Execution amendment 1 — protocol/code reconciliation
+
+Approved by the repository owner on 2026-08-26 before any continuous-codec
+training, reconstruction, ASR, or latency outcome was observed. The original
+discrete protocols, checkpoints, results, and conclusions remain immutable.
+
+The English-only 24-clip medical manifest
+`data/med_dictate_eval/eval_en_manifest.parquet` is used, matching the existing
+codec study; the broader manifest also contains French clips and is not a valid
+like-for-like comparison. Long clips use deterministic 10-second windows,
+one-second overlap, and linear crossfades.
+
+Both unquantized posterior-mean reconstruction and transmittable uniform-
+quantized reconstruction are retained. The fixed eight-dimensional bottleneck
+is evaluated at 1, 2, 4, 6, and 8 bits per scalar. The primary rate-controlled
+point is 1 bit/scalar = 400 payload bps, compared with archived pre-correction
+and corrected VQ-400/FSQ-400 cells. Higher-rate points form a descriptive
+rate-distortion curve and are not called matched. Effective rate also reports
+a fixed 128-bit per-clip header assumption (shape, scale, and bit depth);
+payload-only rate is shown because archived discrete reports exclude framing.
+
+Posterior KL/frame and saturation are evaluated on held-out clips. Five
+training seeds are aggregated with 10,000 seed-bootstrap resamples. Frozen-ASR
+uses the seed-matched five medical adapters and the existing overall/domain/
+common WER and reconstructed-minus-original delta protocol. No seed or bit
+depth is selected using test WER.
