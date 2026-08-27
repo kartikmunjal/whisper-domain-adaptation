@@ -54,7 +54,7 @@ production streaming, concurrency, tail-at-load, or enterprise throughput claims
  targets=[(Path('README.md'),'<!-- BEGIN GENERATED CONTINUOUS LATENCY RESULT -->','<!-- END GENERATED CONTINUOUS LATENCY RESULT -->',readme),(Path('continuous_codec/PREREGISTRATION.md'),'<!-- BEGIN GENERATED CONTINUOUS FINAL RESULT -->','<!-- END GENERATED CONTINUOUS FINAL RESULT -->',continuous),(Path('latency_benchmark/PREREGISTRATION.md'),'<!-- BEGIN GENERATED LATENCY FINAL RESULT -->','<!-- END GENERATED LATENCY FINAL RESULT -->',latency)]
  stale=[]
  for path,start,end,body in targets:
-  old=path.read_text(); new=block(old,start,end,body)
+  old=path.read_text(encoding='utf-8'); new=block(old,start,end,body)
   if old!=new:
    stale.append(str(path))
    if not a.check:path.write_text(new,encoding='utf-8',newline='\n')
