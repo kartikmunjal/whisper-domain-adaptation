@@ -36,3 +36,18 @@ from codec frame rate. Held-out test row zero supplies text conditioning.
 Generation and generation-plus-waveform decoding are timed separately; emitted
 valid-token count is recorded. Float32, batch one, 10 warmups, 100 synchronized
 trials, and RTX 3070 hardware remain locked.
+
+<!-- BEGIN GENERATED LATENCY FINAL RESULT -->
+## Final result
+
+All locked timing trials completed on the RTX 3070 with raw trials retained.
+For 200-ms inputs, codec end-to-end median/p95 latency is
+2.27/2.59 ms with median RTF
+0.0113. Parallel TTS generation plus waveform decoding is
+10.73/11.91 ms with median RTF
+0.0536. Both clear the preregistered RTF < 1 and p95 < 300 ms
+chunk-simulation bars on this hardware. Full-clip codec p95 is
+2290.72 ms, retained separately from the
+conversational chunk criterion. These are batch-one research measurements, not
+production streaming, concurrency, tail-at-load, or enterprise throughput claims.
+<!-- END GENERATED LATENCY FINAL RESULT -->

@@ -64,3 +64,18 @@ training seeds are aggregated with 10,000 seed-bootstrap resamples. Frozen-ASR
 uses the seed-matched five medical adapters and the existing overall/domain/
 common WER and reconstructed-minus-original delta protocol. No seed or bit
 depth is selected using test WER.
+
+<!-- BEGIN GENERATED CONTINUOUS FINAL RESULT -->
+## Final result
+
+All five training seeds, six reconstruction conditions per seed, and 30
+seed-matched ASR evaluations completed with clean provenance. At the primary
+400-bps payload point (mean effective rate 400.93 bps),
+continuous SI-SDR is -21.91 dB (95% CI -32.21–-14.90) and adapted ΔWER is
+108.82 points (95% CI 85.18–135.39). Corrected VQ-400/FSQ-400
+record archived ΔWER of 82.44/82.43 points. Posterior-mean ΔWER is
+107.64 points, demonstrating that quantization alone does not
+explain the continuous model's content failure. In this experiment, corrected
+discrete codecs are preferred for downstream ASR and symbolic compression;
+continuous latents do not provide a compensating usability advantage.
+<!-- END GENERATED CONTINUOUS FINAL RESULT -->

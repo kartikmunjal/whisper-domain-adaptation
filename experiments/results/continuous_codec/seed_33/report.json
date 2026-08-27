@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "checkpoint_sha256": "08906a4638777e88da2481da447b927dff01b2ded9f755f0a97bd0d8095a0a44",
+  "n_clips": 24,
+  "conditions": {
+    "posterior_mean": {
+      "quantization_bits": null,
+      "payload_bitrate_bps": null,
+      "effective_bitrate_bps_mean": null,
+      "si_sdr_db": {
+        "mean": -12.729693584051132,
+        "clip_bootstrap_95_ci": [
+          -14.800370032745347,
+          -10.574753665826861
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 12.705735842386881,
+        "clip_bootstrap_95_ci": [
+          11.797569026549656,
+          13.753740907708803
+        ]
+      },
+      "posterior_kl_per_frame": 11.474154221987241,
+      "latent_saturation_fraction": 0.0
+    },
+    "quantized_1bit": {
+      "quantization_bits": 1,
+      "payload_bitrate_bps": 400.0,
+      "effective_bitrate_bps_mean": 400.93069155654285,
+      "si_sdr_db": {
+        "mean": -17.86536493686704,
+        "clip_bootstrap_95_ci": [
+          -20.340421377828218,
+          -15.440264466930907
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 18.036263585090637,
+        "clip_bootstrap_95_ci": [
+          16.824686875939367,
+          19.368228991826378
+        ]
+      },
+      "posterior_kl_per_frame": 11.474154221987241,
+      "latent_saturation_fraction": 5.0732229793810426e-05
+    },
+    "quantized_2bit": {
+      "quantization_bits": 2,
+      "payload_bitrate_bps": 800.0,
+      "effective_bitrate_bps_mean": 800.930691556543,
+      "si_sdr_db": {
+        "mean": -15.575661412258171,
+        "clip_bootstrap_95_ci": [
+          -17.919867204493187,
+          -13.202431471869067
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 13.56289267539978,
+        "clip_bootstrap_95_ci": [
+          12.59561020930608,
+          14.675630619128544
+        ]
+      },
+      "posterior_kl_per_frame": 11.474154221987241,
+      "latent_saturation_fraction": 5.0732229793810426e-05
+    },
+    "quantized_4bit": {
+      "quantization_bits": 4,
+      "payload_bitrate_bps": 1600.0,
+      "effective_bitrate_bps_mean": 1600.930691556543,
+      "si_sdr_db": {
+        "mean": -12.878656229358995,
+        "clip_bootstrap_95_ci": [
+          -14.960215804668684,
+          -10.712158649098921
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 12.604879776636759,
+        "clip_bootstrap_95_ci": [
+          11.702757439017295,
+          13.646389296650886
+        ]
+      },
+      "posterior_kl_per_frame": 11.474154221987241,
+      "latent_saturation_fraction": 5.0732229793810426e-05
+    },
+    "quantized_6bit": {
+      "quantization_bits": 6,
+      "payload_bitrate_bps": 2400.0,
+      "effective_bitrate_bps_mean": 2400.930691556543,
+      "si_sdr_db": {
+        "mean": -12.738268564164022,
+        "clip_bootstrap_95_ci": [
+          -14.81031893325888,
+          -10.583850052487072
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 12.689239382743835,
+        "clip_bootstrap_95_ci": [
+          11.783031984170277,
+          13.736530692378679
+        ]
+      },
+      "posterior_kl_per_frame": 11.474154221987241,
+      "latent_saturation_fraction": 5.0732229793810426e-05
+    },
+    "quantized_8bit": {
+      "quantization_bits": 8,
+      "payload_bitrate_bps": 3200.0,
+      "effective_bitrate_bps_mean": 3200.930691556543,
+      "si_sdr_db": {
+        "mean": -12.730440704813779,
+        "clip_bootstrap_95_ci": [
+          -14.802043783098744,
+          -10.576151823416367
+        ]
+      },
+      "log_mel_l1_db": {
+        "mean": 12.707373261451721,
+        "clip_bootstrap_95_ci": [
+          11.799083012342454,
+          13.755809406439464
+        ]
+      },
+      "posterior_kl_per_frame": 11.474154221987241,
+      "latent_saturation_fraction": 5.0732229793810426e-05
+    }
+  },
+  "bitrate_assumption": "fixed-width payload plus 128-bit per-clip header; container overhead excluded",
+  "provenance": {
+    "schema_version": 1,
+    "created_at_utc": "2026-08-27T03:08:45.097403+00:00",
+    "git_commit": "ccff2ecbf8116d73fd36eacc6eb583e2402b9f4c",
+    "git_dirty": false,
+    "arguments": {
+      "checkpoint": "checkpoints/continuous_codec/seed_33/continuous_codec.pt",
+      "eval_manifest": "data/med_dictate_eval/eval_en_manifest.parquet",
+      "output_dir": "experiments/results/continuous_codec/seed_33",
+      "bootstrap_resamples": 10000,
+      "quantization_bits": [
+        1,
+        2,
+        4,
+        6,
+        8
+      ],
+      "chunk_seconds": 10.0,
+      "overlap_seconds": 1.0,
+      "metadata_header_bits": 128,
+      "device": "cuda"
+    },
+    "seed": 20260729,
+    "inputs": {
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\checkpoints\\continuous_codec\\seed_33\\continuous_codec.pt": "08906a4638777e88da2481da447b927dff01b2ded9f755f0a97bd0d8095a0a44",
+      "C:\\Users\\Kunal Munjal\\Downloads\\whisper-domain-adaptation\\data\\med_dictate_eval\\eval_en_manifest.parquet": "629d2e4c9c084191b5275567992efb24c8475ae2eaf795a3eac0133742a96e79"
+    },
+    "environment": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "device": "NVIDIA GeForce RTX 3070",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "4.57.6",
+        "peft": "0.20.0",
+        "datasets": "4.8.5",
+        "jiwer": "4.0.0",
+        "librosa": "0.11.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      }
+    }
+  }
+}

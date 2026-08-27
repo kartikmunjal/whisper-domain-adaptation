@@ -57,8 +57,7 @@ Their evaluation sets were isolated until training and selection procedures
 were fixed. The linked generated artifacts contain the complete per-seed
 predictions and uncertainty calculations; no value below is projected.
 
-Two additional extensions are preregistered but do not yet have confirmatory
-results:
+Two additional extensions are preregistered and complete:
 
 - [continuous-latent codec comparison](continuous_codec/PREREGISTRATION.md), a
   matched-backbone Gaussian baseline with explicit fixed-width transmission
@@ -81,9 +80,22 @@ by the existing frozen-ASR evaluation pipeline. Parallel TTS timing is provided
 by `scripts/benchmark_tts_latency.py`; it rejects autoregressive checkpoints so
 the reported condition cannot silently differ from the locked protocol.
 
-No latency or continuous-codec performance claim is made until the locked
-experiments have run. Chunked batch inference is described as a streaming
-simulation, not as a production streaming system.
+<!-- BEGIN GENERATED CONTINUOUS LATENCY RESULT -->
+The completed [continuous-codec report](experiments/results/continuous_codec/REPORT.md)
+finds that the 400-bps continuous point reaches -21.91 dB (95% CI -32.21–-14.90)
+SI-SDR but adds 108.82 WER points (95% CI 85.18–135.39).
+Corrected VQ-400 and FSQ-400 add 82.44
+and 82.43 points, respectively. The unquantized posterior-mean path still adds
+107.64 points, so uniform quantization is not the
+primary content-accuracy bottleneck. Archived discrete findings are unchanged.
+
+The completed [latency report](experiments/results/latency_benchmark/REPORT.md)
+records corrected-codec 200-ms end-to-end p95 latency of 2.59 ms
+(median RTF 0.0113) and parallel-TTS generation-plus-decode
+p95 latency of 11.91 ms (median RTF 0.0536) on an
+RTX 3070. Both clear the locked chunk-simulation bars, but this is synchronized
+batch-one inference—not a production streaming or service-capacity claim.
+<!-- END GENERATED CONTINUOUS LATENCY RESULT -->
 
 ## Confirmatory financial experiment
 

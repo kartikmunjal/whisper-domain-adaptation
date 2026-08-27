@@ -1,0 +1,1358 @@
+{
+  "schema_version": 1,
+  "n_trials": 5,
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "bootstrap": {
+    "unit": "training_seed",
+    "n_resamples": 10000,
+    "seed": 20260826
+  },
+  "continuous": {
+    "posterior_mean": {
+      "quantization_bits": null,
+      "signal": {
+        "si_sdr_db": [
+          -16.14599958809261,
+          -23.296320518397167,
+          -10.591788141760375
+        ],
+        "log_mel_l1_db": [
+          13.214919948577881,
+          12.129536533355713,
+          14.180535912513733
+        ]
+      },
+      "posterior_kl_per_frame": [
+        10.397662193997721,
+        7.726270388879544,
+        13.069053999115898
+      ],
+      "latent_saturation_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "wer": {
+        "overall": {
+          "absolute_mean_ci95": [
+            1.3744,
+            1.1786999999999999,
+            1.5701
+          ],
+          "delta_mean_ci95": [
+            1.07638,
+            0.8728,
+            1.2799600000000002
+          ],
+          "trial_values": [
+            1.0943,
+            1.4049,
+            1.15,
+            1.6367,
+            1.5861
+          ]
+        },
+        "domain_terms": {
+          "absolute_mean_ci95": [
+            1.4189399999999999,
+            1.2468599999999999,
+            1.58198
+          ],
+          "delta_mean_ci95": [
+            1.08146,
+            0.9128000000000001,
+            1.25012
+          ],
+          "trial_values": [
+            1.1437,
+            1.4881,
+            1.252,
+            1.6597,
+            1.5512
+          ]
+        },
+        "common_terms": {
+          "absolute_mean_ci95": [
+            1.3157200000000002,
+            1.0769600000000001,
+            1.55448
+          ],
+          "delta_mean_ci95": [
+            1.06976,
+            0.8201400000000001,
+            1.3193800000000002
+          ],
+          "trial_values": [
+            1.0292,
+            1.2952,
+            1.0156,
+            1.6065,
+            1.6321
+          ]
+        }
+      }
+    },
+    "quantized_1bit": {
+      "quantization_bits": 1,
+      "signal": {
+        "si_sdr_db": [
+          -21.90877577753033,
+          -32.21138365215681,
+          -14.90180976152429
+        ],
+        "log_mel_l1_db": [
+          18.547790026664735,
+          16.924960454305015,
+          20.461603736877443
+        ]
+      },
+      "posterior_kl_per_frame": [
+        10.397662193997721,
+        7.726270388879544,
+        13.069053999115898
+      ],
+      "latent_saturation_fraction": [
+        3.749259468083722e-05,
+        1.8087399698467776e-05,
+        5.886478991096946e-05
+      ],
+      "wer": {
+        "overall": {
+          "absolute_mean_ci95": [
+            1.3862400000000001,
+            1.14956,
+            1.6599
+          ],
+          "delta_mean_ci95": [
+            1.0882200000000002,
+            0.85176,
+            1.35388
+          ],
+          "trial_values": [
+            1.0261,
+            1.2161,
+            1.9239,
+            1.2634,
+            1.5017
+          ]
+        },
+        "domain_terms": {
+          "absolute_mean_ci95": [
+            1.4388,
+            1.18412,
+            1.6984400000000002
+          ],
+          "delta_mean_ci95": [
+            1.10132,
+            0.8411200000000001,
+            1.36152
+          ],
+          "trial_values": [
+            1.046,
+            1.192,
+            1.8944,
+            1.4446,
+            1.617
+          ]
+        },
+        "common_terms": {
+          "absolute_mean_ci95": [
+            1.31694,
+            1.05928,
+            1.6476200000000003
+          ],
+          "delta_mean_ci95": [
+            1.07098,
+            0.8151800000000001,
+            1.3829999999999998
+          ],
+          "trial_values": [
+            0.9997,
+            1.2478,
+            1.9629,
+            1.0246,
+            1.3497
+          ]
+        }
+      },
+      "payload_bitrate_bps": 400.0,
+      "effective_bitrate_bps_mean": [
+        400.93069155654285,
+        400.93069155654285,
+        400.93069155654285
+      ]
+    },
+    "quantized_2bit": {
+      "quantization_bits": 2,
+      "signal": {
+        "si_sdr_db": [
+          -18.35843509290204,
+          -25.32082553798025,
+          -12.745847033657682
+        ],
+        "log_mel_l1_db": [
+          13.913233780860901,
+          13.488614392280578,
+          14.423038776715597
+        ]
+      },
+      "posterior_kl_per_frame": [
+        10.397662193997721,
+        7.726270388879544,
+        13.069053999115898
+      ],
+      "latent_saturation_fraction": [
+        3.749259468083722e-05,
+        1.8087399698467776e-05,
+        5.886478991096946e-05
+      ],
+      "wer": {
+        "overall": {
+          "absolute_mean_ci95": [
+            1.2142199999999999,
+            1.0523399999999998,
+            1.39896
+          ],
+          "delta_mean_ci95": [
+            0.9161999999999999,
+            0.74862,
+            1.1017199999999998
+          ],
+          "trial_values": [
+            1.0367,
+            1.5397,
+            1.0326,
+            1.1231,
+            1.339
+          ]
+        },
+        "domain_terms": {
+          "absolute_mean_ci95": [
+            1.16922,
+            1.04706,
+            1.30702
+          ],
+          "delta_mean_ci95": [
+            0.8317399999999999,
+            0.7122999999999999,
+            0.97188
+          ],
+          "trial_values": [
+            1.0631,
+            1.2429,
+            0.9998,
+            1.1095,
+            1.4308
+          ]
+        },
+        "common_terms": {
+          "absolute_mean_ci95": [
+            1.2735400000000001,
+            1.05926,
+            1.6151
+          ],
+          "delta_mean_ci95": [
+            1.02758,
+            0.7965000000000002,
+            1.3862400000000001
+          ],
+          "trial_values": [
+            1.0018,
+            1.9311,
+            1.0758,
+            1.1411,
+            1.2179
+          ]
+        }
+      },
+      "payload_bitrate_bps": 800.0,
+      "effective_bitrate_bps_mean": [
+        800.930691556543,
+        800.930691556543,
+        800.930691556543
+      ]
+    },
+    "quantized_4bit": {
+      "quantization_bits": 4,
+      "signal": {
+        "si_sdr_db": [
+          -16.43950660565493,
+          -23.730731646534284,
+          -10.89200357718306
+        ],
+        "log_mel_l1_db": [
+          13.208730848630267,
+          12.177490266164144,
+          14.179962523778277
+        ]
+      },
+      "posterior_kl_per_frame": [
+        10.397662193997721,
+        7.726270388879544,
+        13.069053999115898
+      ],
+      "latent_saturation_fraction": [
+        3.749259468083722e-05,
+        1.8087399698467776e-05,
+        5.886478991096946e-05
+      ],
+      "wer": {
+        "overall": {
+          "absolute_mean_ci95": [
+            1.32162,
+            1.11612,
+            1.52712
+          ],
+          "delta_mean_ci95": [
+            1.0236,
+            0.8102199999999999,
+            1.23698
+          ],
+          "trial_values": [
+            1.1141,
+            1.2226,
+            1.0649,
+            1.5807,
+            1.6258
+          ]
+        },
+        "domain_terms": {
+          "absolute_mean_ci95": [
+            1.33372,
+            1.1457800000000002,
+            1.54174
+          ],
+          "delta_mean_ci95": [
+            0.99624,
+            0.79728,
+            1.2114200000000002
+          ],
+          "trial_values": [
+            1.1627,
+            1.1751,
+            1.1142,
+            1.6647,
+            1.5519
+          ]
+        },
+        "common_terms": {
+          "absolute_mean_ci95": [
+            1.30562,
+            1.077,
+            1.5378600000000002
+          ],
+          "delta_mean_ci95": [
+            1.05966,
+            0.82018,
+            1.2991400000000002
+          ],
+          "trial_values": [
+            1.0499,
+            1.2852,
+            1.0,
+            1.4698,
+            1.7232
+          ]
+        }
+      },
+      "payload_bitrate_bps": 1600.0,
+      "effective_bitrate_bps_mean": [
+        1600.930691556543,
+        1600.930691556543,
+        1600.930691556543
+      ]
+    },
+    "quantized_6bit": {
+      "quantization_bits": 6,
+      "signal": {
+        "si_sdr_db": [
+          -16.160361819556055,
+          -23.3132470792336,
+          -10.606633911098973
+        ],
+        "log_mel_l1_db": [
+          13.21766747633616,
+          12.12426911989848,
+          14.171224490801496
+        ]
+      },
+      "posterior_kl_per_frame": [
+        10.397662193997721,
+        7.726270388879544,
+        13.069053999115898
+      ],
+      "latent_saturation_fraction": [
+        3.749259468083722e-05,
+        1.8087399698467776e-05,
+        5.886478991096946e-05
+      ],
+      "wer": {
+        "overall": {
+          "absolute_mean_ci95": [
+            1.3374400000000002,
+            1.1860000000000002,
+            1.4888800000000002
+          ],
+          "delta_mean_ci95": [
+            1.03942,
+            0.8801,
+            1.1987400000000001
+          ],
+          "trial_values": [
+            1.11,
+            1.3608,
+            1.1746,
+            1.602,
+            1.4398
+          ]
+        },
+        "domain_terms": {
+          "absolute_mean_ci95": [
+            1.3541999999999998,
+            1.22954,
+            1.4881
+          ],
+          "delta_mean_ci95": [
+            1.01672,
+            0.9008800000000001,
+            1.1405579999999946
+          ],
+          "trial_values": [
+            1.1712,
+            1.4817,
+            1.2951,
+            1.5679,
+            1.2551
+          ]
+        },
+        "common_terms": {
+          "absolute_mean_ci95": [
+            1.31532,
+            1.05822,
+            1.5724200000000002
+          ],
+          "delta_mean_ci95": [
+            1.06936,
+            0.8014000000000001,
+            1.33732
+          ],
+          "trial_values": [
+            1.0292,
+            1.2015,
+            1.0156,
+            1.647,
+            1.6833
+          ]
+        }
+      },
+      "payload_bitrate_bps": 2400.0,
+      "effective_bitrate_bps_mean": [
+        2400.930691556543,
+        2400.930691556543,
+        2400.930691556543
+      ]
+    },
+    "quantized_8bit": {
+      "quantization_bits": 8,
+      "signal": {
+        "si_sdr_db": [
+          -16.147606054748785,
+          -23.30084846888309,
+          -10.591669944854003
+        ],
+        "log_mel_l1_db": [
+          13.215673804283142,
+          12.128188927968344,
+          14.180828269322713
+        ]
+      },
+      "posterior_kl_per_frame": [
+        10.397662193997721,
+        7.726270388879544,
+        13.069053999115898
+      ],
+      "latent_saturation_fraction": [
+        3.749259468083722e-05,
+        1.8087399698467776e-05,
+        5.886478991096946e-05
+      ],
+      "wer": {
+        "overall": {
+          "absolute_mean_ci95": [
+            1.3739599999999998,
+            1.17972,
+            1.5681999999999998
+          ],
+          "delta_mean_ci95": [
+            1.07594,
+            0.8738199999999999,
+            1.2780599999999998
+          ],
+          "trial_values": [
+            1.1007,
+            1.4106,
+            1.1433,
+            1.6861,
+            1.5291
+          ]
+        },
+        "domain_terms": {
+          "absolute_mean_ci95": [
+            1.44512,
+            1.25292,
+            1.6279600000000003
+          ],
+          "delta_mean_ci95": [
+            1.10764,
+            0.91358,
+            1.28682
+          ],
+          "trial_values": [
+            1.1549,
+            1.5479,
+            1.252,
+            1.7732,
+            1.4976
+          ]
+        },
+        "common_terms": {
+          "absolute_mean_ci95": [
+            1.28014,
+            1.0576,
+            1.5026799999999998
+          ],
+          "delta_mean_ci95": [
+            1.0341799999999999,
+            0.8007800000000002,
+            1.26758
+          ],
+          "trial_values": [
+            1.0292,
+            1.2296,
+            1.0,
+            1.5712,
+            1.5707
+          ]
+        }
+      },
+      "payload_bitrate_bps": 3200.0,
+      "effective_bitrate_bps_mean": [
+        3200.930691556543,
+        3200.930691556543,
+        3200.930691556543
+      ]
+    }
+  },
+  "archived_discrete": {
+    "pre_correction": {
+      "vq_400bps": {
+        "si_sdr_db": {
+          "mean": -40.903465550572584,
+          "trial_values": [
+            -35.0468888450518,
+            -50.73349726089638,
+            -49.74243698741406,
+            -44.82732478967066,
+            -24.16717986983001
+          ],
+          "trial_bootstrap_95_ci": [
+            -49.15583865725831,
+            -31.65638514308764
+          ]
+        },
+        "empirical_bitrate_bps": {
+          "mean": 47.080014600827695,
+          "trial_values": [
+            75.78400639023651,
+            17.266690002329817,
+            16.583818612857463,
+            25.652203603043368,
+            100.11335439567131
+          ],
+          "trial_bootstrap_95_ci": [
+            18.670644166683587,
+            78.67815191591606
+          ]
+        },
+        "delta_wer": {
+          "overall": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.75069,
+              "ci_low": 0.707314,
+              "ci_high": 0.796038,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.701998,
+                0.698686,
+                0.728166,
+                0.7667,
+                0.71569
+              ],
+              "mean_delta_wer": 0.722248,
+              "trial_bootstrap_95_ci": [
+                0.7034116,
+                0.7460528
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.701998,
+                  "ci_low": 0.636191,
+                  "ci_high": 0.766484,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.698686,
+                  "ci_low": 0.625527,
+                  "ci_high": 0.7632,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.728166,
+                  "ci_low": 0.653376,
+                  "ci_high": 0.815272,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.7667,
+                  "ci_low": 0.697807,
+                  "ci_high": 0.849799,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.71569,
+                  "ci_low": 0.672944,
+                  "ci_high": 0.761172,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "domain_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.713842,
+              "ci_low": 0.661969,
+              "ci_high": 0.766446,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.672297,
+                0.632887,
+                0.675597,
+                0.705688,
+                0.679286
+              ],
+              "mean_delta_wer": 0.673151,
+              "trial_bootstrap_95_ci": [
+                0.6500488000000001,
+                0.6929915999999999
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.672297,
+                  "ci_low": 0.617612,
+                  "ci_high": 0.73794,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.632887,
+                  "ci_low": 0.516099,
+                  "ci_high": 0.72667,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.675597,
+                  "ci_low": 0.592676,
+                  "ci_high": 0.762789,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.705688,
+                  "ci_low": 0.634362,
+                  "ci_high": 0.780195,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.679286,
+                  "ci_low": 0.626079,
+                  "ci_high": 0.738754,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "common_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.799283,
+              "ci_low": 0.731413,
+              "ci_high": 0.86056,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.741167,
+                0.785458,
+                0.797491,
+                0.847158,
+                0.763697
+              ],
+              "mean_delta_wer": 0.7869942,
+              "trial_bootstrap_95_ci": [
+                0.7588834,
+                0.8181258
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.741167,
+                  "ci_low": 0.610082,
+                  "ci_high": 0.832258,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.785458,
+                  "ci_low": 0.74391,
+                  "ci_high": 0.825688,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.797491,
+                  "ci_low": 0.677705,
+                  "ci_high": 0.935197,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.847158,
+                  "ci_low": 0.739162,
+                  "ci_high": 0.969613,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.763697,
+                  "ci_low": 0.710493,
+                  "ci_high": 0.817164,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          }
+        }
+      },
+      "fsq_400bps": {
+        "si_sdr_db": {
+          "mean": -55.541105555747194,
+          "trial_values": [
+            -55.26005184713381,
+            -53.80554089163426,
+            -56.02184232466843,
+            -53.55937471062348,
+            -59.05871800467603
+          ],
+          "trial_bootstrap_95_ci": [
+            -57.351474209864,
+            -53.99797661032985
+          ]
+        },
+        "empirical_bitrate_bps": {
+          "mean": 12.983875933641604,
+          "trial_values": [
+            0.10945675095686357,
+            24.578749210688148,
+            0.0,
+            39.01552651253188,
+            1.2156471940311357
+          ],
+          "trial_bootstrap_95_ci": [
+            0.28691213918897257,
+            28.34695709984813
+          ]
+        },
+        "delta_wer": {
+          "overall": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.77211,
+              "ci_low": 0.723196,
+              "ci_high": 0.825792,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.701998,
+                0.848846,
+                1.63796,
+                1.319201,
+                0.819366
+              ],
+              "mean_delta_wer": 1.0654742000000001,
+              "trial_bootstrap_95_ci": [
+                0.7783148000000001,
+                1.4104894000000001
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.701998,
+                  "ci_low": 0.636191,
+                  "ci_high": 0.766484,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.848846,
+                  "ci_low": 0.707664,
+                  "ci_high": 1.03702,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 1.63796,
+                  "ci_low": 1.393394,
+                  "ci_high": 1.902472,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 1.319201,
+                  "ci_low": 1.163612,
+                  "ci_high": 1.494838,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.819366,
+                  "ci_low": 0.719072,
+                  "ci_high": 0.960494,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "domain_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.718695,
+              "ci_low": 0.666239,
+              "ci_high": 0.772905,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.672297,
+                0.794409,
+                1.829936,
+                1.158998,
+                0.800039
+              ],
+              "mean_delta_wer": 1.0511358000000002,
+              "trial_bootstrap_95_ci": [
+                0.7466902,
+                1.4642206000000002
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.672297,
+                  "ci_low": 0.617612,
+                  "ci_high": 0.73794,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.794409,
+                  "ci_low": 0.573291,
+                  "ci_high": 1.099461,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 1.829936,
+                  "ci_low": 1.468648,
+                  "ci_high": 2.232531,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 1.158998,
+                  "ci_low": 0.988264,
+                  "ci_high": 1.391823,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.800039,
+                  "ci_low": 0.670399,
+                  "ci_high": 1.031952,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "common_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.84255,
+              "ci_low": 0.767278,
+              "ci_high": 0.916186,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.741167,
+                0.920635,
+                1.384793,
+                1.530466,
+                0.844854
+              ],
+              "mean_delta_wer": 1.084383,
+              "trial_bootstrap_95_ci": [
+                0.8185354,
+                1.364209
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.741167,
+                  "ci_low": 0.610082,
+                  "ci_high": 0.832258,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.920635,
+                  "ci_low": 0.810994,
+                  "ci_high": 1.072606,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 1.384793,
+                  "ci_low": 1.208178,
+                  "ci_high": 1.594862,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 1.530466,
+                  "ci_low": 1.325986,
+                  "ci_high": 1.744396,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.844854,
+                  "ci_low": 0.73558,
+                  "ci_high": 0.996693,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "corrected": {
+      "vq_400bps": {
+        "si_sdr_db": {
+          "mean": -17.880210717147055,
+          "trial_values": [
+            -17.939717407480373,
+            -15.476335388748666,
+            -21.86445611463998,
+            -16.170040200374824,
+            -17.950504474491417
+          ],
+          "trial_bootstrap_95_ci": [
+            -19.942782603757237,
+            -16.10991016822245
+          ]
+        },
+        "empirical_bitrate_bps": {
+          "mean": 174.96721965977727,
+          "trial_values": [
+            147.01806979240467,
+            200.32329413202473,
+            185.4157804901882,
+            168.1309072362791,
+            173.94804664798957
+          ],
+          "trial_bootstrap_95_ci": [
+            158.92017942073625,
+            189.77319513841067
+          ]
+        },
+        "delta_wer": {
+          "overall": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.861323,
+              "ci_low": 0.758263,
+              "ci_high": 1.031579,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.703875,
+                0.858342,
+                0.881528,
+                0.812962,
+                0.865077
+              ],
+              "mean_delta_wer": 0.8243568,
+              "trial_bootstrap_95_ci": [
+                0.761223,
+                0.8703103999999999
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.703875,
+                  "ci_low": 0.637966,
+                  "ci_high": 0.769101,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.858342,
+                  "ci_low": 0.70002,
+                  "ci_high": 1.048154,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.881528,
+                  "ci_low": 0.725856,
+                  "ci_high": 1.086392,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.812962,
+                  "ci_low": 0.710967,
+                  "ci_high": 0.955188,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.865077,
+                  "ci_low": 0.737327,
+                  "ci_high": 1.031366,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "domain_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.862163,
+              "ci_low": 0.700162,
+              "ci_high": 1.182884,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.675597,
+                0.913609,
+                0.991652,
+                0.838866,
+                0.941953
+              ],
+              "mean_delta_wer": 0.8723354000000001,
+              "trial_bootstrap_95_ci": [
+                0.7708018000000001,
+                0.9561638
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.675597,
+                  "ci_low": 0.619535,
+                  "ci_high": 0.742999,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.913609,
+                  "ci_low": 0.637608,
+                  "ci_high": 1.254638,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.991652,
+                  "ci_low": 0.730872,
+                  "ci_high": 1.361502,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.838866,
+                  "ci_low": 0.670343,
+                  "ci_high": 1.114246,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.941953,
+                  "ci_low": 0.724663,
+                  "ci_high": 1.232846,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "common_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 0.860215,
+              "ci_low": 0.791352,
+              "ci_high": 0.938115,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.741167,
+                0.785458,
+                0.736303,
+                0.778802,
+                0.763697
+              ],
+              "mean_delta_wer": 0.7610854,
+              "trial_bootstrap_95_ci": [
+                0.7437274,
+                0.7784433999999999
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.741167,
+                  "ci_low": 0.610082,
+                  "ci_high": 0.832258,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.785458,
+                  "ci_low": 0.74391,
+                  "ci_high": 0.825688,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.736303,
+                  "ci_low": 0.675537,
+                  "ci_high": 0.797932,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.778802,
+                  "ci_low": 0.730938,
+                  "ci_high": 0.831797,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.763697,
+                  "ci_low": 0.710493,
+                  "ci_high": 0.817164,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          }
+        }
+      },
+      "fsq_400bps": {
+        "si_sdr_db": {
+          "mean": -21.503464504233285,
+          "trial_values": [
+            -22.573836400942742,
+            -20.38542574739637,
+            -22.23744832221485,
+            -19.026134487289053,
+            -23.294477563323422
+          ],
+          "trial_bootstrap_95_ci": [
+            -22.794815250149433,
+            -20.007533122041256
+          ]
+        },
+        "empirical_bitrate_bps": {
+          "mean": 99.14536422232497,
+          "trial_values": [
+            109.81309227327706,
+            116.97529949741632,
+            90.65692308674005,
+            92.96800928329237,
+            85.31349697089908
+          ],
+          "trial_bootstrap_95_ci": [
+            88.98176987971412,
+            110.27918277045322
+          ]
+        },
+        "delta_wer": {
+          "overall": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 1.526444,
+              "ci_low": 1.14388,
+              "ci_high": 1.923189,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.744617,
+                0.860439,
+                0.793088,
+                0.871812,
+                0.851386
+              ],
+              "mean_delta_wer": 0.8242683999999999,
+              "trial_bootstrap_95_ci": [
+                0.779693335,
+                0.8631775999999999
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.744617,
+                  "ci_low": 0.689211,
+                  "ci_high": 0.810648,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.860439,
+                  "ci_low": 0.740962,
+                  "ci_high": 0.97225,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.793088,
+                  "ci_low": 0.698792,
+                  "ci_high": 0.906455,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.871812,
+                  "ci_low": 0.782018,
+                  "ci_high": 0.971769,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.851386,
+                  "ci_low": 0.77118,
+                  "ci_high": 0.946582,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "domain_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 1.435644,
+              "ci_low": 0.854386,
+              "ci_high": 1.994821,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.672103,
+                0.796156,
+                0.709571,
+                0.879635,
+                0.836148
+              ],
+              "mean_delta_wer": 0.7787226,
+              "trial_bootstrap_95_ci": [
+                0.7119007999999999,
+                0.8455444
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.672103,
+                  "ci_low": 0.617344,
+                  "ci_high": 0.737853,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.796156,
+                  "ci_low": 0.607861,
+                  "ci_high": 0.945179,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.709571,
+                  "ci_low": 0.60263,
+                  "ci_high": 0.812404,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.879635,
+                  "ci_low": 0.730121,
+                  "ci_high": 1.035078,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.836148,
+                  "ci_low": 0.732401,
+                  "ci_high": 0.96412,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          },
+          "common_terms": {
+            "base_whisper": {
+              "n_trials": 1,
+              "estimate": 1.646185,
+              "ci_low": 1.174317,
+              "ci_high": 2.184536,
+              "n_resamples": 10000
+            },
+            "adapted_whisper": {
+              "n_trials": 5,
+              "trial_values": [
+                0.840246,
+                0.945212,
+                0.903226,
+                0.861495,
+                0.87148
+              ],
+              "mean_delta_wer": 0.8843318,
+              "trial_bootstrap_95_ci": [
+                0.8549924000000001,
+                0.9158216000000001
+              ],
+              "per_trial_clip_bootstrap": [
+                {
+                  "estimate": 0.840246,
+                  "ci_low": 0.77196,
+                  "ci_high": 0.912168,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.945212,
+                  "ci_low": 0.813953,
+                  "ci_high": 1.113904,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.903226,
+                  "ci_low": 0.755855,
+                  "ci_high": 1.092998,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.861495,
+                  "ci_low": 0.784826,
+                  "ci_high": 0.952854,
+                  "n_resamples": 10000
+                },
+                {
+                  "estimate": 0.87148,
+                  "ci_low": 0.763908,
+                  "ci_high": 1.026935,
+                  "n_resamples": 10000
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
