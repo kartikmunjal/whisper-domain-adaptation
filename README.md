@@ -107,8 +107,16 @@ selection analysis live with the data pipeline, where the intervention belongs.
 This repository's WER/OOV code now treats a zero-example domain slice as an
 explicit undefined (`NaN`) result instead of crashing, while still reporting
 overall/common WER and paired confidence intervals. No SLR31 audio or manifest
-is mixed into the financial training corpus, and the audit makes no retraining
-gain claim.
+is mixed into the original financial training corpus.
+
+A subsequent matched-size study in Audio-Data-Creation did train five new
+adapters after replacing half of the 294 financial examples with 147 crawler
+clips. On two held-out SLR31 speakers, mean WER worsened from 4.43% to 5.60%
+(paired +1.17 points; 95% seed-bootstrap CI +0.88 to +1.46; `N_trials=5`). Real
+Earnings-21 moved from 11.47% to 10.83% (-0.64 points, -1.43 to +0.21), an
+inconclusive overall change. The locked beneficial gate therefore failed. The
+new adapters and result artifacts remain owned by the data-curation study;
+this repository supplies the unchanged training and evaluation machinery.
 
 ## Confirmatory financial experiment
 
