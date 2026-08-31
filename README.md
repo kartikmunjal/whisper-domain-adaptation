@@ -97,6 +97,19 @@ RTX 3070. Both clear the locked chunk-simulation bars, but this is synchronized
 batch-one inference—not a production streaming or service-capacity claim.
 <!-- END GENERATED CONTINUOUS LATENCY RESULT -->
 
+## Open-corpus curation bridge
+
+The adjacent Audio-Data-Creation repository now exports its locked OpenSLR
+SLR31 crawler pilot through the same `id`/`path`/`sentence` Parquet contract.
+Frozen Whisper-small and the seed-11 financial adapter were evaluated on all
+250 acquired clips; their committed per-clip predictions and the quality-
+selection analysis live with the data pipeline, where the intervention belongs.
+This repository's WER/OOV code now treats a zero-example domain slice as an
+explicit undefined (`NaN`) result instead of crashing, while still reporting
+overall/common WER and paired confidence intervals. No SLR31 audio or manifest
+is mixed into the financial training corpus, and the audit makes no retraining
+gain claim.
+
 ## Confirmatory financial experiment
 
 The experiment uses:

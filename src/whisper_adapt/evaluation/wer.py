@@ -105,6 +105,9 @@ def paired_bootstrap_difference_ci(
     """CI for adapted-minus-baseline WER using identical resamples."""
     if not (len(references) == len(baseline_hypotheses) == len(adapted_hypotheses)):
         raise ValueError("references and both hypothesis lists must have equal length")
+    if not references:
+        return {"estimate": float("nan"), "ci_low": float("nan"),
+                "ci_high": float("nan"), "n_resamples": n_resamples}
     rng = np.random.default_rng(seed)
     n = len(references)
     base_errors, ref_words = _utterance_edit_arrays(

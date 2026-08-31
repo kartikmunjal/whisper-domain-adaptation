@@ -2,6 +2,7 @@
 Tests for WER computation and OOV analysis.
 """
 
+import math
 import sys
 from pathlib import Path
 
@@ -101,6 +102,17 @@ class TestOOVAnalyzer:
     def setup_method(self):
         self.analyzer = OOVAnalyzer(list(DOMAIN_VOCAB))
 
+    def test_no_domain_terms_returns_typed_empty_report(self):
+        report = self.analyzer.analyze(
+            ["ordinary read speech"], ["ordinary read speech"]
+        )
+        assert report.summary.empty
+        assert report.summary.columns.tolist() == [
+            "term", "n_occurrences", "term_recall", "wer", "top_substitution"
+        ]
+        assert report.worst_terms == []
+        assert report.best_terms == []
+
     def test_perfect_recall(self):
         refs = ["Patient had atrial fibrillation.", "Echocardiogram result negative."]
         hyps = refs[:]
@@ -137,3 +149,11 @@ class TestOOVAnalyzer:
         assert isinstance(df, pd.DataFrame)
         assert "recall_delta" in df.columns
         assert "wer_delta" in df.columns
+
+
+def test_empty_paired_bootstrap_slice_returns_nan():
+    result = paired_bootstrap_difference_ci([], [], [], n_resamples=25, seed=4)
+    assert math.isnan(result["estimate"])
+    assert math.isnan(result["ci_low"])
+    assert math.isnan(result["ci_high"])
+    assert result["n_resamples"] == 25

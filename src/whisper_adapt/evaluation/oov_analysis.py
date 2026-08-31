@@ -82,7 +82,8 @@ class OOVAnalyzer:
                 ),
             })
 
-        df = pd.DataFrame(rows).sort_values("wer", ascending=False)
+        columns = ["term", "n_occurrences", "term_recall", "wer", "top_substitution"]
+        df = pd.DataFrame(rows, columns=columns).sort_values("wer", ascending=False)
 
         worst = df.head(5)["term"].tolist() if len(df) >= 5 else df["term"].tolist()
         best = df.tail(5)["term"].tolist() if len(df) >= 5 else df["term"].tolist()
