@@ -118,6 +118,18 @@ inconclusive overall change. The locked beneficial gate therefore failed. The
 new adapters and result artifacts remain owned by the data-curation study;
 this repository supplies the unchanged training and evaluation machinery.
 
+The data repository also evaluated an experimental gradient-boosted quality
+filter trained only to recover the heuristic's weak labels. After a prospective
+amendment ensured the learned and heuristic arms differed by exactly one of 147
+crawler clips, five additional adapters produced 11.07% versus 10.83%
+Earnings-21 WER (learned minus heuristic +0.24 points; 95% paired
+seed-bootstrap CI -0.42 to +0.72; `N_trials=5`) and 5.38% versus 5.60% on the
+two held-out SLR31 speakers (-0.21 points, -0.72 to +0.45). The locked
+replacement gate failed, so this repository does not treat the learned filter
+as an improved training-data policy. Training and WER code stayed unchanged;
+the manifests, classifier evidence, and primary reports remain in
+Audio-Data-Creation where the intervention belongs.
+
 ## Confirmatory financial experiment
 
 The experiment uses:
